@@ -10,5 +10,26 @@ package Entidades;
  * @author DAM102
  */
 public class Concurso {
+    private String Tipo;
+    private String Premio;
+
+    public String getTipo() {
+        return Tipo;
+    }
+
+    public void setTipo(String Tipo) {
+        this.Tipo = Tipo;
+    }
+
+    public String getPremio() {
+        return Premio;
+    }
+
+    public void setPremio(String Premio) {
+        this.Premio = Premio;
+    }
+
+    public Concurso() {
+    }
     
 }

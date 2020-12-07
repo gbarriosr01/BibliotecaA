@@ -10,5 +10,17 @@ package Entidades;
  * @author DAM102
  */
 public class Visionado {
+    private String Aula;
+
+    public String getAula() {
+        return Aula;
+    }
+
+    public void setAula(String Aula) {
+        this.Aula = Aula;
+    }
+
+    public Visionado() {
+    }
     
 }

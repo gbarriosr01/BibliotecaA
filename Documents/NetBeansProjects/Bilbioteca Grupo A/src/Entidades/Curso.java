@@ -10,5 +10,26 @@ package Entidades;
  * @author DAM102
  */
 public class Curso {
+    private String Duracion;
+    private String Aula;
+
+    public String getDuracion() {
+        return Duracion;
+    }
+
+    public void setDuracion(String Duracion) {
+        this.Duracion = Duracion;
+    }
+
+    public String getAula() {
+        return Aula;
+    }
+
+    public void setAula(String Aula) {
+        this.Aula = Aula;
+    }
+
+    public Curso() {
+    }
     
 }
