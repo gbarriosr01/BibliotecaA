@@ -20,6 +20,15 @@ public class Libro extends Elemento{
     public Libro() {
         super();
     }
+    
+    public Libro(Libro l1) {
+        super();
+        this.Nombre=l1.Nombre;
+        this.Editorial=l1.Editorial;
+        this.Autor=l1.Autor;
+        this.nPaginas=l1.nPaginas;
+        this.lectura=l1.lectura;
+    }
 
     public Libro(String Nombre, String Editorial, String Autor, int nPaginas, Lectura lectura) {
         this.Nombre = Nombre;

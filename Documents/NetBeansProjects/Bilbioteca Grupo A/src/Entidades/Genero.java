@@ -10,5 +10,40 @@ package Entidades;
  * @author DAM102
  */
 public class Genero {
+    private long id;
+    private String nombre;
+    
+    
+
+    public Genero() {
+    }
+
+    public Genero(long id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
+   
+    public Genero(Genero g1){
+       this.id=g1.id;
+       this.nombre=g1.nombre;
+        
+    }
+    
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
     
 }
