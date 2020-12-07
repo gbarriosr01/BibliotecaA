@@ -11,73 +11,72 @@ package Entidades;
  */
 public class Libro extends Elemento{
     
-    private String Nombre;
-    private String Editorial;
-    private String Autor;
+    private String nombre;
+    private String editorial;
+    private String autor;
     private int nPaginas;
     private Lectura lectura;/*Obligatorio*/
 
     public Libro() {
         super();
     }
-    
-    public Libro(Libro l1) {
-        super();
-        this.Nombre=l1.Nombre;
-        this.Editorial=l1.Editorial;
-        this.Autor=l1.Autor;
-        this.nPaginas=l1.nPaginas;
-        this.lectura=l1.lectura;
-    }
 
-    public Libro(String Nombre, String Editorial, String Autor, int nPaginas, Lectura lectura) {
-        this.Nombre = Nombre;
-        this.Editorial = Editorial;
-        this.Autor = Autor;
+    public Libro(String nombre, String editorial, String autor, int nPaginas, Lectura lectura) {
+        this.nombre = nombre;
+        this.editorial = editorial;
+        this.autor = autor;
         this.nPaginas = nPaginas;
         this.lectura = lectura;
     }
 
-    public Libro(String Nombre, String Editorial, String Autor, int nPaginas, Lectura lectura, long id, Genero genero) {
+    public Libro(String nombre, String editorial, String autor, int nPaginas, Lectura lectura, long id, Genero genero) {
         super(id, genero);
-        this.Nombre = Nombre;
-        this.Editorial = Editorial;
-        this.Autor = Autor;
+        this.nombre = nombre;
+        this.editorial = editorial;
+        this.autor = autor;
         this.nPaginas = nPaginas;
         this.lectura = lectura;
     }
 
-    public Libro(String Nombre, String Editorial, String Autor, int nPaginas, Lectura lectura, Elemento el) {
+    public Libro(String nombre, String editorial, String autor, int nPaginas, Lectura lectura, Elemento el) {
         super(el);
-        this.Nombre = Nombre;
-        this.Editorial = Editorial;
-        this.Autor = Autor;
+        this.nombre = nombre;
+        this.editorial = editorial;
+        this.autor = autor;
         this.nPaginas = nPaginas;
         this.lectura = lectura;
+    }
+    
+    public Libro(Libro l) {
+        this.nombre = l.nombre;
+        this.editorial = l.editorial;
+        this.autor = l.autor;
+        this.nPaginas = l.nPaginas;
+        this.lectura = l.lectura;
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getEditorial() {
-        return Editorial;
+        return editorial;
     }
 
-    public void setEditorial(String Editorial) {
-        this.Editorial = Editorial;
+    public void setEditorial(String editorial) {
+        this.editorial = editorial;
     }
 
     public String getAutor() {
-        return Autor;
+        return autor;
     }
 
-    public void setAutor(String Autor) {
-        this.Autor = Autor;
+    public void setAutor(String autor) {
+        this.autor = autor;
     }
 
     public int getnPaginas() {
@@ -98,7 +97,7 @@ public class Libro extends Elemento{
 
     @Override
     public String toString() {
-        return "Libro{" + "Nombre=" + Nombre + ", Editorial=" + Editorial + ", Autor=" + Autor + ", nPaginas=" + nPaginas + ", lectura=" + lectura + '}';
+        return "Libro{" + "nombre=" + nombre + ", editorial=" + editorial + ", autor=" + autor + ", nPaginas=" + nPaginas + ", lectura=" + lectura + '}';
     }
 
     

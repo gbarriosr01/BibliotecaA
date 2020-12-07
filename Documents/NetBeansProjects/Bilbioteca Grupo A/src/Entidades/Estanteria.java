@@ -14,26 +14,26 @@ import java.util.ArrayList;
 public class Estanteria {
     
     private long id;
-    private char Codigo;
-    private String Ubicacion;
-    private boolean Completa;
+    private char codigo;
+    private String ubicacion;
+    private boolean completa;
     private ArrayList <Elemento> elementos = new ArrayList <Elemento>();
 
     public Estanteria() {
     }
 
-    public Estanteria(long id, char Codigo, String Ubicacion, boolean Completa) {
+    public Estanteria(long id, char codigo, String ubicacion, boolean completa) {
         this.id = id;
-        this.Codigo = Codigo;
-        this.Ubicacion = Ubicacion;
-        this.Completa = Completa;
+        this.codigo = codigo;
+        this.ubicacion = ubicacion;
+        this.completa = completa;
     }
-    
+
     public Estanteria(Estanteria e) {
         this.id = e.id;
-        this.Codigo = e.Codigo;
-        this.Ubicacion = e.Ubicacion;
-        this.Completa = e.Completa;
+        this.codigo = e.codigo;
+        this.ubicacion = e.ubicacion;
+        this.completa = e.completa;
     }
 
     public long getId() {
@@ -45,27 +45,27 @@ public class Estanteria {
     }
 
     public char getCodigo() {
-        return Codigo;
+        return codigo;
     }
 
-    public void setCodigo(char Codigo) {
-        this.Codigo = Codigo;
+    public void setCodigo(char codigo) {
+        this.codigo = codigo;
     }
 
     public String getUbicacion() {
-        return Ubicacion;
+        return ubicacion;
     }
 
-    public void setUbicacion(String Ubicacion) {
-        this.Ubicacion = Ubicacion;
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
 
     public boolean isCompleta() {
-        return Completa;
+        return completa;
     }
 
-    public void setCompleta(boolean Completa) {
-        this.Completa = Completa;
+    public void setCompleta(boolean completa) {
+        this.completa = completa;
     }
 
     public ArrayList<Elemento> getElementos() {
@@ -78,7 +78,7 @@ public class Estanteria {
 
     @Override
     public String toString() {
-        return "Estanteria{" + "id=" + id + ", Codigo=" + Codigo + ", Ubicacion=" + Ubicacion + ", Completa=" + Completa + ", elementos=" + elementos + '}';
+        return "Estanteria{" + "id=" + id + ", codigo=" + codigo + ", ubicacion=" + ubicacion + ", completa=" + completa + ", elementos=" + elementos + '}';
     }
     
     

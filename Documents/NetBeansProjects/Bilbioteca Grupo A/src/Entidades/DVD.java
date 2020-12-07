@@ -11,43 +11,41 @@ package Entidades;
  */
 public class DVD extends Elemento{
     
-    private String Titulo;
+    private String titulo;
     private Visionado visionado;/*Obligatorio*/
 
     public DVD() {
         super();
     }
-    
-    public DVD(DVD d1){
-        this.Titulo=d1.Titulo;
-        this.visionado=d1.visionado;
-        
-    
-    }
-    
-    public DVD(String Titulo, Visionado visionado) {
-        this.Titulo = Titulo;
+
+    public DVD(String titulo, Visionado visionado) {
+        this.titulo = titulo;
         this.visionado = visionado;
     }
 
-    public DVD(String Titulo, Visionado visionado, long id, Genero genero) {
+    public DVD(String titulo, Visionado visionado, long id, Genero genero) {
         super(id, genero);
-        this.Titulo = Titulo;
+        this.titulo = titulo;
         this.visionado = visionado;
     }
 
-    public DVD(String Titulo, Visionado visionado, Elemento el) {
+    public DVD(String titulo, Visionado visionado, Elemento el) {
         super(el);
-        this.Titulo = Titulo;
+        this.titulo = titulo;
         this.visionado = visionado;
+    }
+
+    public DVD(DVD d) {
+        this.titulo = d.titulo;
+        this.visionado = d.visionado;
     }
 
     public String getTitulo() {
-        return Titulo;
+        return titulo;
     }
 
-    public void setTitulo(String Titulo) {
-        this.Titulo = Titulo;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public Visionado getVisionado() {
@@ -60,8 +58,8 @@ public class DVD extends Elemento{
 
     @Override
     public String toString() {
-        return "DVD{" + "Titulo=" + Titulo + ", visionado=" + visionado + '}';
+        return "DVD{" + "titulo=" + titulo + ", visionado=" + visionado + '}';
     }
-
+    
     
 }
