@@ -15,7 +15,8 @@ public class Evento {
     protected long ID;
     protected String Nombre;
     protected Date Fecha;
-
+    protected long IDPenalizaion;
+    
     public long getID() {
         return ID;
     }
@@ -38,6 +39,14 @@ public class Evento {
 
     public void setFecha(Date Fecha) {
         this.Fecha = Fecha;
+    }
+
+    public long getIDPenalizaion() {
+        return IDPenalizaion;
+    }
+
+    public void setIDPenalizaion(long IDPenalizaion) {
+        this.IDPenalizaion = IDPenalizaion;
     }
 
     public Evento() {
