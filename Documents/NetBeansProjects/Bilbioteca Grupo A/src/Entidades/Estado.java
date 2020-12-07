@@ -10,12 +10,17 @@ package Entidades;
  * @author DAM102
  */
 public class Estado {
-      private long id;
+    private long id;
     private String estado;
 
     public Estado() {
     }
 
+    public Estado(Estado copia) {
+        this.id = copia.id;
+        this.estado = copia.estado;
+    }
+    
     public long getId() {
         return id;
     }

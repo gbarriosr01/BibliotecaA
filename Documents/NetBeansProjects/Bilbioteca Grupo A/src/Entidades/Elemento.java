@@ -14,8 +14,8 @@ import java.util.ArrayList;
 public class Elemento {
     
     protected long id;
-    protected ArrayList <Prestamo> prestamos = new ArrayList <Prestamo>();
-    protected Genero genero;
+    protected ArrayList <Prestamo> prestamos = new ArrayList <Prestamo>();/*Obligatorio*/
+    protected Genero genero;/*Obligatorio*/
 
     public Elemento() {
     }

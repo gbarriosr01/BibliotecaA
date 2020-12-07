@@ -12,7 +12,7 @@ package Entidades;
 public class DVD extends Elemento{
     
     private String Titulo;
-    private Visionado visionado;
+    private Visionado visionado;/*Obligatorio*/
 
     public DVD() {
         super();

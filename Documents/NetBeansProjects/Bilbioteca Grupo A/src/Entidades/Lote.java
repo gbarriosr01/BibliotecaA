@@ -14,8 +14,8 @@ import java.util.Date;
  */
 public class Lote {
       private Date fechallegada;
-      private ArrayList <Elemento> elementos = new ArrayList <Elemento>();
-      private long idProveedor;
+      private ArrayList <Elemento> elementos = new ArrayList <Elemento>();/*Obligatorio*/
+      private long idProveedor;/*Obligatorio*/
 
     public Lote() {
     }

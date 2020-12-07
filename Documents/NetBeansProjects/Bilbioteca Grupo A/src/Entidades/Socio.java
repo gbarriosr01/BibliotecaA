@@ -12,19 +12,28 @@ import java.util.ArrayList;
  * @author DAM102
  */
 public class Socio {
-    
+                
     private long id;
     private String nombre;
     private String NIF;
     private String telefono;
     private String direccion;
-    private ArrayList<Prestamo> Prestamos = new ArrayList<Prestamo>();
-    private ArrayList<Evento> Eventos = new ArrayList<Evento>();
+    private ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();
+    private ArrayList<Evento> eventos = new ArrayList<Evento>();/*No obligatorio*/
 
     
     public Socio() {
     }
 
+    public Socio(Socio copia){
+        this.id = copia.id;
+        this.nombre = copia.nombre;
+        this.NIF = copia.NIF;
+        this.telefono = copia.telefono;
+        this.direccion = copia.direccion;
+        this.prestamos = copia.prestamos;
+        this.eventos = copia.eventos;
+    }
     
     public long getId() {
         return id;

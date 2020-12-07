@@ -18,13 +18,23 @@ public class Prestamo {
     private Date fechaDeInicio;
     private Date fechaDeDevolucion;
     private Estado estado;
-    private ArrayList<Socio> Socios = new ArrayList<Socio>();
-    private ArrayList<Elemento> Elementos = new ArrayList<Elemento>();
+    private ArrayList<Socio> socios = new ArrayList<Socio>();/*Obligatorio*/
+    private ArrayList<Elemento> elementos = new ArrayList<Elemento>(); /*Maximo 5, Obligatorio*/
     private long idPenalizacion;
 
     public Prestamo() {
     }
 
+    public Prestamo(Prestamo copia){
+        this.id = copia.id;
+        this.fechaDeInicio = copia.fechaDeInicio;
+        this.fechaDeDevolucion = copia.fechaDeDevolucion;
+        this.estado = copia.estado;
+        this.socios = copia.socios;
+        this.elementos = copia.elementos;
+        this.idPenalizacion = copia.idPenalizacion;
+    }
+    
     public long getIdPenalizacion() {
         return idPenalizacion;
     }
@@ -66,10 +76,10 @@ public class Prestamo {
     }
 
     public ArrayList<Socio> getSocios() {
-        return Socios;
+        return socios;
     }
 
     public void setSocios(ArrayList<Socio> Socios) {
-        this.Socios = Socios;
+        this.socios = Socios;
     } 
 }

@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -16,6 +17,7 @@ public class Evento {
     protected String Nombre;
     protected Date Fecha;
     protected long IDPenalizaion;
+    protected ArrayList<Socio> socios = new ArrayList<Socio>();/*Obligatorio*/
     
     public long getID() {
         return ID;
@@ -47,6 +49,14 @@ public class Evento {
 
     public void setIDPenalizaion(long IDPenalizaion) {
         this.IDPenalizaion = IDPenalizaion;
+    }
+
+    public ArrayList<Socio> getSocios() {
+        return socios;
+    }
+
+    public void setSocios(ArrayList<Socio> socios) {
+        this.socios = socios;
     }
 
     public Evento() {

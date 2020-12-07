@@ -19,6 +19,13 @@ public class Penalizacion {
 
     public Penalizacion() {
     }
+    
+    public Penalizacion(Penalizacion copia){
+        this.id= copia.id;
+        this.motivo = copia.motivo;
+        this.fechaDeVigencia = copia.fechaDeVigencia;
+        
+    }
 
     public long getId() {
         return id;

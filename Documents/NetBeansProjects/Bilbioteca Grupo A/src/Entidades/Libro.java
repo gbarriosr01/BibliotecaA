@@ -15,7 +15,7 @@ public class Libro extends Elemento{
     private String Editorial;
     private String Autor;
     private int nPaginas;
-    private Lectura lectura;
+    private Lectura lectura;/*Obligatorio*/
 
     public Libro() {
         super();
