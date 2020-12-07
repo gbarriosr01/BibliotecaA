@@ -9,7 +9,7 @@ package Entidades;
  *
  * @author DAM102
  */
-public class Visionado {
+public class Visionado extends Evento {
     private String Aula;
 
     public String getAula() {

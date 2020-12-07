@@ -9,7 +9,7 @@ package Entidades;
  *
  * @author DAM102
  */
-public class Lectura {
+public class Lectura extends Evento {
     private boolean Leido;
     private String Modelo;
 

@@ -9,7 +9,7 @@ package Entidades;
  *
  * @author DAM102
  */
-public class Concurso {
+public class Concurso extends Evento {
     private String Tipo;
     private String Premio;
 
