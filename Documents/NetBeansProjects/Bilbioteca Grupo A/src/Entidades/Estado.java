@@ -10,5 +10,25 @@ package Entidades;
  * @author DAM102
  */
 public class Estado {
-    
+      private long id;
+    private String estado;
+
+    public Estado() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 }
