@@ -5,31 +5,55 @@
  */
 package Entidades;
 
+import java.util.Date;
+
 /**
  *
  * @author DAM102
  */
 public class Curso extends Evento{
-    private String Duracion;
-    private String Aula;
+    private String duracion;
+    private String aula;
 
-    public String getDuracion() {
-        return Duracion;
+    public Curso() {
+        super();
     }
 
-    public void setDuracion(String Duracion) {
-        this.Duracion = Duracion;
+    public Curso(String duracion, String aula) {
+        this.duracion = duracion;
+        this.aula = aula;
+    }
+    public Curso(Curso cu1) {
+        this.duracion = cu1.duracion;
+        this.aula = cu1.aula;
+    }
+    public Curso(String duracion, String aula, long id, String nombre, Date fechayhora, long idPenalizacion) {
+        super(id, nombre, fechayhora, idPenalizacion);
+        this.duracion = duracion;
+        this.aula = aula;
+    }
+
+    public Curso(String duracion, String aula, Evento ev1) {
+        super(ev1);
+        this.duracion = duracion;
+        this.aula = aula;
+    }
+
+    public String getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(String duracion) {
+        this.duracion = duracion;
     }
 
     public String getAula() {
-        return Aula;
+        return aula;
     }
 
-    public void setAula(String Aula) {
-        this.Aula = Aula;
-    }
-
-    public Curso() {
+    public void setAula(String aula) {
+        this.aula = aula;
     }
     
 }
+

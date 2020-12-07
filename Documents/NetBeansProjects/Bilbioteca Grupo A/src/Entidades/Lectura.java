@@ -5,31 +5,57 @@
  */
 package Entidades;
 
+import java.util.Date;
+
 /**
  *
  * @author DAM102
  */
-public class Lectura extends Evento {
-    private boolean Leido;
-    private String Modelo;
+public class Lectura extends Evento{
+    private boolean leido;
+    private String modelo;
 
-    public boolean isLeido() {
-        return Leido;
+    public Lectura() {
+        super();
+    }
+    
+    public Lectura(boolean leido, String modelo) {
+        this.leido = leido;
+        this.modelo = modelo;
+    }
+    
+    public Lectura(Lectura l1) {
+        this.leido = l1.leido;
+        this.modelo = l1.modelo;
+    }
+    
+    public Lectura(boolean leido, String modelo, long id, String nombre, Date fechayhora, long idPenalizacion) {
+        super(id, nombre, fechayhora, idPenalizacion);
+        this.leido = leido;
+        this.modelo = modelo;
     }
 
-    public void setLeido(boolean Leido) {
-        this.Leido = Leido;
+    public Lectura(boolean leido, String modelo, Evento ev1) {
+        super(ev1);
+        this.leido = leido;
+        this.modelo = modelo;
+    }
+
+
+    public boolean isLeido() {
+        return leido;
+    }
+
+    public void setLeido(boolean leido) {
+        this.leido = leido;
     }
 
     public String getModelo() {
-        return Modelo;
+        return modelo;
     }
 
-    public void setModelo(String Modelo) {
-        this.Modelo = Modelo;
-    }
-
-    public Lectura() {
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
     }
     
 }
