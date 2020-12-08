@@ -32,7 +32,7 @@ public class Socio {
         this.NIF = copia.NIF;
         this.telefono = copia.telefono;
         this.direccion = copia.direccion;
-        this.prestamos = copia.prestamos;
+        this.penalizaciones = copia.penalizaciones;
         this.eventos = copia.eventos;
         this.prestamo = copia.prestamo;
     }
@@ -74,12 +74,12 @@ public class Socio {
         this.nombre = nombre;
     }
 
-    public ArrayList<Prestamo> getPrestamos() {
-        return prestamos;
+    public ArrayList<Penalizacion> getPenalizaciones() {
+        return penalizaciones;
     }
 
-    public void setPrestamos(ArrayList<Prestamo> prestamos) {
-        this.prestamos = prestamos;
+    public void setPenalizaciones(ArrayList<Penalizacion> penalizaciones) {
+        this.penalizaciones = penalizaciones;
     }
 
     public ArrayList<Evento> getEventos() {
