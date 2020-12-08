@@ -20,6 +20,7 @@ public class Socio {
     private String direccion;
     private ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();
     private ArrayList<Evento> eventos = new ArrayList<Evento>();/*No obligatorio*/
+    private ArrayList<Penalizacion> penalizaciones = new ArrayList<Penalizacion>();
 
     
     public Socio() {
