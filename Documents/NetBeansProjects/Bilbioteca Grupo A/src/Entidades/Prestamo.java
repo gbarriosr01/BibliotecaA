@@ -18,7 +18,6 @@ public class Prestamo {
     private Date fechaDeInicio;
     private Date fechaDeDevolucion;
     private Estado estado;
-    private ArrayList<Socio> socios = new ArrayList<Socio>();/*Obligatorio*/
     private ArrayList<Elemento> elementos = new ArrayList<Elemento>(); /*Maximo 5, Obligatorio*/
     private long idPenalizacion;
 
@@ -30,7 +29,6 @@ public class Prestamo {
         this.fechaDeInicio = copia.fechaDeInicio;
         this.fechaDeDevolucion = copia.fechaDeDevolucion;
         this.estado = copia.estado;
-        this.socios = copia.socios;
         this.elementos = copia.elementos;
         this.idPenalizacion = copia.idPenalizacion;
     }
@@ -93,11 +91,4 @@ public class Prestamo {
         this.estado = estado;
     }
 
-    public ArrayList<Socio> getSocios() {
-        return socios;
-    }
-
-    public void setSocios(ArrayList<Socio> Socios) {
-        this.socios = Socios;
-    } 
 }
