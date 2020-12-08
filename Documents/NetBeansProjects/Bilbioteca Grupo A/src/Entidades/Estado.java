@@ -42,4 +42,5 @@ public class Estado {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+    
 }

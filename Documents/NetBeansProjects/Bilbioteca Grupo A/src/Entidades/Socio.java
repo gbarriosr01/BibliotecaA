@@ -74,6 +74,30 @@ public class Socio {
         this.nombre = nombre;
     }
 
+    public ArrayList<Prestamo> getPrestamos() {
+        return prestamos;
+    }
+
+    public void setPrestamos(ArrayList<Prestamo> prestamos) {
+        this.prestamos = prestamos;
+    }
+
+    public ArrayList<Evento> getEventos() {
+        return eventos;
+    }
+
+    public void setEventos(ArrayList<Evento> eventos) {
+        this.eventos = eventos;
+    }
+
+    public Prestamo getPrestamo() {
+        return prestamo;
+    }
+
+    public void setPrestamo(Prestamo prestamo) {
+        this.prestamo = prestamo;
+    }
+
     public void setNIF(String NIF) {
         this.NIF = NIF;
     }

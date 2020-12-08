@@ -65,6 +65,14 @@ public class Prestamo {
         return fechaDeDevolucion;
     }
 
+    public ArrayList<Elemento> getElementos() {
+        return elementos;
+    }
+
+    public void setElementos(ArrayList<Elemento> elementos) {
+        this.elementos = elementos;
+    }
+
     public Estado getEstado() {
         return estado;
     }
