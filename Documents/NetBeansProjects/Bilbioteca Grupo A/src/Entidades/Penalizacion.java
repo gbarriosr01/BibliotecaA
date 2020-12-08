@@ -33,6 +33,7 @@ public class Penalizacion {
         this.fechaDeVigencia = fechaDeVigencia;
     }
 
+
     public long getId() {
         return id;
     }
