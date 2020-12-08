@@ -18,7 +18,7 @@ public class Socio {
     private String NIF;
     private String telefono;
     private String direccion;
-    private ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();
+    private ArrayList<Penalizacion> penalizaciones = new ArrayList<Penalizacion>();
     private ArrayList<Evento> eventos = new ArrayList<Evento>();/*No obligatorio*/
     private Prestamo prestamo;
 
