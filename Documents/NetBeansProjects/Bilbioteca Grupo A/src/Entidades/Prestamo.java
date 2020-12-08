@@ -34,6 +34,16 @@ public class Prestamo {
         this.elementos = copia.elementos;
         this.idPenalizacion = copia.idPenalizacion;
     }
+
+    public Prestamo(long id, Date fechaDeInicio, Date fechaDeDevolucion, Estado estado, long idPenalizacion) {
+        this.id = id;
+        this.fechaDeInicio = fechaDeInicio;
+        this.fechaDeDevolucion = fechaDeDevolucion;
+        this.estado = estado;
+        this.idPenalizacion = idPenalizacion;
+    }
+    
+    
     
     public long getIdPenalizacion() {
         return idPenalizacion;

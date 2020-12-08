@@ -27,6 +27,12 @@ public class Penalizacion {
         
     }
 
+    public Penalizacion(long id, String motivo, Date fechaDeVigencia) {
+        this.id = id;
+        this.motivo = motivo;
+        this.fechaDeVigencia = fechaDeVigencia;
+    }
+
     public long getId() {
         return id;
     }

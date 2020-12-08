@@ -20,7 +20,7 @@ public class Socio {
     private String direccion;
     private ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();
     private ArrayList<Evento> eventos = new ArrayList<Evento>();/*No obligatorio*/
-    private ArrayList<Penalizacion> penalizaciones = new ArrayList<Penalizacion>();
+    private Prestamo prestamo;
 
     
     public Socio() {
@@ -34,6 +34,16 @@ public class Socio {
         this.direccion = copia.direccion;
         this.prestamos = copia.prestamos;
         this.eventos = copia.eventos;
+        this.prestamo = copia.prestamo;
+    }
+
+    public Socio(long id, String nombre, String NIF, String telefono, String direccion, Prestamo prestamo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.NIF = NIF;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.prestamo = prestamo;
     }
     
     public long getId() {

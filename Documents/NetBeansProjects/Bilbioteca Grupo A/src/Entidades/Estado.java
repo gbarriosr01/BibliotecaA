@@ -20,6 +20,12 @@ public class Estado {
         this.id = copia.id;
         this.estado = copia.estado;
     }
+
+    public Estado(long id, String estado) {
+        this.id = id;
+        this.estado = estado;
+    }
+    
     
     public long getId() {
         return id;
