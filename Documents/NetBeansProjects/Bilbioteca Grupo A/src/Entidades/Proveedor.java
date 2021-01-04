@@ -5,6 +5,8 @@
  */
 package Entidades;
 
+import java.util.Scanner;
+
 /**
  *
  * @author DAM102
@@ -57,5 +59,29 @@ public class Proveedor {
         this.telefono = telefono;
     }
     
+    
+    public Proveedor nuevoProveedor(){
+          Proveedor p1 = new Proveedor();
+          Scanner in =new Scanner(System.in);
+          
+          System.out.println("Ingrese su id");
+          long id = in.nextLong();
+          p1.setId(id);
+          System.out.println("Ingrese nombre del proveedor");
+          String nombre = in.nextLine();
+          p1.setNombre(nombre);
+          System.out.println("Ingrese el telefono del proveedor");
+          String telefono = in.nextLine();
+          p1.setTelefono(telefono);
+          
+          
+          return p1;
+    }
+
+    @Override
+    public String toString() {
+        return "Proveedor{" + "id=" + id + ", nombre=" + nombre + ", telefono=" + telefono + '}';
+    }
+     
     
 }

@@ -7,6 +7,7 @@ package Entidades;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  *
@@ -56,6 +57,21 @@ public class Lote {
         this.idProveedor = idProveedor;
     }
       
+     public Lote nuevoLote(){
+         Lote l1 = new Lote();
+         Scanner in =new Scanner(System.in);
+         
+         System.out.println("Introduzca la fecha de llegada");
+         
+         
+         return l1;
+     } 
+
+    @Override
+    public String toString() {
+        return "Lote{" + "fechallegada=" + fechallegada + ", elementos=" + elementos + ", idProveedor=" + idProveedor + '}';
+    }
       
-      
+     
+   
 }
