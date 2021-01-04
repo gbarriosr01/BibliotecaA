@@ -6,6 +6,7 @@
 package Entidades;
 
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  *
@@ -57,5 +58,21 @@ public class Lectura extends Evento{
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
-    
+    public Lectura nuevoLectura(){
+        Lectura le1 = new Lectura();
+        Scanner in = new Scanner(System.in);
+        System.out.println("Introduzca los datos de la lectura");
+        System.out.println("Introduzca si se ha leido el libro");
+        boolean leido = in.nextBoolean();
+        le1.setLeido(leido);
+        System.out.println("Introduzca el modelo del libro leido");
+        String modelo = in.nextLine();
+        le1.setModelo(modelo);
+        return le1;
+    }
+
+    @Override
+    public String toString() {
+        return "Lectura{" + "leido=" + leido + ", modelo=" + modelo + '}';
+    }
 }

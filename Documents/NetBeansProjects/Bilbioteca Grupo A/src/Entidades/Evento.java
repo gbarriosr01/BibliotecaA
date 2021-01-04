@@ -7,6 +7,7 @@ package Entidades;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  *
@@ -68,4 +69,26 @@ public class Evento {
         this.idPenalizacion = idPenalizacion;
     }
     
+    public Evento nuevoEvento(){
+        Evento ev1 = new Evento();
+        Scanner in = new Scanner(System.in);
+        System.out.println("Introduzca los datos del Evento");
+        System.out.println("Introduzca el id del evento");
+        int id = in.nextInt();
+        ev1.setId(id);
+        System.out.println("Introduzca el nombre del evento");
+        String nombre = in.nextLine();
+        ev1.setNombre(nombre);
+        System.out.println("Introduzca la fecha y la hora del evento");
+        
+        System.out.println("Introduzca el id de la penalizacion");
+        int idPenalizacion = in.nextInt();
+        ev1.setIdPenalizacion(idPenalizacion);
+        return ev1;
+    }
+
+    @Override
+    public String toString() {
+        return "Evento{" + "id=" + id + ", nombre=" + nombre + ", fechayhora=" + fechayhora + ", idPenalizacion=" + idPenalizacion + ", socios=" + socios + '}';
+    }
 }

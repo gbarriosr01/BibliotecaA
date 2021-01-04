@@ -6,6 +6,7 @@
 package Entidades;
 
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  *
@@ -54,6 +55,22 @@ public class Curso extends Evento{
     public void setAula(String aula) {
         this.aula = aula;
     }
-    
+    public Curso nuevoCurso(){
+        Curso cu1 = new Curso();
+        Scanner in = new Scanner(System.in);
+        System.out.println("Introduzca los datos del curso");
+        System.out.println("Introduzca la duracion del curso");
+        String duracion = in.nextLine();
+        cu1.setDuracion(duracion);
+        System.out.println("Introduzca el aula del curso");
+        String aula = in.nextLine();
+        cu1.setAula(aula);
+        return cu1;
+    }
+
+    @Override
+    public String toString() {
+        return "Curso{" + "duracion=" + duracion + ", aula=" + aula + '}';
+    }
 }
 

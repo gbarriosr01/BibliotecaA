@@ -6,6 +6,7 @@
 package Entidades;
 
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  *
@@ -55,5 +56,21 @@ public class Concurso extends Evento {
     public void setPremio(String premio) {
         this.premio = premio;
     }
-    
+    public Concurso nuevoConcurso(){
+        Concurso c1 = new Concurso();
+        Scanner in = new Scanner(System.in);
+        System.out.println("Introduzca los datos del concurso");
+        System.out.println("Introduzca el tipo de concurso");
+        String tipo = in.nextLine();
+        c1.setTipo(tipo);
+        System.out.println("Introduzca el premio del concurso");
+        String premio = in.nextLine();
+        c1.setPremio(premio);
+        return c1;
+    }
+
+    @Override
+    public String toString() {
+        return "Concurso{" + "tipo=" + tipo + ", premio=" + premio + '}';
+    }
 }

@@ -6,6 +6,7 @@
 package Entidades;
 
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  *
@@ -42,5 +43,18 @@ public class Visionado extends Evento{
     public void setAula(String aula) {
         this.aula = aula;
     }
-    
+    public Visionado nuevoVisionado(){
+        Visionado v1 = new Visionado();
+        Scanner in = new Scanner(System.in);
+        System.out.println("Introduzca los datos del visionados");
+        System.out.println("Introduzca los datos del aula");
+        String aula = in.nextLine();
+        v1.setAula(aula);
+        return v1;
+    }
+
+    @Override
+    public String toString() {
+        return "Visionado{" + "aula=" + aula + '}';
+    }
 }
