@@ -5,6 +5,8 @@
  */
 package Entidades;
 
+import java.util.Scanner;
+
 /**
  *
  * @author DAM102
@@ -44,6 +46,32 @@ public class Genero {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    
+    
+    
+    
+    
+    public Genero nuevoGenero(){
+            Genero g1 = new Genero();
+            Scanner in =new Scanner(System.in);
+                       
+            System.out.println("Inserte su id");
+            long id = in.nextLong();
+            g1.setId(id);
+          
+            System.out.println("Inserte su nombre");
+            String nombre = in.nextLine();
+            g1.setNombre(nombre);
+    
+    return g1;
+    }
+
+    @Override
+    public String toString() {
+        return "Genero{" + "id=" + id + ", nombre=" + nombre + '}';
+    }
+    
     
     
 }
