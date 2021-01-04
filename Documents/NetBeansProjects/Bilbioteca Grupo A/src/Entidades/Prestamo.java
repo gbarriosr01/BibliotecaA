@@ -7,6 +7,7 @@ package Entidades;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  *
@@ -90,5 +91,22 @@ public class Prestamo {
     public void setEstado(Estado estado) {
         this.estado = estado;
     }
+    
+    public Prestamo nuevoPrestamo(){
+        Prestamo prestamo1 = new Prestamo();
+        
+        Scanner in = new Scanner(System.in);
+        System.out.println("Inserte su Id");
+        int id = in.nextInt();
+        prestamo1.setId(id);
+        
+        
+        return prestamo1;
+    }
 
+    @Override
+    public String toString() {
+        return "Prestamo{" + "id=" + id + ", fechaDeInicio=" + fechaDeInicio + ", fechaDeDevolucion=" + fechaDeDevolucion + ", estado=" + estado + ", elementos=" + elementos + ", idPenalizacion=" + idPenalizacion + '}';
+    }
+    
 }

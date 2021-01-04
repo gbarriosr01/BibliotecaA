@@ -5,12 +5,14 @@
  */
 package Entidades;
 
+import java.util.Scanner;
+
 /**
  *
  * @author DAM102
  */
 public class Estado {
-    private long id;
+    private int id;
     private String estado;
 
     public Estado() {
@@ -21,7 +23,7 @@ public class Estado {
         this.estado = copia.estado;
     }
 
-    public Estado(long id, String estado) {
+    public Estado(int id, String estado) {
         this.id = id;
         this.estado = estado;
     }
@@ -31,7 +33,7 @@ public class Estado {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -41,6 +43,26 @@ public class Estado {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+    
+    public Estado nuevoEstado(){
+        Estado estado1 = new Estado();
+        
+        Scanner in = new Scanner(System.in);
+        
+        System.out.println("Inserte su id");
+        int id = in.nextInt();
+        estado1.setId(id);
+        
+        System.out.println("Inserte el estado");
+        String estado = in.nextLine();
+        estado1.setEstado(estado);
+        return estado1;
+    }
+
+    @Override
+    public String toString() {
+        return "Estado{" + "id=" + id + ", estado=" + estado + '}';
     }
     
 }

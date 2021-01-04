@@ -6,6 +6,7 @@
 package Entidades;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Socio {
                 
-    private long id;
+    private int id;
     private String nombre;
     private String NIF;
     private String telefono;
@@ -37,7 +38,7 @@ public class Socio {
         this.prestamo = copia.prestamo;
     }
 
-    public Socio(long id, String nombre, String NIF, String telefono, String direccion, Prestamo prestamo) {
+    public Socio(int id, String nombre, String NIF, String telefono, String direccion, Prestamo prestamo) {
         this.id = id;
         this.nombre = nombre;
         this.NIF = NIF;
@@ -46,7 +47,7 @@ public class Socio {
         this.prestamo = prestamo;
     }
     
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -66,7 +67,7 @@ public class Socio {
         return direccion;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -109,4 +110,40 @@ public class Socio {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+    public Socio nuevoSocio(){
+        
+        Socio s1 = new Socio();
+        Scanner in = new Scanner(System.in);
+        
+        System.out.println("Inserte su id");
+        int id = in.nextInt();
+        s1.setId(id);
+        
+        System.out.println("Inserte su nombre");
+        String nombre = in.nextLine();
+        s1.setNombre(nombre);
+        
+        System.out.println("Inserte su NIF");
+        String NIF = in.nextLine();
+        s1.setNIF(NIF);
+        
+        System.out.println("Inserte su telefono");
+        String telefono = in.nextLine();
+        s1.setTelefono(telefono);
+        
+        System.out.println("Inserte su direccion");
+        String direccion = in.nextLine();
+        s1.setDireccion(direccion);
+        
+        
+        
+        return s1;
+    }
+
+    @Override
+    public String toString() {
+        return "Socio{" + "id=" + id + ", nombre=" + nombre + ", NIF=" + NIF + ", telefono=" + telefono + ", direccion=" + direccion + ", penalizaciones=" + penalizaciones + ", eventos=" + eventos + ", prestamo=" + prestamo + '}';
+    }
+    
+    
 }

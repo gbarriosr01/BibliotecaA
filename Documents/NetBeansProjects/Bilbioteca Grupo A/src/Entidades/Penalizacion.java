@@ -6,6 +6,7 @@
 package Entidades;
 
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  *
@@ -13,7 +14,7 @@ import java.util.Date;
  */
 public class Penalizacion {
      
-    private long id;
+    private int id;
     private String motivo;
     private Date fechaDeVigencia;
 
@@ -27,7 +28,7 @@ public class Penalizacion {
         
     }
 
-    public Penalizacion(long id, String motivo, Date fechaDeVigencia) {
+    public Penalizacion(int id, String motivo, Date fechaDeVigencia) {
         this.id = id;
         this.motivo = motivo;
         this.fechaDeVigencia = fechaDeVigencia;
@@ -46,7 +47,7 @@ public class Penalizacion {
         return fechaDeVigencia;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -57,4 +58,24 @@ public class Penalizacion {
     public void setFechaDeVigencia(Date fechaDeVigencia) {
         this.fechaDeVigencia = fechaDeVigencia;
     }
+    public Penalizacion nuevoPenalizacion(){
+        Penalizacion penalizacion1 = new Penalizacion();
+        
+        Scanner in = new Scanner(System.in);
+        System.out.println("Inserte su ID");
+        int id = in.nextInt();
+        penalizacion1.setId(id);
+        
+        System.out.println("Inserte el motivo");
+        String motivo = in.nextLine();
+        penalizacion1.setMotivo(motivo);
+        
+        return penalizacion1;
+    }
+
+    @Override
+    public String toString() {
+        return "Penalizacion{" + "id=" + id + ", motivo=" + motivo + ", fechaDeVigencia=" + fechaDeVigencia + '}';
+    }
+    
 }
