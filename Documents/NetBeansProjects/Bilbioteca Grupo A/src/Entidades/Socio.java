@@ -46,7 +46,13 @@ public class Socio {
         this.direccion = direccion;
         this.prestamo = prestamo;
     }
-    
+    public Socio(int id, String nombre, String NIF, String telefono, String direccion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.NIF = NIF;
+        this.telefono = telefono;
+        this.direccion = direccion;
+    }
     public int getId() {
         return id;
     }

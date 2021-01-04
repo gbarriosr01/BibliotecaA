@@ -80,7 +80,7 @@ public class Evento {
         String nombre = in.nextLine();
         ev1.setNombre(nombre);
         System.out.println("Introduzca la fecha y la hora del evento");
-        
+        /*Preguntar a Luis*/
         System.out.println("Introduzca el id de la penalizacion");
         int idPenalizacion = in.nextInt();
         ev1.setIdPenalizacion(idPenalizacion);

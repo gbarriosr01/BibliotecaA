@@ -25,6 +25,12 @@ public class Prestamo {
     public Prestamo() {
     }
 
+    public Prestamo(int id, Date fechaDeInicio, Date fechaDeDevolucion) {
+        this.id = id;
+        this.fechaDeInicio = fechaDeInicio;
+        this.fechaDeDevolucion = fechaDeDevolucion;
+    }
+    
     public Prestamo(Prestamo copia){
         this.id = copia.id;
         this.fechaDeInicio = copia.fechaDeInicio;
@@ -41,9 +47,7 @@ public class Prestamo {
         this.estado = estado;
         this.idPenalizacion = idPenalizacion;
     }
-    
-    
-    
+
     public long getIdPenalizacion() {
         return idPenalizacion;
     }
@@ -99,8 +103,10 @@ public class Prestamo {
         System.out.println("Inserte su Id");
         int id = in.nextInt();
         prestamo1.setId(id);
-        
-        
+        System.out.println("Introduzca la fecha de inicio");
+        /*Preguntar a Luis*/
+        System.out.println("Introduzca la fecha de devolucion");
+        /*Preguntar a Luis*/
         return prestamo1;
     }
 

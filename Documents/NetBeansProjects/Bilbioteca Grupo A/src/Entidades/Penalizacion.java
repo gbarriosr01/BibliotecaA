@@ -70,6 +70,8 @@ public class Penalizacion {
         String motivo = in.nextLine();
         penalizacion1.setMotivo(motivo);
         
+        System.out.println("Introduzca fecha de vigencia");
+        /*Preguntar a Luis*/
         return penalizacion1;
     }
 

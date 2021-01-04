@@ -62,7 +62,7 @@ public class Lote {
          Scanner in =new Scanner(System.in);
          
          System.out.println("Introduzca la fecha de llegada");
-         
+         /*Preguntar a Luis*/
          
          return l1;
      } 

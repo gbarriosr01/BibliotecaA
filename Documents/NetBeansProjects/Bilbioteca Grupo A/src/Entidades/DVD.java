@@ -20,6 +20,10 @@ public class DVD extends Elemento{
         super();
     }
 
+    public DVD(String titulo) {
+        this.titulo = titulo;
+    }
+
     public DVD(String titulo, Visionado visionado) {
         this.titulo = titulo;
         this.visionado = visionado;
