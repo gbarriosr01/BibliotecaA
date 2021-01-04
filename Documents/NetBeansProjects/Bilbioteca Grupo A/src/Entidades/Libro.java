@@ -5,6 +5,8 @@
  */
 package Entidades;
 
+import java.util.Scanner;
+
 /**
  *
  * @author DAM102
@@ -93,6 +95,21 @@ public class Libro extends Elemento{
 
     public void setLectura(Lectura lectura) {
         this.lectura = lectura;
+    }
+    
+    public static Libro nuevoLibro() {
+        Libro li = new Libro ();
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("indica su nombre: ");
+        li.setNombre(teclado.nextLine());
+        System.out.println("indica la editorial: ");
+        li.setEditorial(teclado.nextLine());
+        System.out.println("indica el autor: ");
+        li.setAutor(teclado.nextLine());
+        System.out.println("indica el numero de paginas: ");
+        li.setnPaginas(teclado.nextInt());
+        return li;
+    
     }
 
     @Override

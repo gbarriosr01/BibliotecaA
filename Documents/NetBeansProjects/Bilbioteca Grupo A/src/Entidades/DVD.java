@@ -5,6 +5,8 @@
  */
 package Entidades;
 
+import java.util.Scanner;
+
 /**
  *
  * @author DAM102
@@ -54,6 +56,15 @@ public class DVD extends Elemento{
 
     public void setVisionado(Visionado visionado) {
         this.visionado = visionado;
+    }
+    
+    public static DVD nuevoDVD() {
+        DVD d = new DVD();
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Indica el titulo: ");
+        d.setTitulo(teclado.nextLine());
+        return d;
+    
     }
 
     @Override

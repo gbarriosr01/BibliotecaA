@@ -6,6 +6,7 @@
 package Entidades;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -52,6 +53,15 @@ public class Elemento {
 
     public void setGenero(Genero genero) {
         this.genero = genero;
+    }
+    
+    public static Elemento nuevoElemento() {
+        Elemento el = new Elemento();
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Indica id: ");
+        el.setId(teclado.nextLong());
+        return el;
+    
     }
 
     @Override

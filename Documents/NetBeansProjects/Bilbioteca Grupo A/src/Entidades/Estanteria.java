@@ -6,6 +6,7 @@
 package Entidades;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -74,6 +75,21 @@ public class Estanteria {
 
     public void setElementos(ArrayList<Elemento> elementos) {
         this.elementos = elementos;
+    }
+    
+    public static Estanteria nuevaEstanteria() {
+        Estanteria es = new Estanteria();
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Escribe id: ");
+        es.setId(teclado.nextLong());
+        System.out.println("Escribe codigo: ");
+        es.setCodigo(teclado.nextLine().charAt(0));
+        System.out.println("Escribe ubicacion: ");
+        es.setUbicacion(teclado.nextLine());
+        System.out.println("Indica si la estanteria esta completa: ");
+        es.setCompleta(teclado.nextBoolean());
+        return es;
+    
     }
 
     @Override
