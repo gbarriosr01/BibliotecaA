@@ -113,7 +113,8 @@ public class Evento {
         String nombre = in.nextLine();
         ev1.setNombre(nombre);
         System.out.println("Introduzca la fecha y la hora del evento");
-//      preguntar a Luis
+        java.sql.Date fechayhora = Utilidades.Fecha.nuevaFecha().conversorFecha();
+        ev1.setFechayhora(fechayhora);
         System.out.println("Introduzca el id de la penalizacion");
         int idPenalizacion = in.nextInt();
         ev1.setIdPenalizacion(idPenalizacion);
