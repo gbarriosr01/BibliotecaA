@@ -73,7 +73,9 @@ public class Lote {
          Scanner in =new Scanner(System.in);
          
          System.out.println("Introduzca la fecha de llegada");
-         /*Preguntar a Luis*/
+         /*Preguntar a Luis*/         
+         java.sql.Date fecha = Utilidades.Fecha.nuevaFecha().conversorFecha();
+         l1.setFechallegada(fecha);
          
          return l1;
      } 

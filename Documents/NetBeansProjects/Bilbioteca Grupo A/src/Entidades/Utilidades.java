@@ -3,6 +3,7 @@ package Entidades;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 /**
  *
@@ -128,4 +129,52 @@ public class Utilidades {
         new Visionado("Aula 3")
     };
     public static final int Visionado = VISIONADOS.length;
+    
+    
+    public static class Fecha{
+        private int anio;
+        private int mes;    
+        private int dia;
+        
+        public Fecha(){
+            Date hoy = Date.valueOf(LocalDate.now());
+        }
+        public Fecha(int y, int m, int d){
+        this.anio =y;
+        this.mes = m;
+        this.dia = d;
+        }
+        
+        public Date conversorFecha(){
+            java.sql.Date ret = new Date(this.anio, this.mes, this.dia);
+            return ret;
+        }      
+        
+        public static Fecha nuevaFecha(){
+            Fecha ret = new Fecha();
+            Scanner in = new Scanner (System.in);
+            int d = 0;
+            do{
+                   System.out.println("Dame el dia del mes");
+                     d = in.nextInt();
+                    if(d<=0 || d> 31) System.out.println("valor incorrecto");
+            } while(d<=0 || d > 31);
+             int m = 0;
+            do{
+                   System.out.println("Dame el mes del año");
+                     m = in.nextInt();
+                     if (m <=0 || m > 12); System.out.println("Valor incorrecto");
+            } while(m <=0 || m > 12);
+             int y = 0;
+            do{
+                   System.out.println("Dame el año");
+                     y = in.nextInt();
+                     if (y<=0)System.out.println("Valor incorrecto");
+            } while(y<=0);
+            
+            ret = new Fecha(y, m, d);            
+            return ret;
+        
+        }
+    }
 }
