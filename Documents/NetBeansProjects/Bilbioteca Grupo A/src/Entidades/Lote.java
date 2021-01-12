@@ -14,14 +14,25 @@ import java.util.Scanner;
  * @author DAM102
  */
 public class Lote {
+    //Valores válidos dd/mm/yyyy - numerico
+    //Valores inválidos- No puede contener caracteres ni signos
       private Date fechallegada;
+    //Valores válidos <35 caracteres
+    //Valores inválidos >=35caracteres
       private ArrayList <Elemento> elementos = new ArrayList <Elemento>();/*Obligatorio*/
+    //Valores válidos,  >=0
+    //Valores inválidos, <0
+    //Tiene que ser único
       private long idProveedor;/*Obligatorio*/
 
     public Lote() {
+        idProveedor=0;
+        elementos=null;
+        //Fecha de llegada = 01/01/2020
     }
     
     public Lote(Lote a){
+       
        this.fechallegada=a.fechallegada;
        this.elementos=a.elementos;
                

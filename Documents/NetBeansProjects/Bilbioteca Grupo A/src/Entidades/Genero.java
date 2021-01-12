@@ -12,14 +12,22 @@ import java.util.Scanner;
  * @author DAM102
  */
 public class Genero {
+    //Valores válidos,  >=0
+    //Valores inválidos, <0
+    //Tiene que ser único
     private long id;
+    //Valores válidos,  <=20
+    //Valores inválidos, >20
+    //No admite numeros
     private String nombre;
     
     
 
     public Genero() {
+        id=0;
+        nombre=null;
     }
-
+    
     public Genero(long id, String nombre) {
         this.id = id;
         this.nombre = nombre;

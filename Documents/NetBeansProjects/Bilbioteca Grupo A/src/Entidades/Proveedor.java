@@ -12,12 +12,23 @@ import java.util.Scanner;
  * @author DAM102
  */
 public class Proveedor {
-     
+    //Valores válidos,  >=0
+    //Valores inválidos, <0
+    //Tiene que ser único 
     private long id;
+    //Valores válidos,  <=20 caracteres
+    //Valores inválidos, >20 caracteres
+    //No se admiten números
     private String nombre;
+    //Valores válidos,  >=9 numeros
+    //Valores inválidos, <9 numeros
+    //NO admite letras
     private String telefono;
 
     public Proveedor() {
+        id=0;
+        nombre=null;
+        telefono=null;
     }
 
     public Proveedor(long id, String nombre, String telefono) {
