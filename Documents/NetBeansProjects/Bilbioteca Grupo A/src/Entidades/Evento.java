@@ -15,20 +15,42 @@ import java.util.Scanner;
  * @author DAM102
  */
 public class Evento {
+    /*
+    Valores validos: Caracteres numericos.
+    Valores invalidos: Caracteres alfanumericos y especiales.
+    Otras restricciones: >0 y es unico.
+    */
     protected long id;
+    /*
+    Valores validos: Caracteres alfanumericos.
+    Valores invalidos: Caracteres especiales.
+    */
     protected String nombre;
+    /*
+    Valores validos: Caracteres alfanumericos.
+    Valores invalidos: Caracteres especiales excepto "º" y "@".
+    Otras restricciones: Longitud max 60 caracteres.
+    */
     protected Date fechayhora;
+    /*
+    Valores validos: Fecha y hora dd/mm/yyyy hh:mm:ss.
+    Valores invalidos: Otro tipo de caracteres que no esten contemplados en el formato
+    */
     protected long idPenalizacion;
     protected ArrayList<Socio> socios = new ArrayList<Socio>();/*Obligatorio*/
 
     public Evento() {
+        this.id = id = 0;
+        this.nombre = nombre = null;
+        this.fechayhora = fechayhora;
+        this.idPenalizacion = idPenalizacion = 0;
     }
 
     public Evento(long id, String nombre, Date fechayhora, long idPenalizacion) {
-        this.id = id;
-        this.nombre = nombre;
+        this.id = id = 0;
+        this.nombre = nombre = null;
         this.fechayhora = fechayhora;
-        this.idPenalizacion = idPenalizacion;
+        this.idPenalizacion = idPenalizacion = 0;
     }
     
     public Evento(Evento ev1) {

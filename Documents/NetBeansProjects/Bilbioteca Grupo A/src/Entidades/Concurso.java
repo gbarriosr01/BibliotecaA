@@ -13,16 +13,28 @@ import java.util.Scanner;
  * @author DAM102
  */
 public class Concurso extends Evento {
+    /*
+    Valores validos: Caracteres alfanumericos.
+    Valores invalidos: Caracteres especiales.
+    Otras restricciones: Longitud max 30 caracteres.
+    */
     private String tipo;
+    /*
+    Valores validos: Caracteres alfanumericos.
+    Valores invalidos: Caracteres especiales.
+    Otras restricciones: Longitud max 30 caracteres.
+    */
     private String premio;
 
     public Concurso() {
         super();
+        this.tipo = tipo = null;
+        this.premio = premio = null;
     }
 
     public Concurso(String tipo, String premio) {
-        this.tipo = tipo;
-        this.premio = premio;
+        this.tipo = tipo = null;
+        this.premio = premio = null;
     }
     public Concurso(Concurso co1) {
         this.tipo = co1.tipo;
@@ -30,8 +42,8 @@ public class Concurso extends Evento {
     }
     public Concurso(String tipo, String premio, long id, String nombre, Date fechayhora, long idPenalizacion) {
         super(id, nombre, fechayhora, idPenalizacion);
-        this.tipo = tipo;
-        this.premio = premio;
+        this.tipo = tipo = null;
+        this.premio = premio = null;
     }
 
     public Concurso(String tipo, String premio, Evento ev1) {

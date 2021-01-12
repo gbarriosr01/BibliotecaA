@@ -13,16 +13,27 @@ import java.util.Scanner;
  * @author DAM102
  */
 public class Lectura extends Evento{
+    /*
+    Valores validos: Verdadero y falso.
+    Valores invalidos: Cualquier tipo de caracter que no sea T o F.
+    */
     private boolean leido;
+    /*
+    Valores validos: Caracteres alfanumericos.
+    Valores invalidos: Caracteres especiales.
+    Otras restricciones: Longitud max 30 caracteres.
+    */
     private String modelo;
 
     public Lectura() {
         super();
+        this.leido = leido = false;
+        this.modelo = modelo = null;
     }
     
     public Lectura(boolean leido, String modelo) {
-        this.leido = leido;
-        this.modelo = modelo;
+        this.leido = leido = false;
+        this.modelo = modelo = null;
     }
     
     public Lectura(Lectura l1) {
@@ -32,8 +43,8 @@ public class Lectura extends Evento{
     
     public Lectura(boolean leido, String modelo, long id, String nombre, Date fechayhora, long idPenalizacion) {
         super(id, nombre, fechayhora, idPenalizacion);
-        this.leido = leido;
-        this.modelo = modelo;
+        this.leido = leido = false;
+        this.modelo = modelo = null;
     }
 
     public Lectura(boolean leido, String modelo, Evento ev1) {

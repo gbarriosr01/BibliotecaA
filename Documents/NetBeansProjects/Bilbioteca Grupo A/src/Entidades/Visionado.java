@@ -13,14 +13,20 @@ import java.util.Scanner;
  * @author DAM102
  */
 public class Visionado extends Evento{
+    /*
+    Valores validos: Caracteres alfanumericos.
+    Valores invalidos: Caracteres especiales.
+    Otras restricciones: Longitud max 20 caracteres.
+    */
     private String aula;
 
     public Visionado() {
         super();
+        this.aula = aula = null;
     }
 
     public Visionado(String aula) {
-        this.aula = aula;
+        this.aula = aula = null;
     }
     public Visionado(Visionado v1) {
         this.aula = v1.aula;
@@ -28,7 +34,7 @@ public class Visionado extends Evento{
     
     public Visionado(String aula, long id, String nombre, Date fechayhora, long idPenalizacion) {
         super(id, nombre, fechayhora, idPenalizacion);
-        this.aula = aula;
+        this.aula = aula = null;
     }
 
     public Visionado(String aula, Evento ev1) {

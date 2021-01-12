@@ -13,16 +13,28 @@ import java.util.Scanner;
  * @author DAM102
  */
 public class Curso extends Evento{
+    /*
+    Valores validos: Caracteres alfanumericos.
+    Valores invalidos: Caracteres especiales.
+    Otras restricciones: Longitud max 15 caracteres.
+    */
     private String duracion;
+    /*
+    Valores validos: Caracteres alfanumericos.
+    Valores invalidos: Caracteres especiales.
+    Otras restricciones: Longitud max 20 caracteres.
+    */
     private String aula;
 
     public Curso() {
         super();
+        this.duracion = duracion = null;
+        this.aula = aula = null;
     }
 
     public Curso(String duracion, String aula) {
-        this.duracion = duracion;
-        this.aula = aula;
+        this.duracion = duracion = null;
+        this.aula = aula = null;
     }
     public Curso(Curso cu1) {
         this.duracion = cu1.duracion;
@@ -30,8 +42,8 @@ public class Curso extends Evento{
     }
     public Curso(String duracion, String aula, long id, String nombre, Date fechayhora, long idPenalizacion) {
         super(id, nombre, fechayhora, idPenalizacion);
-        this.duracion = duracion;
-        this.aula = aula;
+        this.duracion = duracion = null;
+        this.aula = aula = null;
     }
 
     public Curso(String duracion, String aula, Evento ev1) {
