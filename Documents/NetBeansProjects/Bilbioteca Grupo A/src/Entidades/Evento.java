@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -68,7 +69,17 @@ public class Evento {
     public void setIdPenalizacion(long idPenalizacion) {
         this.idPenalizacion = idPenalizacion;
     }
-    
+
+    public ArrayList<Socio> getSocios() {
+        return socios;
+    }
+
+    public void setSocios(ArrayList<Socio> socios) {
+        this.socios = socios;
+    }
+//    public static ArrayList<Socio> convertir(Socio[] array) {
+//        return new Gen<Socio>().convertir(array);
+//    }
     public Evento nuevoEvento(){
         Evento ev1 = new Evento();
         Scanner in = new Scanner(System.in);
@@ -80,7 +91,7 @@ public class Evento {
         String nombre = in.nextLine();
         ev1.setNombre(nombre);
         System.out.println("Introduzca la fecha y la hora del evento");
-        /*Preguntar a Luis*/
+//      preguntar a Luis
         System.out.println("Introduzca el id de la penalizacion");
         int idPenalizacion = in.nextInt();
         ev1.setIdPenalizacion(idPenalizacion);
