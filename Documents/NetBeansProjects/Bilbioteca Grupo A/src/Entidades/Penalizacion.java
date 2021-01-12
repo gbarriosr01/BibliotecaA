@@ -61,20 +61,21 @@ public class Penalizacion {
         this.fechaDeVigencia = fechaDeVigencia;
     }
     public Penalizacion nuevoPenalizacion(){
-        Penalizacion penalizacion1 = new Penalizacion();
-        
+        Penalizacion ret = new Penalizacion();
+
         Scanner in = new Scanner(System.in);
         System.out.println("Inserte su ID");
         int id = in.nextInt();
-        penalizacion1.setId(id);
-        
+        ret.setId(id);
+
         System.out.println("Inserte el motivo");
         String motivo = in.nextLine();
-        penalizacion1.setMotivo(motivo);
-        
+        ret.setMotivo(motivo);
+
         System.out.println("Introduzca fecha de vigencia");
-        /*Preguntar a Luis*/
-        return penalizacion1;
+        java.sql.Date fecha = Utilidades.Fecha.nuevaFecha().conversorFecha();
+        ret.setFechaDeVigencia(fecha);
+        return ret;
     }
 
     @Override

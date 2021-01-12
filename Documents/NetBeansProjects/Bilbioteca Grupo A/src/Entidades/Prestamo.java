@@ -99,17 +99,24 @@ public class Prestamo {
     }
     
     public Prestamo nuevoPrestamo(){
-        Prestamo prestamo1 = new Prestamo();
-        
+        Prestamo ret = new Prestamo();
+
         Scanner in = new Scanner(System.in);
         System.out.println("Inserte su Id");
         int id = in.nextInt();
-        prestamo1.setId(id);
-        System.out.println("Introduzca la fecha de inicio");
-        /*Preguntar a Luis*/
-        System.out.println("Introduzca la fecha de devolucion");
-        /*Preguntar a Luis*/
-        return prestamo1;
+        ret.setId(id);
+
+        System.out.println("Introduzca la fecha de inicio del prestamo");
+
+        java.sql.Date fecha = Utilidades.Fecha.nuevaFecha().conversorFecha();
+        ret.setFechaDeInicio(fecha);
+
+        System.out.println("Introduzca la fecha de finalizacion del prestamo");
+        java.sql.Date devolucion = Utilidades.Fecha.nuevaFecha().conversorFecha();
+        ret.setFechaDeDevolucion(devolucion);
+
+
+        return ret;
     }
 
     @Override
