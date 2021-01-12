@@ -105,10 +105,10 @@ public class Evento {
     public Evento nuevoEvento(){
         Evento ev1 = new Evento();
         Scanner in = new Scanner(System.in);
-        System.out.println("Introduzca los datos del Evento");
         System.out.println("Introduzca el id del evento");
         int id = in.nextInt();
         ev1.setId(id);
+        in.nextLine();
         System.out.println("Introduzca el nombre del evento");
         String nombre = in.nextLine();
         ev1.setNombre(nombre);
