@@ -15,14 +15,16 @@ import java.util.Scanner;
  */
 public class Prestamo {
    
-    private long id;
-    private Date fechaDeInicio;
-    private Date fechaDeDevolucion;
+    private int id;/*Mayores o iguales que 0, no puede ser nulo*/
+    private Date fechaDeInicio;/*Fecha en la cual hizo el prestamo, valor por defecto "1/1/2020"*/
+    private Date fechaDeDevolucion;/*Fecha en la cual finalizo el prestamo, valor por defecto "1/1/2020"*/
     private Estado estado;
     private ArrayList<Elemento> elementos = new ArrayList<Elemento>(); /*Maximo 5, Obligatorio*/
-    private long idPenalizacion;
+    private int idPenalizacion;/*Mayores o iguales que 0, no puede ser nulo*/
 
     public Prestamo() {
+        this.id= 0;
+        this.idPenalizacion= 0;
     }
 
     public Prestamo(int id, Date fechaDeInicio, Date fechaDeDevolucion) {
@@ -40,7 +42,7 @@ public class Prestamo {
         this.idPenalizacion = copia.idPenalizacion;
     }
 
-    public Prestamo(long id, Date fechaDeInicio, Date fechaDeDevolucion, Estado estado, long idPenalizacion) {
+    public Prestamo(int id, Date fechaDeInicio, Date fechaDeDevolucion, Estado estado, int idPenalizacion) {
         this.id = id;
         this.fechaDeInicio = fechaDeInicio;
         this.fechaDeDevolucion = fechaDeDevolucion;
@@ -52,7 +54,7 @@ public class Prestamo {
         return idPenalizacion;
     }
 
-    public void setIdPenalizacion(long idPenalizacion) {
+    public void setIdPenalizacion(int idPenalizacion) {
         this.idPenalizacion = idPenalizacion;
     }
 
@@ -80,7 +82,7 @@ public class Prestamo {
         return estado;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

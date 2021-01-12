@@ -14,17 +14,22 @@ import java.util.Scanner;
  */
 public class Socio {
                 
-    private int id;
-    private String nombre;
-    private String NIF;
-    private String telefono;
-    private String direccion;
+    private int id;/*Mayores o iguales que 0, no puede ser nulo*/
+    private String nombre;/*Menor o igual a 20 caracteres, no se admiten numeros*/
+    private String NIF;/*Mayor o igual a 9 caracteres*/
+    private String telefono;/*Mayor o igual a 9 caracteres*/
+    private String direccion;/*Menor o igual a 30 caracteres*/
     private ArrayList<Penalizacion> penalizaciones = new ArrayList<Penalizacion>();
     private ArrayList<Evento> eventos = new ArrayList<Evento>();/*No obligatorio*/
     private Prestamo prestamo;
 
     
     public Socio() {
+        this.id= 0;
+        this.nombre=null;
+        this.NIF=null;
+        this.telefono=null;
+        this.direccion=null;
     }
 
     public Socio(Socio copia){

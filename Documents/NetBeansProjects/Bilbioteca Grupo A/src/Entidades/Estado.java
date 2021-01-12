@@ -12,10 +12,12 @@ import java.util.Scanner;
  * @author DAM102
  */
 public class Estado {
-    private int id;
-    private String estado;
+    private int id;/*Mayores o iguales que 0, no puede ser nulo*/
+    private String estado;/*Pendiente, Parcial o Completo*/
 
     public Estado() {
+        this.id=0;
+        this.estado=null;
     }
 
     public Estado(Estado copia) {

@@ -14,11 +14,13 @@ import java.util.Scanner;
  */
 public class Penalizacion {
      
-    private int id;
-    private String motivo;
-    private Date fechaDeVigencia;
+    private int id;/*Mayores o iguales que 0, no puede ser nulo*/
+    private String motivo;/*Maximo 50 caracteres*/
+    private Date fechaDeVigencia;/*Fecha de la finalizacion de la penalizacion, valor por defecto "1/1/2020"*/
 
     public Penalizacion() {
+        this.id=0;
+        this.motivo=null;
     }
     
     public Penalizacion(Penalizacion copia){
