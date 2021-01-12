@@ -12,8 +12,8 @@ import java.util.Scanner;
  * @author DAM102
  */
 public class DVD extends Elemento{
-    
-    private String titulo;
+    /*Valido: cadena caracteres "dsadsa" Invalido: " ", >100caracteres*/
+    private String titulo=null;
     private Visionado visionado;/*Obligatorio*/
 
     public DVD() {

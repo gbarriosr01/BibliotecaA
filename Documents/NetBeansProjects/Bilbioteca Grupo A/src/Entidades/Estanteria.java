@@ -13,11 +13,14 @@ import java.util.Scanner;
  * @author DAM102
  */
 public class Estanteria {
-    
-    private long id;
+    /*Valido: >=0 Invalido: <0 Otros: Es unico*/
+    private long id=0;
+    /*Valido: Una letra mayusucla 'A' Invalido: Una letra minuscula 'a'*/
     private char codigo;
-    private String ubicacion;
-    private boolean completa;
+    /*Valido: Cadena caracteres "asdsandas"  Invalido: " ", >100caracteres*/
+    private String ubicacion=null;
+    /*Valido: true, false Invalido: cualquier cosa que no sea true o false*/
+    private boolean completa=false;
     private ArrayList <Elemento> elementos = new ArrayList <Elemento>();
 
     public Estanteria() {

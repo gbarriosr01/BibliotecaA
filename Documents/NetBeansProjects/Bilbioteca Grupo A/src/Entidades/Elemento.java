@@ -13,8 +13,8 @@ import java.util.Scanner;
  * @author DAM102
  */
 public class Elemento {
-    
-    protected long id;
+    /*Valido: >=0 Invalido: <0 Otros: Es unico*/
+    protected long id=0; 
     protected ArrayList <Prestamo> prestamos = new ArrayList <Prestamo>();/*Obligatorio*/
     protected Genero genero;/*Obligatorio*/
 

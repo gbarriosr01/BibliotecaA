@@ -12,11 +12,14 @@ import java.util.Scanner;
  * @author DAM102
  */
 public class Libro extends Elemento{
-    
-    private String nombre;
-    private String editorial;
-    private String autor;
-    private int nPaginas;
+    /*Valido: cadena caracteres "dadsad" Invalido: " ", >50 caracteres*/
+    private String nombre=null;
+    /*Valido: cadena caracteres "dadsad" Invalido: " ", >50 caracteres*/
+    private String editorial=null;
+    /*Valido: cadena caracteres "dadsad" Invalido: " ", >50 caracteres*/
+    private String autor=null;
+    /*Valido: >0 Invalido: <0*/
+    private int nPaginas=0;
     private Lectura lectura;/*Obligatorio*/
 
     public Libro() {
