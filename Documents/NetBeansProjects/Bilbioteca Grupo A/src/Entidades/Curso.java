@@ -70,11 +70,18 @@ public class Curso extends Evento{
     public Curso nuevoCurso(){
         Curso cu1 = new Curso();
         Scanner in = new Scanner(System.in);
-        System.out.println("Introduzca los datos del curso");
+        System.out.println("Introduzca el ID del curso");
+        int id = in.nextInt();
+        cu1.setId(id);
+        System.out.println("Introduzca el nombre del curso");
+        String nombre = in.nextLine();
+        cu1.setNombre(nombre);
+        System.out.println("Introduzca la fecha y la hora del curso");
+        //preguntar
         System.out.println("Introduzca la duracion del curso");
         String duracion = in.nextLine();
         cu1.setDuracion(duracion);
-        System.out.println("Introduzca el aula del curso");
+        System.out.println("Introduzca el aula en el que se realiza el curso");
         String aula = in.nextLine();
         cu1.setAula(aula);
         return cu1;
