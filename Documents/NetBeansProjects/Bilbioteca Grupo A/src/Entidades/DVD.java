@@ -67,6 +67,8 @@ public class DVD extends Elemento{
         Scanner teclado = new Scanner(System.in);
         System.out.println("Indica el titulo: ");
         d.setTitulo(teclado.nextLine());
+        System.out.println("Indica el ID del DVD");
+        d.setId(teclado.nextLong());
         return d;
     
     }

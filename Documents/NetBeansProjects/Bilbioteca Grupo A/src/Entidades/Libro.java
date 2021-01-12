@@ -118,6 +118,8 @@ public class Libro extends Elemento{
         li.setAutor(teclado.nextLine());
         System.out.println("indica el numero de paginas: ");
         li.setnPaginas(teclado.nextInt());
+        System.out.println("indica el ID del Libro");
+        li.setId(teclado.nextLong());
         return li;
     
     }
