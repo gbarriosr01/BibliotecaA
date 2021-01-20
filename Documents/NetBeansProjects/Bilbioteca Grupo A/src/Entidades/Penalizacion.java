@@ -14,9 +14,12 @@ import java.util.Scanner;
  */
 public class Penalizacion {
      
-    private int id;/*Mayores o iguales que 0, no puede ser nulo*/
+    private long id;/*Mayores que 0, no puede ser nulo*/
     private String motivo;/*Maximo 50 caracteres*/
-    private Date fechaDeVigencia;/*Fecha de la finalizacion de la penalizacion, valor por defecto "1/1/2020"*/
+    private Date fechaDeVigencia;
+    /*Fecha de la finalizacion de la penalizacion
+    LocalDate.now();
+    */
 
     public Penalizacion() {
         this.id=0;
@@ -49,7 +52,7 @@ public class Penalizacion {
         return fechaDeVigencia;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

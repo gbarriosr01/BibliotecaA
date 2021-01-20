@@ -15,19 +15,25 @@ import java.util.Scanner;
  */
 public class Prestamo {
    
-    private int id;/*Mayores o iguales que 0, no puede ser nulo*/
-    private Date fechaDeInicio;/*Fecha en la cual hizo el prestamo, valor por defecto "1/1/2020"*/
-    private Date fechaDeDevolucion;/*Fecha en la cual finalizo el prestamo, valor por defecto "1/1/2020"*/
+    private long id;/*Mayores que 0, no puede ser nulo*/
+    private Date fechaDeInicio;
+    /*Fecha de hoy
+    LocalDate.now();
+    */
+    private Date fechaDeDevolucion;
+    /*Fecha en la cual finalizo el prestamo
+    LocalDate.now();
+    */
     private Estado estado;
     private ArrayList<Elemento> elementos = new ArrayList<Elemento>(); /*Maximo 5, Obligatorio*/
-    private int idPenalizacion;/*Mayores o iguales que 0, no puede ser nulo*/
+    private long idPenalizacion;/*Mayores o iguales que 0, no puede ser nulo*/
 
     public Prestamo() {
         this.id= 0;
         this.idPenalizacion= 0;
     }
 
-    public Prestamo(int id, Date fechaDeInicio, Date fechaDeDevolucion) {
+    public Prestamo(long id, Date fechaDeInicio, Date fechaDeDevolucion) {
         this.id = id;
         this.fechaDeInicio = fechaDeInicio;
         this.fechaDeDevolucion = fechaDeDevolucion;
@@ -42,7 +48,7 @@ public class Prestamo {
         this.idPenalizacion = copia.idPenalizacion;
     }
 
-    public Prestamo(int id, Date fechaDeInicio, Date fechaDeDevolucion, Estado estado, int idPenalizacion) {
+    public Prestamo(long id, Date fechaDeInicio, Date fechaDeDevolucion, Estado estado, long idPenalizacion) {
         this.id = id;
         this.fechaDeInicio = fechaDeInicio;
         this.fechaDeDevolucion = fechaDeDevolucion;
@@ -54,7 +60,7 @@ public class Prestamo {
         return idPenalizacion;
     }
 
-    public void setIdPenalizacion(int idPenalizacion) {
+    public void setIdPenalizacion(long idPenalizacion) {
         this.idPenalizacion = idPenalizacion;
     }
 

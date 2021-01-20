@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public class Socio {
                 
-    private int id;/*Mayores o iguales que 0, no puede ser nulo*/
+    private long id;/*Mayores que 0, no puede ser nulo*/
     private String nombre;/*Menor o igual a 20 caracteres, no se admiten numeros*/
     private String NIF;/*Mayor o igual a 9 caracteres*/
     private String telefono;/*Mayor o igual a 9 caracteres*/
@@ -58,7 +58,7 @@ public class Socio {
         this.telefono = telefono;
         this.direccion = direccion;
     }
-    public int getId() {
+    public long getId() {
         return id;
     }
 
