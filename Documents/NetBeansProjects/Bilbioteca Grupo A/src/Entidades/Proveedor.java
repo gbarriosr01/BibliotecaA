@@ -12,8 +12,8 @@ import java.util.Scanner;
  * @author DAM102
  */
 public class Proveedor {
-    //Valores válidos,  >=0
-    //Valores inválidos, <0
+    //Valores válidos,  >0
+    //Valores inválidos, <=0
     //Tiene que ser único 
     private long id;
     //Valores válidos,  <=20 caracteres

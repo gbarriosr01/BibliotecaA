@@ -14,14 +14,18 @@ import java.util.Scanner;
  * @author DAM102
  */
 public class Lote {
+    //Valores válidos,  >0
+    //Valores inválidos, <=0
+    //Tiene que ser único
+    private long id;
     //Valores válidos dd/mm/yyyy - numerico
     //Valores inválidos- No puede contener caracteres ni signos
       private Date fechallegada;
     //Valores válidos <35 caracteres
     //Valores inválidos >=35caracteres
       private ArrayList <Elemento> elementos = new ArrayList <Elemento>();/*Obligatorio*/
-    //Valores válidos,  >=0
-    //Valores inválidos, <0
+    //Valores válidos,  >0
+    //Valores inválidos, <=0
     //Tiene que ser único
       private long idProveedor;/*Obligatorio*/
 
