@@ -21,8 +21,6 @@ public class Lote {
     //Valores válidos dd/mm/yyyy - numerico
     //Valores inválidos- No puede contener caracteres ni signos
       private Date fechallegada;
-    //Valores válidos <35 caracteres
-    //Valores inválidos >=35caracteres
       private ArrayList <Elemento> elementos = new ArrayList <Elemento>();/*Obligatorio*/
     //Valores válidos,  >0
     //Valores inválidos, <=0
