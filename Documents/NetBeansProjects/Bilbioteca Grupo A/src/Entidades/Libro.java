@@ -13,13 +13,13 @@ import java.util.Scanner;
  */
 public class Libro extends Elemento{
     /*Valido: cadena caracteres "dadsad" Invalido: " ", >50 caracteres*/
-    private String nombre=null;
+    private String nombre;
     /*Valido: cadena caracteres "dadsad" Invalido: " ", >50 caracteres*/
-    private String editorial=null;
+    private String editorial;
     /*Valido: cadena caracteres "dadsad" Invalido: " ", >50 caracteres*/
-    private String autor=null;
+    private String autor;
     /*Valido: >0 Invalido: <0*/
-    private int nPaginas=0;
+    private int nPaginas;
     private Lectura lectura;/*Obligatorio*/
 
     public Libro() {
@@ -118,8 +118,10 @@ public class Libro extends Elemento{
         li.setAutor(teclado.nextLine());
         System.out.println("indica el numero de paginas: ");
         li.setnPaginas(teclado.nextInt());
-        System.out.println("indica el ID del Libro");
-        li.setId(teclado.nextLong());
+        
+        int numLibros = Utilidades.numLibros + 1;
+            li.setId(numLibros);
+            
         return li;
     
     }

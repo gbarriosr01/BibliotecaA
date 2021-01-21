@@ -63,9 +63,8 @@ public class Genero {
             Genero g1 = new Genero();
             Scanner in =new Scanner(System.in);
                        
-            System.out.println("Inserte su id");
-            long id = in.nextLong();
-            g1.setId(id);
+           int numGeneros = Utilidades.numGeneros + 1;
+            g1.setId(numGeneros);
           
             System.out.println("Inserte su nombre");
             String nombre = in.nextLine();

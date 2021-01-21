@@ -12,6 +12,7 @@ import java.util.Scanner;
  * @author DAM102
  */
 public class Proveedor {
+
     //Valores válidos,  >0
     //Valores inválidos, <=0
     //Tiene que ser único 
@@ -26,7 +27,7 @@ public class Proveedor {
     private String telefono;
 
     public Proveedor() {
-        
+
     }
 
     public Proveedor(long id, String nombre, String telefono) {
@@ -34,15 +35,13 @@ public class Proveedor {
         this.nombre = nombre;
         this.telefono = telefono;
     }
-    
-    public Proveedor(Proveedor p1){
-        this.id=p1.id;
-        this.nombre=p1.nombre;
-        this.telefono=p1.telefono;
-    
+
+    public Proveedor(Proveedor p1) {
+        this.id = p1.id;
+        this.nombre = p1.nombre;
+        this.telefono = p1.telefono;
+
     }
-    
-    
 
     public long getId() {
         return id;
@@ -67,30 +66,27 @@ public class Proveedor {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
-    
-    public Proveedor nuevoProveedor(){
-          Proveedor p1 = new Proveedor();
-          Scanner in =new Scanner(System.in);
-          
-          System.out.println("Ingrese su id");
-          long id = in.nextLong();
-          p1.setId(id);
-          System.out.println("Ingrese nombre del proveedor");
-          String nombre = in.nextLine();
-          p1.setNombre(nombre);
-          System.out.println("Ingrese el telefono del proveedor");
-          String telefono = in.nextLine();
-          p1.setTelefono(telefono);
-          
-          
-          return p1;
+
+    public Proveedor nuevoProveedor() {
+        Proveedor p1 = new Proveedor();
+        Scanner in = new Scanner(System.in);
+
+        int numProveedores = Utilidades.numProveedores + 1;
+        p1.setId(numProveedores);
+
+        System.out.println("Ingrese nombre del proveedor");
+        String nombre = in.nextLine();
+        p1.setNombre(nombre);
+        System.out.println("Ingrese el telefono del proveedor");
+        String telefono = in.nextLine();
+        p1.setTelefono(telefono);
+
+        return p1;
     }
 
     @Override
     public String toString() {
         return "Proveedor{" + "id=" + id + ", nombre=" + nombre + ", telefono=" + telefono + '}';
     }
-     
-    
+
 }

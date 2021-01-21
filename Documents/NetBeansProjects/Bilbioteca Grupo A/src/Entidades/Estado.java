@@ -52,9 +52,8 @@ public class Estado {
         
         Scanner in = new Scanner(System.in);
         
-        System.out.println("Inserte su id");
-        int id = in.nextInt();
-        estado1.setId(id);
+        int numEstados = Utilidades.numEstados + 1;
+        estado1.setId(numEstados);
         
         System.out.println("Inserte el estado");
         String estado = in.nextLine();

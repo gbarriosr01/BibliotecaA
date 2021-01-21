@@ -67,9 +67,8 @@ public class Penalizacion {
         Penalizacion ret = new Penalizacion();
 
         Scanner in = new Scanner(System.in);
-        System.out.println("Inserte su ID");
-        int id = in.nextInt();
-        ret.setId(id);
+         int numPenalizaciones = Utilidades.numPenalizaciones + 1;
+            ret.setId(numPenalizaciones);
 
         System.out.println("Inserte el motivo");
         String motivo = in.nextLine();

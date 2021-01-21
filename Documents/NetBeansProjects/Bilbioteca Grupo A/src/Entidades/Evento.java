@@ -105,9 +105,10 @@ public class Evento {
     public Evento nuevoEvento(){
         Evento ev1 = new Evento();
         Scanner in = new Scanner(System.in);
-        System.out.println("Introduzca el id del evento");
-        int id = in.nextInt();
-        ev1.setId(id);
+        
+        int numEventos = Utilidades.numEventos + 1;
+        ev1.setId(numEventos);
+        
         in.nextLine();
         System.out.println("Introduzca el nombre del evento");
         String nombre = in.nextLine();
@@ -115,9 +116,9 @@ public class Evento {
         System.out.println("Introduzca la fecha y la hora del evento");
         java.sql.Date fechayhora = Utilidades.Fecha.nuevaFecha().conversorFecha();
         ev1.setFechayhora(fechayhora);
-        System.out.println("Introduzca el id de la penalizacion");
-        int idPenalizacion = in.nextInt();
-        ev1.setIdPenalizacion(idPenalizacion);
+        
+        
+        
         return ev1;
     }
 

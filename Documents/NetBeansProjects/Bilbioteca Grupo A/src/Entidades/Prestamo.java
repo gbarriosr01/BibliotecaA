@@ -108,9 +108,9 @@ public class Prestamo {
         Prestamo ret = new Prestamo();
 
         Scanner in = new Scanner(System.in);
-        System.out.println("Inserte su Id");
-        int id = in.nextInt();
-        ret.setId(id);
+        
+       int numPrestamos = Utilidades.numPrestamos + 1;
+            ret.setId(numPrestamos);
 
         System.out.println("Introduzca la fecha de inicio del prestamo");
 

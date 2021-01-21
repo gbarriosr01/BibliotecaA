@@ -32,7 +32,7 @@ public class Lote {
     }
     
     public Lote(Lote a){
-       
+       this.id=a.id;
        this.fechallegada=a.fechallegada;
        this.elementos=a.elementos;
                
@@ -40,8 +40,17 @@ public class Lote {
     }
 
     public Lote(Date fechallegada, long idProveedor) {
+        this.id= id;
         this.fechallegada = fechallegada;
         this.idProveedor = idProveedor;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public Date getFechallegada() {
@@ -71,6 +80,9 @@ public class Lote {
      public Lote nuevoLote(){
          Lote l1 = new Lote();
          Scanner in =new Scanner(System.in);
+         
+           int numLotes = Utilidades.numLotes + 1;
+            l1.setId(numLotes);
          
          System.out.println("Introduzca la fecha de llegada");
          /*Preguntar a Luis*/         

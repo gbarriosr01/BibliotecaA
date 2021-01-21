@@ -83,8 +83,10 @@ public class Estanteria {
     public static Estanteria nuevaEstanteria() {
         Estanteria es = new Estanteria();
         Scanner teclado = new Scanner(System.in);
-        System.out.println("Escribe id: ");
-        es.setId(teclado.nextLong());
+        
+        int numEstanterias = Utilidades.numEstanterias + 1;
+        es.setId(numEstanterias);
+        
         System.out.println("Escribe codigo: ");
         es.setCodigo(teclado.nextLine().charAt(0));
         System.out.println("Escribe ubicacion: ");

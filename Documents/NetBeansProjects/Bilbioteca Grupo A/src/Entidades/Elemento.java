@@ -58,8 +58,11 @@ public class Elemento {
     public static Elemento nuevoElemento() {
         Elemento el = new Elemento();
         Scanner teclado = new Scanner(System.in);
-        System.out.println("Indica id: ");
-        el.setId(teclado.nextLong());
+        
+        int numElementos = Utilidades.numElementos + 1;
+        el.setId(numElementos);
+        
+        
         return el;
     
     }
