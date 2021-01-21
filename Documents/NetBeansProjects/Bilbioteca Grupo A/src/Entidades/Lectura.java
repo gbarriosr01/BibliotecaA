@@ -72,14 +72,7 @@ public class Lectura extends Evento{
     public Lectura nuevoLectura(){
         Lectura le1 = new Lectura();
         Scanner in = new Scanner(System.in);
-        System.out.println("Introduzca ID de la lectura");
-        int id = in.nextInt();
-        le1.setId(id);
-        System.out.println("Introduzca el nombre de la lectura");
-        String nombre = in.nextLine();
-        le1.setNombre(nombre);
-        System.out.println("Introduzca la fecha de la lectura");
-        //
+       
         System.out.println("Introduzca si se ha leido el libro");
         boolean leido = in.nextBoolean();
         le1.setLeido(leido);

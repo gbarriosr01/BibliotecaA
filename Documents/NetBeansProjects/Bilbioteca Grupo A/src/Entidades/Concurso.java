@@ -70,14 +70,9 @@ public class Concurso extends Evento {
     public Concurso nuevoConcurso(){
         Concurso c1 = new Concurso();
         Scanner in = new Scanner(System.in);
-        System.out.println("Introduzca el ID del concurso");
-        int id = in.nextInt();
-        c1.setId(id);
-        System.out.println("Introduzca nombre del concurso");
-        String nombre = in.nextLine();
-        c1.setNombre(nombre);
-        System.out.println("Introduzca la fecha y hora del concurso");
-        //preguntar a luis
+       
+        
+     
         System.out.println("Introduzca el tipo de concurso");
         String tipo = in.nextLine();
         c1.setTipo(tipo);

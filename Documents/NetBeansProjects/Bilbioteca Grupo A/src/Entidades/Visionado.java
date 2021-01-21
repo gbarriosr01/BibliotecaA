@@ -52,17 +52,11 @@ public class Visionado extends Evento{
     public Visionado nuevoVisionado(){
         Visionado v1 = new Visionado();
         Scanner in = new Scanner(System.in);
-        System.out.println("Introduzca los datos del visionados");
-        int id = in.nextInt();
-        v1.setId(id);
-        System.out.println("Introduzca el nombre del visionado");
-        String nombre = in.nextLine();
-        v1.setNombre(nombre);
-        System.out.println("Introduzca la fecha en la que se va a ver el DVD");
-        //        
+        
         System.out.println("Introduzca los datos del aula en el que se va a ver el DVD");
         String aula = in.nextLine();
         v1.setAula(aula);
+        
         return v1;
     }
 

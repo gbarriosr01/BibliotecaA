@@ -28,13 +28,12 @@ public class Curso extends Evento{
 
     public Curso() {
         super();
-        this.duracion = duracion = null;
-        this.aula = aula = null;
+       
     }
 
     public Curso(String duracion, String aula) {
-        this.duracion = duracion = null;
-        this.aula = aula = null;
+        this.duracion = duracion;
+        this.aula = aula;
     }
     public Curso(Curso cu1) {
         this.duracion = cu1.duracion;
@@ -70,14 +69,9 @@ public class Curso extends Evento{
     public Curso nuevoCurso(){
         Curso cu1 = new Curso();
         Scanner in = new Scanner(System.in);
-        System.out.println("Introduzca el ID del curso");
-        int id = in.nextInt();
-        cu1.setId(id);
-        System.out.println("Introduzca el nombre del curso");
-        String nombre = in.nextLine();
-        cu1.setNombre(nombre);
-        System.out.println("Introduzca la fecha y la hora del curso");
-        //preguntar
+        
+        
+       
         System.out.println("Introduzca la duracion del curso");
         String duracion = in.nextLine();
         cu1.setDuracion(duracion);
