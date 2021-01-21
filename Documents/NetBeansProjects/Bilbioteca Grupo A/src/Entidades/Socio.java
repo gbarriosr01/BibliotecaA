@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author DAM102
  */
 public class Socio {
-                
+
     private long id;/*Mayores que 0, no puede ser nulo*/
     private String nombre;/*Menor o igual a 20 caracteres, no se admiten numeros*/
     private String NIF;/*Mayor o igual a 9 caracteres*/
@@ -23,16 +23,11 @@ public class Socio {
     private ArrayList<Evento> eventos = new ArrayList<Evento>();/*No obligatorio*/
     private Prestamo prestamo;
 
-    
     public Socio() {
-        this.id= 0;
-        this.nombre=null;
-        this.NIF=null;
-        this.telefono=null;
-        this.direccion=null;
+       
     }
 
-    public Socio(Socio copia){
+    public Socio(Socio copia) {
         this.id = copia.id;
         this.nombre = copia.nombre;
         this.NIF = copia.NIF;
@@ -51,6 +46,7 @@ public class Socio {
         this.direccion = direccion;
         this.prestamo = prestamo;
     }
+
     public Socio(int id, String nombre, String NIF, String telefono, String direccion) {
         this.id = id;
         this.nombre = nombre;
@@ -58,6 +54,7 @@ public class Socio {
         this.telefono = telefono;
         this.direccion = direccion;
     }
+
     public long getId() {
         return id;
     }
@@ -121,33 +118,31 @@ public class Socio {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    public Socio nuevoSocio(){
-        
+
+    public Socio nuevoSocio() {
+
         Socio s1 = new Socio();
         Scanner in = new Scanner(System.in);
-        
-        System.out.println("Inserte su id");
-        int id = in.nextInt();
-        s1.setId(id);
-        
+
+        int numSocios = Utilidades.numSocios + 1;
+        s1.setId(numSocios);
+
         System.out.println("Inserte su nombre");
         String nombre = in.nextLine();
         s1.setNombre(nombre);
-        
+
         System.out.println("Inserte su NIF");
         String NIF = in.nextLine();
         s1.setNIF(NIF);
-        
+
         System.out.println("Inserte su telefono");
         String telefono = in.nextLine();
         s1.setTelefono(telefono);
-        
+
         System.out.println("Inserte su direccion");
         String direccion = in.nextLine();
         s1.setDireccion(direccion);
-        
-        
-        
+
         return s1;
     }
 
@@ -155,6 +150,5 @@ public class Socio {
     public String toString() {
         return "Socio{" + "id=" + id + ", nombre=" + nombre + ", NIF=" + NIF + ", telefono=" + telefono + ", direccion=" + direccion + ", penalizaciones=" + penalizaciones + ", eventos=" + eventos + ", prestamo=" + prestamo + '}';
     }
-    
-    
+
 }

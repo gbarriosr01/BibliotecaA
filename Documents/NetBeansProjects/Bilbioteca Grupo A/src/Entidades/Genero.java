@@ -24,8 +24,7 @@ public class Genero {
     
 
     public Genero() {
-        id=0;
-        nombre=null;
+       
     }
     
     public Genero(long id, String nombre) {

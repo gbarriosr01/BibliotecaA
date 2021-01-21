@@ -5,6 +5,8 @@
  */
 package bilbioteca.grupo.a;
 
+import Entidades.Socio;
+
 
 
 /**
@@ -17,7 +19,8 @@ public class BilbiotecaGrupoA {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-    
+             Socio s1 = new Socio().nuevoSocio();
+             System.out.println(s1.nuevoSocio());
         
     }
     

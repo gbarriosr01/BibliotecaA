@@ -26,9 +26,7 @@ public class Proveedor {
     private String telefono;
 
     public Proveedor() {
-        id=0;
-        nombre=null;
-        telefono=null;
+        
     }
 
     public Proveedor(long id, String nombre, String telefono) {

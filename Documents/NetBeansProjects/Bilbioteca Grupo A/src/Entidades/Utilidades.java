@@ -25,7 +25,7 @@ public class Utilidades {
         new Prestamo(2, Date.valueOf(LocalDate.parse("01/09/2021", dateFormatter)), Date.valueOf(LocalDate.parse("01/12/2021", dateFormatter))),
         new Prestamo(3, Date.valueOf(LocalDate.parse("01/07/2021", dateFormatter)), Date.valueOf(LocalDate.parse("01/01/2022", dateFormatter)))
     };
-    public static final int numprestamos = PRESTAMOS.length;
+    public static final int numPrestamos = PRESTAMOS.length;
 
     public static final Estado ESTADOS[] = {
         new Estado(1, "Pendiente"),
@@ -100,35 +100,35 @@ public class Utilidades {
         new Evento(2, "Firma de libros", Date.valueOf(LocalDate.parse("02/02/2021", dateFormatter)), 2),
         new Evento(3, "Nuevos autores", Date.valueOf(LocalDate.parse("03/03/2021", dateFormatter)), 3)
     };
-    public static final int Evento = EVENTOS.length;
+    public static final int numEventos = EVENTOS.length;
 
     public static final Concurso CONCURSOS[] = {
         new Concurso("Informatica", "Raton Logitech"),
         new Concurso("Origami", "100€"),
         new Concurso("Matematicas", "100€")
     };
-    public static final int Concurso = CONCURSOS.length;
+    public static final int numConcursos = CONCURSOS.length;
 
     public static final Curso CURSOS[] = {
         new Curso("50 minutos", "Aula 1"),
         new Curso("30 minutos", "Aula 2"),
         new Curso("40 minutos", "Aula 3")
     };
-    public static final int Curso = CURSOS.length;
+    public static final int numCursos = CURSOS.length;
 
     public static final Lectura LECTURAS[] = {
         new Lectura(false, "Cien años de soledad"),
         new Lectura(false, "El ingenioso hidalgo Don Quijote de la Mancha"),
         new Lectura(false, "El principito")
     };
-    public static final int Lectura = LECTURAS.length;
+    public static final int numLecturas = LECTURAS.length;
 
     public static final Visionado VISIONADOS[] = {
         new Visionado("Aula 1"),
         new Visionado("Aula 2"),
         new Visionado("Aula 3")
     };
-    public static final int Visionado = VISIONADOS.length;
+    public static final int numVisionados = VISIONADOS.length;
     
     
     public static class Fecha{
@@ -177,4 +177,23 @@ public class Utilidades {
         
         }
     }
+    
+    
+//      Primer intento Registro   
+//      public Socio RegistrarSocio(){
+//        
+//        Socio s1 = new Socio();
+//        Scanner in = new Scanner(System.in);
+//        do{        
+//        System.out.println("Inserte su nombre");
+//        String nombre = in.nextLine();
+//        if(nombre.length()>20){
+//            System.out.println("te has pasao pa");
+//            continue;
+//        }
+//        else
+//            break;
+//        } while (nombre.length()>20);
+//        return s1;
+//    }
 }

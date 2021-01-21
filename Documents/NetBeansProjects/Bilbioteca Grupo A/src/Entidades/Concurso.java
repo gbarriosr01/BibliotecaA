@@ -28,13 +28,12 @@ public class Concurso extends Evento {
 
     public Concurso() {
         super();
-        this.tipo = tipo = null;
-        this.premio = premio = null;
+       
     }
 
     public Concurso(String tipo, String premio) {
-        this.tipo = tipo = null;
-        this.premio = premio = null;
+        this.tipo=tipo;
+        this.premio=premio;
     }
     public Concurso(Concurso co1) {
         this.tipo = co1.tipo;
@@ -42,8 +41,8 @@ public class Concurso extends Evento {
     }
     public Concurso(String tipo, String premio, long id, String nombre, Date fechayhora, long idPenalizacion) {
         super(id, nombre, fechayhora, idPenalizacion);
-        this.tipo = tipo = null;
-        this.premio = premio = null;
+        this.tipo = tipo;
+        this.premio = premio;
     }
 
     public Concurso(String tipo, String premio, Evento ev1) {

@@ -28,9 +28,7 @@ public class Lote {
       private long idProveedor;/*Obligatorio*/
 
     public Lote() {
-        idProveedor=0;
-        elementos=null;
-        //Fecha de llegada = 01/01/2020
+       
     }
     
     public Lote(Lote a){
