@@ -56,17 +56,17 @@ public class BilbiotecaGrupoA {
                         switch (opcion2) {
                             case 1:// Ver socio
                                 System.out.println("-------------------------------------------------");
-                                System.out.println("Ha pulsado la opcion Ver Socio");
+                                System.out.println("Ha pulsado la opcion Ver Socio");                                
                                 do {
-//                                    MostrarSocio();
-//                                    System.out.println("-------------------------------------------------");
-//                                    System.out.println("Pulse 0 para salir");
-//                                    in = new Scanner(System.in);
-//                                    opcion3 = in.nextInt();
-//                                    if (opcion3 !=0) {
-//                                        System.out.println("Pulse 0 para salir");
-//                                        continue;
-//                                    }
+                                   
+                                    System.out.println("-------------------------------------------------");
+                                    System.out.println("Pulse 0 para salir");
+                                    in = new Scanner(System.in);
+                                    opcion3 = in.nextInt();
+                                    if (opcion3 !=0) {
+                                        System.out.println("Pulse 0 para salir");
+                                        continue;
+                                    }
                                 } while (opcion3 != 0);
                                 break;
                             case 2://Nuevo Socio

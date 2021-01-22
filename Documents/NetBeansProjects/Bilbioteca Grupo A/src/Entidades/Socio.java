@@ -146,6 +146,14 @@ public class Socio {
         System.out.println("Socio registrado correctamente con el id " + numSocios);
         return s1;
     }
+    
+    public void verSocio(ArrayList<Socio> socios){
+        System.out.println("Socios de la biblioteca:");
+        for (Socio s : socios){
+            System.out.println(s.getId() + ".- " + (s.getNIF()+ " - " + (s.getNombre() + " con teléfono " + (s.getTelefono()))));
+        }
+    
+    }
 
     @Override
     public String toString() {
