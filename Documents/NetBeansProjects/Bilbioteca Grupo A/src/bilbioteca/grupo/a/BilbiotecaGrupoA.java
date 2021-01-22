@@ -77,15 +77,11 @@ public class BilbiotecaGrupoA {
                                 do {
 
                                     Socio soc = new Socio().nuevoSocio();
-                                    System.out.println("-------------------------------------------------");
-                                    System.out.println("Pulse 0 para salir");
-                                    System.out.println("-------------------------------------------------");
-                                    in = new Scanner(System.in);
-                                    opcion3 = in.nextInt();
                                     do {
                                         System.out.println("-------------------------------------------------");
                                         System.out.println("Pulse 0 para salir");
                                         System.out.println("-------------------------------------------------");
+                                        
                                         in = new Scanner(System.in);
                                         opcion3 = in.nextInt();
                                         if (opcion3 != 0) {
