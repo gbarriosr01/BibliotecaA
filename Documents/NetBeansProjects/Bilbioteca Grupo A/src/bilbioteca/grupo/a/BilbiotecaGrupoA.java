@@ -5,7 +5,7 @@
  */
 package bilbioteca.grupo.a;
 
-import Entidades.Socio;
+import Entidades.*;
 import java.util.Scanner;
 
 
@@ -20,8 +20,7 @@ public class BilbiotecaGrupoA {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-             Socio s1 = new Socio().nuevoSocio();
-             System.out.println(s1.nuevoSocio());
+            
         
              
      //MENU PRINCIPAL DE AQUI HASTA ABAJO        
@@ -76,6 +75,8 @@ public class BilbiotecaGrupoA {
         System.out.println("Pulse 4 para Participar en Evento");
         System.out.println("Pulse 0 para Volver");
     }
+      
+      
        
     }
 

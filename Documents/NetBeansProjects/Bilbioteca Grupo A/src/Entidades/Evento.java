@@ -109,7 +109,7 @@ public class Evento {
         int numEventos = Utilidades.numEventos + 1;
         ev1.setId(numEventos);
         
-        in.nextLine();
+        
         System.out.println("Introduzca el nombre del evento");
         String nombre = in.nextLine();
         ev1.setNombre(nombre);
@@ -117,9 +117,46 @@ public class Evento {
         java.sql.Date fechayhora = Utilidades.Fecha.nuevaFecha().conversorFecha();
         ev1.setFechayhora(fechayhora);
         
+        int opcion=-1;
+        
+        do{
+            mostrarMenuEventos();
+            opcion = in.nextInt();
+            if(opcion <0 || opcion >4){
+                System.out.println("Opcion incorrecta");
+                continue;
+            }
+            switch(opcion){
+            
+                case 1:
+                    Concurso con = new Concurso().nuevoConcurso();
+                    break;
+                case 2:
+                    Curso cur = new Curso().nuevoCurso();
+                    break;
+                case 3:
+                    Lectura lec = new Lectura().nuevoLectura();
+                    break;
+                case 4:
+                    Visionado vis = new Visionado().nuevoVisionado();
+                    break;
+                case 0:
+                    continue;
+            }
+        
+        }while(opcion !=0);
+        
         
         
         return ev1;
+    }
+    
+    public void mostrarMenuEventos(){
+        System.out.println("1.Concurso");
+        System.out.println("2.Curso");
+        System.out.println("3.Lectura");
+        System.out.println("4.Visionado");
+        System.out.println("0.Salir");
     }
 
     @Override
