@@ -14,6 +14,8 @@ import java.util.Scanner;
  */
 public class Socio {
 
+    
+
     private long id;/*Mayores que 0, no puede ser nulo*/
     private String nombre;/*Menor o igual a 20 caracteres, no se admiten numeros*/
     private String NIF;/*Mayor o igual a 9 caracteres*/
@@ -118,7 +120,16 @@ public class Socio {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+    public static ArrayList<Socio> convertirSocios(Socio[] array) {
+        ArrayList<Socio> ret = new ArrayList<Socio>();
+            for(Socio s: array) {
+                ret.add(s);
+            }
 
+    return ret;
+    }
+
+    
     public Socio nuevoSocio() {
 
         Socio s1 = new Socio();
@@ -147,14 +158,27 @@ public class Socio {
         return s1;
     }
     
-    public void verSocio(ArrayList<Socio> socios){
+    public static void  verSocio(ArrayList<Socio> socios){
         System.out.println("Socios de la biblioteca:");
         for (Socio s : socios){
-            System.out.println(s.getId() + ".- " + (s.getNIF()+ " - " + (s.getNombre() + " con teléfono " + (s.getTelefono()))));
+            System.out.println(s.getId() + ".- " + (s.getNIF()+ " - " + (s.getNombre() + " - con teléfono " + (s.getTelefono() + "."))));
         }
     
     }
+    
+    public static Socio buscarSociosPorId (int idSocio){
+        Socio ret = null;
+        for (Socio s : Utilidades.SOCIOS) {
+            if (s.getId() == idSocio) {
+                
+                return s;
+            }
 
+        }
+    return null;
+    }
+    
+        
     @Override
     public String toString() {
         return "Socio{" + "id=" + id + ", nombre=" + nombre + ", NIF=" + NIF + ", telefono=" + telefono + ", direccion=" + direccion + ", penalizaciones=" + penalizaciones + ", eventos=" + eventos + ", prestamo=" + prestamo + '}';

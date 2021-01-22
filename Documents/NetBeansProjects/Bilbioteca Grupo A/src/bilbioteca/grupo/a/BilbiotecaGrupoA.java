@@ -6,9 +6,8 @@
 package bilbioteca.grupo.a;
 
 import Entidades.*;
+import java.util.ArrayList;
 import java.util.Scanner;
-
-
 
 /**
  *
@@ -27,6 +26,8 @@ public class BilbiotecaGrupoA {
         int opcion = -1;
         int opcion2 = -1;
         int opcion3 = -1;
+        ArrayList<Socio> socios = Socio.convertirSocios(Utilidades.SOCIOS);
+        
         Scanner in = new Scanner(System.in);
 
         do {
@@ -56,14 +57,15 @@ public class BilbiotecaGrupoA {
                         switch (opcion2) {
                             case 1:// Ver socio
                                 System.out.println("-------------------------------------------------");
-                                System.out.println("Ha pulsado la opcion Ver Socio");                                
+                                System.out.println("Ha pulsado la opcion Ver Socio");
+                                Socio.verSocio(socios);
                                 do {
-                                   
+
                                     System.out.println("-------------------------------------------------");
                                     System.out.println("Pulse 0 para salir");
                                     in = new Scanner(System.in);
                                     opcion3 = in.nextInt();
-                                    if (opcion3 !=0) {
+                                    if (opcion3 != 0) {
                                         System.out.println("Pulse 0 para salir");
                                         continue;
                                     }
@@ -87,11 +89,36 @@ public class BilbiotecaGrupoA {
                                         in = new Scanner(System.in);
                                         opcion3 = in.nextInt();
                                         if (opcion3 != 0) {
-                                           continue;
+                                            continue;
                                         }
                                     } while (opcion3 != 0);
 
                                 } while (opcion3 != 0);
+
+                            case 3://Buscar Socio
+                                System.out.println("-------------------------------------------------");
+                                System.out.println("Ha pulsado la opcion Buscar Socio");
+//                                do {
+//                                    in = new Scanner(System.in);
+//                                    opcion3 = in.nextInt();
+////                                    Socio.buscarSociosPorId(opcion3, socios);
+//
+//                                } while (opcion3 != 0);
+//                                in = new Scanner(System.in);
+//                                opcion3 =in.nextInt();
+//                                Socio idSocio = Socio.buscarSociosPorId(opcion3);
+//                                if (opcion3 == null) {
+//                                    
+//                                } else {
+//                                }
+                                
+//                                int idSocio = in.nextInt();
+//                                if (idSocio !=0) {
+//                                    s = Socio.buscarSociosPorId(idSocio, socios);
+//                                    if (s != null){
+//                                        Socio.verSocio(socios);
+//                                    }
+//                                }
                         }
                     } while (opcion2 != 0);
 
@@ -136,35 +163,35 @@ public class BilbiotecaGrupoA {
         } while (opcion < 0 || opcion > 3);
 
     }
+
     private static void mostrarMenuPrincipal() {
         System.out.println("Pulse 1 para Gestionar los Socios");
         System.out.println("Pulse 2 para Gestionar Elementos");
         System.out.println("Pulse 3 para Gestionar Eventos");
         System.out.println("Pulse 0 para SALIR");
     }
-     private static void mostrarMenuGestionSocios() {
+
+    private static void mostrarMenuGestionSocios() {
         System.out.println("Pulse 1 para Ver Socio");
         System.out.println("Pulse 2 para Nuevo Socio");
         System.out.println("Pulse 3 para Buscar Socio");
         System.out.println("Pulse 0 para Volver");
     }
-     private static void mostrarMenuGestionElemetos() {
+
+    private static void mostrarMenuGestionElemetos() {
         System.out.println("Pulse 1 para Ver Elemento");
         System.out.println("Pulse 2 para Nuevo Elemento");
         System.out.println("Pulse 3 para Buscar Elemento");
         System.out.println("Pulse 4 para Hacer Préstamo");
         System.out.println("Pulse 0 para Volver");
     }
-      private static void mostrarMenuGestionEventos() {
+
+    private static void mostrarMenuGestionEventos() {
         System.out.println("Pulse 1 para Ver Evento");
         System.out.println("Pulse 2 para Nuevo Evento");
         System.out.println("Pulse 3 para Buscar Eventos");
         System.out.println("Pulse 4 para Participar en Evento");
         System.out.println("Pulse 0 para Volver");
     }
-      
-      
-       
-    }
 
-
+}
