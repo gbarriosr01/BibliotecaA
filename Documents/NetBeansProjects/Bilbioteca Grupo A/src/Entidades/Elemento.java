@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public class Elemento {
     /*Valido: >=0 Invalido: <0 Otros: Es unico*/
-    protected long id=0; 
+    protected long id; 
     protected ArrayList <Prestamo> prestamos = new ArrayList <Prestamo>();/*Obligatorio*/
     protected Genero genero;/*Obligatorio*/
 
@@ -62,7 +62,7 @@ public class Elemento {
         int numElementos = Utilidades.numElementos + 1;
         el.setId(numElementos);
         
-        
+        System.out.println("Socio registrado correctamente con el id " + numElementos);
         return el;
     
     }

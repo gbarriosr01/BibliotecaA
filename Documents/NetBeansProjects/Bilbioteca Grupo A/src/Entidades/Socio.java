@@ -127,22 +127,23 @@ public class Socio {
         int numSocios = Utilidades.numSocios + 1;
         s1.setId(numSocios);
 
-        System.out.println("Inserte su nombre");
+        System.out.println("Inserte su nombre: ");
         String nombre = in.nextLine();
         s1.setNombre(nombre);
 
-        System.out.println("Inserte su NIF");
+        System.out.println("Inserte su NIF: ");
         String NIF = in.nextLine();
         s1.setNIF(NIF);
 
-        System.out.println("Inserte su telefono");
+        System.out.println("Inserte su telefono: ");
         String telefono = in.nextLine();
         s1.setTelefono(telefono);
 
-        System.out.println("Inserte su direccion");
+        System.out.println("Inserte su direccion: ");
         String direccion = in.nextLine();
         s1.setDireccion(direccion);
-
+        
+        System.out.println("Socio registrado correctamente con el id " + numSocios);
         return s1;
     }
 
