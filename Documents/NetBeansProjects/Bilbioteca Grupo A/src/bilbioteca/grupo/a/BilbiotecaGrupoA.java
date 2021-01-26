@@ -254,7 +254,7 @@ public class BilbiotecaGrupoA {
 
                                 } while (opcion3 != 0);
                                 break;
-                            case 3:  //Buscar Elemento
+                            case 3:  //Buscar Elemento                              
                                 System.out.println("-------------------------------------------------");
                                 System.out.println("¿Que elemento desea buscar?");
                                 do {
@@ -276,7 +276,8 @@ public class BilbiotecaGrupoA {
                                             System.out.println("Ha pulsado la opcion Buscar DVDs");
                                             System.out.println("-------------------------------------------------");
                                             do {
-                                               // Funcion BuscarDVD
+                                                 // Funcion BuscarDVDs
+                                                 DVD.buscarDVDs(DVDS);
                                                 do {
                                                     System.out.println("-------------------------------------------------");
                                                     System.out.println("Pulse 0 para salir");
@@ -298,6 +299,7 @@ public class BilbiotecaGrupoA {
                                             System.out.println("-------------------------------------------------");
                                              do {
                                                // Funcion BuscarLibros
+                                               
                                                 do {
                                                     System.out.println("-------------------------------------------------");
                                                     System.out.println("Pulse 0 para salir");

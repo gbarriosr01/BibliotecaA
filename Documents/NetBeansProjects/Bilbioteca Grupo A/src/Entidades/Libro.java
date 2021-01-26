@@ -138,19 +138,19 @@ public class Libro extends Elemento {
         ArrayList<Genero> generos = Genero.convertirGeneros(Utilidades.GENEROS);
 
         Scanner teclado = new Scanner(System.in);
-        System.out.println("indica su nombre: ");
+        System.out.println("Indica su nombre: ");
         li.setNombre(teclado.nextLine());
-        System.out.println("indica la editorial: ");
+        System.out.println("Indica la editorial: ");
         li.setEditorial(teclado.nextLine());
-        System.out.println("indica el autor: ");
+        System.out.println("Indica el autor: ");
         li.setAutor(teclado.nextLine());
-        System.out.println("indica el numero de paginas: ");
+        System.out.println("Indica el numero de paginas: ");
         li.setnPaginas(teclado.nextInt());
 
         long idLib = nextIdLibro();
         li.setId(idLib);
 
-        System.out.println("indica el Genero ");
+        System.out.println("Indica el Genero ");
         do {
             Genero.verGenero(generos);
             System.out.println("-------------------------------------------------");
@@ -160,6 +160,7 @@ public class Libro extends Elemento {
                 gen = Genero.buscarGenerosPorId(idGenero, generos);
                 if (gen != null) {
                     System.out.println("Genero asignado. ");
+                    gen.verGeneroElemento();
                     li.setGenero(gen);
                 } else {
                     System.out.println("Genero:  " + idGenero + "  Desconocido");

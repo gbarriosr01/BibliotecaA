@@ -112,8 +112,8 @@ public class DVD extends Elemento {
                     d.setGenero(gen);
                 } else {
                     System.out.println("Genero:  " + idGenero + "  Desconocido");
-                  
-                    }
+
+                }
             }
 
         } while (opcion != 0);
@@ -121,12 +121,46 @@ public class DVD extends Elemento {
         return d;
 
     }
-    
-    
-    
-     
-     
-     public static DVD buscarDVDsPorTitulo(String tituloDVD, ArrayList<DVD> DVDS) {
+
+    public static void buscarDVDs(ArrayList<DVD> DVDS) {
+        DVD buscado;
+        ArrayList<DVD> encontrados;
+        Scanner in;
+        int opcion = -1;
+
+        do {
+            buscado = null;
+            encontrados = new ArrayList<DVD>();
+            in = new Scanner(System.in);
+            System.out.println("Pulse 1 para buscar DVD por Titulo.");
+            System.out.println("Pulse 0 para VOLVER");
+            opcion = in.nextInt();
+            if (opcion < 0 || opcion > 1) {
+                System.out.println("Opción incorrecta.");
+                continue;
+            }
+            in = new Scanner(System.in);
+            switch (opcion) {
+                case 0:
+                    break;
+                case 1:
+                    System.out.println("-------------------------------------------------");
+                    System.out.println("Introduzca el Titulo del DVD a buscar:");
+                    String TituloDVD = in.nextLine();
+                    buscado = DVD.buscarDVDsPorTitulo(TituloDVD, DVDS);
+                    if (buscado != null) {
+                        System.out.println(buscado.getTitulo() + " ---> " + buscado.getClass().getSimpleName());
+                    } else {
+                        System.out.println("DVD  " + TituloDVD + "  NO ENCONTRADO.");
+                    }
+                    break;
+                default:
+                    break;
+            }
+        } while (opcion != 0);
+    }
+
+    public static DVD buscarDVDsPorTitulo(String tituloDVD, ArrayList<DVD> DVDS) {
         DVD ret = null;
         for (DVD d : DVDS) {
             if (d.getTitulo() == tituloDVD) {
@@ -138,9 +172,6 @@ public class DVD extends Elemento {
         }
         return ret;
     }
-     
-     
-     
 
     public static void verDvd(ArrayList<DVD> DVDS) {
         System.out.println("DVD de la biblioteca:");
