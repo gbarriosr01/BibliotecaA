@@ -7,6 +7,8 @@ package Entidades;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import Entidades.Genero;
+import static java.lang.System.in;
 
 /**
  *
@@ -85,21 +87,65 @@ public class DVD extends Elemento {
 
     public static DVD nuevoDVD() {
         DVD d = new DVD();
+        int opcion = 0;
+        int idGenero = 0;
+        Genero gen;
+        ArrayList<DVD> DVDS = DVD.convertirDVDS(Utilidades.DVDS);
+        ArrayList<Genero> generos = Genero.convertirGeneros(Utilidades.GENEROS);
+
         Scanner teclado = new Scanner(System.in);
         System.out.println("Indica el titulo: ");
         d.setTitulo(teclado.nextLine());
-        System.out.println("Indica el genero");
-        
         long idEle = nextIdDVD();
         d.setId(idEle);
+        System.out.println("Indica el genero");
+        do {
+            Genero.verGenero(generos);
+            System.out.println("-------------------------------------------------");
+            teclado = new Scanner(System.in);
+            idGenero = teclado.nextInt();
+            if (idGenero != 0) {
+                gen = Genero.buscarGenerosPorId(idGenero, generos);
+                if (gen != null) {
+                    System.out.println("Genero asignado: ");
+                    gen.verGeneroElemento();
+                    d.setGenero(gen);
+                } else {
+                    System.out.println("Genero:  " + idGenero + "  Desconocido");
+                  
+                    }
+            }
+
+        } while (opcion != 0);
+
         return d;
 
     }
+    
+    
+    
+     
+     
+     public static DVD buscarDVDsPorTitulo(String tituloDVD, ArrayList<DVD> DVDS) {
+        DVD ret = null;
+        for (DVD d : DVDS) {
+            if (d.getTitulo() == tituloDVD) {
+
+                ret = d;
+                break;
+            }
+
+        }
+        return ret;
+    }
+     
+     
+     
 
     public static void verDvd(ArrayList<DVD> DVDS) {
         System.out.println("DVD de la biblioteca:");
-        for (DVD s : DVDS) {
-            System.out.println(s.getId() + ".- " + (s.getTitulo()));
+        for (DVD d : DVDS) {
+            System.out.println(d.getId() + ".- " + (d.getTitulo() + " - " + (d.getGenero() + ".")));
         }
 
     }

@@ -69,9 +69,9 @@ public class Utilidades {
     public static final int numLotes = LOTES.length;
 
     public static final Elemento ELEMENTOS[] = {
-        new Elemento(1, GENEROS[0] ),
-        new Elemento(2, GENEROS[0] ),
-        new Elemento(3, GENEROS[0] )
+        new Elemento(1, GENEROS[1] ),
+        new Elemento(2, GENEROS[2] ),
+        new Elemento(3, GENEROS[3] )
     };
     public static final int numElementos = ELEMENTOS.length;
 

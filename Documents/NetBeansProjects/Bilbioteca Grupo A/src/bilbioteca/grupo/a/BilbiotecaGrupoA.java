@@ -229,11 +229,97 @@ public class BilbiotecaGrupoA {
                                             } while (opcion3 != 0);
                                             break;
                                         case 2:
+                                            System.out.println("-------------------------------------------------");
+                                            System.out.println("Ha pulsado la opcion Nuevo Libro");
+                                            System.out.println("-------------------------------------------------");
+                                            do {
+                                                Libro nuevoLibro = Libro.nuevoLibro();
+                                                libros.add(nuevoLibro);
+                                                do {
+                                                    System.out.println("-------------------------------------------------");
+                                                    System.out.println("Pulse 0 para salir");
+                                                    System.out.println("-------------------------------------------------");
+
+                                                    in = new Scanner(System.in);
+                                                    opcion3 = in.nextInt();
+                                                    if (opcion3 != 0) {
+                                                        continue;
+                                                    }
+                                                } while (opcion3 != 0);
+
+                                            } while (opcion3 != 0);
+                                            break;
+
                                     }
 
                                 } while (opcion3 != 0);
                                 break;
+                            case 3:  //Buscar Elemento
+                                System.out.println("-------------------------------------------------");
+                                System.out.println("¿Que elemento desea buscar?");
+                                do {
+                                    System.out.println("-------------------------------------------------");
+                                    System.out.println("1.- DVDs");
+                                    System.out.println("2.- libros");
+                                    System.out.println("0.-Volver");
+                                    System.out.println("-------------------------------------------------");
+                                    opcion3 = in.nextInt();
+                                    if (opcion3 < 0 || opcion3 > 2) {
+                                        System.out.println("-------------------------------------------------");
+                                        System.out.println("Opción incorrecta!");
 
+                                        continue;
+                                    }
+                                    switch (opcion3) {
+                                        case 1:
+                                            System.out.println("-------------------------------------------------");
+                                            System.out.println("Ha pulsado la opcion Buscar DVDs");
+                                            System.out.println("-------------------------------------------------");
+                                            do {
+                                               // Funcion BuscarDVD
+                                                do {
+                                                    System.out.println("-------------------------------------------------");
+                                                    System.out.println("Pulse 0 para salir");
+                                                    System.out.println("-------------------------------------------------");
+
+                                                    in = new Scanner(System.in);
+                                                    opcion3 = in.nextInt();
+                                                    if (opcion3 != 0) {
+                                                        continue;
+                                                    }
+                                                } while (opcion3 != 0);
+
+                                            } while (opcion3 != 0);
+                                            break;
+
+                                        case 2:
+                                            System.out.println("-------------------------------------------------");
+                                            System.out.println("Ha pulsado la opcion Buscar Libros");
+                                            System.out.println("-------------------------------------------------");
+                                             do {
+                                               // Funcion BuscarLibros
+                                                do {
+                                                    System.out.println("-------------------------------------------------");
+                                                    System.out.println("Pulse 0 para salir");
+                                                    System.out.println("-------------------------------------------------");
+
+                                                    in = new Scanner(System.in);
+                                                    opcion3 = in.nextInt();
+                                                    if (opcion3 != 0) {
+                                                        continue;
+                                                    }
+                                                } while (opcion3 != 0);
+
+                                            } while (opcion3 != 0);
+                                            break;
+                                            
+                                            
+
+                                    }
+                                    while (opcion3 != 0);
+
+                                } while (opcion3 != 0);
+                                break;
                         }
 
                     } while (opcion2 != 0);

@@ -203,7 +203,7 @@ public class Socio {
                     buscado = Socio.buscarSociosPorId(idSoc, socios);
                     if (buscado != null) {
                         System.out.print("Socio encontrado: ");
-                        System.out.println(buscado.getId() + ". " + buscado.getNombre() + " (" + buscado.getNIF() + ")(" + buscado.getTelefono() + ")-->" + buscado.getClass().getSimpleName());
+                        System.out.println(buscado.getId() + ". " + buscado.getNombre() + " (" + buscado.getNIF() + ")( con telefono" + buscado.getTelefono() + ")-->" + buscado.getClass().getSimpleName());
                     } else {
                         System.out.println("Socio con id=" + idSoc + " NO ENCONTRADO.");
                     }

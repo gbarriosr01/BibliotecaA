@@ -12,7 +12,8 @@ import java.util.Scanner;
  *
  * @author DAM102
  */
-public class Libro extends Elemento{
+public class Libro extends Elemento {
+
     /*Valido: cadena caracteres "dadsad" Invalido: " ", >50 caracteres*/
     private String nombre;
     /*Valido: cadena caracteres "dadsad" Invalido: " ", >50 caracteres*/
@@ -59,7 +60,7 @@ public class Libro extends Elemento{
         this.nPaginas = nPaginas;
         this.lectura = lectura;
     }
-    
+
     public Libro(Libro l) {
         this.nombre = l.nombre;
         this.editorial = l.editorial;
@@ -107,7 +108,7 @@ public class Libro extends Elemento{
     public void setLectura(Lectura lectura) {
         this.lectura = lectura;
     }
-    
+
     public static ArrayList<Libro> convertirLibros(Libro[] array) {
         ArrayList<Libro> ret = new ArrayList<Libro>();
         for (Libro s : array) {
@@ -116,9 +117,26 @@ public class Libro extends Elemento{
 
         return ret;
     }
-    
+
+    public static long nextIdLibro() {
+        long ret = 0;
+        for (int i = 0; i < Utilidades.LIBROS.length; i++) {
+            if (Utilidades.LIBROS[i].id > ret) {
+                ret = Utilidades.LIBROS[i].id;
+            }
+        }
+        return ret + 1;
+    }
+
     public static Libro nuevoLibro() {
-        Libro li = new Libro ();
+        Libro li = new Libro();
+        int opcion = 0;
+        int idGenero = 0;
+        Genero gen;
+
+        ArrayList<Libro> libros = Libro.convertirLibros(Utilidades.LIBROS);
+        ArrayList<Genero> generos = Genero.convertirGeneros(Utilidades.GENEROS);
+
         Scanner teclado = new Scanner(System.in);
         System.out.println("indica su nombre: ");
         li.setNombre(teclado.nextLine());
@@ -128,27 +146,82 @@ public class Libro extends Elemento{
         li.setAutor(teclado.nextLine());
         System.out.println("indica el numero de paginas: ");
         li.setnPaginas(teclado.nextInt());
-        
-        int numLibros = Utilidades.numLibros + 1;
-            li.setId(numLibros);
-            
+
+        long idLib = nextIdLibro();
+        li.setId(idLib);
+
+        System.out.println("indica el Genero ");
+        do {
+            Genero.verGenero(generos);
+            System.out.println("-------------------------------------------------");
+            teclado = new Scanner(System.in);
+            idGenero = teclado.nextInt();
+            if (idGenero != 0) {
+                gen = Genero.buscarGenerosPorId(idGenero, generos);
+                if (gen != null) {
+                    System.out.println("Genero asignado. ");
+                    li.setGenero(gen);
+                } else {
+                    System.out.println("Genero:  " + idGenero + "  Desconocido");
+                }
+            }
+
+        } while (opcion != 0);
+
         return li;
-    
+
     }
     
+    
+    
+     public static Libro buscarLibrosPorNombre(String nombreLibro, ArrayList<Libro> Libros) {
+        Libro ret = null;
+        for (Libro lib : Libros) {
+            if (lib.getNombre() == nombreLibro) {
+
+                ret = lib;
+                break;
+            }
+
+        }
+        return ret;
+    }
+      public static Libro buscarLibrosPorAutor(String AutorLibro, ArrayList<Libro> Libros) {
+        Libro ret = null;
+        for (Libro lib : Libros) {
+            if (lib.getAutor() == AutorLibro) {
+
+                ret = lib;
+                break;
+            }
+
+        }
+        return ret;
+    }
+        public static Libro buscarLibrosPorEditorial(String EditorialLibro, ArrayList<Libro> Libros) {
+        Libro ret = null;
+        for (Libro lib : Libros) {
+            if (lib.getEditorial() == EditorialLibro) {
+
+                ret = lib;
+                break;
+            }
+
+        }
+        return ret;
+    }
+
     public static void verLibro(ArrayList<Libro> libros) {
         System.out.println("Socios de la biblioteca:");
         for (Libro s : libros) {
-            System.out.println("<" + s.getNombre() +  "> publicado por " + (s.getEditorial() + " y escrito por " + (s.getAutor() + ".")));
+            System.out.println("<" + s.getNombre() + "> publicado por " + (s.getEditorial() + " y escrito por " + (s.getAutor()+ " " + (s.getGenero()) + ".")));
         }
 
     }
-
 
     @Override
     public String toString() {
         return "Libro{" + "nombre=" + nombre + ", editorial=" + editorial + ", autor=" + autor + ", nPaginas=" + nPaginas + ", lectura=" + lectura + '}';
     }
 
-    
 }
