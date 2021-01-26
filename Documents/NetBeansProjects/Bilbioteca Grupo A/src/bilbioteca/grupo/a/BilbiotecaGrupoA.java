@@ -107,27 +107,8 @@ public class BilbiotecaGrupoA {
                             case 3://Buscar Socio
                                 System.out.println("-------------------------------------------------");
                                 System.out.println("Ha pulsado la opcion Buscar Socio");
-//                                do {
-//                                    in = new Scanner(System.in);
-//                                    opcion3 = in.nextInt();
-////                                    Socio.buscarSociosPorId(opcion3, socios);
-//
-//                                } while (opcion3 != 0);
-//                                in = new Scanner(System.in);
-//                                opcion3 =in.nextInt();
-//                                Socio idSocio = Socio.buscarSociosPorId(opcion3);
-//                                if (opcion3 == null) {
-//                                    
-//                                } else {
-//                                }
-                                
-//                                int idSocio = in.nextInt();
-//                                if (idSocio !=0) {
-//                                    s = Socio.buscarSociosPorId(idSocio, socios);
-//                                    if (s != null){
-//                                        Socio.verSocio(socios);
-//                                    }
-//                                }
+                                Socio.buscarSocios(socios);
+                                        
                         }
                     } while (opcion2 != 0);
 

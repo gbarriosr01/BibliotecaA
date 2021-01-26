@@ -1,6 +1,7 @@
 package Entidades;
 
 import java.sql.Date;
+import java.text.Normalizer;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -176,8 +177,14 @@ public class Utilidades {
             return ret;
         
         }
+        
+        
     }
-    
+    public static String removeDiacriticalMarks(String string) {
+        //Form.NFC acepta ñ y distingue las tildes en español
+        return Normalizer.normalize(string, Normalizer.Form.NFC)
+                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
+    }
     
 //      Primer intento Registro   
 //      public Socio RegistrarSocio(){
