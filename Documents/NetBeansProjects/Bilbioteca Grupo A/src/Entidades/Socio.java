@@ -166,16 +166,26 @@ public class Socio {
     
     }
     
-    public static Socio buscarSociosPorId (int idSocio){
+    public static Socio buscarSociosPorId (int idSocio, ArrayList<Socio> socios){
         Socio ret = null;
-        for (Socio s : Utilidades.SOCIOS) {
+        for (Socio s : socios) {
             if (s.getId() == idSocio) {
-                
-                return s;
+               
+                ret = s;
+                break;
             }
 
         }
-    return null;
+    return ret;
+    }
+    
+      public void verDatosSocioCompleto() {
+        System.out.println("-----------");
+        System.out.println("INFORME completo de SOCIO de ID: " + this.getId());
+        System.out.println("NOMBRE: " + this.getNombre());
+        System.out.println("TELEFONO: " + this.getTelefono() + "\t\tNIF: " + this.getNIF());
+   
+   
     }
     
         

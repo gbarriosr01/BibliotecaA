@@ -27,6 +27,8 @@ public class BilbiotecaGrupoA {
         int opcion2 = -1;
         int opcion3 = -1;
         ArrayList<Socio> socios = Socio.convertirSocios(Utilidades.SOCIOS);
+        int idSocio;
+        Socio s;
         
         Scanner in = new Scanner(System.in);
 
@@ -59,6 +61,17 @@ public class BilbiotecaGrupoA {
                                 System.out.println("-------------------------------------------------");
                                 System.out.println("Ha pulsado la opcion Ver Socio");
                                 Socio.verSocio(socios);
+                                in = new Scanner(System.in);
+                                idSocio = in.nextInt();
+                                if (idSocio !=0){
+                                    s = Socio.buscarSociosPorId(idSocio, socios);
+                                    if(s != null) {
+                                        System.out.println("Socio encontrado: ");
+                                        s.verDatosSocioCompleto();
+                                    } else {
+                                        System.out.println("Socio de ID = " + idSocio + " no encontrado");
+                                    }
+                                }
                                 do {
 
                                     System.out.println("-------------------------------------------------");
