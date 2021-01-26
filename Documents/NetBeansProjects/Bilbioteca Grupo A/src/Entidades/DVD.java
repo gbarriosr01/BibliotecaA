@@ -12,9 +12,10 @@ import java.util.Scanner;
  *
  * @author DAM102
  */
-public class DVD extends Elemento{
+public class DVD extends Elemento {
+
     /*Valido: cadena caracteres "dsadsa" Invalido: " ", >100caracteres*/
-    private String titulo=null;
+    private String titulo;
     private Visionado visionado;/*Obligatorio*/
 
     public DVD() {
@@ -62,7 +63,7 @@ public class DVD extends Elemento{
     public void setVisionado(Visionado visionado) {
         this.visionado = visionado;
     }
-    
+
     public static ArrayList<DVD> convertirDVDS(DVD[] array) {
         ArrayList<DVD> ret = new ArrayList<DVD>();
         for (DVD s : array) {
@@ -72,17 +73,29 @@ public class DVD extends Elemento{
         return ret;
     }
 
-    
+    public static long nextIdDVD() {
+        long ret = 0;
+        for (int i = 0; i < Utilidades.DVDS.length; i++) {
+            if (Utilidades.DVDS[i].id > ret) {
+                ret = Utilidades.DVDS[i].id;
+            }
+        }
+        return ret + 1;
+    }
+
     public static DVD nuevoDVD() {
         DVD d = new DVD();
         Scanner teclado = new Scanner(System.in);
         System.out.println("Indica el titulo: ");
         d.setTitulo(teclado.nextLine());
-        System.out.println("Indica el ID del DVD");
-        d.setId(teclado.nextLong());
+        System.out.println("Indica el genero");
+        
+        long idEle = nextIdDVD();
+        d.setId(idEle);
         return d;
-    
+
     }
+
     public static void verDvd(ArrayList<DVD> DVDS) {
         System.out.println("DVD de la biblioteca:");
         for (DVD s : DVDS) {
@@ -90,10 +103,10 @@ public class DVD extends Elemento{
         }
 
     }
+
     @Override
     public String toString() {
         return "DVD{" + "titulo=" + titulo + ", visionado=" + visionado + '}';
     }
-    
-    
+
 }

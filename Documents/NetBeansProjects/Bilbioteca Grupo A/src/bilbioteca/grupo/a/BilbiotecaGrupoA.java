@@ -23,6 +23,7 @@ public class BilbiotecaGrupoA {
 //        System.out.println(s1.nuevoSocio());
         ArrayList<Socio> socios = Socio.convertirSocios(Utilidades.SOCIOS);
         ArrayList<DVD> DVDS = DVD.convertirDVDS(Utilidades.DVDS);
+        ArrayList<Libro> libros = Libro.convertirLibros(Utilidades.LIBROS);
         //MENU PRINCIPAL DE AQUI HASTA ABAJO        
         int opcion = -1;
         int opcion2 = -1;
@@ -167,12 +168,71 @@ public class BilbiotecaGrupoA {
                                             System.out.println("-------------------------------------------------");
                                             System.out.println("Ha pulsado la opcion Ver libros");
                                             System.out.println("-------------------------------------------------");
-                                            //funcion libros
+                                            Libro.verLibro(libros);
+                                            do {
+
+                                                System.out.println("-------------------------------------------------");
+                                                System.out.println("Pulse 0 para salir");
+                                                in = new Scanner(System.in);
+                                                opcion3 = in.nextInt();
+                                                if (opcion3 != 0) {
+                                                    System.out.println("Pulse 0 para salir");
+                                                    continue;
+                                                }
+                                            } while (opcion3 != 0);
                                             break;
+
                                         default:
                                             break;
                                     }
                                 } while (opcion3 != 0);
+                                break;
+
+                            case 2:
+                                // Nuevo Elemento
+                                System.out.println("-------------------------------------------------");
+                                System.out.println("Ha pulsado la opcion Nuevo Elemento");
+                                System.out.println("-------------------------------------------------");
+                                do {
+                                    System.out.println("-------------------------------------------------");
+                                    System.out.println("1.-Nuevo DVDs");
+                                    System.out.println("2.-Nuevo libros");
+                                    System.out.println("0.-Volver");
+                                    System.out.println("-------------------------------------------------");
+                                    opcion3 = in.nextInt();
+                                    if (opcion3 < 0 || opcion3 > 2) {
+                                        System.out.println("-------------------------------------------------");
+                                        System.out.println("Opción incorrecta!");
+
+                                        continue;
+                                    }
+                                    switch (opcion3) {
+                                        case 1:
+                                            System.out.println("-------------------------------------------------");
+                                            System.out.println("Ha pulsado la opcion Nuevo DVDs");
+                                            System.out.println("-------------------------------------------------");
+                                            do {
+                                                DVD nuevoDVD = DVD.nuevoDVD();
+                                                DVDS.add(nuevoDVD);
+                                                do {
+                                                    System.out.println("-------------------------------------------------");
+                                                    System.out.println("Pulse 0 para salir");
+                                                    System.out.println("-------------------------------------------------");
+
+                                                    in = new Scanner(System.in);
+                                                    opcion3 = in.nextInt();
+                                                    if (opcion3 != 0) {
+                                                        continue;
+                                                    }
+                                                } while (opcion3 != 0);
+
+                                            } while (opcion3 != 0);
+                                            break;
+                                        case 2:
+                                    }
+
+                                } while (opcion3 != 0);
+                                break;
 
                         }
 

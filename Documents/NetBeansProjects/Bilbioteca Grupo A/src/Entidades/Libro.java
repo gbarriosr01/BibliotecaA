@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -107,6 +108,15 @@ public class Libro extends Elemento{
         this.lectura = lectura;
     }
     
+    public static ArrayList<Libro> convertirLibros(Libro[] array) {
+        ArrayList<Libro> ret = new ArrayList<Libro>();
+        for (Libro s : array) {
+            ret.add(s);
+        }
+
+        return ret;
+    }
+    
     public static Libro nuevoLibro() {
         Libro li = new Libro ();
         Scanner teclado = new Scanner(System.in);
@@ -125,6 +135,15 @@ public class Libro extends Elemento{
         return li;
     
     }
+    
+    public static void verLibro(ArrayList<Libro> libros) {
+        System.out.println("Socios de la biblioteca:");
+        for (Libro s : libros) {
+            System.out.println("<" + s.getNombre() +  "> publicado por " + (s.getEditorial() + " y escrito por " + (s.getAutor() + ".")));
+        }
+
+    }
+
 
     @Override
     public String toString() {
