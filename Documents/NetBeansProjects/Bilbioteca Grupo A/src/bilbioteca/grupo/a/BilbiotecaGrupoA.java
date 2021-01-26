@@ -21,15 +21,16 @@ public class BilbiotecaGrupoA {
     public static void main(String[] args) {
 //        Socio s1 = new Socio().nuevoSocio();
 //        System.out.println(s1.nuevoSocio());
-
+        ArrayList<Socio> socios = Socio.convertirSocios(Utilidades.SOCIOS);
+        ArrayList<DVD> DVDS = DVD.convertirDVDS(Utilidades.DVDS);
         //MENU PRINCIPAL DE AQUI HASTA ABAJO        
         int opcion = -1;
         int opcion2 = -1;
         int opcion3 = -1;
-        ArrayList<Socio> socios = Socio.convertirSocios(Utilidades.SOCIOS);
+
         int idSocio;
         Socio s;
-        
+
         Scanner in = new Scanner(System.in);
 
         do {
@@ -63,9 +64,9 @@ public class BilbiotecaGrupoA {
                                 Socio.verSocio(socios);
                                 in = new Scanner(System.in);
                                 idSocio = in.nextInt();
-                                if (idSocio !=0){
+                                if (idSocio != 0) {
                                     s = Socio.buscarSociosPorId(idSocio, socios);
-                                    if(s != null) {
+                                    if (s != null) {
                                         System.out.println("Socio encontrado: ");
                                         s.verDatosSocioCompleto();
                                     } else {
@@ -88,13 +89,13 @@ public class BilbiotecaGrupoA {
                                 System.out.println("-------------------------------------------------");
                                 System.out.println("Ha pulsado la opcion Nuevo Socio");
                                 do {
-
-                                    Socio soc = new Socio().nuevoSocio();
+                                    Socio nuevoSocio = Socio.nuevoSocio();
+                                    socios.add(nuevoSocio);
                                     do {
                                         System.out.println("-------------------------------------------------");
                                         System.out.println("Pulse 0 para salir");
                                         System.out.println("-------------------------------------------------");
-                                        
+
                                         in = new Scanner(System.in);
                                         opcion3 = in.nextInt();
                                         if (opcion3 != 0) {
@@ -103,12 +104,12 @@ public class BilbiotecaGrupoA {
                                     } while (opcion3 != 0);
 
                                 } while (opcion3 != 0);
-
+                                break;
                             case 3://Buscar Socio
                                 System.out.println("-------------------------------------------------");
                                 System.out.println("Ha pulsado la opcion Buscar Socio");
                                 Socio.buscarSocios(socios);
-                                        
+
                         }
                     } while (opcion2 != 0);
 
@@ -124,6 +125,55 @@ public class BilbiotecaGrupoA {
                         if (opcion2 < 0 || opcion2 > 4) {
                             System.out.println("Opción incorrecta!");
                             continue;
+                        }
+                        switch (opcion2) {
+                            case 1://Ver Elemento
+                                System.out.println("-------------------------------------------------");
+                                System.out.println("Ha pulsado la opcion Ver Elemento");
+                                System.out.println("-------------------------------------------------");
+                                do {
+                                    System.out.println("-------------------------------------------------");
+                                    System.out.println("1.-Ver DVDs");
+                                    System.out.println("2.-Ver libros");
+                                    System.out.println("0.-Volver");
+                                    System.out.println("-------------------------------------------------");
+                                    opcion3 = in.nextInt();
+                                    if (opcion3 < 0 || opcion3 > 2) {
+                                        System.out.println("-------------------------------------------------");
+                                        System.out.println("Opción incorrecta!");
+
+                                        continue;
+                                    }
+
+                                    switch (opcion3) {
+                                        case 1:
+                                            System.out.println("-------------------------------------------------");
+                                            System.out.println("Ha pulsado la opcion Ver DVDs");
+                                            System.out.println("-------------------------------------------------");
+                                            DVD.verDvd(DVDS);
+                                            do {
+
+                                                System.out.println("-------------------------------------------------");
+                                                System.out.println("Pulse 0 para salir");
+                                                in = new Scanner(System.in);
+                                                opcion3 = in.nextInt();
+                                                if (opcion3 != 0) {
+                                                    System.out.println("Pulse 0 para salir");
+                                                    continue;
+                                                }
+                                            } while (opcion3 != 0);
+                                            break;
+                                        case 2:
+                                            System.out.println("-------------------------------------------------");
+                                            System.out.println("Ha pulsado la opcion Ver libros");
+                                            System.out.println("-------------------------------------------------");
+                                            //funcion libros
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                } while (opcion3 != 0);
+
                         }
 
                     } while (opcion2 != 0);

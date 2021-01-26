@@ -62,11 +62,12 @@ public class Elemento {
         int numElementos = Utilidades.numElementos + 1;
         el.setId(numElementos);
         
+ 
         System.out.println("Socio registrado correctamente con el id " + numElementos);
         return el;
     
     }
-
+    
     @Override
     public String toString() {
         return "Elemento{" + "id=" + id + ", prestamos=" + prestamos + ", genero=" + genero + '}';

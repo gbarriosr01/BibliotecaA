@@ -75,7 +75,7 @@ public class Socio {
         return direccion;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -128,13 +128,23 @@ public class Socio {
         return ret;
     }
 
-    public Socio nuevoSocio() {
+    public static long nextIdSocio() {
+        long ret = 0;
+        for (int i = 0; i < Utilidades.SOCIOS.length; i++) {
+            if (Utilidades.SOCIOS[i].id > ret) {
+                ret = Utilidades.SOCIOS[i].id;
+            }
+        }
+        return ret + 1;
+    }
+
+    public static Socio nuevoSocio() {
 
         Socio s1 = new Socio();
         Scanner in = new Scanner(System.in);
 
-        int numSocios = Utilidades.numSocios + 1;
-        s1.setId(numSocios);
+        long idSoc = nextIdSocio();
+        s1.setId(idSoc);
 
         System.out.println("Inserte su nombre: ");
         String nombre = in.nextLine();
@@ -152,7 +162,7 @@ public class Socio {
         String direccion = in.nextLine();
         s1.setDireccion(direccion);
 
-        System.out.println("Socio registrado correctamente con el id " + numSocios);
+        System.out.println("Socio registrado correctamente con el id " + idSoc);
         return s1;
     }
 
@@ -277,7 +287,7 @@ public class Socio {
         }
         return ret;
     }
-    
+
     public static ArrayList<Socio> buscarSocioPorTelefono(String telSocio, ArrayList<Socio> socios) {
         ArrayList<Socio> ret = new ArrayList<Socio>();
         for (Socio e : socios) {
@@ -292,7 +302,7 @@ public class Socio {
         }
         return ret;
     }
-    
+
     public static ArrayList<Socio> buscarSocioPorNIF(String nifSocio, ArrayList<Socio> socios) {
         ArrayList<Socio> ret = new ArrayList<Socio>();
         for (Socio e : socios) {
@@ -308,7 +318,6 @@ public class Socio {
         return ret;
     }
 
-    
     public void verDatosSocioCompleto() {
         System.out.println("-----------");
         System.out.println("INFORME completo de SOCIO de ID: " + this.getId());

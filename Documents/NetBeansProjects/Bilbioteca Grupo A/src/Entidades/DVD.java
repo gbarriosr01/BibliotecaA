@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -62,6 +63,16 @@ public class DVD extends Elemento{
         this.visionado = visionado;
     }
     
+    public static ArrayList<DVD> convertirDVDS(DVD[] array) {
+        ArrayList<DVD> ret = new ArrayList<DVD>();
+        for (DVD s : array) {
+            ret.add(s);
+        }
+
+        return ret;
+    }
+
+    
     public static DVD nuevoDVD() {
         DVD d = new DVD();
         Scanner teclado = new Scanner(System.in);
@@ -72,7 +83,13 @@ public class DVD extends Elemento{
         return d;
     
     }
+    public static void verDvd(ArrayList<DVD> DVDS) {
+        System.out.println("DVD de la biblioteca:");
+        for (DVD s : DVDS) {
+            System.out.println(s.getId() + ".- " + (s.getTitulo()));
+        }
 
+    }
     @Override
     public String toString() {
         return "DVD{" + "titulo=" + titulo + ", visionado=" + visionado + '}';
