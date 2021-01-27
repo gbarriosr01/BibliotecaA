@@ -173,7 +173,88 @@ public class Libro extends Elemento {
 
     }
     
-    
+    public static void buscarLibros(ArrayList<Libro> Libros) {
+        Libro buscado;
+        ArrayList<Libro> encontrados;
+        Scanner in;
+        int opcion = -1;
+
+        do {
+            buscado = null;
+            encontrados = new ArrayList<Libro>();
+            in = new Scanner(System.in, "ISO-8859-1");
+            System.out.println("Pulse 1 para buscar Libro por Nombre.");
+            System.out.println("Pulse 2 para buscar Libro por Autor.");
+            System.out.println("Pulse 3 para buscar Libro por Editorial.");
+            System.out.println("Pulse 0 para VOLVER");
+            opcion = in.nextInt();
+            if (opcion < 0 || opcion > 3) {
+                System.out.println("Opción incorrecta.");
+                continue;
+            }
+            in = new Scanner(System.in, "ISO-8859-1");
+            switch (opcion) {
+                case 0:
+                    break;
+                case 1:
+                    System.out.println("-------------------------------------------------");
+                    System.out.println("Introduzca el Nombre del Libro a buscar:");
+                    String NombreLib = in.nextLine();
+                    encontrados = Libro.buscarLibrosPorNombre(NombreLib, Libros);
+                    if (encontrados.size() > 0) {
+                        System.out.println("-------------------------------------------------");
+                        System.out.println("Hay coincidencias: ");
+                        for (Libro lib : encontrados) {
+                            System.out.println("-------------------------------------------------");
+                            System.out.println("<" + lib.getNombre()+">  escrito por " + lib.getAutor()+ " editado por " + lib.getEditorial());
+                            System.out.println("-------------------------------------------------");
+                        }
+                    } else {
+                        System.out.println("-------------------------------------------------");
+                        System.out.println("Libro  " + NombreLib + "  NO ENCONTRADO.");
+                    }
+                    break;
+                     case 2:
+                    System.out.println("-------------------------------------------------");
+                    System.out.println("Introduzca el Autor del Libro a buscar:");
+                    String AutorLib = in.nextLine();
+                    encontrados = Libro.buscarLibrosPorAutor(AutorLib, Libros);
+                    if (encontrados.size() > 0) {
+                        System.out.println("-------------------------------------------------");
+                        System.out.println("Hay coincidencias: ");
+                        for (Libro lib : encontrados) {
+                            System.out.println("-------------------------------------------------");
+                            System.out.println("<" + lib.getNombre()+">  escrito por " + lib.getAutor()+ " editado por " + lib.getEditorial());
+                            System.out.println("-------------------------------------------------");
+                        }
+                    } else {
+                        System.out.println("-------------------------------------------------");
+                        System.out.println("Autor  " + AutorLib + "  NO ENCONTRADO.");
+                    }
+                    break;
+                     case 3:
+                    System.out.println("-------------------------------------------------");
+                    System.out.println("Introduzca la Editorial del Libro a buscar:");
+                    String EditorialLib = in.nextLine();
+                    encontrados = Libro.buscarLibrosPorEditorial(EditorialLib, Libros);
+                    if (encontrados.size() > 0) {
+                        System.out.println("-------------------------------------------------");
+                        System.out.println("Hay coincidencias: ");
+                        for (Libro lib : encontrados) {
+                            System.out.println("-------------------------------------------------");
+                            System.out.println("<" + lib.getNombre()+">  escrito por " + lib.getAutor()+ " editado por " + lib.getEditorial());
+                            System.out.println("-------------------------------------------------");
+                        }
+                    } else {
+                        System.out.println("-------------------------------------------------");
+                        System.out.println("Editorial " + EditorialLib + "  NO ENCONTRADO.");
+                    }
+                    break;
+                default:
+                    break;
+            }
+        } while (opcion != 0);
+    }
     
      public static ArrayList<Libro> buscarLibrosPorNombre(String nombreLibro, ArrayList<Libro> Libros) {
         ArrayList<Libro> ret = new ArrayList<Libro>();
