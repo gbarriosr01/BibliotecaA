@@ -578,7 +578,7 @@ public class BilbiotecaGrupoA {
                                             System.out.println("Ha pulsado la opcion Buscar Concurso");
                                             System.out.println("-------------------------------------------------");
                                             do {
-                                                // Funcion BuscarConcurso
+                                                Concurso.buscarConcurso(concursos);
 
                                                 do {
                                                     System.out.println("-------------------------------------------------");
@@ -599,7 +599,7 @@ public class BilbiotecaGrupoA {
                                             System.out.println("Ha pulsado la opcion Buscar Curso");
                                             System.out.println("-------------------------------------------------");
                                             do {
-                                                // Funcion BuscarCurso
+                                                Curso.buscarCurso(cursos);
 
                                                 do {
                                                     System.out.println("-------------------------------------------------");
@@ -620,7 +620,7 @@ public class BilbiotecaGrupoA {
                                             System.out.println("Ha pulsado la opcion Buscar Lectura");
                                             System.out.println("-------------------------------------------------");
                                             do {
-                                                // Funcion BuscarLectura
+                                                Lectura.buscarLectura(lecturas);
 
                                                 do {
                                                     System.out.println("-------------------------------------------------");
@@ -641,7 +641,7 @@ public class BilbiotecaGrupoA {
                                             System.out.println("Ha pulsado la opcion Buscar Visionado");
                                             System.out.println("-------------------------------------------------");
                                             do {
-                                                // Funcion BuscarVisionado
+                                                Visionado.buscarVisionado(visionados);
 
                                                 do {
                                                     System.out.println("-------------------------------------------------");

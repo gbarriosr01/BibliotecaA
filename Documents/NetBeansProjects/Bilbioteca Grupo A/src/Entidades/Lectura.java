@@ -99,6 +99,61 @@ public class Lectura extends Evento{
             System.out.println(c.getId() + ".- " + (c.isLeido() + " - " + (c.getModelo())));
         }
     }
+    
+    public static void buscarLectura(ArrayList<Lectura> lecturas) {
+        Lectura buscado;
+        ArrayList<Lectura> encontrados;
+        Scanner in;
+        int opcion = -1;
+        do {
+            buscado = null;
+            encontrados = new ArrayList<Lectura>();
+            in = new Scanner(System.in, "ISO-8859-1");
+            System.out.println("Pulse 1 para buscar Lectura por MODELO de libro.");
+            System.out.println("Pulse 0 para VOLVER.");
+            opcion = in.nextInt();
+            if (opcion < 0 || opcion > 1) {
+                System.out.println("Opción incorrecta.");
+                continue;
+            }
+            in = new Scanner(System.in, "ISO-8859-1");
+            switch (opcion) {
+                case 0:
+                    break;
+                case 1:
+                    System.out.println("Introduzca el Modelo del Concurso a encontrar:");
+                    String nomModelo = in.nextLine();
+                    encontrados = Lectura.buscarLecturaPorModelo(nomModelo, lecturas);
+                    if (encontrados.size() > 0) {
+                        System.out.println("Hay coincidencias: ");
+                        for (Lectura e : encontrados) {
+                            System.out.println(e.getModelo());
+                        }
+                    } else {
+                        System.out.println("Lectura con nombre=" + nomModelo + " NO ENCONTRADO.");
+                    }
+                    System.out.println("");
+                    break;
+               
+            }
+
+        } while (opcion != 0);
+    }
+    
+     public static ArrayList<Lectura> buscarLecturaPorModelo(String nomModelo, ArrayList<Lectura> lecturas) {
+        ArrayList<Lectura> ret = new ArrayList<Lectura>();
+        for (Lectura e : lecturas) {
+            if (Utilidades.removeDiacriticalMarks(e.getModelo().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(nomModelo.toLowerCase()))) {
+                ret.add(e);
+            }
+            if (e.getModelo().toLowerCase().contains(nomModelo.toLowerCase())) {
+                if (!ret.contains(e)) {
+                    ret.add(e);
+                }
+            }
+        }
+        return ret;
+    }
 
     @Override
     public String toString() {

@@ -98,6 +98,93 @@ public class Curso extends Evento{
             System.out.println(c.getId() + ".- " + (c.getDuracion() + " - " + (c.getAula())));
         }
     }
+    
+    public static void buscarCurso(ArrayList<Curso> cursos) {
+        Curso buscado;
+        ArrayList<Curso> encontrados;
+        Scanner in;
+        int opcion = -1;
+        do {
+            buscado = null;
+            encontrados = new ArrayList<Curso>();
+            in = new Scanner(System.in, "ISO-8859-1");
+            System.out.println("Pulse 1 para buscar curso por AULA.");
+            System.out.println("Pulse 2 para buscar curso por DURACION.");
+            System.out.println("Pulse 0 para VOLVER.");
+            opcion = in.nextInt();
+            if (opcion < 0 || opcion > 2) {
+                System.out.println("Opción incorrecta.");
+                continue;
+            }
+            in = new Scanner(System.in, "ISO-8859-1");
+            switch (opcion) {
+                case 0:
+                    break;
+                case 1:
+                    System.out.println("Introduzca el AULA del Curso a encontrar:");
+                    String nomAula = in.nextLine();
+                    encontrados = Curso.buscarCursoPorAula(nomAula, cursos);
+                    if (encontrados.size() > 0) {
+                        System.out.println("Hay coincidencias: ");
+                        for (Curso e : encontrados) {
+                            System.out.println(e.getAula() + ". " + e.getDuracion());
+                        }
+                    } else {
+                        System.out.println("Curso de aula=" + nomAula + " NO ENCONTRADO.");
+                    }
+                    System.out.println("");
+                    break;
+                case 2:
+                    System.out.println("Introduzca la DURACUON del Curso a encontrar:");
+                    String nomCurs = in.nextLine();
+                    encontrados = Curso.buscarCursoPorDuracion(nomCurs, cursos);
+                    if (encontrados.size() > 0) {
+                        System.out.println("Hay coincidencias: ");
+                        for (Curso e : encontrados) {
+                            System.out.println(e.getAula() + ". " + e.getDuracion());
+                        }
+                    } else {
+                        System.out.println("Socio con nombre=" + nomCurs + " NO ENCONTRADO.");
+                    }
+                    System.out.println("");
+                    break;
+
+                default:
+                    break;
+            }
+
+        } while (opcion != 0);
+    } 
+    
+      public static ArrayList<Curso> buscarCursoPorAula(String nomAula, ArrayList<Curso> cursos) {
+        ArrayList<Curso> ret = new ArrayList<Curso>();
+        for (Curso e : cursos) {
+            if (Utilidades.removeDiacriticalMarks(e.getAula().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(nomAula.toLowerCase()))) {
+                ret.add(e);
+            }
+            if (e.getAula().toLowerCase().contains(nomAula.toLowerCase())) {
+                if (!ret.contains(e)) {
+                    ret.add(e);
+                }
+            }
+        }
+        return ret;
+    }
+    
+     public static ArrayList<Curso> buscarCursoPorDuracion(String duracion, ArrayList<Curso> cursos) {
+        ArrayList<Curso> ret = new ArrayList<Curso>();
+        for (Curso e : cursos) {
+            if (Utilidades.removeDiacriticalMarks(e.getDuracion().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(duracion.toLowerCase()))) {
+                ret.add(e);
+            }
+            if (e.getAula().toLowerCase().contains(duracion.toLowerCase())) {
+                if (!ret.contains(e)) {
+                    ret.add(e);
+                }
+            }
+        }
+        return ret;
+    }
 
     @Override
     public String toString() {

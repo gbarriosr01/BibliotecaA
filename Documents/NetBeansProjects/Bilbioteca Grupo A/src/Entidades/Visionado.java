@@ -77,6 +77,61 @@ public class Visionado extends Evento{
             System.out.println(c.getId() + ".- " + (c.getAula()));
         }
     }
+    
+    public static void buscarVisionado(ArrayList<Visionado> visionados) {
+        Visionado buscado;
+        ArrayList<Visionado> encontrados;
+        Scanner in;
+        int opcion = -1;
+        do {
+            buscado = null;
+            encontrados = new ArrayList<Visionado>();
+            in = new Scanner(System.in, "ISO-8859-1");
+            System.out.println("Pulse 1 para buscar visionado por AULA.");
+            System.out.println("Pulse 0 para VOLVER.");
+            opcion = in.nextInt();
+            if (opcion < 0 || opcion > 1) {
+                System.out.println("Opción incorrecta.");
+                continue;
+            }
+            in = new Scanner(System.in, "ISO-8859-1");
+            switch (opcion) {
+                case 0:
+                    break;
+                case 1:
+                    System.out.println("Introduzca el AULA del Visionado a encontrar:");
+                    String nomAula = in.nextLine();
+                    encontrados = Visionado.buscarVisionadoPorAula(nomAula, visionados);
+                    if (encontrados.size() > 0) {
+                        System.out.println("Hay coincidencias: ");
+                        for (Visionado e : encontrados) {
+                            System.out.println(e.getAula());
+                        }
+                    } else {
+                        System.out.println("Socio con nombre=" + nomAula + " NO ENCONTRADO.");
+                    }
+                    System.out.println("");
+                    break;
+             
+            }
+
+        } while (opcion != 0);
+    }
+    
+     public static ArrayList<Visionado> buscarVisionadoPorAula(String aula, ArrayList<Visionado> visionados) {
+        ArrayList<Visionado> ret = new ArrayList<Visionado>();
+        for (Visionado e : visionados) {
+            if (Utilidades.removeDiacriticalMarks(e.getAula().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(aula.toLowerCase()))) {
+                ret.add(e);
+            }
+            if (e.getAula().toLowerCase().contains(aula.toLowerCase())) {
+                if (!ret.contains(e)) {
+                    ret.add(e);
+                }
+            }
+        }
+        return ret;
+    }
 
     @Override
     public String toString() {
