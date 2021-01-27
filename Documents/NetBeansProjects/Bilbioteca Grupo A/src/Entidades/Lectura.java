@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -27,13 +28,13 @@ public class Lectura extends Evento{
 
     public Lectura() {
         super();
-        this.leido = leido = false;
-        this.modelo = modelo = null;
+        this.leido = false;
+        this.modelo = null;
     }
     
     public Lectura(boolean leido, String modelo) {
-        this.leido = leido = false;
-        this.modelo = modelo = null;
+        this.leido = false;
+        this.modelo = modelo;
     }
     
     public Lectura(Lectura l1) {
@@ -43,8 +44,8 @@ public class Lectura extends Evento{
     
     public Lectura(boolean leido, String modelo, long id, String nombre, Date fechayhora, long idPenalizacion) {
         super(id, nombre, fechayhora, idPenalizacion);
-        this.leido = leido = false;
-        this.modelo = modelo = null;
+        this.leido = false;
+        this.modelo = modelo;
     }
 
     public Lectura(boolean leido, String modelo, Evento ev1) {
@@ -80,6 +81,23 @@ public class Lectura extends Evento{
         String modelo = in.nextLine();
         le1.setModelo(modelo);
         return le1;
+    }
+    
+    public static ArrayList<Lectura> convertirLectura(Lectura[] array) {
+        ArrayList<Lectura> ret = new ArrayList<Lectura>();
+        for (Lectura s : array) {
+            ret.add(s);
+       
+        }
+        return ret;
+    }
+
+
+    public static void verLectura(ArrayList<Lectura> lecturas) {
+        System.out.println("Lecturas de la biblioteca:");
+        for (Lectura c : lecturas) {
+            System.out.println(c.getId() + ".- " + (c.isLeido() + " - " + (c.getModelo())));
+        }
     }
 
     @Override

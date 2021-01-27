@@ -150,7 +150,7 @@ public class Evento {
         
         return ev1;
     }
-    
+        
     public void mostrarMenuEventos(){
         System.out.println("1.Concurso");
         System.out.println("2.Curso");

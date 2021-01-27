@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -79,6 +80,23 @@ public class Curso extends Evento{
         String aula = in.nextLine();
         cu1.setAula(aula);
         return cu1;
+    }
+    
+    public static ArrayList<Curso> convertirCurso(Curso[] array) {
+        ArrayList<Curso> ret = new ArrayList<Curso>();
+        for (Curso s : array) {
+            ret.add(s);
+       
+        }
+        return ret;
+    }
+
+
+    public static void verCurso(ArrayList<Curso> cursos) {
+        System.out.println("Cursos de la biblioteca:");
+        for (Curso c : cursos) {
+            System.out.println(c.getId() + ".- " + (c.getDuracion() + " - " + (c.getAula())));
+        }
     }
 
     @Override

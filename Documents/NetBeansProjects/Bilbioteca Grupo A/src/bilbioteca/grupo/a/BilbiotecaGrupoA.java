@@ -24,6 +24,10 @@ public class BilbiotecaGrupoA {
         ArrayList<Socio> socios = Socio.convertirSocios(Utilidades.SOCIOS);
         ArrayList<DVD> DVDS = DVD.convertirDVDS(Utilidades.DVDS);
         ArrayList<Libro> libros = Libro.convertirLibros(Utilidades.LIBROS);
+        ArrayList<Concurso> concursos = Concurso.convertirConcurso(Utilidades.CONCURSOS);
+        ArrayList<Curso> cursos = Curso.convertirCurso(Utilidades.CURSOS);
+        ArrayList<Lectura> lecturas = Lectura.convertirLectura(Utilidades.LECTURAS);
+        ArrayList<Visionado> visionados = Visionado.convertirVisionado(Utilidades.VISIONADOS);
         //MENU PRINCIPAL DE AQUI HASTA ABAJO        
         int opcion = -1;
         int opcion2 = -1;
@@ -366,6 +370,7 @@ public class BilbiotecaGrupoA {
                                             System.out.println("Ha pulsado la opcion Ver Concursos");
                                             System.out.println("-------------------------------------------------");
                                             //Funcion VerConcursos
+                                            Concurso.verConcurso(concursos);
                                             do {
 
                                                 System.out.println("-------------------------------------------------");
@@ -383,6 +388,7 @@ public class BilbiotecaGrupoA {
                                             System.out.println("Ha pulsado la opcion Ver Cursos");
                                             System.out.println("-------------------------------------------------");
                                             //Funcion Ver Cursos
+                                            Curso.verCurso(cursos);
                                             do {
 
                                                 System.out.println("-------------------------------------------------");
@@ -400,6 +406,7 @@ public class BilbiotecaGrupoA {
                                             System.out.println("Ha pulsado la opcion Ver Lecturas");
                                             System.out.println("-------------------------------------------------");
                                             //Funcion VerLecturas
+                                            Lectura.verLectura(lecturas);
                                             do {
 
                                                 System.out.println("-------------------------------------------------");
@@ -417,6 +424,7 @@ public class BilbiotecaGrupoA {
                                             System.out.println("Ha pulsado la opcion Ver Visionados");
                                             System.out.println("-------------------------------------------------");
                                             //Funcion VerVisionados
+                                            Visionado.verVisionado(visionados);
                                             do {
 
                                                 System.out.println("-------------------------------------------------");

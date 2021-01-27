@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -22,11 +23,11 @@ public class Visionado extends Evento{
 
     public Visionado() {
         super();
-        this.aula = aula = null;
+        this.aula = aula;
     }
 
     public Visionado(String aula) {
-        this.aula = aula = null;
+        this.aula = aula;
     }
     public Visionado(Visionado v1) {
         this.aula = v1.aula;
@@ -34,7 +35,7 @@ public class Visionado extends Evento{
     
     public Visionado(String aula, long id, String nombre, Date fechayhora, long idPenalizacion) {
         super(id, nombre, fechayhora, idPenalizacion);
-        this.aula = aula = null;
+        this.aula = aula;
     }
 
     public Visionado(String aula, Evento ev1) {
@@ -58,6 +59,23 @@ public class Visionado extends Evento{
         v1.setAula(aula);
         
         return v1;
+    }
+    
+    public static ArrayList<Visionado> convertirVisionado(Visionado[] array) {
+        ArrayList<Visionado> ret = new ArrayList<Visionado>();
+        for (Visionado s : array) {
+            ret.add(s);
+       
+        }
+        return ret;
+    }
+
+
+    public static void verVisionado(ArrayList<Visionado> visionados) {
+        System.out.println("Visionados de la biblioteca:");
+        for (Visionado c : visionados) {
+            System.out.println(c.getId() + ".- " + (c.getAula()));
+        }
     }
 
     @Override
