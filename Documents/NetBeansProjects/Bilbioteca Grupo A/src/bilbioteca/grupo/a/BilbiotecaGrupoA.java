@@ -339,24 +339,329 @@ public class BilbiotecaGrupoA {
                             continue;
                         }
                         switch (opcion2) {
-                            
+
                             case 1:
                                 System.out.println("-------------------------------------------------");
                                 System.out.println("Ha pulsado la opcion Ver Evento");
-                               // Opcion Ver Evento
+                                // Opcion Ver Evento
+
+                                do {
+                                    System.out.println("-------------------------------------------------");
+                                    System.out.println("1.-Ver Concursos");
+                                    System.out.println("2.-Ver Cursos");
+                                    System.out.println("3.-Ver Lecturas");
+                                    System.out.println("4.-Ver Visionados");
+                                    System.out.println("0.-Volver");
+                                    System.out.println("-------------------------------------------------");
+                                    opcion3 = in.nextInt();
+                                    if (opcion3 < 0 || opcion3 > 4) {
+                                        System.out.println("-------------------------------------------------");
+                                        System.out.println("Opción incorrecta!");
+
+                                        continue;
+                                    }
+                                    switch (opcion3) {
+                                        case 1:
+                                            System.out.println("-------------------------------------------------");
+                                            System.out.println("Ha pulsado la opcion Ver Concursos");
+                                            System.out.println("-------------------------------------------------");
+                                            //Funcion VerConcursos
+                                            do {
+
+                                                System.out.println("-------------------------------------------------");
+                                                System.out.println("Pulse 0 para salir");
+                                                in = new Scanner(System.in);
+                                                opcion3 = in.nextInt();
+                                                if (opcion3 != 0) {
+                                                    System.out.println("Pulse 0 para salir");
+                                                    continue;
+                                                }
+                                            } while (opcion3 != 0);
+                                            break;
+                                        case 2:
+                                            System.out.println("-------------------------------------------------");
+                                            System.out.println("Ha pulsado la opcion Ver Cursos");
+                                            System.out.println("-------------------------------------------------");
+                                            //Funcion Ver Cursos
+                                            do {
+
+                                                System.out.println("-------------------------------------------------");
+                                                System.out.println("Pulse 0 para salir");
+                                                in = new Scanner(System.in);
+                                                opcion3 = in.nextInt();
+                                                if (opcion3 != 0) {
+                                                    System.out.println("Pulse 0 para salir");
+                                                    continue;
+                                                }
+                                            } while (opcion3 != 0);
+                                            break;
+                                        case 3:
+                                            System.out.println("-------------------------------------------------");
+                                            System.out.println("Ha pulsado la opcion Ver Lecturas");
+                                            System.out.println("-------------------------------------------------");
+                                            //Funcion VerLecturas
+                                            do {
+
+                                                System.out.println("-------------------------------------------------");
+                                                System.out.println("Pulse 0 para salir");
+                                                in = new Scanner(System.in);
+                                                opcion3 = in.nextInt();
+                                                if (opcion3 != 0) {
+                                                    System.out.println("Pulse 0 para salir");
+                                                    continue;
+                                                }
+                                            } while (opcion3 != 0);
+                                            break;
+                                        case 4:
+                                            System.out.println("-------------------------------------------------");
+                                            System.out.println("Ha pulsado la opcion Ver Visionados");
+                                            System.out.println("-------------------------------------------------");
+                                            //Funcion VerVisionados
+                                            do {
+
+                                                System.out.println("-------------------------------------------------");
+                                                System.out.println("Pulse 0 para salir");
+                                                in = new Scanner(System.in);
+                                                opcion3 = in.nextInt();
+                                                if (opcion3 != 0) {
+                                                    System.out.println("Pulse 0 para salir");
+                                                    continue;
+                                                }
+                                            } while (opcion3 != 0);
+                                            break;
+
+                                        default:
+                                            break;
+                                    }
+                                } while (opcion3 != 0);
+                                break;
                             case 2:
                                 System.out.println("-------------------------------------------------");
                                 System.out.println("Ha pulsado la opcion Nuevo Evento");
-                               // Opcion Nuevo Evento
+                                // Opcion Nuevo Evento
+                                do {
+                                    System.out.println("-------------------------------------------------");
+                                    System.out.println("1.-Nuevo Concurso");
+                                    System.out.println("2.-Nuevo Curso");
+                                    System.out.println("3.-Nueva Lectura");
+                                    System.out.println("4.-Nuevo Visionado");
+                                    System.out.println("0.-Volver");
+                                    System.out.println("-------------------------------------------------");
+                                    opcion3 = in.nextInt();
+                                    if (opcion3 < 0 || opcion3 > 4) {
+                                        System.out.println("-------------------------------------------------");
+                                        System.out.println("Opción incorrecta!");
+
+                                        continue;
+                                    }
+                                    switch (opcion3) {
+                                        case 1:
+                                            System.out.println("-------------------------------------------------");
+                                            System.out.println("Ha pulsado la opcion Nuevo Concurso");
+                                            System.out.println("-------------------------------------------------");
+                                            do {
+                                                //Nuevo Concurso
+
+                                                do {
+                                                    System.out.println("-------------------------------------------------");
+                                                    System.out.println("Pulse 0 para salir");
+                                                    System.out.println("-------------------------------------------------");
+
+                                                    in = new Scanner(System.in);
+                                                    opcion3 = in.nextInt();
+                                                    if (opcion3 != 0) {
+                                                        continue;
+                                                    }
+                                                } while (opcion3 != 0);
+
+                                            } while (opcion3 != 0);
+                                            break;
+                                        case 2:
+                                            System.out.println("-------------------------------------------------");
+                                            System.out.println("Ha pulsado la opcion Nuevo Curso");
+                                            System.out.println("-------------------------------------------------");
+                                            do {
+                                                //Nuevo Curso
+
+                                                do {
+                                                    System.out.println("-------------------------------------------------");
+                                                    System.out.println("Pulse 0 para salir");
+                                                    System.out.println("-------------------------------------------------");
+
+                                                    in = new Scanner(System.in);
+                                                    opcion3 = in.nextInt();
+                                                    if (opcion3 != 0) {
+                                                        continue;
+                                                    }
+                                                } while (opcion3 != 0);
+
+                                            } while (opcion3 != 0);
+                                            break;
+                                        case 3:
+                                            System.out.println("-------------------------------------------------");
+                                            System.out.println("Ha pulsado la opcion Nueva Lectura");
+                                            System.out.println("-------------------------------------------------");
+                                            do {
+                                                //Nueva Lectura
+
+                                                do {
+                                                    System.out.println("-------------------------------------------------");
+                                                    System.out.println("Pulse 0 para salir");
+                                                    System.out.println("-------------------------------------------------");
+
+                                                    in = new Scanner(System.in);
+                                                    opcion3 = in.nextInt();
+                                                    if (opcion3 != 0) {
+                                                        continue;
+                                                    }
+                                                } while (opcion3 != 0);
+
+                                            } while (opcion3 != 0);
+                                            break;
+                                        case 4:
+                                            System.out.println("-------------------------------------------------");
+                                            System.out.println("Ha pulsado la opcion Nuevo Visionado");
+                                            System.out.println("-------------------------------------------------");
+                                            do {
+                                                //Nuevo visionado
+
+                                                do {
+                                                    System.out.println("-------------------------------------------------");
+                                                    System.out.println("Pulse 0 para salir");
+                                                    System.out.println("-------------------------------------------------");
+
+                                                    in = new Scanner(System.in);
+                                                    opcion3 = in.nextInt();
+                                                    if (opcion3 != 0) {
+                                                        continue;
+                                                    }
+                                                } while (opcion3 != 0);
+
+                                            } while (opcion3 != 0);
+                                            break;
+                                    }
+                                    while (opcion3 != 0);
+                                    break;
+                                } while (opcion3 != 0);
+                                break;
+
                             case 3:
                                 System.out.println("-------------------------------------------------");
                                 System.out.println("Ha pulsado la opcion Buscar Evento");
-                               // Opcion Buscar Evento
+                                // Opcion Buscar Evento
+                                do {
+                                    System.out.println("-------------------------------------------------");
+                                    System.out.println("1.- Buscar Concurso");
+                                    System.out.println("2.- Buscar Curso");
+                                    System.out.println("3.- Buscar Lectura");
+                                    System.out.println("4.- Buscar Visionado");
+                                    System.out.println("0.-Volver");
+                                    System.out.println("-------------------------------------------------");
+                                    opcion3 = in.nextInt();
+                                    if (opcion3 < 0 || opcion3 > 4) {
+                                        System.out.println("-------------------------------------------------");
+                                        System.out.println("Opción incorrecta!");
+
+                                        continue;
+                                    }
+                                    switch (opcion3) {
+                                        case 1:
+                                            System.out.println("-------------------------------------------------");
+                                            System.out.println("Ha pulsado la opcion Buscar Concurso");
+                                            System.out.println("-------------------------------------------------");
+                                            do {
+                                                // Funcion BuscarConcurso
+
+                                                do {
+                                                    System.out.println("-------------------------------------------------");
+                                                    System.out.println("Pulse 0 para salir");
+                                                    System.out.println("-------------------------------------------------");
+
+                                                    in = new Scanner(System.in);
+                                                    opcion3 = in.nextInt();
+                                                    if (opcion3 != 0) {
+                                                        continue;
+                                                    }
+                                                } while (opcion3 != 0);
+
+                                            } while (opcion3 != 0);
+                                            break;
+                                        case 2:
+                                            System.out.println("-------------------------------------------------");
+                                            System.out.println("Ha pulsado la opcion Buscar Curso");
+                                            System.out.println("-------------------------------------------------");
+                                            do {
+                                                // Funcion BuscarCurso
+
+                                                do {
+                                                    System.out.println("-------------------------------------------------");
+                                                    System.out.println("Pulse 0 para salir");
+                                                    System.out.println("-------------------------------------------------");
+
+                                                    in = new Scanner(System.in);
+                                                    opcion3 = in.nextInt();
+                                                    if (opcion3 != 0) {
+                                                        continue;
+                                                    }
+                                                } while (opcion3 != 0);
+
+                                            } while (opcion3 != 0);
+                                            break;
+                                        case 3:
+                                            System.out.println("-------------------------------------------------");
+                                            System.out.println("Ha pulsado la opcion Buscar Lectura");
+                                            System.out.println("-------------------------------------------------");
+                                            do {
+                                                // Funcion BuscarLectura
+
+                                                do {
+                                                    System.out.println("-------------------------------------------------");
+                                                    System.out.println("Pulse 0 para salir");
+                                                    System.out.println("-------------------------------------------------");
+
+                                                    in = new Scanner(System.in);
+                                                    opcion3 = in.nextInt();
+                                                    if (opcion3 != 0) {
+                                                        continue;
+                                                    }
+                                                } while (opcion3 != 0);
+
+                                            } while (opcion3 != 0);
+                                            break;
+                                        case 4:
+                                            System.out.println("-------------------------------------------------");
+                                            System.out.println("Ha pulsado la opcion Buscar Visionado");
+                                            System.out.println("-------------------------------------------------");
+                                            do {
+                                                // Funcion BuscarVisionado
+
+                                                do {
+                                                    System.out.println("-------------------------------------------------");
+                                                    System.out.println("Pulse 0 para salir");
+                                                    System.out.println("-------------------------------------------------");
+
+                                                    in = new Scanner(System.in);
+                                                    opcion3 = in.nextInt();
+                                                    if (opcion3 != 0) {
+                                                        continue;
+                                                    }
+                                                } while (opcion3 != 0);
+
+                                            } while (opcion3 != 0);
+                                            break;
+
+                                    }
+                                    while (opcion3 != 0);
+                                    break;
+                                } while (opcion3 != 0);
+                                break;
+
                             case 4:
                                 System.out.println("-------------------------------------------------");
                                 System.out.println("Ha pulsado la opcion Participar en Evento");
-                               // Opcion Participar en Evento
+                            // Opcion Participar en Evento
                         }
+
                     } while (opcion2 != 0);
 
                     break;
