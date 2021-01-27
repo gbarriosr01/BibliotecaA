@@ -131,7 +131,7 @@ public class DVD extends Elemento {
         do {
             buscado = null;
             encontrados = new ArrayList<DVD>();
-            in = new Scanner(System.in);
+            in = new Scanner(System.in, "ISO-8859-1");
             System.out.println("Pulse 1 para buscar DVD por Titulo.");
             System.out.println("Pulse 0 para VOLVER");
             opcion = in.nextInt();
@@ -139,7 +139,7 @@ public class DVD extends Elemento {
                 System.out.println("Opción incorrecta.");
                 continue;
             }
-            in = new Scanner(System.in);
+            in = new Scanner(System.in, "ISO-8859-1");
             switch (opcion) {
                 case 0:
                     break;
@@ -147,10 +147,16 @@ public class DVD extends Elemento {
                     System.out.println("-------------------------------------------------");
                     System.out.println("Introduzca el Titulo del DVD a buscar:");
                     String TituloDVD = in.nextLine();
-                    buscado = DVD.buscarDVDsPorTitulo(TituloDVD, DVDS);
-                    if (buscado != null) {
-                        System.out.println(buscado.getTitulo() + " ---> " + buscado.getClass().getSimpleName());
+                    encontrados = DVD.buscarDVDsPorTitulo(TituloDVD, DVDS);
+                    if (encontrados.size() > 0) {
+                        System.out.println("-------------------------------------------------");
+                        System.out.println("Hay coincidencias: ");
+                        for (DVD d : encontrados) {
+                            System.out.println("-------------------------------------------------");
+                            System.out.println(d.getTitulo());
+                        }
                     } else {
+                        System.out.println("-------------------------------------------------");
                         System.out.println("DVD  " + TituloDVD + "  NO ENCONTRADO.");
                     }
                     break;
@@ -160,15 +166,17 @@ public class DVD extends Elemento {
         } while (opcion != 0);
     }
 
-    public static DVD buscarDVDsPorTitulo(String tituloDVD, ArrayList<DVD> DVDS) {
-        DVD ret = null;
+    public static ArrayList<DVD> buscarDVDsPorTitulo(String tituloDVD, ArrayList<DVD> DVDS) {
+        ArrayList<DVD> ret = new ArrayList<DVD>();
         for (DVD d : DVDS) {
-            if (d.getTitulo() == tituloDVD) {
-
-                ret = d;
-                break;
+            if (Utilidades.removeDiacriticalMarks(d.getTitulo().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(tituloDVD.toLowerCase()))) {
+                ret.add(d);
             }
-
+            if (d.getTitulo().toLowerCase().contains(tituloDVD.toLowerCase())) {
+                if (!ret.contains(d)) {
+                    ret.add(d);
+                }
+            }
         }
         return ret;
     }

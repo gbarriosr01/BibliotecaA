@@ -175,39 +175,46 @@ public class Libro extends Elemento {
     
     
     
-     public static Libro buscarLibrosPorNombre(String nombreLibro, ArrayList<Libro> Libros) {
-        Libro ret = null;
+     public static ArrayList<Libro> buscarLibrosPorNombre(String nombreLibro, ArrayList<Libro> Libros) {
+        ArrayList<Libro> ret = new ArrayList<Libro>();
         for (Libro lib : Libros) {
-            if (lib.getNombre() == nombreLibro) {
-
-                ret = lib;
-                break;
+            if (Utilidades.removeDiacriticalMarks(lib.getNombre().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(nombreLibro.toLowerCase()))) {
+                ret.add(lib);
             }
-
+            if (lib.getNombre().toLowerCase().contains(nombreLibro.toLowerCase())) {
+                if (!ret.contains(lib)) {
+                    ret.add(lib);
+                }
+            }
         }
         return ret;
     }
-      public static Libro buscarLibrosPorAutor(String AutorLibro, ArrayList<Libro> Libros) {
-        Libro ret = null;
+      public static ArrayList<Libro> buscarLibrosPorAutor(String autorLibro, ArrayList<Libro> Libros) {
+        ArrayList<Libro> ret = new ArrayList<Libro>();
         for (Libro lib : Libros) {
-            if (lib.getAutor() == AutorLibro) {
-
-                ret = lib;
-                break;
+            if (Utilidades.removeDiacriticalMarks(lib.getAutor().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(autorLibro.toLowerCase()))) {
+                ret.add(lib);
             }
-
+            if (lib.getAutor().toLowerCase().contains(autorLibro.toLowerCase())) {
+                if (!ret.contains(lib)) {
+                    ret.add(lib);
+                }
+            }
         }
         return ret;
     }
-        public static Libro buscarLibrosPorEditorial(String EditorialLibro, ArrayList<Libro> Libros) {
-        Libro ret = null;
+      
+        public static ArrayList<Libro> buscarLibrosPorEditorial(String editorialLibro, ArrayList<Libro> Libros) {
+        ArrayList<Libro> ret = new ArrayList<Libro>();
         for (Libro lib : Libros) {
-            if (lib.getEditorial() == EditorialLibro) {
-
-                ret = lib;
-                break;
+            if (Utilidades.removeDiacriticalMarks(lib.getEditorial().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(editorialLibro.toLowerCase()))) {
+                ret.add(lib);
             }
-
+            if (lib.getEditorial().toLowerCase().contains(editorialLibro.toLowerCase())) {
+                if (!ret.contains(lib)) {
+                    ret.add(lib);
+                }
+            }
         }
         return ret;
     }

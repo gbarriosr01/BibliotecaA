@@ -118,6 +118,7 @@ public class BilbiotecaGrupoA {
                 case 2: //se ha pulsado la opcion Gestion de elementos
                     System.out.println("-------------------------------------------------");
                     System.out.println("Ha pulsado la opcion Gestion de elementos");
+                    System.out.println("-------------------------------------------------");
 
                     do {
                         mostrarMenuGestionElemetos();
@@ -135,7 +136,7 @@ public class BilbiotecaGrupoA {
                                 do {
                                     System.out.println("-------------------------------------------------");
                                     System.out.println("1.-Ver DVDs");
-                                    System.out.println("2.-Ver libros");
+                                    System.out.println("2.-Ver Libros");
                                     System.out.println("0.-Volver");
                                     System.out.println("-------------------------------------------------");
                                     opcion3 = in.nextInt();
