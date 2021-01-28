@@ -50,10 +50,22 @@ public class Visionado extends Evento{
     public void setAula(String aula) {
         this.aula = aula;
     }
-    public Visionado nuevoVisionado(){
+ /*Esto esta editado*/
+    public static long nextIdVisionado() {
+        long ret = 0;
+        for (int i = 0; i < Utilidades.VISIONADOS.length; i++) {
+            if (Utilidades.VISIONADOS[i].id > ret) {
+                ret = Utilidades.VISIONADOS[i].id;
+            }
+        }
+        return ret + 1;
+    }
+/*Esto esta editado*/
+    public static Visionado nuevoVisionado(){
         Visionado v1 = new Visionado();
         Scanner in = new Scanner(System.in);
-        
+        long idEven = nextIdVisionado();
+        v1.setId(idEven);
         System.out.println("Introduzca los datos del aula en el que se va a ver el DVD");
         String aula = in.nextLine();
         v1.setAula(aula);

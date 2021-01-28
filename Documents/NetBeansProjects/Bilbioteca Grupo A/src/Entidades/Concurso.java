@@ -70,17 +70,30 @@ public class Concurso extends Evento {
     public void setPremio(String premio) {
         this.premio = premio;
     }
-
-    public Concurso nuevoConcurso() {
+/*Esto esta editado*/
+    public static long nextIdConcurso() {
+        long ret = 0;
+        for (int i = 0; i < Utilidades.CONCURSOS.length; i++) {
+            if (Utilidades.CONCURSOS[i].id > ret) {
+                ret = Utilidades.CONCURSOS[i].id;
+            }
+        }
+        return ret + 1;
+    }
+/*Esto esta editado*/
+    public static Concurso nuevoConcurso() {
         Concurso c1 = new Concurso();
         Scanner in = new Scanner(System.in);
 
+        long idEven = nextIdConcurso();
+        c1.setId(idEven);
         System.out.println("Introduzca el tipo de concurso");
         String tipo = in.nextLine();
         c1.setTipo(tipo);
         System.out.println("Introduzca el premio del concurso");
         String premio = in.nextLine();
         c1.setPremio(premio);
+        //Mas adelante mejorar al introducir validaciones
         return c1;
     }
 
@@ -88,11 +101,10 @@ public class Concurso extends Evento {
         ArrayList<Concurso> ret = new ArrayList<Concurso>();
         for (Concurso s : array) {
             ret.add(s);
-       
+
         }
         return ret;
     }
-
 
     public static void verConcurso(ArrayList<Concurso> concursos) {
         System.out.println("Concursos de la biblioteca:");
@@ -100,7 +112,7 @@ public class Concurso extends Evento {
             System.out.println(c.getId() + ".- " + (c.getTipo() + " - " + (c.getPremio())));
         }
     }
-    
+
     public static void buscarConcurso(ArrayList<Concurso> concursos) {
         Concurso buscado;
         ArrayList<Concurso> encontrados;
@@ -157,7 +169,7 @@ public class Concurso extends Evento {
 
         } while (opcion != 0);
     }
-    
+
     public static ArrayList<Concurso> buscarConcursoPorPremio(String nomPremio, ArrayList<Concurso> concursos) {
         ArrayList<Concurso> ret = new ArrayList<Concurso>();
         for (Concurso e : concursos) {
@@ -173,7 +185,7 @@ public class Concurso extends Evento {
         return ret;
     }
 
-      public static ArrayList<Concurso> buscarConcursoPorTipo(String nomTipo, ArrayList<Concurso> concursos) {
+    public static ArrayList<Concurso> buscarConcursoPorTipo(String nomTipo, ArrayList<Concurso> concursos) {
         ArrayList<Concurso> ret = new ArrayList<Concurso>();
         for (Concurso e : concursos) {
             if (Utilidades.removeDiacriticalMarks(e.getTipo().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(nomTipo.toLowerCase()))) {
@@ -188,7 +200,6 @@ public class Concurso extends Evento {
         return ret;
     }
 
-        
     @Override
     public String toString() {
         return "Concurso{" + "tipo=" + tipo + ", premio=" + premio + '}';

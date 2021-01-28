@@ -201,7 +201,7 @@ public class BilbiotecaGrupoA {
                                 do {
                                     System.out.println("-------------------------------------------------");
                                     System.out.println("1.-Nuevo DVDs");
-                                    System.out.println("2.-Nuevo libros");
+                                    System.out.println("2.-Nuevo Libros");
                                     System.out.println("0.-Volver");
                                     System.out.println("-------------------------------------------------");
                                     opcion3 = in.nextInt();
@@ -469,7 +469,8 @@ public class BilbiotecaGrupoA {
                                             System.out.println("-------------------------------------------------");
                                             do {
                                                 //Nuevo Concurso
-
+                                                Concurso nuevoConcurso = Concurso.nuevoConcurso();
+                                                concursos.add(nuevoConcurso);
                                                 do {
                                                     System.out.println("-------------------------------------------------");
                                                     System.out.println("Pulse 0 para salir");
@@ -490,7 +491,8 @@ public class BilbiotecaGrupoA {
                                             System.out.println("-------------------------------------------------");
                                             do {
                                                 //Nuevo Curso
-
+                                                Curso nuevoCurso = Curso.nuevoCurso();
+                                                cursos.add(nuevoCurso);
                                                 do {
                                                     System.out.println("-------------------------------------------------");
                                                     System.out.println("Pulse 0 para salir");
@@ -511,7 +513,8 @@ public class BilbiotecaGrupoA {
                                             System.out.println("-------------------------------------------------");
                                             do {
                                                 //Nueva Lectura
-
+                                                Lectura nuevoLectura = Lectura.nuevoLectura();
+                                                lecturas.add(nuevoLectura);
                                                 do {
                                                     System.out.println("-------------------------------------------------");
                                                     System.out.println("Pulse 0 para salir");
@@ -532,7 +535,8 @@ public class BilbiotecaGrupoA {
                                             System.out.println("-------------------------------------------------");
                                             do {
                                                 //Nuevo visionado
-
+                                                Visionado nuevoVisionado = Visionado.nuevoVisionado();
+                                                visionados.add(nuevoVisionado);
                                                 do {
                                                     System.out.println("-------------------------------------------------");
                                                     System.out.println("Pulse 0 para salir");

@@ -67,11 +67,25 @@ public class Curso extends Evento{
     public void setAula(String aula) {
         this.aula = aula;
     }
-    public Curso nuevoCurso(){
+    
+/*Esto esta editado*/
+    public static long nextIdCurso() {
+        long ret = 0;
+        for (int i = 0; i < Utilidades.CURSOS.length; i++) {
+            if (Utilidades.CURSOS[i].id > ret) {
+                ret = Utilidades.CURSOS[i].id;
+            }
+        }
+        return ret + 1;
+    }
+/*Esto esta editado*/
+    
+    public static Curso nuevoCurso(){
         Curso cu1 = new Curso();
         Scanner in = new Scanner(System.in);
         
-        
+        long idEven = nextIdCurso();
+        cu1.setId(idEven);
        
         System.out.println("Introduzca la duracion del curso");
         String duracion = in.nextLine();

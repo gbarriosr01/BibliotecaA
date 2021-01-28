@@ -70,13 +70,28 @@ public class Lectura extends Evento{
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
-    public Lectura nuevoLectura(){
+    /*Esto esta editado*/
+    public static long nextIdLectura() {
+        long ret = 0;
+        for (int i = 0; i < Utilidades.LECTURAS.length; i++) {
+            if (Utilidades.LECTURAS[i].id > ret) {
+                ret = Utilidades.LECTURAS[i].id;
+            }
+        }
+        return ret + 1;
+    }
+/*Esto esta editado*/
+    public static Lectura nuevoLectura(){
         Lectura le1 = new Lectura();
         Scanner in = new Scanner(System.in);
        
+        long idEven = nextIdLectura();
+        le1.setId(idEven);
+        
         System.out.println("Introduzca si se ha leido el libro");
         boolean leido = in.nextBoolean();
         le1.setLeido(leido);
+        in.nextLine();
         System.out.println("Introduzca el modelo del libro leido");
         String modelo = in.nextLine();
         le1.setModelo(modelo);
