@@ -164,7 +164,7 @@ public class Utilidades {
             do{
                    System.out.println("Dame el mes del año");
                      m = in.nextInt();
-                     if (m <=0 || m > 12); System.out.println("Valor incorrecto");
+                     if (m <=0 || m > 12) System.out.println("Valor incorrecto");
             } while(m <=0 || m > 12);
              int y = 0;
             do{

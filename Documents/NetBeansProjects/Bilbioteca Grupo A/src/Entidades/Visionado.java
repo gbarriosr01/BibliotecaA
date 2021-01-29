@@ -66,9 +66,15 @@ public class Visionado extends Evento{
         Scanner in = new Scanner(System.in);
         long idEven = nextIdVisionado();
         v1.setId(idEven);
+        System.out.println("Introduzca el nombre del evento");
+        String nombre = in.nextLine();
+        v1.setNombre(nombre);
         System.out.println("Introduzca los datos del aula en el que se va a ver el DVD");
         String aula = in.nextLine();
         v1.setAula(aula);
+        System.out.println("Introduzca la fecha y la hora del evento");
+        java.sql.Date fechayhora = Utilidades.Fecha.nuevaFecha().conversorFecha();
+        v1.setFechayhora(fechayhora);
         
         return v1;
     }

@@ -93,6 +93,12 @@ public class Curso extends Evento{
         System.out.println("Introduzca el aula en el que se realiza el curso");
         String aula = in.nextLine();
         cu1.setAula(aula);
+        System.out.println("Introduzca el nombre del evento");
+        String nombre = in.nextLine();
+        cu1.setNombre(nombre);
+        System.out.println("Introduzca la fecha y la hora del evento");
+        java.sql.Date fechayhora = Utilidades.Fecha.nuevaFecha().conversorFecha();
+        cu1.setFechayhora(fechayhora);
         return cu1;
     }
     

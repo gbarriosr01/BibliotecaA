@@ -110,12 +110,7 @@ public class Evento {
         ev1.setId(numEventos);
         
         
-        System.out.println("Introduzca el nombre del evento");
-        String nombre = in.nextLine();
-        ev1.setNombre(nombre);
-        System.out.println("Introduzca la fecha y la hora del evento");
-        java.sql.Date fechayhora = Utilidades.Fecha.nuevaFecha().conversorFecha();
-        ev1.setFechayhora(fechayhora);
+      
         
         int opcion=-1;
         

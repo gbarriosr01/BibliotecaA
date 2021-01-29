@@ -93,6 +93,12 @@ public class Concurso extends Evento {
         System.out.println("Introduzca el premio del concurso");
         String premio = in.nextLine();
         c1.setPremio(premio);
+        System.out.println("Introduzca el nombre del evento");
+        String nombre = in.nextLine();
+        c1.setNombre(nombre);
+        System.out.println("Introduzca la fecha y la hora del evento");
+        java.sql.Date fechayhora = Utilidades.Fecha.nuevaFecha().conversorFecha();
+        c1.setFechayhora(fechayhora);
         //Mas adelante mejorar al introducir validaciones
         return c1;
     }

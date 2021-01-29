@@ -28,8 +28,7 @@ public class Lectura extends Evento{
 
     public Lectura() {
         super();
-        this.leido = false;
-        this.modelo = null;
+       
     }
     
     public Lectura(boolean leido, String modelo) {
@@ -88,13 +87,19 @@ public class Lectura extends Evento{
         long idEven = nextIdLectura();
         le1.setId(idEven);
         
-        System.out.println("Introduzca si se ha leido el libro");
+        System.out.println("Introduzca si se ha leido el libro(true/false)");
         boolean leido = in.nextBoolean();
         le1.setLeido(leido);
         in.nextLine();
         System.out.println("Introduzca el modelo del libro leido");
         String modelo = in.nextLine();
         le1.setModelo(modelo);
+        System.out.println("Introduzca el nombre del evento");
+        String nombre = in.nextLine();
+        le1.setNombre(nombre);
+        System.out.println("Introduzca la fecha y la hora del evento");
+        java.sql.Date fechayhora = Utilidades.Fecha.nuevaFecha().conversorFecha();
+        le1.setFechayhora(fechayhora);
         return le1;
     }
     
