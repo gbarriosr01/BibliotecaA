@@ -30,14 +30,17 @@ public class Concurso extends Evento {
 
     public Concurso() {
         super();
-
     }
 
     public Concurso(String tipo, String premio) {
         this.tipo = tipo;
         this.premio = premio;
     }
-
+    public Concurso(Evento e, String tipo, String premio) {
+        super(e);
+        this.tipo = tipo;
+        this.premio = premio;
+    }
     public Concurso(Concurso co1) {
         this.tipo = co1.tipo;
         this.premio = co1.premio;
@@ -82,6 +85,7 @@ public class Concurso extends Evento {
     }
 /*Esto esta editado*/
     public static Concurso nuevoConcurso() {
+        //Evento e = Evento.nuevoEvento();
         Concurso c1 = new Concurso();
         Scanner in = new Scanner(System.in);
 

@@ -13,12 +13,13 @@ import java.util.Scanner;
  *
  * @author DAM102
  */
-public class Visionado extends Evento{
+public class Visionado extends Evento {
+
     /*
     Valores validos: Caracteres alfanumericos.
     Valores invalidos: Caracteres especiales.
     Otras restricciones: Longitud max 20 caracteres.
-    */
+     */
     private String aula;
 
     public Visionado() {
@@ -29,10 +30,16 @@ public class Visionado extends Evento{
     public Visionado(String aula) {
         this.aula = aula;
     }
+
+    public Visionado(Evento e, String aula) {
+        super(e);
+        this.aula = aula;
+    }
+
     public Visionado(Visionado v1) {
         this.aula = v1.aula;
-    }    
-    
+    }
+
     public Visionado(String aula, long id, String nombre, Date fechayhora, long idPenalizacion) {
         super(id, nombre, fechayhora, idPenalizacion);
         this.aula = aula;
@@ -42,7 +49,7 @@ public class Visionado extends Evento{
         super(ev1);
         this.aula = aula;
     }
-    
+
     public String getAula() {
         return aula;
     }
@@ -50,7 +57,8 @@ public class Visionado extends Evento{
     public void setAula(String aula) {
         this.aula = aula;
     }
- /*Esto esta editado*/
+
+    /*Esto esta editado*/
     public static long nextIdVisionado() {
         long ret = 0;
         for (int i = 0; i < Utilidades.VISIONADOS.length; i++) {
@@ -60,8 +68,9 @@ public class Visionado extends Evento{
         }
         return ret + 1;
     }
-/*Esto esta editado*/
-    public static Visionado nuevoVisionado(){
+
+    /*Esto esta editado*/
+    public static Visionado nuevoVisionado() {
         Visionado v1 = new Visionado();
         Scanner in = new Scanner(System.in);
         long idEven = nextIdVisionado();
@@ -75,19 +84,18 @@ public class Visionado extends Evento{
         System.out.println("Introduzca la fecha y la hora del evento");
         java.sql.Date fechayhora = Utilidades.Fecha.nuevaFecha().conversorFecha();
         v1.setFechayhora(fechayhora);
-        
+
         return v1;
     }
-    
+
     public static ArrayList<Visionado> convertirVisionado(Visionado[] array) {
         ArrayList<Visionado> ret = new ArrayList<Visionado>();
         for (Visionado s : array) {
             ret.add(s);
-       
+
         }
         return ret;
     }
-
 
     public static void verVisionado(ArrayList<Visionado> visionados) {
         System.out.println("Visionados de la biblioteca:");
@@ -95,7 +103,7 @@ public class Visionado extends Evento{
             System.out.println(c.getId() + ".- " + (c.getAula()));
         }
     }
-    
+
     public static void buscarVisionado(ArrayList<Visionado> visionados) {
         Visionado buscado;
         ArrayList<Visionado> encontrados;
@@ -130,13 +138,13 @@ public class Visionado extends Evento{
                     }
                     System.out.println("");
                     break;
-             
+
             }
 
         } while (opcion != 0);
     }
-    
-     public static ArrayList<Visionado> buscarVisionadoPorAula(String aula, ArrayList<Visionado> visionados) {
+
+    public static ArrayList<Visionado> buscarVisionadoPorAula(String aula, ArrayList<Visionado> visionados) {
         ArrayList<Visionado> ret = new ArrayList<Visionado>();
         for (Visionado e : visionados) {
             if (Utilidades.removeDiacriticalMarks(e.getAula().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(aula.toLowerCase()))) {

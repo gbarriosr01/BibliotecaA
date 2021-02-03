@@ -13,33 +13,41 @@ import java.util.Scanner;
  *
  * @author DAM102
  */
-public class Curso extends Evento{
+public class Curso extends Evento {
+
     /*
     Valores validos: Caracteres alfanumericos.
     Valores invalidos: Caracteres especiales.
     Otras restricciones: Longitud max 15 caracteres.
-    */
+     */
     private String duracion;
     /*
     Valores validos: Caracteres alfanumericos.
     Valores invalidos: Caracteres especiales.
     Otras restricciones: Longitud max 20 caracteres.
-    */
+     */
     private String aula;
 
     public Curso() {
         super();
-       
     }
 
     public Curso(String duracion, String aula) {
         this.duracion = duracion;
         this.aula = aula;
     }
+
+    public Curso(Evento e, String duracion, String aula) {
+        super(e);
+        this.duracion = duracion;
+        this.aula = aula;
+    }
+
     public Curso(Curso cu1) {
         this.duracion = cu1.duracion;
         this.aula = cu1.aula;
     }
+
     public Curso(String duracion, String aula, long id, String nombre, Date fechayhora, long idPenalizacion) {
         super(id, nombre, fechayhora, idPenalizacion);
         this.duracion = duracion = null;
@@ -67,8 +75,8 @@ public class Curso extends Evento{
     public void setAula(String aula) {
         this.aula = aula;
     }
-    
-/*Esto esta editado*/
+
+    /*Esto esta editado*/
     public static long nextIdCurso() {
         long ret = 0;
         for (int i = 0; i < Utilidades.CURSOS.length; i++) {
@@ -78,15 +86,16 @@ public class Curso extends Evento{
         }
         return ret + 1;
     }
-/*Esto esta editado*/
-    
-    public static Curso nuevoCurso(){
+
+    /*Esto esta editado*/
+
+    public static Curso nuevoCurso() {
         Curso cu1 = new Curso();
         Scanner in = new Scanner(System.in);
-        
+
         long idEven = nextIdCurso();
         cu1.setId(idEven);
-       
+
         System.out.println("Introduzca la duracion del curso");
         String duracion = in.nextLine();
         cu1.setDuracion(duracion);
@@ -101,16 +110,15 @@ public class Curso extends Evento{
         cu1.setFechayhora(fechayhora);
         return cu1;
     }
-    
+
     public static ArrayList<Curso> convertirCurso(Curso[] array) {
         ArrayList<Curso> ret = new ArrayList<Curso>();
         for (Curso s : array) {
             ret.add(s);
-       
+
         }
         return ret;
     }
-
 
     public static void verCurso(ArrayList<Curso> cursos) {
         System.out.println("Cursos de la biblioteca:");
@@ -118,7 +126,7 @@ public class Curso extends Evento{
             System.out.println(c.getId() + ".- " + (c.getDuracion() + " - " + (c.getAula())));
         }
     }
-    
+
     public static void buscarCurso(ArrayList<Curso> cursos) {
         Curso buscado;
         ArrayList<Curso> encontrados;
@@ -174,9 +182,9 @@ public class Curso extends Evento{
             }
 
         } while (opcion != 0);
-    } 
-    
-      public static ArrayList<Curso> buscarCursoPorAula(String nomAula, ArrayList<Curso> cursos) {
+    }
+
+    public static ArrayList<Curso> buscarCursoPorAula(String nomAula, ArrayList<Curso> cursos) {
         ArrayList<Curso> ret = new ArrayList<Curso>();
         for (Curso e : cursos) {
             if (Utilidades.removeDiacriticalMarks(e.getAula().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(nomAula.toLowerCase()))) {
@@ -190,8 +198,8 @@ public class Curso extends Evento{
         }
         return ret;
     }
-    
-     public static ArrayList<Curso> buscarCursoPorDuracion(String duracion, ArrayList<Curso> cursos) {
+
+    public static ArrayList<Curso> buscarCursoPorDuracion(String duracion, ArrayList<Curso> cursos) {
         ArrayList<Curso> ret = new ArrayList<Curso>();
         for (Curso e : cursos) {
             if (Utilidades.removeDiacriticalMarks(e.getDuracion().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(duracion.toLowerCase()))) {
@@ -211,4 +219,3 @@ public class Curso extends Evento{
         return "Curso{" + "duracion=" + duracion + ", aula=" + aula + '}';
     }
 }
-

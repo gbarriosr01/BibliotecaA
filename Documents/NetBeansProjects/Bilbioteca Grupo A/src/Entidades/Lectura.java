@@ -13,34 +13,41 @@ import java.util.Scanner;
  *
  * @author DAM102
  */
-public class Lectura extends Evento{
+public class Lectura extends Evento {
+
     /*
     Valores validos: Verdadero y falso.
     Valores invalidos: Cualquier tipo de caracter que no sea T o F.
-    */
+     */
     private boolean leido;
     /*
     Valores validos: Caracteres alfanumericos.
     Valores invalidos: Caracteres especiales.
     Otras restricciones: Longitud max 30 caracteres.
-    */
+     */
     private String modelo;
 
     public Lectura() {
         super();
-       
+
     }
-    
+
     public Lectura(boolean leido, String modelo) {
         this.leido = false;
         this.modelo = modelo;
     }
-    
+
+    public Lectura(Evento e, boolean leido, String modelo) {
+        super(e);
+        this.leido = false;
+        this.modelo = modelo;
+    }
+
     public Lectura(Lectura l1) {
         this.leido = l1.leido;
         this.modelo = l1.modelo;
     }
-    
+
     public Lectura(boolean leido, String modelo, long id, String nombre, Date fechayhora, long idPenalizacion) {
         super(id, nombre, fechayhora, idPenalizacion);
         this.leido = false;
@@ -52,7 +59,6 @@ public class Lectura extends Evento{
         this.leido = leido;
         this.modelo = modelo;
     }
-
 
     public boolean isLeido() {
         return leido;
@@ -69,6 +75,7 @@ public class Lectura extends Evento{
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
+
     /*Esto esta editado*/
     public static long nextIdLectura() {
         long ret = 0;
@@ -79,14 +86,15 @@ public class Lectura extends Evento{
         }
         return ret + 1;
     }
-/*Esto esta editado*/
-    public static Lectura nuevoLectura(){
+
+    /*Esto esta editado*/
+    public static Lectura nuevoLectura() {
         Lectura le1 = new Lectura();
         Scanner in = new Scanner(System.in);
-       
+
         long idEven = nextIdLectura();
         le1.setId(idEven);
-        
+
         System.out.println("Introduzca si se ha leido el libro(true/false)");
         boolean leido = in.nextBoolean();
         le1.setLeido(leido);
@@ -102,16 +110,15 @@ public class Lectura extends Evento{
         le1.setFechayhora(fechayhora);
         return le1;
     }
-    
+
     public static ArrayList<Lectura> convertirLectura(Lectura[] array) {
         ArrayList<Lectura> ret = new ArrayList<Lectura>();
         for (Lectura s : array) {
             ret.add(s);
-       
+
         }
         return ret;
     }
-
 
     public static void verLectura(ArrayList<Lectura> lecturas) {
         System.out.println("Lecturas de la biblioteca:");
@@ -119,7 +126,7 @@ public class Lectura extends Evento{
             System.out.println(c.getId() + ".- " + (c.isLeido() + " - " + (c.getModelo())));
         }
     }
-    
+
     public static void buscarLectura(ArrayList<Lectura> lecturas) {
         Lectura buscado;
         ArrayList<Lectura> encontrados;
@@ -154,13 +161,13 @@ public class Lectura extends Evento{
                     }
                     System.out.println("");
                     break;
-               
+
             }
 
         } while (opcion != 0);
     }
-    
-     public static ArrayList<Lectura> buscarLecturaPorModelo(String nomModelo, ArrayList<Lectura> lecturas) {
+
+    public static ArrayList<Lectura> buscarLecturaPorModelo(String nomModelo, ArrayList<Lectura> lecturas) {
         ArrayList<Lectura> ret = new ArrayList<Lectura>();
         for (Lectura e : lecturas) {
             if (Utilidades.removeDiacriticalMarks(e.getModelo().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(nomModelo.toLowerCase()))) {

@@ -41,14 +41,14 @@ public class Utilidades {
         new Penalizacion(3, "Entregó en mal estado", Date.valueOf(LocalDate.parse("13/01/2021", dateFormatter)))
     };
     public static final int numPenalizaciones = PENALIZACIONES.length;
-    
+
     public static final Proveedor PROVEEDORES[] = {
         new Proveedor(1, "Juan", "942111111"),
         new Proveedor(2, "Luis", "676222222"),
         new Proveedor(3, "Teresa", "721333333")
     };
     public static final int numProveedores = PROVEEDORES.length;
-    
+
     public static final Genero GENEROS[] = {
         new Genero(1, "Aventuras"),
         new Genero(2, "Novela negra"),
@@ -69,9 +69,9 @@ public class Utilidades {
     public static final int numLotes = LOTES.length;
 
     public static final Elemento ELEMENTOS[] = {
-        new Elemento(1, GENEROS[1] ),
-        new Elemento(2, GENEROS[2] ),
-        new Elemento(3, GENEROS[3] )
+        new Elemento(1, GENEROS[1]),
+        new Elemento(2, GENEROS[2]),
+        new Elemento(3, GENEROS[3])
     };
     public static final int numElementos = ELEMENTOS.length;
 
@@ -95,97 +95,112 @@ public class Utilidades {
         new Libro("El principito", "Editorial universidad de cantabria", "Antoine De Saint Exupéry", 300)
     };
     public static final int numLibros = LIBROS.length;
-    
+
     public static final Evento EVENTOS[] = {
-        new Evento(1, "Lucha de Sables", Date.valueOf(LocalDate.parse("01/01/2021", dateFormatter)), 1),
-        new Evento(2, "Firma de libros", Date.valueOf(LocalDate.parse("02/02/2021", dateFormatter)), 2),
-        new Evento(3, "Nuevos autores", Date.valueOf(LocalDate.parse("03/03/2021", dateFormatter)), 3)
+        new Evento(1, "Prueba informatica", Date.valueOf(LocalDate.parse("01/01/2021", dateFormatter))),
+        new Evento(2, "Firma de libros", Date.valueOf(LocalDate.parse("02/02/2021", dateFormatter))),
+        new Evento(3, "Nuevos autores", Date.valueOf(LocalDate.parse("03/03/2021", dateFormatter))),
+        new Evento(4, "asfasg", Date.valueOf(LocalDate.parse("03/03/2021", dateFormatter))),
+        new Evento(5, "bdsds", Date.valueOf(LocalDate.parse("03/03/2021", dateFormatter))),
+        new Evento(6, "Nuevos", Date.valueOf(LocalDate.parse("03/03/2021", dateFormatter))),
+        new Evento(7, "Nuevos autos", Date.valueOf(LocalDate.parse("03/03/2021", dateFormatter))),
+        new Evento(8, "Nadda", Date.valueOf(LocalDate.parse("03/03/2021", dateFormatter))),
+        new Evento(9, "addah autores", Date.valueOf(LocalDate.parse("03/03/2021", dateFormatter))),
+        new Evento(10, "Nuevosadsdfasbhds", Date.valueOf(LocalDate.parse("03/03/2021", dateFormatter))),
+        new Evento(11, "Nuevosaddautores", Date.valueOf(LocalDate.parse("03/03/2021", dateFormatter))),
+        new Evento(12, "Nuevostores", Date.valueOf(LocalDate.parse("03/03/2021", dateFormatter)))
     };
     public static final int numEventos = EVENTOS.length;
 
     public static final Concurso CONCURSOS[] = {
-        new Concurso("Informatica", "Raton Logitech"),
-        new Concurso("Origami", "100€"),
-        new Concurso("Matematicas", "100€")
+        new Concurso(EVENTOS[0], "Informatica", "Raton Logitech"),
+        new Concurso(EVENTOS[1], "Origami", "100€"),
+        new Concurso(EVENTOS[2], "Matematicas", "100€")
     };
     public static final int numConcursos = CONCURSOS.length;
 
     public static final Curso CURSOS[] = {
-        new Curso("50 minutos", "Aula 1"),
-        new Curso("30 minutos", "Aula 2"),
-        new Curso("40 minutos", "Aula 3")
+        new Curso(EVENTOS[3], "50 minutos", "Aula 1"),
+        new Curso(EVENTOS[4], "30 minutos", "Aula 2"),
+        new Curso(EVENTOS[5], "40 minutos", "Aula 3")
     };
     public static final int numCursos = CURSOS.length;
 
     public static final Lectura LECTURAS[] = {
-        new Lectura(false, "Cien años de soledad"),
-        new Lectura(false, "El ingenioso hidalgo Don Quijote de la Mancha"),
-        new Lectura(false, "El principito")
-    };
+        new Lectura(EVENTOS[6], false, "Cien años de soledad"),
+        new Lectura(EVENTOS[7], false, "El ingenioso hidalgo Don Quijote de la Mancha"),
+        new Lectura(EVENTOS[8], false, "El principito"),};
     public static final int numLecturas = LECTURAS.length;
 
     public static final Visionado VISIONADOS[] = {
-        new Visionado("Aula 1"),
-        new Visionado("Aula 2"),
-        new Visionado("Aula 3")
+        new Visionado(EVENTOS[9], "Aula 1"),
+        new Visionado(EVENTOS[10], "Aula 2"),
+        new Visionado(EVENTOS[11], "Aula 3")
     };
     public static final int numVisionados = VISIONADOS.length;
-    
-    
-    public static class Fecha{
+
+    public static class Fecha {
+
         private int anio;
-        private int mes;    
+        private int mes;
         private int dia;
-        
-        public Fecha(){
+
+        public Fecha() {
             Date hoy = Date.valueOf(LocalDate.now());
         }
-        public Fecha(int y, int m, int d){
-        this.anio =y;
-        this.mes = m;
-        this.dia = d;
+
+        public Fecha(int y, int m, int d) {
+            this.anio = y;
+            this.mes = m;
+            this.dia = d;
         }
-        
-        public Date conversorFecha(){
+
+        public Date conversorFecha() {
             java.sql.Date ret = new Date(this.anio, this.mes, this.dia);
             return ret;
-        }      
-        
-        public static Fecha nuevaFecha(){
-            Fecha ret = new Fecha();
-            Scanner in = new Scanner (System.in);
-            int d = 0;
-            do{
-                   System.out.println("Dame el dia del mes");
-                     d = in.nextInt();
-                    if(d<=0 || d> 31) System.out.println("valor incorrecto");
-            } while(d<=0 || d > 31);
-             int m = 0;
-            do{
-                   System.out.println("Dame el mes del año");
-                     m = in.nextInt();
-                     if (m <=0 || m > 12) System.out.println("Valor incorrecto");
-            } while(m <=0 || m > 12);
-             int y = 0;
-            do{
-                   System.out.println("Dame el año");
-                     y = in.nextInt();
-                     if (y<=0)System.out.println("Valor incorrecto");
-            } while(y<=0);
-            
-            ret = new Fecha(y, m, d);            
-            return ret;
-        
         }
-        
-        
+
+        public static Fecha nuevaFecha() {
+            Fecha ret = new Fecha();
+            Scanner in = new Scanner(System.in);
+            int d = 0;
+            do {
+                System.out.println("Dame el dia del mes");
+                d = in.nextInt();
+                if (d <= 0 || d > 31) {
+                    System.out.println("valor incorrecto");
+                }
+            } while (d <= 0 || d > 31);
+            int m = 0;
+            do {
+                System.out.println("Dame el mes del año");
+                m = in.nextInt();
+                if (m <= 0 || m > 12) {
+                    System.out.println("Valor incorrecto");
+                }
+            } while (m <= 0 || m > 12);
+            int y = 0;
+            do {
+                System.out.println("Dame el año");
+                y = in.nextInt();
+                if (y <= 0) {
+                    System.out.println("Valor incorrecto");
+                }
+            } while (y <= 0);
+
+            ret = new Fecha(y, m, d);
+            return ret;
+
+        }
+
     }
+
     public static String removeDiacriticalMarks(String string) {
         //Form.NFC acepta ñ y distingue las tildes en español
         return Normalizer.normalize(string, Normalizer.Form.NFC)
                 .replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
     }
-    
+
 //      Primer intento Registro   
 //      public Socio RegistrarSocio(){
 //        
