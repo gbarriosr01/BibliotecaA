@@ -34,6 +34,13 @@ public class Libro extends Elemento {
         this.autor = autor;
         this.nPaginas = nPaginas;
     }
+    public Libro(Elemento e,String nombre, String editorial, String autor, int nPaginas) {
+        super(e);
+        this.nombre = nombre;
+        this.editorial = editorial;
+        this.autor = autor;
+        this.nPaginas = nPaginas;
+    }
 
     public Libro(String nombre, String editorial, String autor, int nPaginas, Lectura lectura) {
         this.nombre = nombre;

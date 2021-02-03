@@ -71,7 +71,10 @@ public class Utilidades {
     public static final Elemento ELEMENTOS[] = {
         new Elemento(1, GENEROS[1]),
         new Elemento(2, GENEROS[2]),
-        new Elemento(3, GENEROS[3])
+        new Elemento(3, GENEROS[3]),
+        new Elemento(4, GENEROS[4]),
+        new Elemento(5, GENEROS[5]),
+        new Elemento(6, GENEROS[6])
     };
     public static final int numElementos = ELEMENTOS.length;
 
@@ -83,16 +86,16 @@ public class Utilidades {
     public static final int numEstanterias = ESTANTERIAS.length;
 
     public static final DVD DVDS[] = {
-        new DVD("Tyler Rake"),
-        new DVD("A ciegas"),
-        new DVD("Spenser: Confidencial")
+        new DVD(ELEMENTOS[0],"Tyler Rake"),
+        new DVD(ELEMENTOS[1],"A ciegas"),
+        new DVD(ELEMENTOS[2],"Spenser: Confidencial")
     };
     public static final int numDVDs = DVDS.length;
 
     public static final Libro LIBROS[] = {
-        new Libro("Cien años de soledad", "Ediciones del norte", "Gabriel Garcia Marquez", 230),
-        new Libro("El ingenioso hidalgo Don Quijote de la Mancha", "Nadir ediciones", "Miguel de Cervantes", 400),
-        new Libro("El principito", "Editorial universidad de cantabria", "Antoine De Saint Exupéry", 300)
+        new Libro(ELEMENTOS[3],"Cien años de soledad", "Ediciones del norte", "Gabriel Garcia Marquez", 230),
+        new Libro(ELEMENTOS[4],"El ingenioso hidalgo Don Quijote de la Mancha", "Nadir ediciones", "Miguel de Cervantes", 400),
+        new Libro(ELEMENTOS[5],"El principito", "Editorial universidad de cantabria", "Antoine De Saint Exupéry", 300)
     };
     public static final int numLibros = LIBROS.length;
 
