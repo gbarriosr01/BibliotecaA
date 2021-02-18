@@ -121,7 +121,7 @@ public class Evento {
         System.out.println("Introduzca la fecha y la hora del evento");
         java.sql.Date fechayhora = Utilidades.Fecha.nuevaFecha().conversorFecha();
         ev1.setFechayhora(fechayhora);
-
+        
 //        int opcion=-1;
 //        
 //        do{

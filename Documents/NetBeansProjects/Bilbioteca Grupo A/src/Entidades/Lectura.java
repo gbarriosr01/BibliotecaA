@@ -123,7 +123,7 @@ public class Lectura extends Evento {
     public static void verLectura(ArrayList<Lectura> lecturas) {
         System.out.println("Lecturas de la biblioteca:");
         for (Lectura c : lecturas) {
-            System.out.println(c.getId() + ".- " + (c.isLeido() + " - " + (c.getModelo())));
+            System.out.println(c.getId()+ ".- " + c.getNombre()+" - " + (c.getModelo() + " - ¿Se ha leido? " + (c.isLeido()  )));
         }
     }
 
