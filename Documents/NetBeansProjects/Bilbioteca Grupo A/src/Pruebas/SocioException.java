@@ -6,6 +6,7 @@
 package Pruebas;
 
 import Entidades.Socio;
+import java.util.regex.Pattern;  
 
 /**
  *
@@ -76,7 +77,9 @@ public class SocioException {
             /* 3ª Condición: que contenga al menos un espacio*/
             boolean isSpaced = nombre.contains(" ");
             
-
+            //4º Condición:  que contenga solo letras de la A-z, no numeros ni simbolos.    
+           boolean isOnlyLetters = Pattern.matches("^[a-zA-Z]*$", nombre);
+           
             /* Verificamos que las tres condiciones son verdaderas*/
             check = ((isFirstUpper == true) && (isFirstUpper && isValidSize && isSpaced));
         }
