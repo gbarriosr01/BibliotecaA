@@ -99,7 +99,7 @@ public class Genero {
     }
 
     public void verGeneroElemento() {
-        System.out.println( this.getNombre());
+        System.out.println(this.getNombre());
     }
 
     @Override

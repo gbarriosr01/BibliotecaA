@@ -26,6 +26,9 @@ public class Socio {
     public Socio() {
 
     }
+     public Socio(String nombre) {
+        this.nombre=nombre;
+    }
 
     public Socio(Socio copia) {
         this.id = copia.id;
