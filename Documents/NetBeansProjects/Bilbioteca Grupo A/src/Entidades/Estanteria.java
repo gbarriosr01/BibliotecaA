@@ -104,7 +104,7 @@ public class Estanteria {
     
      /**
      * Atributos separados por el caracter |
-     * @return primary key id| codigo + ubicacion
+     * @return codigo + ubicacion + completa + elementos
      */
     public String data() {
         return  "|" + codigo + "|" + ubicacion + "|" + completa + "|" + elementos;
