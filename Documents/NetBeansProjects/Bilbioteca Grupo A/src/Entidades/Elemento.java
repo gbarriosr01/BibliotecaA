@@ -13,11 +13,11 @@ import java.util.Scanner;
  * @author DAM102
  */
 public class Elemento {
-    /*Valido: >=0 Invalido: <0 Otros: Es unico*/
+    /*Valido: >0 Invalido: <=0 Otros: Es unico*/
     protected long id; 
     protected ArrayList <Prestamo> prestamos = new ArrayList <Prestamo>();/*Obligatorio*/
     protected Genero genero;/*Obligatorio*/
-
+    protected long idGenero;/*Obligatorio*/
     public Elemento() {
     }
 
@@ -73,5 +73,12 @@ public class Elemento {
         return "Elemento{" + "id=" + id + ", prestamos=" + prestamos + ", genero=" + genero + '}';
     }
     
+     /**
+     * Atributos separados por el caracter |
+     * @return Primary key id | idGenero
+     */
+    public String data() {
+        return  "|" + id + "|" + idGenero;
+    }
     
 }

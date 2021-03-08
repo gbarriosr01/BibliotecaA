@@ -214,4 +214,13 @@ public class Concurso extends Evento {
     public String toString() {
         return "Concurso{" + "tipo=" + tipo + ", premio=" + premio + '}';
     }
+    
+    
+      /**
+     * Atributos separados por el caracter |
+     * @return | nombre + telefono
+     */
+    public String data() {
+        return  "|" + tipo + "|" + premio;
+    }
 }

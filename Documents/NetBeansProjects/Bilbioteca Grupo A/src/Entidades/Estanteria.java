@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public class Estanteria {
     /*Valido: >=0 Invalido: <0 Otros: Es unico*/
-    private long id=0;
+    private long id;
     /*Valido: Una letra mayusucla 'A' Invalido: Una letra minuscula 'a'*/
     private char codigo;
     /*Valido: Cadena caracteres "asdsandas"  Invalido: " ", >100caracteres*/
@@ -102,6 +102,13 @@ public class Estanteria {
         return "Estanteria{" + "id=" + id + ", codigo=" + codigo + ", ubicacion=" + ubicacion + ", completa=" + completa + ", elementos=" + elementos + '}';
     }
     
+     /**
+     * Atributos separados por el caracter |
+     * @return primary key id| codigo + ubicacion
+     */
+    public String data() {
+        return  "|" + codigo + "|" + ubicacion + "|" + completa + "|" + elementos;
+    }
     
     
 }

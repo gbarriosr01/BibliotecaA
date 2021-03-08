@@ -97,6 +97,13 @@ public class Lote {
         return "Lote{" + "fechallegada=" + fechallegada + ", elementos=" + elementos + ", idProveedor=" + idProveedor + '}';
     }
       
+    /**
+     * Devuelve primero la primary key, seguido de los demas atributos separados por el caracter |
+     * @return Primary key id | Fechallegada + ArrayList de elementos + idProveedor
+     */
+    public String data() {
+        return  "|" + id + "|" + fechallegada + "|" + elementos + "|" + idProveedor;
+    }
      
    
 }

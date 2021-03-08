@@ -218,4 +218,12 @@ public class Curso extends Evento {
     public String toString() {
         return "Curso{" + "duracion=" + duracion + ", aula=" + aula + '}';
     }
+    
+     /**
+     * Atributos separados por el caracter |
+     * @return  duracion + aula
+     */
+    public String data() {
+        return  "|" + duracion + "|" + aula;
+    }
 }

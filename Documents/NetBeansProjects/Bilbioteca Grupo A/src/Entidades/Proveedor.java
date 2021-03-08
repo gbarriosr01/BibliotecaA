@@ -89,4 +89,12 @@ public class Proveedor {
         return "Proveedor{" + "id=" + id + ", nombre=" + nombre + ", telefono=" + telefono + '}';
     }
 
+    
+     /**
+     * Devuelve primero la primary key, seguido de los demas atributos separados por el caracter |
+     * @return Primary key id | nombre + telefono
+     */
+    public String data() {
+        return  "|" + id + "|" + nombre + "|" + telefono;
+    }
 }

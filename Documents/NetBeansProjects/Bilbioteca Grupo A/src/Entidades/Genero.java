@@ -106,5 +106,13 @@ public class Genero {
     public String toString() {
         return "Genero{" + "id=" + id + ", nombre=" + nombre + '}';
     }
+    
+    /**
+     * Devuelve primero la primary key, seguido de los demas atributos separados por el caracter |
+     * @return Primary key id | nombre
+     */
+    public String data() {
+        return "id" + id + " | " + "nombre" + nombre;
+    }
 
 }

@@ -197,4 +197,11 @@ public class DVD extends Elemento {
         return "DVD{" + "titulo=" + titulo + ", visionado=" + visionado + '}';
     }
 
+     /**
+     * Atributos separados por el caracter |
+     * @return | titulo + visionado
+     */
+    public String data() {
+        return  "|" + titulo + "|" + visionado;
+    }
 }

@@ -66,4 +66,11 @@ public class Estado {
         return "Estado{" + "id=" + id + ", estado=" + estado + '}';
     }
     
+     /**
+     * Atributos separados por el caracter |
+     * @return primary key id| estado
+     */
+    public String data() {
+        return  "|" + id + "|" + estado;
+    }
 }
