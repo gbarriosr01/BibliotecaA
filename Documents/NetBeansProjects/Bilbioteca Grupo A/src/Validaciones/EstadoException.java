@@ -15,6 +15,15 @@ public class EstadoException extends Exception{
         super(msj);
     }
     
+    public static boolean validarId(long id) {
+        return id > 0;
+    }
     
+    public static boolean validarEstado(String nombre) {
+        if(nombre=="Pendiente" || nombre== "Parcial" || nombre=="Completo")
+            return true;
+        else
+            return false;
+    }
     
 }

@@ -6,8 +6,11 @@
 package bilbioteca.grupo.a;
 
 import Entidades.*;
+import Validaciones.SocioException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -94,8 +97,14 @@ public class BilbiotecaGrupoA {
                                 System.out.println("-------------------------------------------------");
                                 System.out.println("Ha pulsado la opcion Nuevo Socio");
                                 do {
-                                    Socio nuevoSocio = Socio.nuevoSocio();
-                                    socios.add(nuevoSocio);
+                                    Socio nuevoSocio;
+                                    try {
+                                        nuevoSocio = Socio.nuevoSocio();
+                                        socios.add(nuevoSocio);
+                                    } catch (SocioException ex) {
+                                        System.out.println("Dato invalido");
+                                    }
+
                                     do {
                                         System.out.println("-------------------------------------------------");
                                         System.out.println("Pulse 0 para salir");
