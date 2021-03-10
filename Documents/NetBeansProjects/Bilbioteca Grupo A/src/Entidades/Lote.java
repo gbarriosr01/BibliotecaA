@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import Validaciones.LoteException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -28,6 +29,7 @@ public class Lote {
       private long idProveedor;/*Obligatorio*/
 
     public Lote() {
+        
        
     }
     
@@ -35,7 +37,7 @@ public class Lote {
        this.id=a.id;
        this.fechallegada=a.fechallegada;
        this.elementos=a.elementos;
-               
+       this.idProveedor=a.idProveedor;
         
     }
 
@@ -45,6 +47,21 @@ public class Lote {
         this.idProveedor = idProveedor;
     }
 
+    
+    Lote(long id, long idProveedor) throws LoteException {
+        if (LoteException.validarLoteId(id)) {
+            this.id = id;
+        } else {
+            throw new LoteException("id debe ser > 0");
+        }
+        if (LoteException.validarLoteIdProveedor(idProveedor)) {
+            this.idProveedor = idProveedor;
+        } else {
+            throw new LoteException("idProveedor debe ser > 0");
+        }
+    }
+    
+    
     public long getId() {
         return id;
     }
@@ -102,7 +119,7 @@ public class Lote {
      * @return Primary key id | Fechallegada + ArrayList de elementos + idProveedor
      */
     public String data() {
-        return  "|" + id + "|" + fechallegada + "|" + elementos + "|" + idProveedor;
+        return  "|" + id + "|" + fechallegada + "|" + idProveedor;
     }
      
    

@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import Validaciones.GeneroException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -27,15 +28,27 @@ public class Genero {
 
     }
 
-    public Genero(long id, String nombre) {
-        this.id = id;
-        this.nombre = nombre;
-    }
+    
 
     public Genero(Genero g1) {
         this.id = g1.id;
         this.nombre = g1.nombre;
 
+    }
+    
+    Genero(long id, String nombre) /*throws GeneroException{*/{
+        this.id =id;
+        this.nombre =nombre;
+//        if (GeneroException.validarGeneroId(id)) {
+//            this.id = id;
+//        } else {
+//            throw new GeneroException("Valor id debe ser > 0");
+//        }
+//        if (GeneroException.validarGeneroNombre(nombre)) {
+//            this.nombre = nombre;
+//        } else {
+//            throw new GeneroException("Valor Nombre no cumple los requisitos");
+//        }
     }
 
     public long getId() {

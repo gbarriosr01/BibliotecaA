@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import Validaciones.ProveedorException;
 import java.util.Scanner;
 
 /**
@@ -41,6 +42,24 @@ public class Proveedor {
         this.nombre = p1.nombre;
         this.telefono = p1.telefono;
 
+    }
+    
+    Proveedor(long id, long idProveedor) throws ProveedorException {
+        if (ProveedorException.validarProveedorId(id)) {
+            this.id = id;
+        } else {
+            throw new ProveedorException("Valor id debe ser > 0");
+        }
+        if (ProveedorException.validarProveedorNombre(nombre)) {
+            this.nombre = nombre;
+        } else {
+            throw new ProveedorException("Valor Nombre no cumple los requisitos");
+        }
+        if (ProveedorException.validarProveedorTelefono(telefono)) {
+            this.telefono = telefono;
+        } else {
+            throw new ProveedorException("Valor del telefono incorrecto. Deben ser 9numeros");
+        }
     }
 
     public long getId() {

@@ -170,18 +170,18 @@ public class Utilidades {
             do {
                 System.out.println("Dame el dia del mes");
                 d = in.nextInt();
-                if (d <= 0 || d > 31) {
+                if (d < 0 || d > 31) {
                     System.out.println("valor incorrecto");
                 }
-            } while (d <= 0 || d > 31);
+            } while (d < 0 || d > 31);
             int m = 0;
             do {
                 System.out.println("Dame el mes del año");
                 m = in.nextInt();
-                if (m <= 0 || m > 12) {
+                if (m < 0 || m > 12) {
                     System.out.println("Valor incorrecto");
                 }
-            } while (m <= 0 || m > 12);
+            } while (m < 0 || m > 12);
             int y = 0;
             do {
                 System.out.println("Dame el año");
@@ -197,7 +197,7 @@ public class Utilidades {
         }
 
     }
-
+    
     public static String removeDiacriticalMarks(String string) {
         //Form.NFC acepta ñ y distingue las tildes en español
         return Normalizer.normalize(string, Normalizer.Form.NFC)
