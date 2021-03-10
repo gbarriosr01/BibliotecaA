@@ -6,85 +6,40 @@
 package Validaciones;
 
 import Entidades.Socio;
-import java.util.regex.Pattern;  
+import java.util.regex.Pattern;
 
 /**
  *
  * @author DAM102
  */
-public class SocioException {
+public class SocioException extends Exception {
 
-    //Validamos Socio por el ID comprobando si es >0
-    public static boolean validarSocioId(long id) {
-        if (id > 0) {
-            return true;
-        } else {
-            System.out.println("Error 404 not found");
-        }
-        return false;
-
+    public SocioException(String msj) {
+        super(msj);
     }
 
-    public static boolean validarSocioNombre(String nombre) {
-        if (nombre.length() >= 20 && nombre.length() < 40) {
-            return true;
-        } else {
-            System.out.println("Error 404 not found");
-        }
-        return false;
-
+    public static boolean validarSocio(Socio socio) {
+        return validarId(socio.getId()) && validarNombre(socio.getNombre()) && validarNIF(socio.getNIF()) && validarTelefono(socio.getTelefono()) && validarDireccion(socio.getDireccion());
     }
 
-    public static boolean validarSocioNIF(String NIF) {
-        if (NIF.length() == 9) {
-            return true;
-        } else {
-            System.out.println("Error 404 not found");
-        }
-        return false;
-    }
-
-    public static boolean validarSocioTelefono(String telefono) {
-        if (telefono.length() == 9) {
-            return true;
-        } else {
-            System.out.println("Error 404 not found");
-        }
-        return false;
-    }
-
-    public static boolean validarSocioDireccion(String direccion) {
-        if (direccion.length() > 30 && direccion.length() < 100) {
-            return true;
-        } else {
-            System.out.println("Error 404 not found");
-        }
-        return false;
+    public static boolean validarId(long id) {
+        return id > 0;
     }
 
     public static boolean validarNombre(String nombre) {
-        boolean check = false;
+        return nombre.matches("^([A-Za-z]{1}[a-z]{1,20}[ ]?){1,3}$");
+    }
 
-        /*Verificamos que no sea null*/
-        if (nombre != null) {
-            /* 1ª Condición: que la letra inicial sea mayúscula*/
-            boolean isFirstUpper = Character.isUpperCase(nombre.charAt(0));
+    public static boolean validarNIF(String NIF) {
+        return NIF.matches("^([0-9]{8})[T|R|W|A|G|M|Y|F|P|D|X|B|N|J|Z|S|Q|V|H|L|C|K|E]$");
+    }
 
-            /* 2ª Condición: que el tamaño sea >= 15 y <= 40*/
-            int stringSize = nombre.length();
-            boolean isValidSize = (stringSize >= 15 && stringSize <= 40);
+    public static boolean validarTelefono(String telefono) {
+        return telefono.matches("^([0-9]{9})");
+    }
 
-            /* 3ª Condición: que contenga al menos un espacio*/
-            boolean isSpaced = nombre.contains(" ");
-            
-            //4º Condición:  que contenga solo letras de la A-z, no numeros ni simbolos.    
-           boolean isOnlyLetters = Pattern.matches("^[a-zA-Z]*$", nombre);
-           
-            /* Verificamos que las tres condiciones son verdaderas*/
-            check = ((isFirstUpper == true) && (isFirstUpper && isValidSize && isSpaced));
-        }
-        /*Devolvemos el estado de la validación*/
-        return check;
+    public static boolean validarDireccion(String direccion) {
+        return direccion.matches("^([A-Z]{1}[a-z]{1,30}[ ]?){1,5}$");
     }
 
 }

@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import Validaciones.SocioException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -22,12 +23,14 @@ public class Socio {
     private ArrayList<Penalizacion> penalizaciones = new ArrayList<Penalizacion>();
     private ArrayList<Evento> eventos = new ArrayList<Evento>();/*No obligatorio*/
     private Prestamo prestamo;
+    private long id_prestamo;
 
     public Socio() {
 
     }
-     public Socio(String nombre) {
-        this.nombre=nombre;
+
+    public Socio(String nombre) {
+        this.nombre = nombre;
     }
 
     public Socio(Socio copia) {
@@ -39,9 +42,10 @@ public class Socio {
         this.penalizaciones = copia.penalizaciones;
         this.eventos = copia.eventos;
         this.prestamo = copia.prestamo;
+        this.id_prestamo = copia.id_prestamo;
     }
 
-    public Socio(int id, String nombre, String NIF, String telefono, String direccion, Prestamo prestamo) {
+    public Socio(long id, String nombre, String NIF, String telefono, String direccion, Prestamo prestamo) {
         this.id = id;
         this.nombre = nombre;
         this.NIF = NIF;
@@ -50,7 +54,45 @@ public class Socio {
         this.prestamo = prestamo;
     }
 
-    public Socio(int id, String nombre, String NIF, String telefono, String direccion) {
+    Socio(long id, String nombre, String NIF, String telefono, String direccion, long id_prestamo) throws SocioException {
+        if (SocioException.validarId(id)) {
+            this.id = id;
+        } else {
+            throw new SocioException("Dato invalido");
+        }
+
+        if (SocioException.validarNombre(nombre)) {
+            this.nombre = nombre;
+        } else {
+            throw new SocioException("Dato invalido");
+        }
+
+        if (SocioException.validarNIF(NIF)) {
+            this.NIF = NIF;
+        } else {
+            throw new SocioException("Dato invalido");
+        }
+
+        if (SocioException.validarTelefono(telefono)) {
+            this.telefono = telefono;
+        } else {
+            throw new SocioException("Dato invalido");
+        }
+
+        if (SocioException.validarDireccion(direccion)) {
+            this.direccion = direccion;
+        } else {
+            throw new SocioException("Dato invalido");
+        }
+        if (SocioException.validarId(id_prestamo)) {
+            this.id_prestamo = id_prestamo;
+        } else {
+            throw new SocioException("Dato invalido");
+        }
+
+    }
+
+    public Socio(long id, String nombre, String NIF, String telefono, String direccion) {
         this.id = id;
         this.nombre = nombre;
         this.NIF = NIF;
@@ -122,6 +164,14 @@ public class Socio {
         this.direccion = direccion;
     }
 
+    public long getId_prestamo() {
+        return id_prestamo;
+    }
+
+    public void setId_prestamo(long id_prestamo) {
+        this.id_prestamo = id_prestamo;
+    }
+
     public static ArrayList<Socio> convertirSocios(Socio[] array) {
         ArrayList<Socio> ret = new ArrayList<Socio>();
         for (Socio s : array) {
@@ -141,29 +191,53 @@ public class Socio {
         return ret + 1;
     }
 
-    public static Socio nuevoSocio() {
+    public static Socio nuevoSocio() throws SocioException{
 
         Socio s1 = new Socio();
         Scanner in = new Scanner(System.in);
 
         long idSoc = nextIdSocio();
-        s1.setId(idSoc);
-
+        
+        if(SocioException.validarId(idSoc)){
+            s1.setId(idSoc);
+        } else{
+            throw new SocioException("Dato invalido");
+        }
+        
         System.out.println("Inserte su nombre: ");
-        String nombre = in.nextLine();
+            String nombre = in.nextLine();
+        if(SocioException.validarNombre(nombre)){
         s1.setNombre(nombre);
-
+        } else{
+            throw new SocioException("Dato invalido");
+        }
+            
         System.out.println("Inserte su NIF: ");
         String NIF = in.nextLine();
-        s1.setNIF(NIF);
+        
+        if(SocioException.validarNIF(NIF)){
+            s1.setNIF(NIF);
+        } else{
+            throw new SocioException("Dato invalido");
+        }
 
         System.out.println("Inserte su telefono: ");
         String telefono = in.nextLine();
-        s1.setTelefono(telefono);
+        
+        if(SocioException.validarTelefono(telefono)){
+            s1.setTelefono(telefono);
+        } else{
+            throw new SocioException("Dato invalido");
+        }
 
         System.out.println("Inserte su direccion: ");
         String direccion = in.nextLine();
-        s1.setDireccion(direccion);
+        
+        if(SocioException.validarDireccion(direccion)){
+            s1.setDireccion(direccion);
+        } else{
+            throw new SocioException("Dato invalido");
+        }
 
         System.out.println("Socio registrado correctamente con el id " + idSoc);
         return s1;
@@ -334,4 +408,7 @@ public class Socio {
         return "Socio{" + "id=" + id + ", nombre=" + nombre + ", NIF=" + NIF + ", telefono=" + telefono + ", direccion=" + direccion + ", penalizaciones=" + penalizaciones + ", eventos=" + eventos + ", prestamo=" + prestamo + '}';
     }
 
+    public String data() {
+        return id + "|" + nombre + "|" + NIF + "|" + telefono + "|" + direccion + "|" + id_prestamo;
+    }
 }
