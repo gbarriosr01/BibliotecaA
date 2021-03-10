@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import Validaciones.EstadoException;
 import java.util.Scanner;
 
 /**
@@ -19,6 +20,19 @@ public class Estado {
         this.id=0;
         this.estado= "Pendiente";
     }
+    
+//    Estado(long id, String estado) throws EstadoException{
+//        if(EstadoException.validarId(id)){
+//            this.id=id;
+//        } else
+//            throw new EstadoException("Dato invalido");
+//        
+//        if(EstadoException.validarEstado(estado)){
+//            this.estado=estado;
+//        } else
+//            throw new EstadoException("Dato invalido");
+//        
+//    }
 
     public Estado(Estado copia) {
         this.id = copia.id;
