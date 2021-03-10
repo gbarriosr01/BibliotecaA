@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import Validaciones.ElementoException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -21,13 +22,35 @@ public class Elemento {
     public Elemento() {
     }
 
-    public Elemento(long id, Genero genero) {
+//    public Elemento(long id, Genero genero) throws ElementoException{
+//        if(ElementoException.validarId(id)){
+//        this.id = id;
+//        }else{
+//            throw new ElementoException("El id debe ser >0");
+//        }
+//        this.genero = genero;
+//    }
+    
+    public Elemento(long id, Genero genero){
+        
         this.id = id;
+        
         this.genero = genero;
     }
     
+//    public Elemento(Elemento el) throws ElementoException{
+//        if(ElementoException.validarId(el.id)){
+//        this.id = el.id;
+//        }else{
+//            throw new ElementoException("El id debe ser >0");
+//        }
+//        this.genero = el.genero;
+//    }
+    
     public Elemento(Elemento el) {
+        
         this.id = el.id;
+        
         this.genero = el.genero;
     }
 
@@ -55,13 +78,17 @@ public class Elemento {
         this.genero = genero;
     }
     
-    public static Elemento nuevoElemento() {
+    public static Elemento nuevoElemento() throws ElementoException{
         Elemento el = new Elemento();
         Scanner teclado = new Scanner(System.in);
         
-        int numElementos = Utilidades.numElementos + 1;
+        int numElementos;
+        numElementos = Utilidades.numElementos + 1;
+        if(ElementoException.validarId(numElementos)){
         el.setId(numElementos);
-        
+        }else{
+        throw new ElementoException("El id debe ser >0");
+        }
  
         System.out.println("Socio registrado correctamente con el id " + numElementos);
         return el;

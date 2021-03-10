@@ -8,6 +8,7 @@ package Entidades;
 import java.util.ArrayList;
 import java.util.Scanner;
 import Entidades.Genero;
+import Validaciones.ElementoException;
 import static java.lang.System.in;
 
 /**
@@ -27,7 +28,7 @@ public class DVD extends Elemento {
     public DVD(String titulo) {
         this.titulo = titulo;
     }
-    public DVD(Elemento e,String titulo) {
+    public DVD(Elemento e,String titulo)  {
         super(e);
         this.titulo = titulo;
     }
@@ -42,7 +43,7 @@ public class DVD extends Elemento {
         this.visionado = visionado;
     }
 
-    public DVD(String titulo, Visionado visionado, Elemento el) {
+    public DVD(String titulo, Visionado visionado, Elemento el)  {
         super(el);
         this.titulo = titulo;
         this.visionado = visionado;

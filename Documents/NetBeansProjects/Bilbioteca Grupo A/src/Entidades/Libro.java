@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import Validaciones.ElementoException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -34,7 +35,7 @@ public class Libro extends Elemento {
         this.autor = autor;
         this.nPaginas = nPaginas;
     }
-    public Libro(Elemento e,String nombre, String editorial, String autor, int nPaginas) {
+    public Libro(Elemento e,String nombre, String editorial, String autor, int nPaginas)  {
         super(e);
         this.nombre = nombre;
         this.editorial = editorial;
@@ -50,7 +51,7 @@ public class Libro extends Elemento {
         this.lectura = lectura;
     }
 
-    public Libro(String nombre, String editorial, String autor, int nPaginas, Lectura lectura, long id, Genero genero) {
+    public Libro(String nombre, String editorial, String autor, int nPaginas, Lectura lectura, long id, Genero genero) throws ElementoException {
         super(id, genero);
         this.nombre = nombre;
         this.editorial = editorial;
@@ -59,7 +60,7 @@ public class Libro extends Elemento {
         this.lectura = lectura;
     }
 
-    public Libro(String nombre, String editorial, String autor, int nPaginas, Lectura lectura, Elemento el) {
+    public Libro(String nombre, String editorial, String autor, int nPaginas, Lectura lectura, Elemento el) throws ElementoException {
         super(el);
         this.nombre = nombre;
         this.editorial = editorial;
