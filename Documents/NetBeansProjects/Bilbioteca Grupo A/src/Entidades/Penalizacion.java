@@ -20,6 +20,7 @@ public class Penalizacion {
     /*Fecha de la finalizacion de la penalizacion
     LocalDate.now();
     */
+    private long id_socio;
 
     public Penalizacion() {
         this.id=0;
@@ -30,6 +31,7 @@ public class Penalizacion {
         this.id= copia.id;
         this.motivo = copia.motivo;
         this.fechaDeVigencia = copia.fechaDeVigencia;
+        this.id_socio=copia.id_socio;
         
     }
 
@@ -39,7 +41,7 @@ public class Penalizacion {
         this.fechaDeVigencia = fechaDeVigencia;
     }
 
-
+    
     public long getId() {
         return id;
     }
@@ -63,6 +65,15 @@ public class Penalizacion {
     public void setFechaDeVigencia(Date fechaDeVigencia) {
         this.fechaDeVigencia = fechaDeVigencia;
     }
+    
+    public long getId_socio() {
+        return id_socio;
+    }
+
+    public void setId_socio(long id_socio) {
+        this.id_socio = id_socio;
+    }
+
     public Penalizacion nuevoPenalizacion(){
         Penalizacion ret = new Penalizacion();
 
@@ -83,6 +94,10 @@ public class Penalizacion {
     @Override
     public String toString() {
         return "Penalizacion{" + "id=" + id + ", motivo=" + motivo + ", fechaDeVigencia=" + fechaDeVigencia + '}';
+    }
+    
+    public String data() {
+        return id + "|" + motivo + "|" + fechaDeVigencia + "|" + id_socio;
     }
     
 }

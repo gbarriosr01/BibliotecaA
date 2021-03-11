@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Socio.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Bilbioteca_Grupo_A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Entidades</a> &gt; <span class="el_source">Socio.java</span></div><h1>Socio.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Entidades;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author DAM102
+ */
+public class Socio {
+
+    private long id;/*Mayores que 0, no puede ser nulo*/
+    private String nombre;/*Menor o igual a 20 caracteres, no se admiten numeros*/
+    private String NIF;/*Mayor o igual a 9 caracteres*/
+    private String telefono;/*Mayor o igual a 9 caracteres*/
+    private String direccion;/*Menor o igual a 30 caracteres*/
+<span class="pc" id="L22">    private ArrayList&lt;Penalizacion&gt; penalizaciones = new ArrayList&lt;Penalizacion&gt;();</span>
+<span class="pc" id="L23">    private ArrayList&lt;Evento&gt; eventos = new ArrayList&lt;Evento&gt;();/*No obligatorio*/</span>
+    private Prestamo prestamo;
+
+<span class="nc" id="L26">    public Socio() {</span>
+
+<span class="nc" id="L28">    }</span>
+<span class="nc" id="L29">     public Socio(String nombre) {</span>
+<span class="nc" id="L30">        this.nombre=nombre;</span>
+<span class="nc" id="L31">    }</span>
+
+<span class="nc" id="L33">    public Socio(Socio copia) {</span>
+<span class="nc" id="L34">        this.id = copia.id;</span>
+<span class="nc" id="L35">        this.nombre = copia.nombre;</span>
+<span class="nc" id="L36">        this.NIF = copia.NIF;</span>
+<span class="nc" id="L37">        this.telefono = copia.telefono;</span>
+<span class="nc" id="L38">        this.direccion = copia.direccion;</span>
+<span class="nc" id="L39">        this.penalizaciones = copia.penalizaciones;</span>
+<span class="nc" id="L40">        this.eventos = copia.eventos;</span>
+<span class="nc" id="L41">        this.prestamo = copia.prestamo;</span>
+<span class="nc" id="L42">    }</span>
+
+<span class="nc" id="L44">    public Socio(int id, String nombre, String NIF, String telefono, String direccion, Prestamo prestamo) {</span>
+<span class="nc" id="L45">        this.id = id;</span>
+<span class="nc" id="L46">        this.nombre = nombre;</span>
+<span class="nc" id="L47">        this.NIF = NIF;</span>
+<span class="nc" id="L48">        this.telefono = telefono;</span>
+<span class="nc" id="L49">        this.direccion = direccion;</span>
+<span class="nc" id="L50">        this.prestamo = prestamo;</span>
+<span class="nc" id="L51">    }</span>
+
+<span class="fc" id="L53">    public Socio(int id, String nombre, String NIF, String telefono, String direccion) {</span>
+<span class="fc" id="L54">        this.id = id;</span>
+<span class="fc" id="L55">        this.nombre = nombre;</span>
+<span class="fc" id="L56">        this.NIF = NIF;</span>
+<span class="fc" id="L57">        this.telefono = telefono;</span>
+<span class="fc" id="L58">        this.direccion = direccion;</span>
+<span class="fc" id="L59">    }</span>
+
+    public long getId() {
+<span class="nc" id="L62">        return id;</span>
+    }
+
+    public String getNombre() {
+<span class="nc" id="L66">        return nombre;</span>
+    }
+
+    public String getNIF() {
+<span class="nc" id="L70">        return NIF;</span>
+    }
+
+    public String getTelefono() {
+<span class="nc" id="L74">        return telefono;</span>
+    }
+
+    public String getDireccion() {
+<span class="nc" id="L78">        return direccion;</span>
+    }
+
+    public void setId(long id) {
+<span class="nc" id="L82">        this.id = id;</span>
+<span class="nc" id="L83">    }</span>
+
+    public void setNombre(String nombre) {
+<span class="nc" id="L86">        this.nombre = nombre;</span>
+<span class="nc" id="L87">    }</span>
+
+    public ArrayList&lt;Penalizacion&gt; getPenalizaciones() {
+<span class="nc" id="L90">        return penalizaciones;</span>
+    }
+
+    public void setPenalizaciones(ArrayList&lt;Penalizacion&gt; penalizaciones) {
+<span class="nc" id="L94">        this.penalizaciones = penalizaciones;</span>
+<span class="nc" id="L95">    }</span>
+
+    public ArrayList&lt;Evento&gt; getEventos() {
+<span class="nc" id="L98">        return eventos;</span>
+    }
+
+    public void setEventos(ArrayList&lt;Evento&gt; eventos) {
+<span class="nc" id="L102">        this.eventos = eventos;</span>
+<span class="nc" id="L103">    }</span>
+
+    public Prestamo getPrestamo() {
+<span class="nc" id="L106">        return prestamo;</span>
+    }
+
+    public void setPrestamo(Prestamo prestamo) {
+<span class="nc" id="L110">        this.prestamo = prestamo;</span>
+<span class="nc" id="L111">    }</span>
+
+    public void setNIF(String NIF) {
+<span class="nc" id="L114">        this.NIF = NIF;</span>
+<span class="nc" id="L115">    }</span>
+
+    public void setTelefono(String telefono) {
+<span class="nc" id="L118">        this.telefono = telefono;</span>
+<span class="nc" id="L119">    }</span>
+
+    public void setDireccion(String direccion) {
+<span class="nc" id="L122">        this.direccion = direccion;</span>
+<span class="nc" id="L123">    }</span>
+
+    public static ArrayList&lt;Socio&gt; convertirSocios(Socio[] array) {
+<span class="fc" id="L126">        ArrayList&lt;Socio&gt; ret = new ArrayList&lt;Socio&gt;();</span>
+<span class="fc bfc" id="L127" title="All 2 branches covered.">        for (Socio s : array) {</span>
+<span class="fc" id="L128">            ret.add(s);</span>
+        }
+
+<span class="fc" id="L131">        return ret;</span>
+    }
+
+    public static long nextIdSocio() {
+<span class="nc" id="L135">        long ret = 0;</span>
+<span class="nc bnc" id="L136" title="All 2 branches missed.">        for (int i = 0; i &lt; Utilidades.SOCIOS.length; i++) {</span>
+<span class="nc bnc" id="L137" title="All 2 branches missed.">            if (Utilidades.SOCIOS[i].id &gt; ret) {</span>
+<span class="nc" id="L138">                ret = Utilidades.SOCIOS[i].id;</span>
+            }
+        }
+<span class="nc" id="L141">        return ret + 1;</span>
+    }
+
+    public static Socio nuevoSocio() {
+
+<span class="nc" id="L146">        Socio s1 = new Socio();</span>
+<span class="nc" id="L147">        Scanner in = new Scanner(System.in);</span>
+
+<span class="nc" id="L149">        long idSoc = nextIdSocio();</span>
+<span class="nc" id="L150">        s1.setId(idSoc);</span>
+
+<span class="nc" id="L152">        System.out.println(&quot;Inserte su nombre: &quot;);</span>
+<span class="nc" id="L153">        String nombre = in.nextLine();</span>
+<span class="nc" id="L154">        s1.setNombre(nombre);</span>
+
+<span class="nc" id="L156">        System.out.println(&quot;Inserte su NIF: &quot;);</span>
+<span class="nc" id="L157">        String NIF = in.nextLine();</span>
+<span class="nc" id="L158">        s1.setNIF(NIF);</span>
+
+<span class="nc" id="L160">        System.out.println(&quot;Inserte su telefono: &quot;);</span>
+<span class="nc" id="L161">        String telefono = in.nextLine();</span>
+<span class="nc" id="L162">        s1.setTelefono(telefono);</span>
+
+<span class="nc" id="L164">        System.out.println(&quot;Inserte su direccion: &quot;);</span>
+<span class="nc" id="L165">        String direccion = in.nextLine();</span>
+<span class="nc" id="L166">        s1.setDireccion(direccion);</span>
+
+<span class="nc" id="L168">        System.out.println(&quot;Socio registrado correctamente con el id &quot; + idSoc);</span>
+<span class="nc" id="L169">        return s1;</span>
+    }
+
+    public static void verSocio(ArrayList&lt;Socio&gt; socios) {
+<span class="nc" id="L173">        System.out.println(&quot;Socios de la biblioteca:&quot;);</span>
+<span class="nc bnc" id="L174" title="All 2 branches missed.">        for (Socio s : socios) {</span>
+<span class="nc" id="L175">            System.out.println(s.getId() + &quot;.- &quot; + (s.getNIF() + &quot; - &quot; + (s.getNombre() + &quot; - con teléfono &quot; + (s.getTelefono() + &quot;.&quot;))));</span>
+<span class="nc" id="L176">        }</span>
+
+<span class="nc" id="L178">    }</span>
+
+    public static void buscarSocios(ArrayList&lt;Socio&gt; socios) {
+        Socio buscado;
+        ArrayList&lt;Socio&gt; encontrados;
+        Scanner in;
+<span class="nc" id="L184">        int opcion = -1;</span>
+        do {
+<span class="nc" id="L186">            buscado = null;</span>
+<span class="nc" id="L187">            encontrados = new ArrayList&lt;Socio&gt;();</span>
+<span class="nc" id="L188">            in = new Scanner(System.in, &quot;ISO-8859-1&quot;);</span>
+<span class="nc" id="L189">            System.out.println(&quot;Pulse 1 para buscar socio por ID.&quot;);</span>
+<span class="nc" id="L190">            System.out.println(&quot;Pulse 2 para buscar socio por NOMBRE.&quot;);</span>
+<span class="nc" id="L191">            System.out.println(&quot;Pulse 3 para buscar socio por TELEFONO.&quot;);</span>
+<span class="nc" id="L192">            System.out.println(&quot;Pulse 4 para buscar socio por NIF.&quot;);</span>
+<span class="nc" id="L193">            System.out.println(&quot;Pulse 0 para VOLVER.&quot;);</span>
+<span class="nc" id="L194">            opcion = in.nextInt();</span>
+<span class="nc bnc" id="L195" title="All 4 branches missed.">            if (opcion &lt; 0 || opcion &gt; 4) {</span>
+<span class="nc" id="L196">                System.out.println(&quot;Opción incorrecta.&quot;);</span>
+<span class="nc" id="L197">                continue;</span>
+            }
+<span class="nc" id="L199">            in = new Scanner(System.in, &quot;ISO-8859-1&quot;);</span>
+<span class="nc bnc" id="L200" title="All 6 branches missed.">            switch (opcion) {</span>
+                case 0:
+<span class="nc" id="L202">                    break;</span>
+                case 1:
+<span class="nc" id="L204">                    System.out.println(&quot;Introduzca el ID del socio a encontrar:&quot;);</span>
+<span class="nc" id="L205">                    int idSoc = in.nextInt();</span>
+<span class="nc" id="L206">                    buscado = Socio.buscarSociosPorId(idSoc, socios);</span>
+<span class="nc bnc" id="L207" title="All 2 branches missed.">                    if (buscado != null) {</span>
+<span class="nc" id="L208">                        System.out.print(&quot;Socio encontrado: &quot;);</span>
+<span class="nc" id="L209">                        System.out.println(buscado.getId() + &quot;. &quot; + buscado.getNombre() + &quot; (&quot; + buscado.getNIF() + &quot;)( con telefono&quot; + buscado.getTelefono() + &quot;)--&gt;&quot; + buscado.getClass().getSimpleName());</span>
+                    } else {
+<span class="nc" id="L211">                        System.out.println(&quot;Socio con id=&quot; + idSoc + &quot; NO ENCONTRADO.&quot;);</span>
+                    }
+<span class="nc" id="L213">                    break;</span>
+                case 2:
+<span class="nc" id="L215">                    System.out.println(&quot;Introduzca el NOMBRE del Socio a encontrar:&quot;);</span>
+<span class="nc" id="L216">                    String nomSoc = in.nextLine();</span>
+<span class="nc" id="L217">                    encontrados = Socio.buscarSocioPorNombre(nomSoc, socios);</span>
+<span class="nc bnc" id="L218" title="All 2 branches missed.">                    if (encontrados.size() &gt; 0) {</span>
+<span class="nc" id="L219">                        System.out.println(&quot;Hay coincidencias: &quot;);</span>
+<span class="nc bnc" id="L220" title="All 2 branches missed.">                        for (Socio e : encontrados) {</span>
+<span class="nc" id="L221">                            System.out.println(e.getId() + &quot;. &quot; + e.getNombre() + &quot; (&quot; + e.getNIF() + &quot;)(&quot; + e.getTelefono() + &quot;)--&gt;&quot; + e.getClass().getSimpleName());</span>
+<span class="nc" id="L222">                        }</span>
+                    } else {
+<span class="nc" id="L224">                        System.out.println(&quot;Socio con nombre=&quot; + nomSoc + &quot; NO ENCONTRADO.&quot;);</span>
+                    }
+<span class="nc" id="L226">                    System.out.println(&quot;&quot;);</span>
+<span class="nc" id="L227">                    break;</span>
+
+                case 3:
+<span class="nc" id="L230">                    System.out.println(&quot;Introduzca el TELEFONO del socio a encontrar:&quot;);</span>
+<span class="nc" id="L231">                    String telSoc = in.nextLine();</span>
+<span class="nc" id="L232">                    encontrados = Socio.buscarSocioPorTelefono(telSoc, socios);</span>
+<span class="nc bnc" id="L233" title="All 2 branches missed.">                    if (encontrados.size() &gt; 0) {</span>
+<span class="nc" id="L234">                        System.out.println(&quot;Hay coincidencias: &quot;);</span>
+<span class="nc bnc" id="L235" title="All 2 branches missed.">                        for (Socio e : encontrados) {</span>
+<span class="nc" id="L236">                            System.out.println(e.getId() + &quot;. &quot; + e.getNombre() + &quot; (&quot; + e.getNIF() + &quot;)(&quot; + e.getTelefono() + &quot;)--&gt;&quot; + e.getClass().getSimpleName());</span>
+<span class="nc" id="L237">                        }</span>
+                    } else {
+<span class="nc" id="L239">                        System.out.println(&quot;Socio con teléfono=&quot; + telSoc + &quot; NO ENCONTRADO.&quot;);</span>
+                    }
+<span class="nc" id="L241">                    System.out.println(&quot;&quot;);</span>
+<span class="nc" id="L242">                    break;</span>
+
+                case 4:
+<span class="nc" id="L245">                    System.out.println(&quot;Introduzca el NIF del socio a encontrar:&quot;);</span>
+<span class="nc" id="L246">                    String nifSoc = in.nextLine();</span>
+<span class="nc" id="L247">                    encontrados = Socio.buscarSocioPorNIF(nifSoc, socios);</span>
+<span class="nc bnc" id="L248" title="All 2 branches missed.">                    if (encontrados.size() &gt; 0) {</span>
+<span class="nc" id="L249">                        System.out.println(&quot;Hay coincidencias: &quot;);</span>
+<span class="nc bnc" id="L250" title="All 2 branches missed.">                        for (Socio e : encontrados) {</span>
+<span class="nc" id="L251">                            System.out.println(e.getId() + &quot;. &quot; + e.getNombre() + &quot; (&quot; + e.getNIF() + &quot;)(&quot; + e.getTelefono() + &quot;)--&gt;&quot; + e.getClass().getSimpleName());</span>
+<span class="nc" id="L252">                        }</span>
+                    } else {
+<span class="nc" id="L254">                        System.out.println(&quot;Socio con NIF=&quot; + nifSoc + &quot; NO ENCONTRADO.&quot;);</span>
+                    }
+<span class="nc" id="L256">                    System.out.println(&quot;&quot;);</span>
+<span class="nc" id="L257">                    break;</span>
+
+                default:
+                    break;
+            }
+
+<span class="nc bnc" id="L263" title="All 2 branches missed.">        } while (opcion != 0);</span>
+<span class="nc" id="L264">    }</span>
+
+    public static Socio buscarSociosPorId(int idSocio, ArrayList&lt;Socio&gt; socios) {
+<span class="nc" id="L267">        Socio ret = null;</span>
+<span class="nc bnc" id="L268" title="All 2 branches missed.">        for (Socio s : socios) {</span>
+<span class="nc bnc" id="L269" title="All 2 branches missed.">            if (s.getId() == idSocio) {</span>
+
+<span class="nc" id="L271">                ret = s;</span>
+<span class="nc" id="L272">                break;</span>
+            }
+
+<span class="nc" id="L275">        }</span>
+<span class="nc" id="L276">        return ret;</span>
+    }
+
+    public static ArrayList&lt;Socio&gt; buscarSocioPorNombre(String nomSocio, ArrayList&lt;Socio&gt; socios) {
+<span class="nc" id="L280">        ArrayList&lt;Socio&gt; ret = new ArrayList&lt;Socio&gt;();</span>
+<span class="nc bnc" id="L281" title="All 2 branches missed.">        for (Socio e : socios) {</span>
+<span class="nc bnc" id="L282" title="All 2 branches missed.">            if (Utilidades.removeDiacriticalMarks(e.getNombre().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(nomSocio.toLowerCase()))) {</span>
+<span class="nc" id="L283">                ret.add(e);</span>
+            }
+<span class="nc bnc" id="L285" title="All 2 branches missed.">            if (e.getNombre().toLowerCase().contains(nomSocio.toLowerCase())) {</span>
+<span class="nc bnc" id="L286" title="All 2 branches missed.">                if (!ret.contains(e)) {</span>
+<span class="nc" id="L287">                    ret.add(e);</span>
+                }
+            }
+<span class="nc" id="L290">        }</span>
+<span class="nc" id="L291">        return ret;</span>
+    }
+
+    public static ArrayList&lt;Socio&gt; buscarSocioPorTelefono(String telSocio, ArrayList&lt;Socio&gt; socios) {
+<span class="nc" id="L295">        ArrayList&lt;Socio&gt; ret = new ArrayList&lt;Socio&gt;();</span>
+<span class="nc bnc" id="L296" title="All 2 branches missed.">        for (Socio e : socios) {</span>
+<span class="nc bnc" id="L297" title="All 2 branches missed.">            if (Utilidades.removeDiacriticalMarks(e.getTelefono().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(telSocio.toLowerCase()))) {</span>
+<span class="nc" id="L298">                ret.add(e);</span>
+            }
+<span class="nc bnc" id="L300" title="All 2 branches missed.">            if (e.getTelefono().toLowerCase().contains(telSocio.toLowerCase())) {</span>
+<span class="nc bnc" id="L301" title="All 2 branches missed.">                if (!ret.contains(e)) {</span>
+<span class="nc" id="L302">                    ret.add(e);</span>
+                }
+            }
+<span class="nc" id="L305">        }</span>
+<span class="nc" id="L306">        return ret;</span>
+    }
+
+    public static ArrayList&lt;Socio&gt; buscarSocioPorNIF(String nifSocio, ArrayList&lt;Socio&gt; socios) {
+<span class="nc" id="L310">        ArrayList&lt;Socio&gt; ret = new ArrayList&lt;Socio&gt;();</span>
+<span class="nc bnc" id="L311" title="All 2 branches missed.">        for (Socio e : socios) {</span>
+<span class="nc bnc" id="L312" title="All 2 branches missed.">            if (Utilidades.removeDiacriticalMarks(e.getNIF().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(nifSocio.toLowerCase()))) {</span>
+<span class="nc" id="L313">                ret.add(e);</span>
+            }
+<span class="nc bnc" id="L315" title="All 2 branches missed.">            if (e.getNIF().toLowerCase().contains(nifSocio.toLowerCase())) {</span>
+<span class="nc bnc" id="L316" title="All 2 branches missed.">                if (!ret.contains(e)) {</span>
+<span class="nc" id="L317">                    ret.add(e);</span>
+                }
+            }
+<span class="nc" id="L320">        }</span>
+<span class="nc" id="L321">        return ret;</span>
+    }
+
+    public void verDatosSocioCompleto() {
+<span class="nc" id="L325">        System.out.println(&quot;-----------&quot;);</span>
+<span class="nc" id="L326">        System.out.println(&quot;INFORME completo de SOCIO de ID: &quot; + this.getId());</span>
+<span class="nc" id="L327">        System.out.println(&quot;NOMBRE: &quot; + this.getNombre());</span>
+<span class="nc" id="L328">        System.out.println(&quot;TELEFONO: &quot; + this.getTelefono() + &quot;\t\tNIF: &quot; + this.getNIF());</span>
+
+<span class="nc" id="L330">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L334">        return &quot;Socio{&quot; + &quot;id=&quot; + id + &quot;, nombre=&quot; + nombre + &quot;, NIF=&quot; + NIF + &quot;, telefono=&quot; + telefono + &quot;, direccion=&quot; + direccion + &quot;, penalizaciones=&quot; + penalizaciones + &quot;, eventos=&quot; + eventos + &quot;, prestamo=&quot; + prestamo + '}';</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

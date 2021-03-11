@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Lote.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Bilbioteca_Grupo_A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Entidades</a> &gt; <span class="el_source">Lote.java</span></div><h1>Lote.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Entidades;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
+
+/**
+ *
+ * @author DAM102
+ */
+public class Lote {
+    //Valores válidos,  &gt;0
+    //Valores inválidos, &lt;=0
+    //Tiene que ser único
+    private long id;
+    //Valores válidos dd/mm/yyyy - numerico
+    //Valores inválidos- No puede contener caracteres ni signos
+      private Date fechallegada;
+<span class="pc" id="L24">      private ArrayList &lt;Elemento&gt; elementos = new ArrayList &lt;Elemento&gt;();/*Obligatorio*/</span>
+    //Valores válidos,  &gt;0
+    //Valores inválidos, &lt;=0
+    //Tiene que ser único
+      private long idProveedor;/*Obligatorio*/
+
+<span class="nc" id="L30">    public Lote() {</span>
+       
+<span class="nc" id="L32">    }</span>
+    
+<span class="nc" id="L34">    public Lote(Lote a){</span>
+<span class="nc" id="L35">       this.id=a.id;</span>
+<span class="nc" id="L36">       this.fechallegada=a.fechallegada;</span>
+<span class="nc" id="L37">       this.elementos=a.elementos;</span>
+               
+        
+<span class="nc" id="L40">    }</span>
+
+<span class="fc" id="L42">    public Lote(Date fechallegada, long idProveedor) {</span>
+<span class="fc" id="L43">        this.id= id;</span>
+<span class="fc" id="L44">        this.fechallegada = fechallegada;</span>
+<span class="fc" id="L45">        this.idProveedor = idProveedor;</span>
+<span class="fc" id="L46">    }</span>
+
+    public long getId() {
+<span class="nc" id="L49">        return id;</span>
+    }
+
+    public void setId(long id) {
+<span class="nc" id="L53">        this.id = id;</span>
+<span class="nc" id="L54">    }</span>
+
+    public Date getFechallegada() {
+<span class="nc" id="L57">        return fechallegada;</span>
+    }
+
+    public void setFechallegada(Date fechallegada) {
+<span class="nc" id="L61">        this.fechallegada = fechallegada;</span>
+<span class="nc" id="L62">    }</span>
+
+    public ArrayList&lt;Elemento&gt; getElementos() {
+<span class="nc" id="L65">        return elementos;</span>
+    }
+
+    public void setElementos(ArrayList&lt;Elemento&gt; elementos) {
+<span class="nc" id="L69">        this.elementos = elementos;</span>
+<span class="nc" id="L70">    }</span>
+
+    public long getIdProveedor() {
+<span class="nc" id="L73">        return idProveedor;</span>
+    }
+
+    public void setIdProveedor(long idProveedor) {
+<span class="nc" id="L77">        this.idProveedor = idProveedor;</span>
+<span class="nc" id="L78">    }</span>
+      
+     public Lote nuevoLote(){
+<span class="nc" id="L81">         Lote l1 = new Lote();</span>
+<span class="nc" id="L82">         Scanner in =new Scanner(System.in);</span>
+         
+<span class="nc" id="L84">           int numLotes = Utilidades.numLotes + 1;</span>
+<span class="nc" id="L85">            l1.setId(numLotes);</span>
+         
+<span class="nc" id="L87">         System.out.println(&quot;Introduzca la fecha de llegada&quot;);</span>
+         /*Preguntar a Luis*/         
+<span class="nc" id="L89">         java.sql.Date fecha = Utilidades.Fecha.nuevaFecha().conversorFecha();</span>
+<span class="nc" id="L90">         l1.setFechallegada(fecha);</span>
+         
+<span class="nc" id="L92">         return l1;</span>
+     } 
+
+    @Override
+    public String toString() {
+<span class="nc" id="L97">        return &quot;Lote{&quot; + &quot;fechallegada=&quot; + fechallegada + &quot;, elementos=&quot; + elementos + &quot;, idProveedor=&quot; + idProveedor + '}';</span>
+    }
+      
+     
+   
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

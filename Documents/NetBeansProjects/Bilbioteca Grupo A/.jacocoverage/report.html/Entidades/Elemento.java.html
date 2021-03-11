@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Elemento.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Bilbioteca_Grupo_A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Entidades</a> &gt; <span class="el_source">Elemento.java</span></div><h1>Elemento.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Entidades;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author DAM102
+ */
+public class Elemento {
+    /*Valido: &gt;=0 Invalido: &lt;0 Otros: Es unico*/
+    protected long id; 
+<span class="pc" id="L18">    protected ArrayList &lt;Prestamo&gt; prestamos = new ArrayList &lt;Prestamo&gt;();/*Obligatorio*/</span>
+    protected Genero genero;/*Obligatorio*/
+
+<span class="nc" id="L21">    public Elemento() {</span>
+<span class="nc" id="L22">    }</span>
+
+<span class="fc" id="L24">    public Elemento(long id, Genero genero) {</span>
+<span class="fc" id="L25">        this.id = id;</span>
+<span class="fc" id="L26">        this.genero = genero;</span>
+<span class="fc" id="L27">    }</span>
+    
+<span class="fc" id="L29">    public Elemento(Elemento el) {</span>
+<span class="fc" id="L30">        this.id = el.id;</span>
+<span class="fc" id="L31">        this.genero = el.genero;</span>
+<span class="fc" id="L32">    }</span>
+
+    public long getId() {
+<span class="nc" id="L35">        return id;</span>
+    }
+
+    public void setId(long id) {
+<span class="nc" id="L39">        this.id = id;</span>
+<span class="nc" id="L40">    }</span>
+
+    public ArrayList&lt;Prestamo&gt; getPrestamos() {
+<span class="nc" id="L43">        return prestamos;</span>
+    }
+
+    public void setPrestamos(ArrayList&lt;Prestamo&gt; prestamos) {
+<span class="nc" id="L47">        this.prestamos = prestamos;</span>
+<span class="nc" id="L48">    }</span>
+
+    public Genero getGenero() {
+<span class="nc" id="L51">        return genero;</span>
+    }
+
+    public void setGenero(Genero genero) {
+<span class="nc" id="L55">        this.genero = genero;</span>
+<span class="nc" id="L56">    }</span>
+    
+    public static Elemento nuevoElemento() {
+<span class="nc" id="L59">        Elemento el = new Elemento();</span>
+<span class="nc" id="L60">        Scanner teclado = new Scanner(System.in);</span>
+        
+<span class="nc" id="L62">        int numElementos = Utilidades.numElementos + 1;</span>
+<span class="nc" id="L63">        el.setId(numElementos);</span>
+        
+ 
+<span class="nc" id="L66">        System.out.println(&quot;Socio registrado correctamente con el id &quot; + numElementos);</span>
+<span class="nc" id="L67">        return el;</span>
+    
+    }
+    
+    @Override
+    public String toString() {
+<span class="nc" id="L73">        return &quot;Elemento{&quot; + &quot;id=&quot; + id + &quot;, prestamos=&quot; + prestamos + &quot;, genero=&quot; + genero + '}';</span>
+    }
+    
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

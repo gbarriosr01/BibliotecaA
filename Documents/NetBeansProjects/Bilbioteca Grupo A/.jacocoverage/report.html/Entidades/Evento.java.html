@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Evento.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Bilbioteca_Grupo_A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Entidades</a> &gt; <span class="el_source">Evento.java</span></div><h1>Evento.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Entidades;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
+
+/**
+ *
+ * @author DAM102
+ */
+public class Evento {
+
+    /*
+    Valores validos: Caracteres numericos.
+    Valores invalidos: Caracteres alfanumericos y especiales.
+    Otras restricciones: &gt;0 y es unico.
+     */
+    protected long id;
+    /*
+    Valores validos: Caracteres alfanumericos.
+    Valores invalidos: Caracteres especiales.
+     */
+    protected String nombre;
+    /*
+    Valores validos: Caracteres alfanumericos.
+    Valores invalidos: Caracteres especiales excepto &quot;º&quot; y &quot;@&quot;.
+    Otras restricciones: Longitud max 60 caracteres.
+     */
+    protected Date fechayhora;
+    /*
+    Valores validos: Fecha y hora dd/mm/yyyy hh:mm:ss.
+    Valores invalidos: Otro tipo de caracteres que no esten contemplados en el formato
+     */
+    protected long idPenalizacion;
+<span class="pc" id="L41">    protected ArrayList&lt;Socio&gt; socios = new ArrayList&lt;Socio&gt;();/*Obligatorio*/</span>
+
+<span class="nc" id="L43">    public Evento() {</span>
+<span class="nc" id="L44">        this.id = id = 0;</span>
+<span class="nc" id="L45">        this.nombre = nombre = null;</span>
+<span class="nc" id="L46">        this.fechayhora = fechayhora;</span>
+<span class="nc" id="L47">        this.idPenalizacion = idPenalizacion = 0;</span>
+<span class="nc" id="L48">    }</span>
+
+<span class="fc" id="L50">    public Evento(long id, String nombre, Date fechayhora) {</span>
+<span class="fc" id="L51">        this.id = id;</span>
+<span class="fc" id="L52">        this.nombre = nombre;</span>
+<span class="fc" id="L53">        this.fechayhora = fechayhora;</span>
+<span class="fc" id="L54">    }</span>
+
+<span class="nc" id="L56">    public Evento(long id, String nombre, Date fechayhora, long idPenalizacion) {</span>
+<span class="nc" id="L57">        this.id = id = 0;</span>
+<span class="nc" id="L58">        this.nombre = nombre = null;</span>
+<span class="nc" id="L59">        this.fechayhora = fechayhora;</span>
+<span class="nc" id="L60">        this.idPenalizacion = idPenalizacion = 0;</span>
+<span class="nc" id="L61">    }</span>
+
+<span class="fc" id="L63">    public Evento(Evento ev1) {</span>
+<span class="fc" id="L64">        this.id = ev1.id;</span>
+<span class="fc" id="L65">        this.nombre = ev1.nombre;</span>
+<span class="fc" id="L66">        this.fechayhora = ev1.fechayhora;</span>
+<span class="fc" id="L67">        this.idPenalizacion = ev1.idPenalizacion;</span>
+<span class="fc" id="L68">    }</span>
+
+    public long getId() {
+<span class="nc" id="L71">        return id;</span>
+    }
+
+    public void setId(long id) {
+<span class="nc" id="L75">        this.id = id;</span>
+<span class="nc" id="L76">    }</span>
+
+    public String getNombre() {
+<span class="nc" id="L79">        return nombre;</span>
+    }
+
+    public void setNombre(String nombre) {
+<span class="nc" id="L83">        this.nombre = nombre;</span>
+<span class="nc" id="L84">    }</span>
+
+    public Date getFechayhora() {
+<span class="nc" id="L87">        return fechayhora;</span>
+    }
+
+    public void setFechayhora(Date fechayhora) {
+<span class="nc" id="L91">        this.fechayhora = fechayhora;</span>
+<span class="nc" id="L92">    }</span>
+
+    public long getIdPenalizacion() {
+<span class="nc" id="L95">        return idPenalizacion;</span>
+    }
+
+    public void setIdPenalizacion(long idPenalizacion) {
+<span class="nc" id="L99">        this.idPenalizacion = idPenalizacion;</span>
+<span class="nc" id="L100">    }</span>
+
+    public ArrayList&lt;Socio&gt; getSocios() {
+<span class="nc" id="L103">        return socios;</span>
+    }
+
+    public void setSocios(ArrayList&lt;Socio&gt; socios) {
+<span class="nc" id="L107">        this.socios = socios;</span>
+<span class="nc" id="L108">    }</span>
+//    public static ArrayList&lt;Socio&gt; convertir(Socio[] array) {
+//        return new Gen&lt;Socio&gt;().convertir(array);
+//    }
+
+    public static Evento nuevoEvento() {
+<span class="nc" id="L114">        Evento ev1 = new Evento();</span>
+<span class="nc" id="L115">        Scanner in = new Scanner(System.in);</span>
+<span class="nc" id="L116">        int numEventos = Utilidades.numEventos + 1;</span>
+<span class="nc" id="L117">        ev1.setId(numEventos);</span>
+<span class="nc" id="L118">        System.out.println(&quot;Introduzca el nombre del evento&quot;);</span>
+<span class="nc" id="L119">        String nombre = in.nextLine();</span>
+<span class="nc" id="L120">        ev1.setNombre(nombre);</span>
+<span class="nc" id="L121">        System.out.println(&quot;Introduzca la fecha y la hora del evento&quot;);</span>
+<span class="nc" id="L122">        java.sql.Date fechayhora = Utilidades.Fecha.nuevaFecha().conversorFecha();</span>
+<span class="nc" id="L123">        ev1.setFechayhora(fechayhora);</span>
+        
+//        int opcion=-1;
+//        
+//        do{
+//            mostrarMenuEventos();
+//            opcion = in.nextInt();
+//            if(opcion &lt;0 || opcion &gt;4){
+//                System.out.println(&quot;Opcion incorrecta&quot;);
+//                continue;
+//            }
+//            switch(opcion){
+//            
+//                case 1:
+//                    Concurso con = new Concurso().nuevoConcurso();
+//                    break;
+//                case 2:
+//                    Curso cur = new Curso().nuevoCurso();
+//                    break;
+//                case 3:
+//                    Lectura lec = new Lectura().nuevoLectura();
+//                    break;
+//                case 4:
+//                    Visionado vis = new Visionado().nuevoVisionado();
+//                    break;
+//                case 0:
+//                    continue;
+//            }
+//        
+//        }while(opcion !=0);
+<span class="nc" id="L153">        return ev1;</span>
+    }
+
+//    public static void mostrarMenuEventos(){
+//        System.out.println(&quot;1.Concurso&quot;);
+//        System.out.println(&quot;2.Curso&quot;);
+//        System.out.println(&quot;3.Lectura&quot;);
+//        System.out.println(&quot;4.Visionado&quot;);
+//        System.out.println(&quot;0.Salir&quot;);
+//    }
+    @Override
+    public String toString() {
+<span class="nc" id="L165">        return &quot;Evento{&quot; + &quot;id=&quot; + id + &quot;, nombre=&quot; + nombre + &quot;, fechayhora=&quot; + fechayhora + &quot;, idPenalizacion=&quot; + idPenalizacion + &quot;, socios=&quot; + socios + '}';</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

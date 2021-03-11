@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>SocioException.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Bilbioteca_Grupo_A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Pruebas</a> &gt; <span class="el_source">SocioException.java</span></div><h1>SocioException.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Pruebas;
+
+import Entidades.Socio;
+import java.util.regex.Pattern;  
+
+/**
+ *
+ * @author DAM102
+ */
+<span class="nc" id="L15">public class SocioException {</span>
+
+    //Validamos Socio por el ID comprobando si es &gt;0
+    public static boolean validarSocioId(long id) {
+<span class="nc bnc" id="L19" title="All 2 branches missed.">        if (id &gt; 0) {</span>
+<span class="nc" id="L20">            return true;</span>
+        } else {
+<span class="nc" id="L22">            System.out.println(&quot;Error 404 not found&quot;);</span>
+        }
+<span class="nc" id="L24">        return false;</span>
+
+    }
+
+    public static boolean validarSocioNombre(String nombre) {
+<span class="nc bnc" id="L29" title="All 4 branches missed.">        if (nombre.length() &gt;= 20 &amp;&amp; nombre.length() &lt; 40) {</span>
+<span class="nc" id="L30">            return true;</span>
+        } else {
+<span class="nc" id="L32">            System.out.println(&quot;Error 404 not found&quot;);</span>
+        }
+<span class="nc" id="L34">        return false;</span>
+
+    }
+
+    public static boolean validarSocioNIF(String NIF) {
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        if (NIF.length() == 9) {</span>
+<span class="nc" id="L40">            return true;</span>
+        } else {
+<span class="nc" id="L42">            System.out.println(&quot;Error 404 not found&quot;);</span>
+        }
+<span class="nc" id="L44">        return false;</span>
+    }
+
+    public static boolean validarSocioTelefono(String telefono) {
+<span class="nc bnc" id="L48" title="All 2 branches missed.">        if (telefono.length() == 9) {</span>
+<span class="nc" id="L49">            return true;</span>
+        } else {
+<span class="nc" id="L51">            System.out.println(&quot;Error 404 not found&quot;);</span>
+        }
+<span class="nc" id="L53">        return false;</span>
+    }
+
+    public static boolean validarSocioDireccion(String direccion) {
+<span class="nc bnc" id="L57" title="All 4 branches missed.">        if (direccion.length() &gt; 30 &amp;&amp; direccion.length() &lt; 100) {</span>
+<span class="nc" id="L58">            return true;</span>
+        } else {
+<span class="nc" id="L60">            System.out.println(&quot;Error 404 not found&quot;);</span>
+        }
+<span class="nc" id="L62">        return false;</span>
+    }
+
+    public static boolean validarNombre(String nombre) {
+<span class="nc" id="L66">        boolean check = false;</span>
+
+        /*Verificamos que no sea null*/
+<span class="nc bnc" id="L69" title="All 2 branches missed.">        if (nombre != null) {</span>
+            /* 1ª Condición: que la letra inicial sea mayúscula*/
+<span class="nc" id="L71">            boolean isFirstUpper = Character.isUpperCase(nombre.charAt(0));</span>
+
+            /* 2ª Condición: que el tamaño sea &gt;= 15 y &lt;= 40*/
+<span class="nc" id="L74">            int stringSize = nombre.length();</span>
+<span class="nc bnc" id="L75" title="All 4 branches missed.">            boolean isValidSize = (stringSize &gt;= 15 &amp;&amp; stringSize &lt;= 40);</span>
+
+            /* 3ª Condición: que contenga al menos un espacio*/
+<span class="nc" id="L78">            boolean isSpaced = nombre.contains(&quot; &quot;);</span>
+            
+            //4º Condición:  que contenga solo letras de la A-z, no numeros ni simbolos.    
+<span class="nc" id="L81">           boolean isOnlyLetters = Pattern.matches(&quot;^[a-zA-Z]*$&quot;, nombre);</span>
+           
+            /* Verificamos que las tres condiciones son verdaderas*/
+<span class="nc bnc" id="L84" title="All 8 branches missed.">            check = ((isFirstUpper == true) &amp;&amp; (isFirstUpper &amp;&amp; isValidSize &amp;&amp; isSpaced));</span>
+        }
+        /*Devolvemos el estado de la validación*/
+<span class="nc" id="L87">        return check;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

@@ -6,7 +6,20 @@
 package Entidades;
 
 import Validaciones.SocioException;
+import java.io.BufferedReader;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -191,51 +204,59 @@ public class Socio {
         return ret + 1;
     }
 
-    public static Socio nuevoSocio() throws SocioException{
+    public static ArrayList<Socio> convertir(Socio[] array) {
+        ArrayList<Socio> ret = new ArrayList<Socio>();
+        for (Socio s : array) {
+            ret.add((Socio) s);
+        }
+        return ret;
+    }
+
+    public static Socio nuevoSocio() throws SocioException {
 
         Socio s1 = new Socio();
         Scanner in = new Scanner(System.in);
 
         long idSoc = nextIdSocio();
-        
-        if(SocioException.validarId(idSoc)){
+
+        if (SocioException.validarId(idSoc)) {
             s1.setId(idSoc);
-        } else{
+        } else {
             throw new SocioException("Dato invalido");
         }
-        
+
         System.out.println("Inserte su nombre: ");
-            String nombre = in.nextLine();
-        if(SocioException.validarNombre(nombre)){
-        s1.setNombre(nombre);
-        } else{
+        String nombre = in.nextLine();
+        if (SocioException.validarNombre(nombre)) {
+            s1.setNombre(nombre);
+        } else {
             throw new SocioException("Dato invalido");
         }
-            
+
         System.out.println("Inserte su NIF: ");
         String NIF = in.nextLine();
-        
-        if(SocioException.validarNIF(NIF)){
+
+        if (SocioException.validarNIF(NIF)) {
             s1.setNIF(NIF);
-        } else{
+        } else {
             throw new SocioException("Dato invalido");
         }
 
         System.out.println("Inserte su telefono: ");
         String telefono = in.nextLine();
-        
-        if(SocioException.validarTelefono(telefono)){
+
+        if (SocioException.validarTelefono(telefono)) {
             s1.setTelefono(telefono);
-        } else{
+        } else {
             throw new SocioException("Dato invalido");
         }
 
         System.out.println("Inserte su direccion: ");
         String direccion = in.nextLine();
-        
-        if(SocioException.validarDireccion(direccion)){
+
+        if (SocioException.validarDireccion(direccion)) {
             s1.setDireccion(direccion);
-        } else{
+        } else {
             throw new SocioException("Dato invalido");
         }
 
@@ -403,6 +424,216 @@ public class Socio {
 
     }
 
+    public void exportarObjetoSocioTexto(String path) {
+        File fichero = new File(path);
+        FileWriter escritor = null;
+        PrintWriter buffer = null;
+        try {
+            try {
+                escritor = new FileWriter(fichero, true);
+                buffer = new PrintWriter(escritor);
+                buffer.print(this.data() + "\r\n");
+            } finally {
+                if (buffer != null) {
+                    buffer.close();
+                }
+                if (escritor != null) {
+                    escritor.close();
+                }
+            }
+        } catch (FileNotFoundException s) {
+            System.out.println("No se ha encontrado el fichero");
+        } catch (IOException s) {
+            System.out.println("Se ha producido un error en la inserción de los datos");
+        } catch (Exception s) {
+            System.out.println("Se ha producido un error inesperado intentelo de nuevo");
+        }
+    }
+
+    public static void exportarColeccionDeObjetosEmpleadoTexto(String path) {
+        ArrayList<Socio> coleccion;
+        coleccion = Socio.convertir(Utilidades.SOCIOS);
+        File fichero = new File(path);
+        FileWriter escritor = null;
+        PrintWriter buffer = null;
+        try {
+            try {
+                escritor = new FileWriter(fichero, true);
+                buffer = new PrintWriter(escritor);
+                for (Socio s : coleccion) {
+                    buffer.print(s.data() + "\n");
+                }
+            } finally {
+                if (buffer != null) {
+                    buffer.close();
+                }
+                if (escritor != null) {
+                    escritor.close();
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("No se ha encontrado el fichero");
+        } catch (IOException e) {
+            System.out.println("Se ha producido un error en la inserción de los datos");
+        } catch (Exception e) {
+            System.out.println("Se ha producido un error inesperado intentelo de nuevo");
+        }
+    }
+    
+    public void exportarSocioaArchivoBinario(String path) {
+        try {
+            FileOutputStream fichero = new FileOutputStream(path, true);
+            ObjectOutputStream socio = new ObjectOutputStream(fichero);
+            socio.writeObject(this);
+            socio.flush();
+            socio.close();
+        } catch (FileNotFoundException s) {
+            System.out.println("No se ha encontrado el fichero");
+        } catch (IOException s) {
+            System.out.println("Se ha producido un error en la inserción de los datos");
+        } catch (Exception s) {
+            System.out.println("Se ha producido un error inesperado intentelo de nuevo");
+        }
+    }
+
+    public static void exportarColeccionSociosaArchivoBinario(String path) {
+        ArrayList<Socio> coleccion;
+        coleccion = Socio.convertir(Utilidades.SOCIOS);
+        try {
+            FileOutputStream fichero = new FileOutputStream(path, true);
+            ObjectOutputStream escritor = new ObjectOutputStream(fichero);
+            escritor.writeObject(coleccion);
+            escritor.flush();
+            escritor.close();
+        } catch (FileNotFoundException s) {
+            System.out.println("No se ha encontrado el fichero");
+        } catch (IOException s) {
+            System.out.println("Se ha producido un error en la inserción de los datos");
+        } catch (Exception s) {
+            System.out.println("Se ha producido un error inesperado intentelo de nuevo");
+        }
+    }
+    public static ArrayList<Socio> importarSocioDesdeFicheroTexto(String path) {
+        ArrayList<Socio> ret = new ArrayList<Socio>();
+        FileReader inputStream = null;
+        BufferedReader lector = null;
+        try {
+            try {
+                inputStream = new FileReader(path);
+                lector = new BufferedReader(inputStream);
+                Socio s;
+                while (lector.ready()) {
+                    String cadena = lector.readLine();
+                    if (cadena.isEmpty() == false) {
+                        String[] parametros = cadena.split("\\|");
+                        s = new Socio(Integer.valueOf(parametros[0]), parametros[1], parametros[2], parametros[3], parametros[4], Integer.valueOf(parametros[5]));
+                        ret.add(s);
+                    }
+                }
+            } finally {
+                if (lector != null) {
+                    lector.close();
+                }
+            }
+        } catch (FileNotFoundException s) {
+            System.out.println("No se ha encontrado el fichero");
+        } catch (EOFException s) {
+            System.out.println("Final de fichero");
+        } catch (IOException s) {
+            System.out.println("Se ha producido un error en la inserción de los datos");
+        } catch (Exception s) {
+            System.out.println("Se ha producido un error inesperado intentelo de nuevo");
+        }
+        return ret;
+    }
+    
+    public static ArrayList<Socio> importarSocioDesdeFicheroBinario(String path) {
+        ArrayList<Socio> ret = new ArrayList<Socio>();
+        FileInputStream lector = null;
+        ObjectInputStream lectorObjeto = null;
+        try {
+            try {
+                lector = new FileInputStream(path);
+                lectorObjeto = new ObjectInputStream(lector);
+                Socio s;
+                while ((s = (Socio) lectorObjeto.readObject()) != null) {
+                    ret.add(s);
+                    
+                }
+            } finally {
+                if (lectorObjeto != null) {
+                    lectorObjeto.close();
+                }
+                if (lector != null) {
+                    lector.close();
+                }
+            }
+        } catch (FileNotFoundException s) {
+            System.out.println("No se ha encontrado el fichero");
+        } catch (EOFException s) {
+            System.out.println("Final de fichero");
+        } catch (IOException s) {
+            System.out.println("Se ha producido un error en la inserción de los datos");
+        } catch (ClassNotFoundException s) {
+            System.out.println("No se ha encontrado la clase a la cual haces referencia");
+        } catch (Exception s) {
+            System.out.println("Se ha producido un error inesperado intentelo de nuevo");
+        }
+        return ret;
+    }
+    
+    public static ArrayList<Socio> buscarPorIDEnFicheroDeTexto(String path) {
+        ArrayList<Socio> ret = new ArrayList<Socio>();
+        FileReader inputStream = null;
+        BufferedReader lector = null;
+        try {
+            try {
+                inputStream = new FileReader(path);
+                lector = new BufferedReader(inputStream);
+                Socio s;
+                while (lector.ready()) {
+                    String cadena = lector.readLine();
+                    if (cadena.isEmpty() == false) {
+                        String[] parametros = cadena.split("\\|");
+                        s = new Socio(Integer.valueOf(parametros[0]), parametros[1], parametros[2], parametros[3], parametros[4], Integer.valueOf(parametros[5]));
+                        ret.add(s);
+                    }
+                }
+                Scanner in = new Scanner(System.in);
+                int idBuscar = 0;
+                do {
+                    System.out.print("Introduce el id que desea buscar dentro del fichero de texto: ");
+                    idBuscar = in.nextInt();
+                    if (idBuscar <= 0) {
+                        System.out.println("Debe introducir un valor mayor que cero");
+                    }
+                } while (idBuscar <= 0);
+                for (Socio so : ret) {
+                    if (so.getId() == idBuscar) {
+                        System.out.println(so.data());
+                        break;
+                    }
+                }
+            } finally {
+                if (lector != null) {
+                    lector.close();
+                }
+            }
+        } catch (InputMismatchException s) {
+            System.out.println("El carácter introducido no es un entero");
+        } catch (FileNotFoundException s) {
+            System.out.println("No se ha encontrado el fichero");
+        } catch (EOFException s) {
+            System.out.println("Final de fichero");
+        } catch (IOException s) {
+            System.out.println("Se ha producido un error en la inserción de los datos");
+        } catch (Exception s) {
+            System.out.println("Se ha producido un error inesperado intentelo de nuevo");
+        }
+        return ret;
+    }
+
+    
     @Override
     public String toString() {
         return "Socio{" + "id=" + id + ", nombre=" + nombre + ", NIF=" + NIF + ", telefono=" + telefono + ", direccion=" + direccion + ", penalizaciones=" + penalizaciones + ", eventos=" + eventos + ", prestamo=" + prestamo + '}';

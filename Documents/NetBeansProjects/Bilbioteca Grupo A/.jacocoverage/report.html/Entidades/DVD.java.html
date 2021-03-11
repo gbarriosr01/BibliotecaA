@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>DVD.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Bilbioteca_Grupo_A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Entidades</a> &gt; <span class="el_source">DVD.java</span></div><h1>DVD.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Entidades;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import Entidades.Genero;
+import static java.lang.System.in;
+
+/**
+ *
+ * @author DAM102
+ */
+public class DVD extends Elemento {
+
+    /*Valido: cadena caracteres &quot;dsadsa&quot; Invalido: &quot; &quot;, &gt;100caracteres*/
+    private String titulo;
+    private Visionado visionado;/*Obligatorio*/
+
+    public DVD() {
+<span class="nc" id="L24">        super();</span>
+<span class="nc" id="L25">    }</span>
+
+<span class="nc" id="L27">    public DVD(String titulo) {</span>
+<span class="nc" id="L28">        this.titulo = titulo;</span>
+<span class="nc" id="L29">    }</span>
+    public DVD(Elemento e,String titulo) {
+<span class="fc" id="L31">        super(e);</span>
+<span class="fc" id="L32">        this.titulo = titulo;</span>
+<span class="fc" id="L33">    }</span>
+<span class="nc" id="L34">    public DVD(String titulo, Visionado visionado) {</span>
+<span class="nc" id="L35">        this.titulo = titulo;</span>
+<span class="nc" id="L36">        this.visionado = visionado;</span>
+<span class="nc" id="L37">    }</span>
+
+    public DVD(String titulo, Visionado visionado, long id, Genero genero) {
+<span class="nc" id="L40">        super(id, genero);</span>
+<span class="nc" id="L41">        this.titulo = titulo;</span>
+<span class="nc" id="L42">        this.visionado = visionado;</span>
+<span class="nc" id="L43">    }</span>
+
+    public DVD(String titulo, Visionado visionado, Elemento el) {
+<span class="nc" id="L46">        super(el);</span>
+<span class="nc" id="L47">        this.titulo = titulo;</span>
+<span class="nc" id="L48">        this.visionado = visionado;</span>
+<span class="nc" id="L49">    }</span>
+
+<span class="nc" id="L51">    public DVD(DVD d) {</span>
+<span class="nc" id="L52">        this.titulo = d.titulo;</span>
+<span class="nc" id="L53">        this.visionado = d.visionado;</span>
+<span class="nc" id="L54">    }</span>
+
+    public String getTitulo() {
+<span class="nc" id="L57">        return titulo;</span>
+    }
+
+    public void setTitulo(String titulo) {
+<span class="nc" id="L61">        this.titulo = titulo;</span>
+<span class="nc" id="L62">    }</span>
+
+    public Visionado getVisionado() {
+<span class="nc" id="L65">        return visionado;</span>
+    }
+
+    public void setVisionado(Visionado visionado) {
+<span class="nc" id="L69">        this.visionado = visionado;</span>
+<span class="nc" id="L70">    }</span>
+
+    public static ArrayList&lt;DVD&gt; convertirDVDS(DVD[] array) {
+<span class="fc" id="L73">        ArrayList&lt;DVD&gt; ret = new ArrayList&lt;DVD&gt;();</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        for (DVD s : array) {</span>
+<span class="fc" id="L75">            ret.add(s);</span>
+        }
+
+<span class="fc" id="L78">        return ret;</span>
+    }
+
+    public static long nextIdDVD() {
+<span class="nc" id="L82">        long ret = 0;</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">        for (int i = 0; i &lt; Utilidades.DVDS.length; i++) {</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">            if (Utilidades.DVDS[i].id &gt; ret) {</span>
+<span class="nc" id="L85">                ret = Utilidades.DVDS[i].id;</span>
+            }
+        }
+<span class="nc" id="L88">        return ret + 1;</span>
+    }
+
+    public static DVD nuevoDVD() {
+<span class="nc" id="L92">        DVD d = new DVD();</span>
+<span class="nc" id="L93">        int opcion = 0;</span>
+<span class="nc" id="L94">        int idGenero = 0;</span>
+        Genero gen;
+<span class="nc" id="L96">        ArrayList&lt;DVD&gt; DVDS = DVD.convertirDVDS(Utilidades.DVDS);</span>
+<span class="nc" id="L97">        ArrayList&lt;Genero&gt; generos = Genero.convertirGeneros(Utilidades.GENEROS);</span>
+
+<span class="nc" id="L99">        Scanner teclado = new Scanner(System.in);</span>
+<span class="nc" id="L100">        System.out.println(&quot;Indica el titulo: &quot;);</span>
+<span class="nc" id="L101">        d.setTitulo(teclado.nextLine());</span>
+<span class="nc" id="L102">        long idEle = nextIdDVD();</span>
+<span class="nc" id="L103">        d.setId(idEle);</span>
+<span class="nc" id="L104">        System.out.println(&quot;Indica el genero&quot;);</span>
+        do {
+<span class="nc" id="L106">            Genero.verGenero(generos);</span>
+<span class="nc" id="L107">            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L108">            teclado = new Scanner(System.in);</span>
+<span class="nc" id="L109">            idGenero = teclado.nextInt();</span>
+<span class="nc bnc" id="L110" title="All 2 branches missed.">            if (idGenero != 0) {</span>
+<span class="nc" id="L111">                gen = Genero.buscarGenerosPorId(idGenero, generos);</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">                if (gen != null) {</span>
+<span class="nc" id="L113">                    System.out.println(&quot;Genero asignado: &quot;);</span>
+<span class="nc" id="L114">                    gen.verGeneroElemento();</span>
+<span class="nc" id="L115">                    d.setGenero(gen);</span>
+                } else {
+<span class="nc" id="L117">                    System.out.println(&quot;Genero:  &quot; + idGenero + &quot;  Desconocido&quot;);</span>
+
+                }
+            }
+
+<span class="nc bnc" id="L122" title="All 2 branches missed.">        } while (opcion != 0);</span>
+
+<span class="nc" id="L124">        return d;</span>
+
+    }
+
+    public static void buscarDVDs(ArrayList&lt;DVD&gt; DVDS) {
+        DVD buscado;
+        ArrayList&lt;DVD&gt; encontrados;
+        Scanner in;
+<span class="nc" id="L132">        int opcion = -1;</span>
+
+        do {
+<span class="nc" id="L135">            buscado = null;</span>
+<span class="nc" id="L136">            encontrados = new ArrayList&lt;DVD&gt;();</span>
+<span class="nc" id="L137">            in = new Scanner(System.in, &quot;ISO-8859-1&quot;);</span>
+<span class="nc" id="L138">            System.out.println(&quot;Pulse 1 para buscar DVD por Titulo.&quot;);</span>
+<span class="nc" id="L139">            System.out.println(&quot;Pulse 0 para VOLVER&quot;);</span>
+<span class="nc" id="L140">            opcion = in.nextInt();</span>
+<span class="nc bnc" id="L141" title="All 4 branches missed.">            if (opcion &lt; 0 || opcion &gt; 1) {</span>
+<span class="nc" id="L142">                System.out.println(&quot;Opción incorrecta.&quot;);</span>
+<span class="nc" id="L143">                continue;</span>
+            }
+<span class="nc" id="L145">            in = new Scanner(System.in, &quot;ISO-8859-1&quot;);</span>
+<span class="nc bnc" id="L146" title="All 3 branches missed.">            switch (opcion) {</span>
+                case 0:
+<span class="nc" id="L148">                    break;</span>
+                case 1:
+<span class="nc" id="L150">                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L151">                    System.out.println(&quot;Introduzca el Titulo del DVD a buscar:&quot;);</span>
+<span class="nc" id="L152">                    String TituloDVD = in.nextLine();</span>
+<span class="nc" id="L153">                    encontrados = DVD.buscarDVDsPorTitulo(TituloDVD, DVDS);</span>
+<span class="nc bnc" id="L154" title="All 2 branches missed.">                    if (encontrados.size() &gt; 0) {</span>
+<span class="nc" id="L155">                        System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L156">                        System.out.println(&quot;Hay coincidencias: &quot;);</span>
+<span class="nc bnc" id="L157" title="All 2 branches missed.">                        for (DVD d : encontrados) {</span>
+<span class="nc" id="L158">                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L159">                            System.out.println(d.getTitulo());</span>
+<span class="nc" id="L160">                        }</span>
+                    } else {
+<span class="nc" id="L162">                        System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L163">                        System.out.println(&quot;DVD  &quot; + TituloDVD + &quot;  NO ENCONTRADO.&quot;);</span>
+                    }
+<span class="nc" id="L165">                    break;</span>
+                default:
+                    break;
+            }
+<span class="nc bnc" id="L169" title="All 2 branches missed.">        } while (opcion != 0);</span>
+<span class="nc" id="L170">    }</span>
+
+    public static ArrayList&lt;DVD&gt; buscarDVDsPorTitulo(String tituloDVD, ArrayList&lt;DVD&gt; DVDS) {
+<span class="nc" id="L173">        ArrayList&lt;DVD&gt; ret = new ArrayList&lt;DVD&gt;();</span>
+<span class="nc bnc" id="L174" title="All 2 branches missed.">        for (DVD d : DVDS) {</span>
+<span class="nc bnc" id="L175" title="All 2 branches missed.">            if (Utilidades.removeDiacriticalMarks(d.getTitulo().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(tituloDVD.toLowerCase()))) {</span>
+<span class="nc" id="L176">                ret.add(d);</span>
+            }
+<span class="nc bnc" id="L178" title="All 2 branches missed.">            if (d.getTitulo().toLowerCase().contains(tituloDVD.toLowerCase())) {</span>
+<span class="nc bnc" id="L179" title="All 2 branches missed.">                if (!ret.contains(d)) {</span>
+<span class="nc" id="L180">                    ret.add(d);</span>
+                }
+            }
+<span class="nc" id="L183">        }</span>
+<span class="nc" id="L184">        return ret;</span>
+    }
+
+    public static void verDvd(ArrayList&lt;DVD&gt; DVDS) {
+<span class="nc" id="L188">        System.out.println(&quot;DVD de la biblioteca:&quot;);</span>
+<span class="nc bnc" id="L189" title="All 2 branches missed.">        for (DVD d : DVDS) {</span>
+<span class="nc" id="L190">            System.out.println(d.getId() + &quot;.- &quot; + (d.getTitulo() + &quot; - &quot; + (d.getGenero() + &quot;.&quot;)));</span>
+<span class="nc" id="L191">        }</span>
+
+<span class="nc" id="L193">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L197">        return &quot;DVD{&quot; + &quot;titulo=&quot; + titulo + &quot;, visionado=&quot; + visionado + '}';</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Libro.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Bilbioteca_Grupo_A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Entidades</a> &gt; <span class="el_source">Libro.java</span></div><h1>Libro.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Entidades;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author DAM102
+ */
+public class Libro extends Elemento {
+
+    /*Valido: cadena caracteres &quot;dadsad&quot; Invalido: &quot; &quot;, &gt;50 caracteres*/
+    private String nombre;
+    /*Valido: cadena caracteres &quot;dadsad&quot; Invalido: &quot; &quot;, &gt;50 caracteres*/
+    private String editorial;
+    /*Valido: cadena caracteres &quot;dadsad&quot; Invalido: &quot; &quot;, &gt;50 caracteres*/
+    private String autor;
+    /*Valido: &gt;0 Invalido: &lt;0*/
+    private int nPaginas;
+    private Lectura lectura;/*Obligatorio*/
+
+    public Libro() {
+<span class="nc" id="L28">        super();</span>
+<span class="nc" id="L29">    }</span>
+
+<span class="nc" id="L31">    public Libro(String nombre, String editorial, String autor, int nPaginas) {</span>
+<span class="nc" id="L32">        this.nombre = nombre;</span>
+<span class="nc" id="L33">        this.editorial = editorial;</span>
+<span class="nc" id="L34">        this.autor = autor;</span>
+<span class="nc" id="L35">        this.nPaginas = nPaginas;</span>
+<span class="nc" id="L36">    }</span>
+    public Libro(Elemento e,String nombre, String editorial, String autor, int nPaginas) {
+<span class="fc" id="L38">        super(e);</span>
+<span class="fc" id="L39">        this.nombre = nombre;</span>
+<span class="fc" id="L40">        this.editorial = editorial;</span>
+<span class="fc" id="L41">        this.autor = autor;</span>
+<span class="fc" id="L42">        this.nPaginas = nPaginas;</span>
+<span class="fc" id="L43">    }</span>
+
+<span class="nc" id="L45">    public Libro(String nombre, String editorial, String autor, int nPaginas, Lectura lectura) {</span>
+<span class="nc" id="L46">        this.nombre = nombre;</span>
+<span class="nc" id="L47">        this.editorial = editorial;</span>
+<span class="nc" id="L48">        this.autor = autor;</span>
+<span class="nc" id="L49">        this.nPaginas = nPaginas;</span>
+<span class="nc" id="L50">        this.lectura = lectura;</span>
+<span class="nc" id="L51">    }</span>
+
+    public Libro(String nombre, String editorial, String autor, int nPaginas, Lectura lectura, long id, Genero genero) {
+<span class="nc" id="L54">        super(id, genero);</span>
+<span class="nc" id="L55">        this.nombre = nombre;</span>
+<span class="nc" id="L56">        this.editorial = editorial;</span>
+<span class="nc" id="L57">        this.autor = autor;</span>
+<span class="nc" id="L58">        this.nPaginas = nPaginas;</span>
+<span class="nc" id="L59">        this.lectura = lectura;</span>
+<span class="nc" id="L60">    }</span>
+
+    public Libro(String nombre, String editorial, String autor, int nPaginas, Lectura lectura, Elemento el) {
+<span class="nc" id="L63">        super(el);</span>
+<span class="nc" id="L64">        this.nombre = nombre;</span>
+<span class="nc" id="L65">        this.editorial = editorial;</span>
+<span class="nc" id="L66">        this.autor = autor;</span>
+<span class="nc" id="L67">        this.nPaginas = nPaginas;</span>
+<span class="nc" id="L68">        this.lectura = lectura;</span>
+<span class="nc" id="L69">    }</span>
+
+<span class="nc" id="L71">    public Libro(Libro l) {</span>
+<span class="nc" id="L72">        this.nombre = l.nombre;</span>
+<span class="nc" id="L73">        this.editorial = l.editorial;</span>
+<span class="nc" id="L74">        this.autor = l.autor;</span>
+<span class="nc" id="L75">        this.nPaginas = l.nPaginas;</span>
+<span class="nc" id="L76">        this.lectura = l.lectura;</span>
+<span class="nc" id="L77">    }</span>
+
+    public String getNombre() {
+<span class="nc" id="L80">        return nombre;</span>
+    }
+
+    public void setNombre(String nombre) {
+<span class="nc" id="L84">        this.nombre = nombre;</span>
+<span class="nc" id="L85">    }</span>
+
+    public String getEditorial() {
+<span class="nc" id="L88">        return editorial;</span>
+    }
+
+    public void setEditorial(String editorial) {
+<span class="nc" id="L92">        this.editorial = editorial;</span>
+<span class="nc" id="L93">    }</span>
+
+    public String getAutor() {
+<span class="nc" id="L96">        return autor;</span>
+    }
+
+    public void setAutor(String autor) {
+<span class="nc" id="L100">        this.autor = autor;</span>
+<span class="nc" id="L101">    }</span>
+
+    public int getnPaginas() {
+<span class="nc" id="L104">        return nPaginas;</span>
+    }
+
+    public void setnPaginas(int nPaginas) {
+<span class="nc" id="L108">        this.nPaginas = nPaginas;</span>
+<span class="nc" id="L109">    }</span>
+
+    public Lectura getLectura() {
+<span class="nc" id="L112">        return lectura;</span>
+    }
+
+    public void setLectura(Lectura lectura) {
+<span class="nc" id="L116">        this.lectura = lectura;</span>
+<span class="nc" id="L117">    }</span>
+
+    public static ArrayList&lt;Libro&gt; convertirLibros(Libro[] array) {
+<span class="fc" id="L120">        ArrayList&lt;Libro&gt; ret = new ArrayList&lt;Libro&gt;();</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">        for (Libro s : array) {</span>
+<span class="fc" id="L122">            ret.add(s);</span>
+        }
+
+<span class="fc" id="L125">        return ret;</span>
+    }
+
+    public static long nextIdLibro() {
+<span class="nc" id="L129">        long ret = 0;</span>
+<span class="nc bnc" id="L130" title="All 2 branches missed.">        for (int i = 0; i &lt; Utilidades.LIBROS.length; i++) {</span>
+<span class="nc bnc" id="L131" title="All 2 branches missed.">            if (Utilidades.LIBROS[i].id &gt; ret) {</span>
+<span class="nc" id="L132">                ret = Utilidades.LIBROS[i].id;</span>
+            }
+        }
+<span class="nc" id="L135">        return ret + 1;</span>
+    }
+
+    public static Libro nuevoLibro() {
+<span class="nc" id="L139">        Libro li = new Libro();</span>
+<span class="nc" id="L140">        int opcion = 0;</span>
+<span class="nc" id="L141">        int idGenero = 0;</span>
+        Genero gen;
+
+<span class="nc" id="L144">        ArrayList&lt;Libro&gt; libros = Libro.convertirLibros(Utilidades.LIBROS);</span>
+<span class="nc" id="L145">        ArrayList&lt;Genero&gt; generos = Genero.convertirGeneros(Utilidades.GENEROS);</span>
+
+<span class="nc" id="L147">        Scanner teclado = new Scanner(System.in);</span>
+<span class="nc" id="L148">        System.out.println(&quot;Indica su nombre: &quot;);</span>
+<span class="nc" id="L149">        li.setNombre(teclado.nextLine());</span>
+<span class="nc" id="L150">        System.out.println(&quot;Indica la editorial: &quot;);</span>
+<span class="nc" id="L151">        li.setEditorial(teclado.nextLine());</span>
+<span class="nc" id="L152">        System.out.println(&quot;Indica el autor: &quot;);</span>
+<span class="nc" id="L153">        li.setAutor(teclado.nextLine());</span>
+<span class="nc" id="L154">        System.out.println(&quot;Indica el numero de paginas: &quot;);</span>
+<span class="nc" id="L155">        li.setnPaginas(teclado.nextInt());</span>
+
+<span class="nc" id="L157">        long idLib = nextIdLibro();</span>
+<span class="nc" id="L158">        li.setId(idLib);</span>
+
+<span class="nc" id="L160">        System.out.println(&quot;Indica el Genero &quot;);</span>
+        do {
+<span class="nc" id="L162">            Genero.verGenero(generos);</span>
+<span class="nc" id="L163">            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L164">            teclado = new Scanner(System.in);</span>
+<span class="nc" id="L165">            idGenero = teclado.nextInt();</span>
+<span class="nc bnc" id="L166" title="All 2 branches missed.">            if (idGenero != 0) {</span>
+<span class="nc" id="L167">                gen = Genero.buscarGenerosPorId(idGenero, generos);</span>
+<span class="nc bnc" id="L168" title="All 2 branches missed.">                if (gen != null) {</span>
+<span class="nc" id="L169">                    System.out.println(&quot;Genero asignado. &quot;);</span>
+<span class="nc" id="L170">                    gen.verGeneroElemento();</span>
+<span class="nc" id="L171">                    li.setGenero(gen);</span>
+                } else {
+<span class="nc" id="L173">                    System.out.println(&quot;Genero:  &quot; + idGenero + &quot;  Desconocido&quot;);</span>
+                }
+            }
+
+<span class="nc bnc" id="L177" title="All 2 branches missed.">        } while (opcion != 0);</span>
+
+<span class="nc" id="L179">        return li;</span>
+
+    }
+    
+    public static void buscarLibros(ArrayList&lt;Libro&gt; Libros) {
+        Libro buscado;
+        ArrayList&lt;Libro&gt; encontrados;
+        Scanner in;
+<span class="nc" id="L187">        int opcion = -1;</span>
+
+        do {
+<span class="nc" id="L190">            buscado = null;</span>
+<span class="nc" id="L191">            encontrados = new ArrayList&lt;Libro&gt;();</span>
+<span class="nc" id="L192">            in = new Scanner(System.in, &quot;ISO-8859-1&quot;);</span>
+<span class="nc" id="L193">            System.out.println(&quot;Pulse 1 para buscar Libro por Nombre.&quot;);</span>
+<span class="nc" id="L194">            System.out.println(&quot;Pulse 2 para buscar Libro por Autor.&quot;);</span>
+<span class="nc" id="L195">            System.out.println(&quot;Pulse 3 para buscar Libro por Editorial.&quot;);</span>
+<span class="nc" id="L196">            System.out.println(&quot;Pulse 0 para VOLVER&quot;);</span>
+<span class="nc" id="L197">            opcion = in.nextInt();</span>
+<span class="nc bnc" id="L198" title="All 4 branches missed.">            if (opcion &lt; 0 || opcion &gt; 3) {</span>
+<span class="nc" id="L199">                System.out.println(&quot;Opción incorrecta.&quot;);</span>
+<span class="nc" id="L200">                continue;</span>
+            }
+<span class="nc" id="L202">            in = new Scanner(System.in, &quot;ISO-8859-1&quot;);</span>
+<span class="nc bnc" id="L203" title="All 5 branches missed.">            switch (opcion) {</span>
+                case 0:
+<span class="nc" id="L205">                    break;</span>
+                case 1:
+<span class="nc" id="L207">                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L208">                    System.out.println(&quot;Introduzca el Nombre del Libro a buscar:&quot;);</span>
+<span class="nc" id="L209">                    String NombreLib = in.nextLine();</span>
+<span class="nc" id="L210">                    encontrados = Libro.buscarLibrosPorNombre(NombreLib, Libros);</span>
+<span class="nc bnc" id="L211" title="All 2 branches missed.">                    if (encontrados.size() &gt; 0) {</span>
+<span class="nc" id="L212">                        System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L213">                        System.out.println(&quot;Hay coincidencias: &quot;);</span>
+<span class="nc bnc" id="L214" title="All 2 branches missed.">                        for (Libro lib : encontrados) {</span>
+<span class="nc" id="L215">                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L216">                            System.out.println(&quot;&lt;&quot; + lib.getNombre()+&quot;&gt;  escrito por &quot; + lib.getAutor()+ &quot; editado por &quot; + lib.getEditorial());</span>
+<span class="nc" id="L217">                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L218">                        }</span>
+                    } else {
+<span class="nc" id="L220">                        System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L221">                        System.out.println(&quot;Libro  &quot; + NombreLib + &quot;  NO ENCONTRADO.&quot;);</span>
+                    }
+<span class="nc" id="L223">                    break;</span>
+                     case 2:
+<span class="nc" id="L225">                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L226">                    System.out.println(&quot;Introduzca el Autor del Libro a buscar:&quot;);</span>
+<span class="nc" id="L227">                    String AutorLib = in.nextLine();</span>
+<span class="nc" id="L228">                    encontrados = Libro.buscarLibrosPorAutor(AutorLib, Libros);</span>
+<span class="nc bnc" id="L229" title="All 2 branches missed.">                    if (encontrados.size() &gt; 0) {</span>
+<span class="nc" id="L230">                        System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L231">                        System.out.println(&quot;Hay coincidencias: &quot;);</span>
+<span class="nc bnc" id="L232" title="All 2 branches missed.">                        for (Libro lib : encontrados) {</span>
+<span class="nc" id="L233">                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L234">                            System.out.println(&quot;&lt;&quot; + lib.getNombre()+&quot;&gt;  escrito por &quot; + lib.getAutor()+ &quot; editado por &quot; + lib.getEditorial());</span>
+<span class="nc" id="L235">                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L236">                        }</span>
+                    } else {
+<span class="nc" id="L238">                        System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L239">                        System.out.println(&quot;Autor  &quot; + AutorLib + &quot;  NO ENCONTRADO.&quot;);</span>
+                    }
+<span class="nc" id="L241">                    break;</span>
+                     case 3:
+<span class="nc" id="L243">                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L244">                    System.out.println(&quot;Introduzca la Editorial del Libro a buscar:&quot;);</span>
+<span class="nc" id="L245">                    String EditorialLib = in.nextLine();</span>
+<span class="nc" id="L246">                    encontrados = Libro.buscarLibrosPorEditorial(EditorialLib, Libros);</span>
+<span class="nc bnc" id="L247" title="All 2 branches missed.">                    if (encontrados.size() &gt; 0) {</span>
+<span class="nc" id="L248">                        System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L249">                        System.out.println(&quot;Hay coincidencias: &quot;);</span>
+<span class="nc bnc" id="L250" title="All 2 branches missed.">                        for (Libro lib : encontrados) {</span>
+<span class="nc" id="L251">                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L252">                            System.out.println(&quot;&lt;&quot; + lib.getNombre()+&quot;&gt;  escrito por &quot; + lib.getAutor()+ &quot; editado por &quot; + lib.getEditorial());</span>
+<span class="nc" id="L253">                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L254">                        }</span>
+                    } else {
+<span class="nc" id="L256">                        System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L257">                        System.out.println(&quot;Editorial &quot; + EditorialLib + &quot;  NO ENCONTRADO.&quot;);</span>
+                    }
+<span class="nc" id="L259">                    break;</span>
+                default:
+                    break;
+            }
+<span class="nc bnc" id="L263" title="All 2 branches missed.">        } while (opcion != 0);</span>
+<span class="nc" id="L264">    }</span>
+    
+     public static ArrayList&lt;Libro&gt; buscarLibrosPorNombre(String nombreLibro, ArrayList&lt;Libro&gt; Libros) {
+<span class="nc" id="L267">        ArrayList&lt;Libro&gt; ret = new ArrayList&lt;Libro&gt;();</span>
+<span class="nc bnc" id="L268" title="All 2 branches missed.">        for (Libro lib : Libros) {</span>
+<span class="nc bnc" id="L269" title="All 2 branches missed.">            if (Utilidades.removeDiacriticalMarks(lib.getNombre().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(nombreLibro.toLowerCase()))) {</span>
+<span class="nc" id="L270">                ret.add(lib);</span>
+            }
+<span class="nc bnc" id="L272" title="All 2 branches missed.">            if (lib.getNombre().toLowerCase().contains(nombreLibro.toLowerCase())) {</span>
+<span class="nc bnc" id="L273" title="All 2 branches missed.">                if (!ret.contains(lib)) {</span>
+<span class="nc" id="L274">                    ret.add(lib);</span>
+                }
+            }
+<span class="nc" id="L277">        }</span>
+<span class="nc" id="L278">        return ret;</span>
+    }
+      public static ArrayList&lt;Libro&gt; buscarLibrosPorAutor(String autorLibro, ArrayList&lt;Libro&gt; Libros) {
+<span class="nc" id="L281">        ArrayList&lt;Libro&gt; ret = new ArrayList&lt;Libro&gt;();</span>
+<span class="nc bnc" id="L282" title="All 2 branches missed.">        for (Libro lib : Libros) {</span>
+<span class="nc bnc" id="L283" title="All 2 branches missed.">            if (Utilidades.removeDiacriticalMarks(lib.getAutor().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(autorLibro.toLowerCase()))) {</span>
+<span class="nc" id="L284">                ret.add(lib);</span>
+            }
+<span class="nc bnc" id="L286" title="All 2 branches missed.">            if (lib.getAutor().toLowerCase().contains(autorLibro.toLowerCase())) {</span>
+<span class="nc bnc" id="L287" title="All 2 branches missed.">                if (!ret.contains(lib)) {</span>
+<span class="nc" id="L288">                    ret.add(lib);</span>
+                }
+            }
+<span class="nc" id="L291">        }</span>
+<span class="nc" id="L292">        return ret;</span>
+    }
+      
+        public static ArrayList&lt;Libro&gt; buscarLibrosPorEditorial(String editorialLibro, ArrayList&lt;Libro&gt; Libros) {
+<span class="nc" id="L296">        ArrayList&lt;Libro&gt; ret = new ArrayList&lt;Libro&gt;();</span>
+<span class="nc bnc" id="L297" title="All 2 branches missed.">        for (Libro lib : Libros) {</span>
+<span class="nc bnc" id="L298" title="All 2 branches missed.">            if (Utilidades.removeDiacriticalMarks(lib.getEditorial().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(editorialLibro.toLowerCase()))) {</span>
+<span class="nc" id="L299">                ret.add(lib);</span>
+            }
+<span class="nc bnc" id="L301" title="All 2 branches missed.">            if (lib.getEditorial().toLowerCase().contains(editorialLibro.toLowerCase())) {</span>
+<span class="nc bnc" id="L302" title="All 2 branches missed.">                if (!ret.contains(lib)) {</span>
+<span class="nc" id="L303">                    ret.add(lib);</span>
+                }
+            }
+<span class="nc" id="L306">        }</span>
+<span class="nc" id="L307">        return ret;</span>
+    }
+
+    public static void verLibro(ArrayList&lt;Libro&gt; libros) {
+<span class="nc" id="L311">        System.out.println(&quot;Socios de la biblioteca:&quot;);</span>
+<span class="nc bnc" id="L312" title="All 2 branches missed.">        for (Libro s : libros) {</span>
+<span class="nc" id="L313">            System.out.println(&quot;&lt;&quot; + s.getNombre() + &quot;&gt; publicado por &quot; + (s.getEditorial() + &quot; y escrito por &quot; + (s.getAutor()+ &quot; &quot; + (s.getGenero()) + &quot;.&quot;)));</span>
+<span class="nc" id="L314">        }</span>
+
+<span class="nc" id="L316">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L320">        return &quot;Libro{&quot; + &quot;nombre=&quot; + nombre + &quot;, editorial=&quot; + editorial + &quot;, autor=&quot; + autor + &quot;, nPaginas=&quot; + nPaginas + &quot;, lectura=&quot; + lectura + '}';</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

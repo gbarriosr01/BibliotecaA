@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Curso.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Bilbioteca_Grupo_A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Entidades</a> &gt; <span class="el_source">Curso.java</span></div><h1>Curso.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Entidades;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
+
+/**
+ *
+ * @author DAM102
+ */
+public class Curso extends Evento {
+
+    /*
+    Valores validos: Caracteres alfanumericos.
+    Valores invalidos: Caracteres especiales.
+    Otras restricciones: Longitud max 15 caracteres.
+     */
+    private String duracion;
+    /*
+    Valores validos: Caracteres alfanumericos.
+    Valores invalidos: Caracteres especiales.
+    Otras restricciones: Longitud max 20 caracteres.
+     */
+    private String aula;
+
+    public Curso() {
+<span class="nc" id="L32">        super();</span>
+<span class="nc" id="L33">    }</span>
+
+<span class="nc" id="L35">    public Curso(String duracion, String aula) {</span>
+<span class="nc" id="L36">        this.duracion = duracion;</span>
+<span class="nc" id="L37">        this.aula = aula;</span>
+<span class="nc" id="L38">    }</span>
+
+    public Curso(Evento e, String duracion, String aula) {
+<span class="fc" id="L41">        super(e);</span>
+<span class="fc" id="L42">        this.duracion = duracion;</span>
+<span class="fc" id="L43">        this.aula = aula;</span>
+<span class="fc" id="L44">    }</span>
+
+<span class="nc" id="L46">    public Curso(Curso cu1) {</span>
+<span class="nc" id="L47">        this.duracion = cu1.duracion;</span>
+<span class="nc" id="L48">        this.aula = cu1.aula;</span>
+<span class="nc" id="L49">    }</span>
+
+    public Curso(String duracion, String aula, long id, String nombre, Date fechayhora, long idPenalizacion) {
+<span class="nc" id="L52">        super(id, nombre, fechayhora, idPenalizacion);</span>
+<span class="nc" id="L53">        this.duracion = duracion = null;</span>
+<span class="nc" id="L54">        this.aula = aula = null;</span>
+<span class="nc" id="L55">    }</span>
+
+    public Curso(String duracion, String aula, Evento ev1) {
+<span class="nc" id="L58">        super(ev1);</span>
+<span class="nc" id="L59">        this.duracion = duracion;</span>
+<span class="nc" id="L60">        this.aula = aula;</span>
+<span class="nc" id="L61">    }</span>
+
+    public String getDuracion() {
+<span class="nc" id="L64">        return duracion;</span>
+    }
+
+    public void setDuracion(String duracion) {
+<span class="nc" id="L68">        this.duracion = duracion;</span>
+<span class="nc" id="L69">    }</span>
+
+    public String getAula() {
+<span class="nc" id="L72">        return aula;</span>
+    }
+
+    public void setAula(String aula) {
+<span class="nc" id="L76">        this.aula = aula;</span>
+<span class="nc" id="L77">    }</span>
+
+    /*Esto esta editado*/
+    public static long nextIdCurso() {
+<span class="nc" id="L81">        long ret = 0;</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">        for (int i = 0; i &lt; Utilidades.CURSOS.length; i++) {</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">            if (Utilidades.CURSOS[i].id &gt; ret) {</span>
+<span class="nc" id="L84">                ret = Utilidades.CURSOS[i].id;</span>
+            }
+        }
+<span class="nc" id="L87">        return ret + 1;</span>
+    }
+
+    /*Esto esta editado*/
+
+    public static Curso nuevoCurso() {
+<span class="nc" id="L93">        Curso cu1 = new Curso();</span>
+<span class="nc" id="L94">        Scanner in = new Scanner(System.in);</span>
+
+<span class="nc" id="L96">        long idEven = nextIdCurso();</span>
+<span class="nc" id="L97">        cu1.setId(idEven);</span>
+
+<span class="nc" id="L99">        System.out.println(&quot;Introduzca la duracion del curso&quot;);</span>
+<span class="nc" id="L100">        String duracion = in.nextLine();</span>
+<span class="nc" id="L101">        cu1.setDuracion(duracion);</span>
+<span class="nc" id="L102">        System.out.println(&quot;Introduzca el aula en el que se realiza el curso&quot;);</span>
+<span class="nc" id="L103">        String aula = in.nextLine();</span>
+<span class="nc" id="L104">        cu1.setAula(aula);</span>
+<span class="nc" id="L105">        System.out.println(&quot;Introduzca el nombre del evento&quot;);</span>
+<span class="nc" id="L106">        String nombre = in.nextLine();</span>
+<span class="nc" id="L107">        cu1.setNombre(nombre);</span>
+<span class="nc" id="L108">        System.out.println(&quot;Introduzca la fecha y la hora del evento&quot;);</span>
+<span class="nc" id="L109">        java.sql.Date fechayhora = Utilidades.Fecha.nuevaFecha().conversorFecha();</span>
+<span class="nc" id="L110">        cu1.setFechayhora(fechayhora);</span>
+<span class="nc" id="L111">        return cu1;</span>
+    }
+
+    public static ArrayList&lt;Curso&gt; convertirCurso(Curso[] array) {
+<span class="fc" id="L115">        ArrayList&lt;Curso&gt; ret = new ArrayList&lt;Curso&gt;();</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">        for (Curso s : array) {</span>
+<span class="fc" id="L117">            ret.add(s);</span>
+
+        }
+<span class="fc" id="L120">        return ret;</span>
+    }
+
+    public static void verCurso(ArrayList&lt;Curso&gt; cursos) {
+<span class="nc" id="L124">        System.out.println(&quot;Cursos de la biblioteca:&quot;);</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">        for (Curso c : cursos) {</span>
+<span class="nc" id="L126">            System.out.println(c.getId() + &quot;.- &quot; + (c.getDuracion() + &quot; - &quot; + (c.getAula())));</span>
+<span class="nc" id="L127">        }</span>
+<span class="nc" id="L128">    }</span>
+
+    public static void buscarCurso(ArrayList&lt;Curso&gt; cursos) {
+        Curso buscado;
+        ArrayList&lt;Curso&gt; encontrados;
+        Scanner in;
+<span class="nc" id="L134">        int opcion = -1;</span>
+        do {
+<span class="nc" id="L136">            buscado = null;</span>
+<span class="nc" id="L137">            encontrados = new ArrayList&lt;Curso&gt;();</span>
+<span class="nc" id="L138">            in = new Scanner(System.in, &quot;ISO-8859-1&quot;);</span>
+<span class="nc" id="L139">            System.out.println(&quot;Pulse 1 para buscar curso por AULA.&quot;);</span>
+<span class="nc" id="L140">            System.out.println(&quot;Pulse 2 para buscar curso por DURACION.&quot;);</span>
+<span class="nc" id="L141">            System.out.println(&quot;Pulse 0 para VOLVER.&quot;);</span>
+<span class="nc" id="L142">            opcion = in.nextInt();</span>
+<span class="nc bnc" id="L143" title="All 4 branches missed.">            if (opcion &lt; 0 || opcion &gt; 2) {</span>
+<span class="nc" id="L144">                System.out.println(&quot;Opción incorrecta.&quot;);</span>
+<span class="nc" id="L145">                continue;</span>
+            }
+<span class="nc" id="L147">            in = new Scanner(System.in, &quot;ISO-8859-1&quot;);</span>
+<span class="nc bnc" id="L148" title="All 4 branches missed.">            switch (opcion) {</span>
+                case 0:
+<span class="nc" id="L150">                    break;</span>
+                case 1:
+<span class="nc" id="L152">                    System.out.println(&quot;Introduzca el AULA del Curso a encontrar:&quot;);</span>
+<span class="nc" id="L153">                    String nomAula = in.nextLine();</span>
+<span class="nc" id="L154">                    encontrados = Curso.buscarCursoPorAula(nomAula, cursos);</span>
+<span class="nc bnc" id="L155" title="All 2 branches missed.">                    if (encontrados.size() &gt; 0) {</span>
+<span class="nc" id="L156">                        System.out.println(&quot;Hay coincidencias: &quot;);</span>
+<span class="nc bnc" id="L157" title="All 2 branches missed.">                        for (Curso e : encontrados) {</span>
+<span class="nc" id="L158">                            System.out.println(e.getAula() + &quot;. &quot; + e.getDuracion());</span>
+<span class="nc" id="L159">                        }</span>
+                    } else {
+<span class="nc" id="L161">                        System.out.println(&quot;Curso de aula=&quot; + nomAula + &quot; NO ENCONTRADO.&quot;);</span>
+                    }
+<span class="nc" id="L163">                    System.out.println(&quot;&quot;);</span>
+<span class="nc" id="L164">                    break;</span>
+                case 2:
+<span class="nc" id="L166">                    System.out.println(&quot;Introduzca la DURACUON del Curso a encontrar:&quot;);</span>
+<span class="nc" id="L167">                    String nomCurs = in.nextLine();</span>
+<span class="nc" id="L168">                    encontrados = Curso.buscarCursoPorDuracion(nomCurs, cursos);</span>
+<span class="nc bnc" id="L169" title="All 2 branches missed.">                    if (encontrados.size() &gt; 0) {</span>
+<span class="nc" id="L170">                        System.out.println(&quot;Hay coincidencias: &quot;);</span>
+<span class="nc bnc" id="L171" title="All 2 branches missed.">                        for (Curso e : encontrados) {</span>
+<span class="nc" id="L172">                            System.out.println(e.getAula() + &quot;. &quot; + e.getDuracion());</span>
+<span class="nc" id="L173">                        }</span>
+                    } else {
+<span class="nc" id="L175">                        System.out.println(&quot;Socio con nombre=&quot; + nomCurs + &quot; NO ENCONTRADO.&quot;);</span>
+                    }
+<span class="nc" id="L177">                    System.out.println(&quot;&quot;);</span>
+<span class="nc" id="L178">                    break;</span>
+
+                default:
+                    break;
+            }
+
+<span class="nc bnc" id="L184" title="All 2 branches missed.">        } while (opcion != 0);</span>
+<span class="nc" id="L185">    }</span>
+
+    public static ArrayList&lt;Curso&gt; buscarCursoPorAula(String nomAula, ArrayList&lt;Curso&gt; cursos) {
+<span class="nc" id="L188">        ArrayList&lt;Curso&gt; ret = new ArrayList&lt;Curso&gt;();</span>
+<span class="nc bnc" id="L189" title="All 2 branches missed.">        for (Curso e : cursos) {</span>
+<span class="nc bnc" id="L190" title="All 2 branches missed.">            if (Utilidades.removeDiacriticalMarks(e.getAula().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(nomAula.toLowerCase()))) {</span>
+<span class="nc" id="L191">                ret.add(e);</span>
+            }
+<span class="nc bnc" id="L193" title="All 2 branches missed.">            if (e.getAula().toLowerCase().contains(nomAula.toLowerCase())) {</span>
+<span class="nc bnc" id="L194" title="All 2 branches missed.">                if (!ret.contains(e)) {</span>
+<span class="nc" id="L195">                    ret.add(e);</span>
+                }
+            }
+<span class="nc" id="L198">        }</span>
+<span class="nc" id="L199">        return ret;</span>
+    }
+
+    public static ArrayList&lt;Curso&gt; buscarCursoPorDuracion(String duracion, ArrayList&lt;Curso&gt; cursos) {
+<span class="nc" id="L203">        ArrayList&lt;Curso&gt; ret = new ArrayList&lt;Curso&gt;();</span>
+<span class="nc bnc" id="L204" title="All 2 branches missed.">        for (Curso e : cursos) {</span>
+<span class="nc bnc" id="L205" title="All 2 branches missed.">            if (Utilidades.removeDiacriticalMarks(e.getDuracion().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(duracion.toLowerCase()))) {</span>
+<span class="nc" id="L206">                ret.add(e);</span>
+            }
+<span class="nc bnc" id="L208" title="All 2 branches missed.">            if (e.getAula().toLowerCase().contains(duracion.toLowerCase())) {</span>
+<span class="nc bnc" id="L209" title="All 2 branches missed.">                if (!ret.contains(e)) {</span>
+<span class="nc" id="L210">                    ret.add(e);</span>
+                }
+            }
+<span class="nc" id="L213">        }</span>
+<span class="nc" id="L214">        return ret;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L219">        return &quot;Curso{&quot; + &quot;duracion=&quot; + duracion + &quot;, aula=&quot; + aula + '}';</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

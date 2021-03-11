@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Prestamo.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Bilbioteca_Grupo_A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Entidades</a> &gt; <span class="el_source">Prestamo.java</span></div><h1>Prestamo.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Entidades;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
+
+/**
+ *
+ * @author DAM102
+ */
+public class Prestamo {
+   
+    private long id;/*Mayores que 0, no puede ser nulo*/
+    private Date fechaDeInicio;
+    /*Fecha de hoy
+    LocalDate.now();
+    */
+    private Date fechaDeDevolucion;
+    /*Fecha en la cual finalizo el prestamo
+    LocalDate.now();
+    */
+    private Estado estado;
+<span class="pc" id="L28">    private ArrayList&lt;Elemento&gt; elementos = new ArrayList&lt;Elemento&gt;(); /*Maximo 5, Obligatorio*/</span>
+    private long idPenalizacion;/*Mayores o iguales que 0, no puede ser nulo*/
+
+<span class="nc" id="L31">    public Prestamo() {</span>
+<span class="nc" id="L32">        this.id= 0;</span>
+<span class="nc" id="L33">        this.idPenalizacion= 0;</span>
+<span class="nc" id="L34">    }</span>
+
+<span class="fc" id="L36">    public Prestamo(long id, Date fechaDeInicio, Date fechaDeDevolucion) {</span>
+<span class="fc" id="L37">        this.id = id;</span>
+<span class="fc" id="L38">        this.fechaDeInicio = fechaDeInicio;</span>
+<span class="fc" id="L39">        this.fechaDeDevolucion = fechaDeDevolucion;</span>
+<span class="fc" id="L40">    }</span>
+    
+<span class="nc" id="L42">    public Prestamo(Prestamo copia){</span>
+<span class="nc" id="L43">        this.id = copia.id;</span>
+<span class="nc" id="L44">        this.fechaDeInicio = copia.fechaDeInicio;</span>
+<span class="nc" id="L45">        this.fechaDeDevolucion = copia.fechaDeDevolucion;</span>
+<span class="nc" id="L46">        this.estado = copia.estado;</span>
+<span class="nc" id="L47">        this.elementos = copia.elementos;</span>
+<span class="nc" id="L48">        this.idPenalizacion = copia.idPenalizacion;</span>
+<span class="nc" id="L49">    }</span>
+
+<span class="nc" id="L51">    public Prestamo(long id, Date fechaDeInicio, Date fechaDeDevolucion, Estado estado, long idPenalizacion) {</span>
+<span class="nc" id="L52">        this.id = id;</span>
+<span class="nc" id="L53">        this.fechaDeInicio = fechaDeInicio;</span>
+<span class="nc" id="L54">        this.fechaDeDevolucion = fechaDeDevolucion;</span>
+<span class="nc" id="L55">        this.estado = estado;</span>
+<span class="nc" id="L56">        this.idPenalizacion = idPenalizacion;</span>
+<span class="nc" id="L57">    }</span>
+
+    public long getIdPenalizacion() {
+<span class="nc" id="L60">        return idPenalizacion;</span>
+    }
+
+    public void setIdPenalizacion(long idPenalizacion) {
+<span class="nc" id="L64">        this.idPenalizacion = idPenalizacion;</span>
+<span class="nc" id="L65">    }</span>
+
+    public long getId() {
+<span class="nc" id="L68">        return id;</span>
+    }
+
+    public Date getFechaDeInicio() {
+<span class="nc" id="L72">        return fechaDeInicio;</span>
+    }
+
+    public Date getFechaDeDevolucion() {
+<span class="nc" id="L76">        return fechaDeDevolucion;</span>
+    }
+
+    public ArrayList&lt;Elemento&gt; getElementos() {
+<span class="nc" id="L80">        return elementos;</span>
+    }
+
+    public void setElementos(ArrayList&lt;Elemento&gt; elementos) {
+<span class="nc" id="L84">        this.elementos = elementos;</span>
+<span class="nc" id="L85">    }</span>
+
+    public Estado getEstado() {
+<span class="nc" id="L88">        return estado;</span>
+    }
+
+    public void setId(int id) {
+<span class="nc" id="L92">        this.id = id;</span>
+<span class="nc" id="L93">    }</span>
+
+    public void setFechaDeInicio(Date fechaDeInicio) {
+<span class="nc" id="L96">        this.fechaDeInicio = fechaDeInicio;</span>
+<span class="nc" id="L97">    }</span>
+
+    public void setFechaDeDevolucion(Date fechaDeDevolucion) {
+<span class="nc" id="L100">        this.fechaDeDevolucion = fechaDeDevolucion;</span>
+<span class="nc" id="L101">    }</span>
+
+    public void setEstado(Estado estado) {
+<span class="nc" id="L104">        this.estado = estado;</span>
+<span class="nc" id="L105">    }</span>
+    
+    public Prestamo nuevoPrestamo(){
+<span class="nc" id="L108">        Prestamo ret = new Prestamo();</span>
+
+<span class="nc" id="L110">        Scanner in = new Scanner(System.in);</span>
+        
+<span class="nc" id="L112">       int numPrestamos = Utilidades.numPrestamos + 1;</span>
+<span class="nc" id="L113">            ret.setId(numPrestamos);</span>
+
+<span class="nc" id="L115">        System.out.println(&quot;Introduzca la fecha de inicio del prestamo&quot;);</span>
+
+<span class="nc" id="L117">        java.sql.Date fecha = Utilidades.Fecha.nuevaFecha().conversorFecha();</span>
+<span class="nc" id="L118">        ret.setFechaDeInicio(fecha);</span>
+
+<span class="nc" id="L120">        System.out.println(&quot;Introduzca la fecha de finalizacion del prestamo&quot;);</span>
+<span class="nc" id="L121">        java.sql.Date devolucion = Utilidades.Fecha.nuevaFecha().conversorFecha();</span>
+<span class="nc" id="L122">        ret.setFechaDeDevolucion(devolucion);</span>
+
+
+<span class="nc" id="L125">        return ret;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L130">        return &quot;Prestamo{&quot; + &quot;id=&quot; + id + &quot;, fechaDeInicio=&quot; + fechaDeInicio + &quot;, fechaDeDevolucion=&quot; + fechaDeDevolucion + &quot;, estado=&quot; + estado + &quot;, elementos=&quot; + elementos + &quot;, idPenalizacion=&quot; + idPenalizacion + '}';</span>
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Estanteria.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Bilbioteca_Grupo_A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Entidades</a> &gt; <span class="el_source">Estanteria.java</span></div><h1>Estanteria.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Entidades;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author DAM102
+ */
+public class Estanteria {
+    /*Valido: &gt;=0 Invalido: &lt;0 Otros: Es unico*/
+<span class="pc" id="L17">    private long id=0;</span>
+    /*Valido: Una letra mayusucla 'A' Invalido: Una letra minuscula 'a'*/
+    private char codigo;
+    /*Valido: Cadena caracteres &quot;asdsandas&quot;  Invalido: &quot; &quot;, &gt;100caracteres*/
+<span class="pc" id="L21">    private String ubicacion=null;</span>
+    /*Valido: true, false Invalido: cualquier cosa que no sea true o false*/
+<span class="pc" id="L23">    private boolean completa=false;</span>
+<span class="pc" id="L24">    private ArrayList &lt;Elemento&gt; elementos = new ArrayList &lt;Elemento&gt;();</span>
+
+<span class="nc" id="L26">    public Estanteria() {</span>
+<span class="nc" id="L27">    }</span>
+
+<span class="fc" id="L29">    public Estanteria(long id, char codigo, String ubicacion, boolean completa) {</span>
+<span class="fc" id="L30">        this.id = id;</span>
+<span class="fc" id="L31">        this.codigo = codigo;</span>
+<span class="fc" id="L32">        this.ubicacion = ubicacion;</span>
+<span class="fc" id="L33">        this.completa = completa;</span>
+<span class="fc" id="L34">    }</span>
+
+<span class="nc" id="L36">    public Estanteria(Estanteria e) {</span>
+<span class="nc" id="L37">        this.id = e.id;</span>
+<span class="nc" id="L38">        this.codigo = e.codigo;</span>
+<span class="nc" id="L39">        this.ubicacion = e.ubicacion;</span>
+<span class="nc" id="L40">        this.completa = e.completa;</span>
+<span class="nc" id="L41">    }</span>
+
+    public long getId() {
+<span class="nc" id="L44">        return id;</span>
+    }
+
+    public void setId(long id) {
+<span class="nc" id="L48">        this.id = id;</span>
+<span class="nc" id="L49">    }</span>
+
+    public char getCodigo() {
+<span class="nc" id="L52">        return codigo;</span>
+    }
+
+    public void setCodigo(char codigo) {
+<span class="nc" id="L56">        this.codigo = codigo;</span>
+<span class="nc" id="L57">    }</span>
+
+    public String getUbicacion() {
+<span class="nc" id="L60">        return ubicacion;</span>
+    }
+
+    public void setUbicacion(String ubicacion) {
+<span class="nc" id="L64">        this.ubicacion = ubicacion;</span>
+<span class="nc" id="L65">    }</span>
+
+    public boolean isCompleta() {
+<span class="nc" id="L68">        return completa;</span>
+    }
+
+    public void setCompleta(boolean completa) {
+<span class="nc" id="L72">        this.completa = completa;</span>
+<span class="nc" id="L73">    }</span>
+
+    public ArrayList&lt;Elemento&gt; getElementos() {
+<span class="nc" id="L76">        return elementos;</span>
+    }
+
+    public void setElementos(ArrayList&lt;Elemento&gt; elementos) {
+<span class="nc" id="L80">        this.elementos = elementos;</span>
+<span class="nc" id="L81">    }</span>
+    
+    public static Estanteria nuevaEstanteria() {
+<span class="nc" id="L84">        Estanteria es = new Estanteria();</span>
+<span class="nc" id="L85">        Scanner teclado = new Scanner(System.in);</span>
+        
+<span class="nc" id="L87">        int numEstanterias = Utilidades.numEstanterias + 1;</span>
+<span class="nc" id="L88">        es.setId(numEstanterias);</span>
+        
+<span class="nc" id="L90">        System.out.println(&quot;Escribe codigo: &quot;);</span>
+<span class="nc" id="L91">        es.setCodigo(teclado.nextLine().charAt(0));</span>
+<span class="nc" id="L92">        System.out.println(&quot;Escribe ubicacion: &quot;);</span>
+<span class="nc" id="L93">        es.setUbicacion(teclado.nextLine());</span>
+<span class="nc" id="L94">        System.out.println(&quot;Indica si la estanteria esta completa: &quot;);</span>
+<span class="nc" id="L95">        es.setCompleta(teclado.nextBoolean());</span>
+<span class="nc" id="L96">        return es;</span>
+    
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L102">        return &quot;Estanteria{&quot; + &quot;id=&quot; + id + &quot;, codigo=&quot; + codigo + &quot;, ubicacion=&quot; + ubicacion + &quot;, completa=&quot; + completa + &quot;, elementos=&quot; + elementos + '}';</span>
+    }
+    
+    
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

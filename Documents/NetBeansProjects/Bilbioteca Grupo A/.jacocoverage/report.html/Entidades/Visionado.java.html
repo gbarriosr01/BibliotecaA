@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Visionado.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Bilbioteca_Grupo_A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Entidades</a> &gt; <span class="el_source">Visionado.java</span></div><h1>Visionado.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Entidades;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
+
+/**
+ *
+ * @author DAM102
+ */
+public class Visionado extends Evento {
+
+    /*
+    Valores validos: Caracteres alfanumericos.
+    Valores invalidos: Caracteres especiales.
+    Otras restricciones: Longitud max 20 caracteres.
+     */
+    private String aula;
+
+    public Visionado() {
+<span class="nc" id="L26">        super();</span>
+<span class="nc" id="L27">        this.aula = aula;</span>
+<span class="nc" id="L28">    }</span>
+
+<span class="nc" id="L30">    public Visionado(String aula) {</span>
+<span class="nc" id="L31">        this.aula = aula;</span>
+<span class="nc" id="L32">    }</span>
+
+    public Visionado(Evento e, String aula) {
+<span class="fc" id="L35">        super(e);</span>
+<span class="fc" id="L36">        this.aula = aula;</span>
+<span class="fc" id="L37">    }</span>
+
+<span class="nc" id="L39">    public Visionado(Visionado v1) {</span>
+<span class="nc" id="L40">        this.aula = v1.aula;</span>
+<span class="nc" id="L41">    }</span>
+
+    public Visionado(String aula, long id, String nombre, Date fechayhora, long idPenalizacion) {
+<span class="nc" id="L44">        super(id, nombre, fechayhora, idPenalizacion);</span>
+<span class="nc" id="L45">        this.aula = aula;</span>
+<span class="nc" id="L46">    }</span>
+
+    public Visionado(String aula, Evento ev1) {
+<span class="nc" id="L49">        super(ev1);</span>
+<span class="nc" id="L50">        this.aula = aula;</span>
+<span class="nc" id="L51">    }</span>
+
+    public String getAula() {
+<span class="nc" id="L54">        return aula;</span>
+    }
+
+    public void setAula(String aula) {
+<span class="nc" id="L58">        this.aula = aula;</span>
+<span class="nc" id="L59">    }</span>
+
+    /*Esto esta editado*/
+    public static long nextIdVisionado() {
+<span class="nc" id="L63">        long ret = 0;</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">        for (int i = 0; i &lt; Utilidades.VISIONADOS.length; i++) {</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">            if (Utilidades.VISIONADOS[i].id &gt; ret) {</span>
+<span class="nc" id="L66">                ret = Utilidades.VISIONADOS[i].id;</span>
+            }
+        }
+<span class="nc" id="L69">        return ret + 1;</span>
+    }
+
+    /*Esto esta editado*/
+    public static Visionado nuevoVisionado() {
+<span class="nc" id="L74">        Visionado v1 = new Visionado();</span>
+<span class="nc" id="L75">        Scanner in = new Scanner(System.in);</span>
+<span class="nc" id="L76">        long idEven = nextIdVisionado();</span>
+<span class="nc" id="L77">        v1.setId(idEven);</span>
+<span class="nc" id="L78">        System.out.println(&quot;Introduzca el nombre del evento&quot;);</span>
+<span class="nc" id="L79">        String nombre = in.nextLine();</span>
+<span class="nc" id="L80">        v1.setNombre(nombre);</span>
+<span class="nc" id="L81">        System.out.println(&quot;Introduzca los datos del aula en el que se va a ver el DVD&quot;);</span>
+<span class="nc" id="L82">        String aula = in.nextLine();</span>
+<span class="nc" id="L83">        v1.setAula(aula);</span>
+<span class="nc" id="L84">        System.out.println(&quot;Introduzca la fecha y la hora del evento&quot;);</span>
+<span class="nc" id="L85">        java.sql.Date fechayhora = Utilidades.Fecha.nuevaFecha().conversorFecha();</span>
+<span class="nc" id="L86">        v1.setFechayhora(fechayhora);</span>
+
+<span class="nc" id="L88">        return v1;</span>
+    }
+
+    public static ArrayList&lt;Visionado&gt; convertirVisionado(Visionado[] array) {
+<span class="fc" id="L92">        ArrayList&lt;Visionado&gt; ret = new ArrayList&lt;Visionado&gt;();</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">        for (Visionado s : array) {</span>
+<span class="fc" id="L94">            ret.add(s);</span>
+
+        }
+<span class="fc" id="L97">        return ret;</span>
+    }
+
+    public static void verVisionado(ArrayList&lt;Visionado&gt; visionados) {
+<span class="nc" id="L101">        System.out.println(&quot;Visionados de la biblioteca:&quot;);</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">        for (Visionado c : visionados) {</span>
+<span class="nc" id="L103">            System.out.println(c.getId() + &quot;.- &quot; + (c.getAula()));</span>
+<span class="nc" id="L104">        }</span>
+<span class="nc" id="L105">    }</span>
+
+    public static void buscarVisionado(ArrayList&lt;Visionado&gt; visionados) {
+        Visionado buscado;
+        ArrayList&lt;Visionado&gt; encontrados;
+        Scanner in;
+<span class="nc" id="L111">        int opcion = -1;</span>
+        do {
+<span class="nc" id="L113">            buscado = null;</span>
+<span class="nc" id="L114">            encontrados = new ArrayList&lt;Visionado&gt;();</span>
+<span class="nc" id="L115">            in = new Scanner(System.in, &quot;ISO-8859-1&quot;);</span>
+<span class="nc" id="L116">            System.out.println(&quot;Pulse 1 para buscar visionado por AULA.&quot;);</span>
+<span class="nc" id="L117">            System.out.println(&quot;Pulse 0 para VOLVER.&quot;);</span>
+<span class="nc" id="L118">            opcion = in.nextInt();</span>
+<span class="nc bnc" id="L119" title="All 4 branches missed.">            if (opcion &lt; 0 || opcion &gt; 1) {</span>
+<span class="nc" id="L120">                System.out.println(&quot;Opción incorrecta.&quot;);</span>
+<span class="nc" id="L121">                continue;</span>
+            }
+<span class="nc" id="L123">            in = new Scanner(System.in, &quot;ISO-8859-1&quot;);</span>
+<span class="nc bnc" id="L124" title="All 3 branches missed.">            switch (opcion) {</span>
+                case 0:
+<span class="nc" id="L126">                    break;</span>
+                case 1:
+<span class="nc" id="L128">                    System.out.println(&quot;Introduzca el AULA del Visionado a encontrar:&quot;);</span>
+<span class="nc" id="L129">                    String nomAula = in.nextLine();</span>
+<span class="nc" id="L130">                    encontrados = Visionado.buscarVisionadoPorAula(nomAula, visionados);</span>
+<span class="nc bnc" id="L131" title="All 2 branches missed.">                    if (encontrados.size() &gt; 0) {</span>
+<span class="nc" id="L132">                        System.out.println(&quot;Hay coincidencias: &quot;);</span>
+<span class="nc bnc" id="L133" title="All 2 branches missed.">                        for (Visionado e : encontrados) {</span>
+<span class="nc" id="L134">                            System.out.println(e.getAula());</span>
+<span class="nc" id="L135">                        }</span>
+                    } else {
+<span class="nc" id="L137">                        System.out.println(&quot;Socio con nombre=&quot; + nomAula + &quot; NO ENCONTRADO.&quot;);</span>
+                    }
+<span class="nc" id="L139">                    System.out.println(&quot;&quot;);</span>
+                    break;
+
+            }
+
+<span class="nc bnc" id="L144" title="All 2 branches missed.">        } while (opcion != 0);</span>
+<span class="nc" id="L145">    }</span>
+
+    public static ArrayList&lt;Visionado&gt; buscarVisionadoPorAula(String aula, ArrayList&lt;Visionado&gt; visionados) {
+<span class="nc" id="L148">        ArrayList&lt;Visionado&gt; ret = new ArrayList&lt;Visionado&gt;();</span>
+<span class="nc bnc" id="L149" title="All 2 branches missed.">        for (Visionado e : visionados) {</span>
+<span class="nc bnc" id="L150" title="All 2 branches missed.">            if (Utilidades.removeDiacriticalMarks(e.getAula().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(aula.toLowerCase()))) {</span>
+<span class="nc" id="L151">                ret.add(e);</span>
+            }
+<span class="nc bnc" id="L153" title="All 2 branches missed.">            if (e.getAula().toLowerCase().contains(aula.toLowerCase())) {</span>
+<span class="nc bnc" id="L154" title="All 2 branches missed.">                if (!ret.contains(e)) {</span>
+<span class="nc" id="L155">                    ret.add(e);</span>
+                }
+            }
+<span class="nc" id="L158">        }</span>
+<span class="nc" id="L159">        return ret;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L164">        return &quot;Visionado{&quot; + &quot;aula=&quot; + aula + '}';</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

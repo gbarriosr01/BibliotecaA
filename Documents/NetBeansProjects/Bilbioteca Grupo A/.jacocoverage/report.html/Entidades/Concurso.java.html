@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Concurso.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Bilbioteca_Grupo_A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Entidades</a> &gt; <span class="el_source">Concurso.java</span></div><h1>Concurso.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Entidades;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
+
+/**
+ *
+ * @author DAM102
+ */
+public class Concurso extends Evento {
+
+    /*
+    Valores validos: Caracteres alfanumericos.
+    Valores invalidos: Caracteres especiales.
+    Otras restricciones: Longitud max 30 caracteres.
+     */
+    private String tipo;
+    /*
+    Valores validos: Caracteres alfanumericos.
+    Valores invalidos: Caracteres especiales.
+    Otras restricciones: Longitud max 30 caracteres.
+     */
+    private String premio;
+
+    public Concurso() {
+<span class="nc" id="L32">        super();</span>
+<span class="nc" id="L33">    }</span>
+
+<span class="nc" id="L35">    public Concurso(String tipo, String premio) {</span>
+<span class="nc" id="L36">        this.tipo = tipo;</span>
+<span class="nc" id="L37">        this.premio = premio;</span>
+<span class="nc" id="L38">    }</span>
+    public Concurso(Evento e, String tipo, String premio) {
+<span class="fc" id="L40">        super(e);</span>
+<span class="fc" id="L41">        this.tipo = tipo;</span>
+<span class="fc" id="L42">        this.premio = premio;</span>
+<span class="fc" id="L43">    }</span>
+<span class="nc" id="L44">    public Concurso(Concurso co1) {</span>
+<span class="nc" id="L45">        this.tipo = co1.tipo;</span>
+<span class="nc" id="L46">        this.premio = co1.premio;</span>
+<span class="nc" id="L47">    }</span>
+
+    public Concurso(String tipo, String premio, long id, String nombre, Date fechayhora, long idPenalizacion) {
+<span class="nc" id="L50">        super(id, nombre, fechayhora, idPenalizacion);</span>
+<span class="nc" id="L51">        this.tipo = tipo;</span>
+<span class="nc" id="L52">        this.premio = premio;</span>
+<span class="nc" id="L53">    }</span>
+
+    public Concurso(String tipo, String premio, Evento ev1) {
+<span class="nc" id="L56">        super(ev1);</span>
+<span class="nc" id="L57">        this.tipo = tipo;</span>
+<span class="nc" id="L58">        this.premio = premio;</span>
+<span class="nc" id="L59">    }</span>
+
+    public String getTipo() {
+<span class="nc" id="L62">        return tipo;</span>
+    }
+
+    public void setTipo(String tipo) {
+<span class="nc" id="L66">        this.tipo = tipo;</span>
+<span class="nc" id="L67">    }</span>
+
+    public String getPremio() {
+<span class="nc" id="L70">        return premio;</span>
+    }
+
+    public void setPremio(String premio) {
+<span class="nc" id="L74">        this.premio = premio;</span>
+<span class="nc" id="L75">    }</span>
+/*Esto esta editado*/
+    public static long nextIdConcurso() {
+<span class="nc" id="L78">        long ret = 0;</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">        for (int i = 0; i &lt; Utilidades.CONCURSOS.length; i++) {</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">            if (Utilidades.CONCURSOS[i].id &gt; ret) {</span>
+<span class="nc" id="L81">                ret = Utilidades.CONCURSOS[i].id;</span>
+            }
+        }
+<span class="nc" id="L84">        return ret + 1;</span>
+    }
+/*Esto esta editado*/
+    public static Concurso nuevoConcurso() {
+        //Evento e = Evento.nuevoEvento();
+<span class="nc" id="L89">        Concurso c1 = new Concurso();</span>
+<span class="nc" id="L90">        Scanner in = new Scanner(System.in);</span>
+
+<span class="nc" id="L92">        long idEven = nextIdConcurso();</span>
+<span class="nc" id="L93">        c1.setId(idEven);</span>
+<span class="nc" id="L94">        System.out.println(&quot;Introduzca el tipo de concurso&quot;);</span>
+<span class="nc" id="L95">        String tipo = in.nextLine();</span>
+<span class="nc" id="L96">        c1.setTipo(tipo);</span>
+<span class="nc" id="L97">        System.out.println(&quot;Introduzca el premio del concurso&quot;);</span>
+<span class="nc" id="L98">        String premio = in.nextLine();</span>
+<span class="nc" id="L99">        c1.setPremio(premio);</span>
+<span class="nc" id="L100">        System.out.println(&quot;Introduzca el nombre del evento&quot;);</span>
+<span class="nc" id="L101">        String nombre = in.nextLine();</span>
+<span class="nc" id="L102">        c1.setNombre(nombre);</span>
+<span class="nc" id="L103">        System.out.println(&quot;Introduzca la fecha y la hora del evento&quot;);</span>
+<span class="nc" id="L104">        java.sql.Date fechayhora = Utilidades.Fecha.nuevaFecha().conversorFecha();</span>
+<span class="nc" id="L105">        c1.setFechayhora(fechayhora);</span>
+        //Mas adelante mejorar al introducir validaciones
+<span class="nc" id="L107">        return c1;</span>
+    }
+
+    public static ArrayList&lt;Concurso&gt; convertirConcurso(Concurso[] array) {
+<span class="fc" id="L111">        ArrayList&lt;Concurso&gt; ret = new ArrayList&lt;Concurso&gt;();</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">        for (Concurso s : array) {</span>
+<span class="fc" id="L113">            ret.add(s);</span>
+
+        }
+<span class="fc" id="L116">        return ret;</span>
+    }
+
+    public static void verConcurso(ArrayList&lt;Concurso&gt; concursos) {
+<span class="nc" id="L120">        System.out.println(&quot;Concursos de la biblioteca:&quot;);</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">        for (Concurso c : concursos) {</span>
+<span class="nc" id="L122">            System.out.println(c.getId() + &quot;.- &quot; + (c.getTipo() + &quot; - &quot; + (c.getPremio())));</span>
+<span class="nc" id="L123">        }</span>
+<span class="nc" id="L124">    }</span>
+
+    public static void buscarConcurso(ArrayList&lt;Concurso&gt; concursos) {
+        Concurso buscado;
+        ArrayList&lt;Concurso&gt; encontrados;
+        Scanner in;
+<span class="nc" id="L130">        int opcion = -1;</span>
+        do {
+<span class="nc" id="L132">            buscado = null;</span>
+<span class="nc" id="L133">            encontrados = new ArrayList&lt;Concurso&gt;();</span>
+<span class="nc" id="L134">            in = new Scanner(System.in, &quot;ISO-8859-1&quot;);</span>
+<span class="nc" id="L135">            System.out.println(&quot;Pulse 1 para buscar concurso por TIPO.&quot;);</span>
+<span class="nc" id="L136">            System.out.println(&quot;Pulse 2 para buscar concurso por PREMIO.&quot;);</span>
+<span class="nc" id="L137">            System.out.println(&quot;Pulse 0 para VOLVER.&quot;);</span>
+<span class="nc" id="L138">            opcion = in.nextInt();</span>
+<span class="nc bnc" id="L139" title="All 4 branches missed.">            if (opcion &lt; 0 || opcion &gt; 2) {</span>
+<span class="nc" id="L140">                System.out.println(&quot;Opción incorrecta.&quot;);</span>
+<span class="nc" id="L141">                continue;</span>
+            }
+<span class="nc" id="L143">            in = new Scanner(System.in, &quot;ISO-8859-1&quot;);</span>
+<span class="nc bnc" id="L144" title="All 4 branches missed.">            switch (opcion) {</span>
+                case 0:
+<span class="nc" id="L146">                    break;</span>
+                case 1:
+<span class="nc" id="L148">                    System.out.println(&quot;Introduzca el TIPO del Concurso a encontrar:&quot;);</span>
+<span class="nc" id="L149">                    String nomTipo = in.nextLine();</span>
+<span class="nc" id="L150">                    encontrados = Concurso.buscarConcursoPorTipo(nomTipo, concursos);</span>
+<span class="nc bnc" id="L151" title="All 2 branches missed.">                    if (encontrados.size() &gt; 0) {</span>
+<span class="nc" id="L152">                        System.out.println(&quot;Hay coincidencias: &quot;);</span>
+<span class="nc bnc" id="L153" title="All 2 branches missed.">                        for (Concurso e : encontrados) {</span>
+<span class="nc" id="L154">                            System.out.println(e.getTipo() + &quot;. &quot; + e.getPremio());</span>
+<span class="nc" id="L155">                        }</span>
+                    } else {
+<span class="nc" id="L157">                        System.out.println(&quot;Socio con nombre=&quot; + nomTipo + &quot; NO ENCONTRADO.&quot;);</span>
+                    }
+<span class="nc" id="L159">                    System.out.println(&quot;&quot;);</span>
+<span class="nc" id="L160">                    break;</span>
+                case 2:
+<span class="nc" id="L162">                    System.out.println(&quot;Introduzca el PREMIO del Concurso a encontrar:&quot;);</span>
+<span class="nc" id="L163">                    String nomConc = in.nextLine();</span>
+<span class="nc" id="L164">                    encontrados = Concurso.buscarConcursoPorPremio(nomConc, concursos);</span>
+<span class="nc bnc" id="L165" title="All 2 branches missed.">                    if (encontrados.size() &gt; 0) {</span>
+<span class="nc" id="L166">                        System.out.println(&quot;Hay coincidencias: &quot;);</span>
+<span class="nc bnc" id="L167" title="All 2 branches missed.">                        for (Concurso e : encontrados) {</span>
+<span class="nc" id="L168">                            System.out.println(e.getTipo() + &quot;. &quot; + e.getPremio());</span>
+<span class="nc" id="L169">                        }</span>
+                    } else {
+<span class="nc" id="L171">                        System.out.println(&quot;Socio con nombre=&quot; + nomConc + &quot; NO ENCONTRADO.&quot;);</span>
+                    }
+<span class="nc" id="L173">                    System.out.println(&quot;&quot;);</span>
+<span class="nc" id="L174">                    break;</span>
+
+                default:
+                    break;
+            }
+
+<span class="nc bnc" id="L180" title="All 2 branches missed.">        } while (opcion != 0);</span>
+<span class="nc" id="L181">    }</span>
+
+    public static ArrayList&lt;Concurso&gt; buscarConcursoPorPremio(String nomPremio, ArrayList&lt;Concurso&gt; concursos) {
+<span class="nc" id="L184">        ArrayList&lt;Concurso&gt; ret = new ArrayList&lt;Concurso&gt;();</span>
+<span class="nc bnc" id="L185" title="All 2 branches missed.">        for (Concurso e : concursos) {</span>
+<span class="nc bnc" id="L186" title="All 2 branches missed.">            if (Utilidades.removeDiacriticalMarks(e.getPremio().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(nomPremio.toLowerCase()))) {</span>
+<span class="nc" id="L187">                ret.add(e);</span>
+            }
+<span class="nc bnc" id="L189" title="All 2 branches missed.">            if (e.getPremio().toLowerCase().contains(nomPremio.toLowerCase())) {</span>
+<span class="nc bnc" id="L190" title="All 2 branches missed.">                if (!ret.contains(e)) {</span>
+<span class="nc" id="L191">                    ret.add(e);</span>
+                }
+            }
+<span class="nc" id="L194">        }</span>
+<span class="nc" id="L195">        return ret;</span>
+    }
+
+    public static ArrayList&lt;Concurso&gt; buscarConcursoPorTipo(String nomTipo, ArrayList&lt;Concurso&gt; concursos) {
+<span class="nc" id="L199">        ArrayList&lt;Concurso&gt; ret = new ArrayList&lt;Concurso&gt;();</span>
+<span class="nc bnc" id="L200" title="All 2 branches missed.">        for (Concurso e : concursos) {</span>
+<span class="nc bnc" id="L201" title="All 2 branches missed.">            if (Utilidades.removeDiacriticalMarks(e.getTipo().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(nomTipo.toLowerCase()))) {</span>
+<span class="nc" id="L202">                ret.add(e);</span>
+            }
+<span class="nc bnc" id="L204" title="All 2 branches missed.">            if (e.getTipo().toLowerCase().contains(nomTipo.toLowerCase())) {</span>
+<span class="nc bnc" id="L205" title="All 2 branches missed.">                if (!ret.contains(e)) {</span>
+<span class="nc" id="L206">                    ret.add(e);</span>
+                }
+            }
+<span class="nc" id="L209">        }</span>
+<span class="nc" id="L210">        return ret;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L215">        return &quot;Concurso{&quot; + &quot;tipo=&quot; + tipo + &quot;, premio=&quot; + premio + '}';</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

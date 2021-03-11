@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>BilbiotecaGrupoA.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Bilbioteca_Grupo_A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">bilbioteca.grupo.a</a> &gt; <span class="el_source">BilbiotecaGrupoA.java</span></div><h1>BilbiotecaGrupoA.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package bilbioteca.grupo.a;
+
+import Entidades.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author DAM102
+ */
+<span class="nc" id="L16">public class BilbiotecaGrupoA {</span>
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+//        Socio s1 = new Socio().nuevoSocio();
+//        System.out.println(s1.nuevoSocio());
+<span class="fc" id="L24">        ArrayList&lt;Socio&gt; socios = Socio.convertirSocios(Utilidades.SOCIOS);</span>
+<span class="fc" id="L25">        ArrayList&lt;DVD&gt; DVDS = DVD.convertirDVDS(Utilidades.DVDS);</span>
+<span class="fc" id="L26">        ArrayList&lt;Libro&gt; libros = Libro.convertirLibros(Utilidades.LIBROS);</span>
+<span class="fc" id="L27">        ArrayList&lt;Concurso&gt; concursos = Concurso.convertirConcurso(Utilidades.CONCURSOS);</span>
+<span class="fc" id="L28">        ArrayList&lt;Curso&gt; cursos = Curso.convertirCurso(Utilidades.CURSOS);</span>
+<span class="fc" id="L29">        ArrayList&lt;Lectura&gt; lecturas = Lectura.convertirLectura(Utilidades.LECTURAS);</span>
+<span class="fc" id="L30">        ArrayList&lt;Visionado&gt; visionados = Visionado.convertirVisionado(Utilidades.VISIONADOS);</span>
+        //MENU PRINCIPAL DE AQUI HASTA ABAJO        
+<span class="fc" id="L32">        int opcion = -1;</span>
+<span class="fc" id="L33">        int opcion2 = -1;</span>
+<span class="fc" id="L34">        int opcion3 = -1;</span>
+
+        int idSocio;
+        Socio s;
+
+<span class="fc" id="L39">        Scanner in = new Scanner(System.in);</span>
+
+        do {
+<span class="fc" id="L42">            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="fc" id="L43">            mostrarMenuPrincipal();</span>
+<span class="fc" id="L44">            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="fc" id="L45">            opcion = in.nextInt();</span>
+<span class="pc bpc" id="L46" title="2 of 4 branches missed.">            if (opcion &lt; 0 || opcion &gt; 3) {</span>
+<span class="nc" id="L47">                System.out.println(&quot;Opción incorrecta!&quot;);</span>
+<span class="nc" id="L48">                continue;</span>
+            }
+<span class="pc bpc" id="L50" title="4 of 5 branches missed.">            switch (opcion) {</span>
+                case 1: //se ha pulsado la opcion Gestion de Socios
+<span class="nc" id="L52">                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L53">                    System.out.println(&quot;Ha pulsado la opcion Gestion de Socios&quot;);</span>
+
+                    do {
+<span class="nc" id="L56">                        System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L57">                        mostrarMenuGestionSocios();</span>
+<span class="nc" id="L58">                        System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L59">                        in = new Scanner(System.in);</span>
+<span class="nc" id="L60">                        opcion2 = in.nextInt();</span>
+<span class="nc bnc" id="L61" title="All 4 branches missed.">                        if (opcion2 &lt; 0 || opcion2 &gt; 3) {</span>
+<span class="nc" id="L62">                            System.out.println(&quot;Opción incorrecta!&quot;);</span>
+<span class="nc" id="L63">                            continue;</span>
+                        }
+<span class="nc bnc" id="L65" title="All 4 branches missed.">                        switch (opcion2) {</span>
+                            case 1:// Ver socio
+<span class="nc" id="L67">                                System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L68">                                System.out.println(&quot;Ha pulsado la opcion Ver Socio&quot;);</span>
+<span class="nc" id="L69">                                Socio.verSocio(socios);</span>
+<span class="nc" id="L70">                                in = new Scanner(System.in);</span>
+<span class="nc" id="L71">                                idSocio = in.nextInt();</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">                                if (idSocio != 0) {</span>
+<span class="nc" id="L73">                                    s = Socio.buscarSociosPorId(idSocio, socios);</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">                                    if (s != null) {</span>
+<span class="nc" id="L75">                                        System.out.println(&quot;Socio encontrado: &quot;);</span>
+<span class="nc" id="L76">                                        s.verDatosSocioCompleto();</span>
+                                    } else {
+<span class="nc" id="L78">                                        System.out.println(&quot;Socio de ID = &quot; + idSocio + &quot; no encontrado&quot;);</span>
+                                    }
+                                }
+                                do {
+
+<span class="nc" id="L83">                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L84">                                    System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+<span class="nc" id="L85">                                    in = new Scanner(System.in);</span>
+<span class="nc" id="L86">                                    opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L87" title="All 2 branches missed.">                                    if (opcion3 != 0) {</span>
+<span class="nc" id="L88">                                        System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+                                        continue;
+                                    }
+<span class="nc bnc" id="L91" title="All 2 branches missed.">                                } while (opcion3 != 0);</span>
+<span class="nc" id="L92">                                break;</span>
+                            case 2://Nuevo Socio
+<span class="nc" id="L94">                                System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L95">                                System.out.println(&quot;Ha pulsado la opcion Nuevo Socio&quot;);</span>
+                                do {
+<span class="nc" id="L97">                                    Socio nuevoSocio = Socio.nuevoSocio();</span>
+<span class="nc" id="L98">                                    socios.add(nuevoSocio);</span>
+                                    do {
+<span class="nc" id="L100">                                        System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L101">                                        System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+<span class="nc" id="L102">                                        System.out.println(&quot;-------------------------------------------------&quot;);</span>
+
+<span class="nc" id="L104">                                        in = new Scanner(System.in);</span>
+<span class="nc" id="L105">                                        opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">                                        if (opcion3 != 0) {</span>
+                                            continue;
+                                        }
+<span class="nc bnc" id="L109" title="All 2 branches missed.">                                    } while (opcion3 != 0);</span>
+
+<span class="nc bnc" id="L111" title="All 2 branches missed.">                                } while (opcion3 != 0);</span>
+<span class="nc" id="L112">                                break;</span>
+                            case 3://Buscar Socio
+<span class="nc" id="L114">                                System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L115">                                System.out.println(&quot;Ha pulsado la opcion Buscar Socio&quot;);</span>
+<span class="nc" id="L116">                                Socio.buscarSocios(socios);</span>
+
+                        }
+<span class="nc bnc" id="L119" title="All 2 branches missed.">                    } while (opcion2 != 0);</span>
+
+<span class="nc" id="L121">                    break;</span>
+                case 2: //se ha pulsado la opcion Gestion de elementos
+<span class="nc" id="L123">                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L124">                    System.out.println(&quot;Ha pulsado la opcion Gestion de elementos&quot;);</span>
+<span class="nc" id="L125">                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+
+                    do {
+<span class="nc" id="L128">                        mostrarMenuGestionElemetos();</span>
+<span class="nc" id="L129">                        in = new Scanner(System.in);</span>
+<span class="nc" id="L130">                        opcion2 = in.nextInt();</span>
+<span class="nc bnc" id="L131" title="All 4 branches missed.">                        if (opcion2 &lt; 0 || opcion2 &gt; 4) {</span>
+<span class="nc" id="L132">                            System.out.println(&quot;Opción incorrecta!&quot;);</span>
+<span class="nc" id="L133">                            continue;</span>
+                        }
+<span class="nc bnc" id="L135" title="All 4 branches missed.">                        switch (opcion2) {</span>
+                            case 1://Ver Elemento
+<span class="nc" id="L137">                                System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L138">                                System.out.println(&quot;Ha pulsado la opcion Ver Elemento&quot;);</span>
+<span class="nc" id="L139">                                System.out.println(&quot;-------------------------------------------------&quot;);</span>
+                                do {
+<span class="nc" id="L141">                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L142">                                    System.out.println(&quot;1.-Ver DVDs&quot;);</span>
+<span class="nc" id="L143">                                    System.out.println(&quot;2.-Ver Libros&quot;);</span>
+<span class="nc" id="L144">                                    System.out.println(&quot;0.-Volver&quot;);</span>
+<span class="nc" id="L145">                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L146">                                    opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L147" title="All 4 branches missed.">                                    if (opcion3 &lt; 0 || opcion3 &gt; 2) {</span>
+<span class="nc" id="L148">                                        System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L149">                                        System.out.println(&quot;Opción incorrecta!&quot;);</span>
+
+<span class="nc" id="L151">                                        continue;</span>
+                                    }
+
+<span class="nc bnc" id="L154" title="All 3 branches missed.">                                    switch (opcion3) {</span>
+                                        case 1:
+<span class="nc" id="L156">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L157">                                            System.out.println(&quot;Ha pulsado la opcion Ver DVDs&quot;);</span>
+<span class="nc" id="L158">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L159">                                            DVD.verDvd(DVDS);</span>
+                                            do {
+
+<span class="nc" id="L162">                                                System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L163">                                                System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+<span class="nc" id="L164">                                                in = new Scanner(System.in);</span>
+<span class="nc" id="L165">                                                opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L166" title="All 2 branches missed.">                                                if (opcion3 != 0) {</span>
+<span class="nc" id="L167">                                                    System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+                                                    continue;
+                                                }
+<span class="nc bnc" id="L170" title="All 2 branches missed.">                                            } while (opcion3 != 0);</span>
+<span class="nc" id="L171">                                            break;</span>
+                                        case 2:
+<span class="nc" id="L173">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L174">                                            System.out.println(&quot;Ha pulsado la opcion Ver libros&quot;);</span>
+<span class="nc" id="L175">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L176">                                            Libro.verLibro(libros);</span>
+                                            do {
+
+<span class="nc" id="L179">                                                System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L180">                                                System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+<span class="nc" id="L181">                                                in = new Scanner(System.in);</span>
+<span class="nc" id="L182">                                                opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L183" title="All 2 branches missed.">                                                if (opcion3 != 0) {</span>
+<span class="nc" id="L184">                                                    System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+                                                    continue;
+                                                }
+<span class="nc bnc" id="L187" title="All 2 branches missed.">                                            } while (opcion3 != 0);</span>
+<span class="nc" id="L188">                                            break;</span>
+
+                                        default:
+                                            break;
+                                    }
+<span class="nc bnc" id="L193" title="All 2 branches missed.">                                } while (opcion3 != 0);</span>
+<span class="nc" id="L194">                                break;</span>
+
+                            case 2:
+                                // Nuevo Elemento
+<span class="nc" id="L198">                                System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L199">                                System.out.println(&quot;Ha pulsado la opcion Nuevo Elemento&quot;);</span>
+<span class="nc" id="L200">                                System.out.println(&quot;-------------------------------------------------&quot;);</span>
+                                do {
+<span class="nc" id="L202">                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L203">                                    System.out.println(&quot;1.-Nuevo DVDs&quot;);</span>
+<span class="nc" id="L204">                                    System.out.println(&quot;2.-Nuevo Libros&quot;);</span>
+<span class="nc" id="L205">                                    System.out.println(&quot;0.-Volver&quot;);</span>
+<span class="nc" id="L206">                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L207">                                    opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L208" title="All 4 branches missed.">                                    if (opcion3 &lt; 0 || opcion3 &gt; 2) {</span>
+<span class="nc" id="L209">                                        System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L210">                                        System.out.println(&quot;Opción incorrecta!&quot;);</span>
+
+<span class="nc" id="L212">                                        continue;</span>
+                                    }
+<span class="nc bnc" id="L214" title="All 3 branches missed.">                                    switch (opcion3) {</span>
+                                        case 1:
+<span class="nc" id="L216">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L217">                                            System.out.println(&quot;Ha pulsado la opcion Nuevo DVDs&quot;);</span>
+<span class="nc" id="L218">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+                                            do {
+<span class="nc" id="L220">                                                DVD nuevoDVD = DVD.nuevoDVD();</span>
+<span class="nc" id="L221">                                                DVDS.add(nuevoDVD);</span>
+                                                do {
+<span class="nc" id="L223">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L224">                                                    System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+<span class="nc" id="L225">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+
+<span class="nc" id="L227">                                                    in = new Scanner(System.in);</span>
+<span class="nc" id="L228">                                                    opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L229" title="All 2 branches missed.">                                                    if (opcion3 != 0) {</span>
+                                                        continue;
+                                                    }
+<span class="nc bnc" id="L232" title="All 2 branches missed.">                                                } while (opcion3 != 0);</span>
+
+<span class="nc bnc" id="L234" title="All 2 branches missed.">                                            } while (opcion3 != 0);</span>
+<span class="nc" id="L235">                                            break;</span>
+                                        case 2:
+<span class="nc" id="L237">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L238">                                            System.out.println(&quot;Ha pulsado la opcion Nuevo Libro&quot;);</span>
+<span class="nc" id="L239">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+                                            do {
+<span class="nc" id="L241">                                                Libro nuevoLibro = Libro.nuevoLibro();</span>
+<span class="nc" id="L242">                                                libros.add(nuevoLibro);</span>
+                                                do {
+<span class="nc" id="L244">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L245">                                                    System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+<span class="nc" id="L246">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+
+<span class="nc" id="L248">                                                    in = new Scanner(System.in);</span>
+<span class="nc" id="L249">                                                    opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L250" title="All 2 branches missed.">                                                    if (opcion3 != 0) {</span>
+                                                        continue;
+                                                    }
+<span class="nc bnc" id="L253" title="All 2 branches missed.">                                                } while (opcion3 != 0);</span>
+
+<span class="nc bnc" id="L255" title="All 2 branches missed.">                                            } while (opcion3 != 0);</span>
+                                            break;
+
+                                    }
+
+<span class="nc bnc" id="L260" title="All 2 branches missed.">                                } while (opcion3 != 0);</span>
+<span class="nc" id="L261">                                break;</span>
+                            case 3:  //Buscar Elemento                              
+<span class="nc" id="L263">                                System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L264">                                System.out.println(&quot;¿Que elemento desea buscar?&quot;);</span>
+                                do {
+<span class="nc" id="L266">                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L267">                                    System.out.println(&quot;1.- DVDs&quot;);</span>
+<span class="nc" id="L268">                                    System.out.println(&quot;2.- libros&quot;);</span>
+<span class="nc" id="L269">                                    System.out.println(&quot;0.-Volver&quot;);</span>
+<span class="nc" id="L270">                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L271">                                    opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L272" title="All 4 branches missed.">                                    if (opcion3 &lt; 0 || opcion3 &gt; 2) {</span>
+<span class="nc" id="L273">                                        System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L274">                                        System.out.println(&quot;Opción incorrecta!&quot;);</span>
+
+<span class="nc" id="L276">                                        continue;</span>
+                                    }
+<span class="nc bnc" id="L278" title="All 3 branches missed.">                                    switch (opcion3) {</span>
+                                        case 1:
+<span class="nc" id="L280">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L281">                                            System.out.println(&quot;Ha pulsado la opcion Buscar DVDs&quot;);</span>
+<span class="nc" id="L282">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+                                            do {
+                                                // Funcion BuscarDVDs
+<span class="nc" id="L285">                                                DVD.buscarDVDs(DVDS);</span>
+                                                do {
+<span class="nc" id="L287">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L288">                                                    System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+<span class="nc" id="L289">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+
+<span class="nc" id="L291">                                                    in = new Scanner(System.in);</span>
+<span class="nc" id="L292">                                                    opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L293" title="All 2 branches missed.">                                                    if (opcion3 != 0) {</span>
+                                                        continue;
+                                                    }
+<span class="nc bnc" id="L296" title="All 2 branches missed.">                                                } while (opcion3 != 0);</span>
+
+<span class="nc bnc" id="L298" title="All 2 branches missed.">                                            } while (opcion3 != 0);</span>
+<span class="nc" id="L299">                                            break;</span>
+
+                                        case 2:
+<span class="nc" id="L302">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L303">                                            System.out.println(&quot;Ha pulsado la opcion Buscar Libros&quot;);</span>
+<span class="nc" id="L304">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+                                            do {
+                                                // Funcion BuscarLibros
+<span class="nc" id="L307">                                                Libro.buscarLibros(libros);</span>
+                                                do {
+<span class="nc" id="L309">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L310">                                                    System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+<span class="nc" id="L311">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+
+<span class="nc" id="L313">                                                    in = new Scanner(System.in);</span>
+<span class="nc" id="L314">                                                    opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L315" title="All 2 branches missed.">                                                    if (opcion3 != 0) {</span>
+                                                        continue;
+                                                    }
+<span class="nc bnc" id="L318" title="All 2 branches missed.">                                                } while (opcion3 != 0);</span>
+
+<span class="nc bnc" id="L320" title="All 2 branches missed.">                                            } while (opcion3 != 0);</span>
+                                            break;
+
+                                    }
+<span class="nc bnc" id="L324" title="All 2 branches missed.">                                    while (opcion3 != 0);</span>
+
+<span class="nc bnc" id="L326" title="All 2 branches missed.">                                } while (opcion3 != 0);</span>
+                                break;
+                        }
+
+<span class="nc bnc" id="L330" title="All 2 branches missed.">                    } while (opcion2 != 0);</span>
+
+<span class="nc" id="L332">                    break;</span>
+                case 3: //se ha pulsado la opcion Gestion de eventos
+<span class="nc" id="L334">                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L335">                    System.out.println(&quot;Ha pulsado la opcion Gestion de eventos&quot;);</span>
+
+                    do {
+<span class="nc" id="L338">                        mostrarMenuGestionEventos();</span>
+<span class="nc" id="L339">                        in = new Scanner(System.in);</span>
+<span class="nc" id="L340">                        opcion2 = in.nextInt();</span>
+<span class="nc bnc" id="L341" title="All 4 branches missed.">                        if (opcion2 &lt; 0 || opcion2 &gt; 4) {</span>
+<span class="nc" id="L342">                            System.out.println(&quot;Opción incorrecta!&quot;);</span>
+<span class="nc" id="L343">                            continue;</span>
+                        }
+<span class="nc bnc" id="L345" title="All 5 branches missed.">                        switch (opcion2) {</span>
+
+                            case 1:
+<span class="nc" id="L348">                                System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L349">                                System.out.println(&quot;Ha pulsado la opcion Ver Evento&quot;);</span>
+                                // Opcion Ver Evento
+
+                                do {
+<span class="nc" id="L353">                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L354">                                    System.out.println(&quot;1.-Ver Concursos&quot;);</span>
+<span class="nc" id="L355">                                    System.out.println(&quot;2.-Ver Cursos&quot;);</span>
+<span class="nc" id="L356">                                    System.out.println(&quot;3.-Ver Lecturas&quot;);</span>
+<span class="nc" id="L357">                                    System.out.println(&quot;4.-Ver Visionados&quot;);</span>
+<span class="nc" id="L358">                                    System.out.println(&quot;0.-Volver&quot;);</span>
+<span class="nc" id="L359">                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L360">                                    opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L361" title="All 4 branches missed.">                                    if (opcion3 &lt; 0 || opcion3 &gt; 4) {</span>
+<span class="nc" id="L362">                                        System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L363">                                        System.out.println(&quot;Opción incorrecta!&quot;);</span>
+
+<span class="nc" id="L365">                                        continue;</span>
+                                    }
+<span class="nc bnc" id="L367" title="All 5 branches missed.">                                    switch (opcion3) {</span>
+                                        case 1:
+<span class="nc" id="L369">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L370">                                            System.out.println(&quot;Ha pulsado la opcion Ver Concursos&quot;);</span>
+<span class="nc" id="L371">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+                                            //Funcion VerConcursos
+<span class="nc" id="L373">                                            Concurso.verConcurso(concursos);</span>
+                                            do {
+
+<span class="nc" id="L376">                                                System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L377">                                                System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+<span class="nc" id="L378">                                                in = new Scanner(System.in);</span>
+<span class="nc" id="L379">                                                opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L380" title="All 2 branches missed.">                                                if (opcion3 != 0) {</span>
+<span class="nc" id="L381">                                                    System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+                                                    continue;
+                                                }
+<span class="nc bnc" id="L384" title="All 2 branches missed.">                                            } while (opcion3 != 0);</span>
+<span class="nc" id="L385">                                            break;</span>
+                                        case 2:
+<span class="nc" id="L387">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L388">                                            System.out.println(&quot;Ha pulsado la opcion Ver Cursos&quot;);</span>
+<span class="nc" id="L389">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+                                            //Funcion Ver Cursos
+<span class="nc" id="L391">                                            Curso.verCurso(cursos);</span>
+                                            do {
+
+<span class="nc" id="L394">                                                System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L395">                                                System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+<span class="nc" id="L396">                                                in = new Scanner(System.in);</span>
+<span class="nc" id="L397">                                                opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L398" title="All 2 branches missed.">                                                if (opcion3 != 0) {</span>
+<span class="nc" id="L399">                                                    System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+                                                    continue;
+                                                }
+<span class="nc bnc" id="L402" title="All 2 branches missed.">                                            } while (opcion3 != 0);</span>
+<span class="nc" id="L403">                                            break;</span>
+                                        case 3:
+<span class="nc" id="L405">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L406">                                            System.out.println(&quot;Ha pulsado la opcion Ver Lecturas&quot;);</span>
+<span class="nc" id="L407">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+                                            //Funcion VerLecturas
+<span class="nc" id="L409">                                            Lectura.verLectura(lecturas);</span>
+                                            do {
+
+<span class="nc" id="L412">                                                System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L413">                                                System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+<span class="nc" id="L414">                                                in = new Scanner(System.in);</span>
+<span class="nc" id="L415">                                                opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L416" title="All 2 branches missed.">                                                if (opcion3 != 0) {</span>
+<span class="nc" id="L417">                                                    System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+                                                    continue;
+                                                }
+<span class="nc bnc" id="L420" title="All 2 branches missed.">                                            } while (opcion3 != 0);</span>
+<span class="nc" id="L421">                                            break;</span>
+                                        case 4:
+<span class="nc" id="L423">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L424">                                            System.out.println(&quot;Ha pulsado la opcion Ver Visionados&quot;);</span>
+<span class="nc" id="L425">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+                                            //Funcion VerVisionados
+<span class="nc" id="L427">                                            Visionado.verVisionado(visionados);</span>
+                                            do {
+
+<span class="nc" id="L430">                                                System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L431">                                                System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+<span class="nc" id="L432">                                                in = new Scanner(System.in);</span>
+<span class="nc" id="L433">                                                opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L434" title="All 2 branches missed.">                                                if (opcion3 != 0) {</span>
+<span class="nc" id="L435">                                                    System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+                                                    continue;
+                                                }
+<span class="nc bnc" id="L438" title="All 2 branches missed.">                                            } while (opcion3 != 0);</span>
+<span class="nc" id="L439">                                            break;</span>
+
+                                        default:
+                                            break;
+                                    }
+<span class="nc bnc" id="L444" title="All 2 branches missed.">                                } while (opcion3 != 0);</span>
+<span class="nc" id="L445">                                break;</span>
+                            case 2:
+<span class="nc" id="L447">                                System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L448">                                System.out.println(&quot;Ha pulsado la opcion Nuevo Evento&quot;);</span>
+                                // Opcion Nuevo Evento
+                                do {
+<span class="nc" id="L451">                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L452">                                    System.out.println(&quot;1.-Nuevo Concurso&quot;);</span>
+<span class="nc" id="L453">                                    System.out.println(&quot;2.-Nuevo Curso&quot;);</span>
+<span class="nc" id="L454">                                    System.out.println(&quot;3.-Nueva Lectura&quot;);</span>
+<span class="nc" id="L455">                                    System.out.println(&quot;4.-Nuevo Visionado&quot;);</span>
+<span class="nc" id="L456">                                    System.out.println(&quot;0.-Volver&quot;);</span>
+<span class="nc" id="L457">                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L458">                                    opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L459" title="All 4 branches missed.">                                    if (opcion3 &lt; 0 || opcion3 &gt; 4) {</span>
+<span class="nc" id="L460">                                        System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L461">                                        System.out.println(&quot;Opción incorrecta!&quot;);</span>
+
+<span class="nc" id="L463">                                        continue;</span>
+                                    }
+<span class="nc bnc" id="L465" title="All 5 branches missed.">                                    switch (opcion3) {</span>
+                                        case 1:
+<span class="nc" id="L467">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L468">                                            System.out.println(&quot;Ha pulsado la opcion Nuevo Concurso&quot;);</span>
+<span class="nc" id="L469">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+                                            do {
+                                                //Nuevo Concurso
+<span class="nc" id="L472">                                                Concurso nuevoConcurso = Concurso.nuevoConcurso();</span>
+<span class="nc" id="L473">                                                concursos.add(nuevoConcurso);</span>
+                                                do {
+<span class="nc" id="L475">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L476">                                                    System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+<span class="nc" id="L477">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+
+<span class="nc" id="L479">                                                    in = new Scanner(System.in);</span>
+<span class="nc" id="L480">                                                    opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L481" title="All 2 branches missed.">                                                    if (opcion3 != 0) {</span>
+                                                        continue;
+                                                    }
+<span class="nc bnc" id="L484" title="All 2 branches missed.">                                                } while (opcion3 != 0);</span>
+
+<span class="nc bnc" id="L486" title="All 2 branches missed.">                                            } while (opcion3 != 0);</span>
+<span class="nc" id="L487">                                            break;</span>
+                                        case 2:
+<span class="nc" id="L489">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L490">                                            System.out.println(&quot;Ha pulsado la opcion Nuevo Curso&quot;);</span>
+<span class="nc" id="L491">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+                                            do {
+                                                //Nuevo Curso
+<span class="nc" id="L494">                                                Curso nuevoCurso = Curso.nuevoCurso();</span>
+<span class="nc" id="L495">                                                cursos.add(nuevoCurso);</span>
+                                                do {
+<span class="nc" id="L497">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L498">                                                    System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+<span class="nc" id="L499">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+
+<span class="nc" id="L501">                                                    in = new Scanner(System.in);</span>
+<span class="nc" id="L502">                                                    opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L503" title="All 2 branches missed.">                                                    if (opcion3 != 0) {</span>
+                                                        continue;
+                                                    }
+<span class="nc bnc" id="L506" title="All 2 branches missed.">                                                } while (opcion3 != 0);</span>
+
+<span class="nc bnc" id="L508" title="All 2 branches missed.">                                            } while (opcion3 != 0);</span>
+<span class="nc" id="L509">                                            break;</span>
+                                        case 3:
+<span class="nc" id="L511">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L512">                                            System.out.println(&quot;Ha pulsado la opcion Nueva Lectura&quot;);</span>
+<span class="nc" id="L513">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+                                            do {
+                                                //Nueva Lectura
+<span class="nc" id="L516">                                                Lectura nuevoLectura = Lectura.nuevoLectura();</span>
+<span class="nc" id="L517">                                                lecturas.add(nuevoLectura);</span>
+                                                do {
+<span class="nc" id="L519">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L520">                                                    System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+<span class="nc" id="L521">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+
+<span class="nc" id="L523">                                                    in = new Scanner(System.in);</span>
+<span class="nc" id="L524">                                                    opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L525" title="All 2 branches missed.">                                                    if (opcion3 != 0) {</span>
+                                                        continue;
+                                                    }
+<span class="nc bnc" id="L528" title="All 2 branches missed.">                                                } while (opcion3 != 0);</span>
+
+<span class="nc bnc" id="L530" title="All 2 branches missed.">                                            } while (opcion3 != 0);</span>
+<span class="nc" id="L531">                                            break;</span>
+                                        case 4:
+<span class="nc" id="L533">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L534">                                            System.out.println(&quot;Ha pulsado la opcion Nuevo Visionado&quot;);</span>
+<span class="nc" id="L535">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+                                            do {
+                                                //Nuevo visionado
+<span class="nc" id="L538">                                                Visionado nuevoVisionado = Visionado.nuevoVisionado();</span>
+<span class="nc" id="L539">                                                visionados.add(nuevoVisionado);</span>
+                                                do {
+<span class="nc" id="L541">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L542">                                                    System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+<span class="nc" id="L543">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+
+<span class="nc" id="L545">                                                    in = new Scanner(System.in);</span>
+<span class="nc" id="L546">                                                    opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L547" title="All 2 branches missed.">                                                    if (opcion3 != 0) {</span>
+                                                        continue;
+                                                    }
+<span class="nc bnc" id="L550" title="All 2 branches missed.">                                                } while (opcion3 != 0);</span>
+
+<span class="nc bnc" id="L552" title="All 2 branches missed.">                                            } while (opcion3 != 0);</span>
+                                            break;
+                                    }
+<span class="nc bnc" id="L555" title="All 2 branches missed.">                                    while (opcion3 != 0);</span>
+                                    break;
+<span class="nc bnc" id="L557" title="All 2 branches missed.">                                } while (opcion3 != 0);</span>
+<span class="nc" id="L558">                                break;</span>
+
+                            case 3:
+<span class="nc" id="L561">                                System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L562">                                System.out.println(&quot;Ha pulsado la opcion Buscar Evento&quot;);</span>
+                                // Opcion Buscar Evento
+                                do {
+<span class="nc" id="L565">                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L566">                                    System.out.println(&quot;1.- Buscar Concurso&quot;);</span>
+<span class="nc" id="L567">                                    System.out.println(&quot;2.- Buscar Curso&quot;);</span>
+<span class="nc" id="L568">                                    System.out.println(&quot;3.- Buscar Lectura&quot;);</span>
+<span class="nc" id="L569">                                    System.out.println(&quot;4.- Buscar Visionado&quot;);</span>
+<span class="nc" id="L570">                                    System.out.println(&quot;0.-Volver&quot;);</span>
+<span class="nc" id="L571">                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L572">                                    opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L573" title="All 4 branches missed.">                                    if (opcion3 &lt; 0 || opcion3 &gt; 4) {</span>
+<span class="nc" id="L574">                                        System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L575">                                        System.out.println(&quot;Opción incorrecta!&quot;);</span>
+
+<span class="nc" id="L577">                                        continue;</span>
+                                    }
+<span class="nc bnc" id="L579" title="All 5 branches missed.">                                    switch (opcion3) {</span>
+                                        case 1:
+<span class="nc" id="L581">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L582">                                            System.out.println(&quot;Ha pulsado la opcion Buscar Concurso&quot;);</span>
+<span class="nc" id="L583">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+                                            do {
+<span class="nc" id="L585">                                                Concurso.buscarConcurso(concursos);</span>
+
+                                                do {
+<span class="nc" id="L588">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L589">                                                    System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+<span class="nc" id="L590">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+
+<span class="nc" id="L592">                                                    in = new Scanner(System.in);</span>
+<span class="nc" id="L593">                                                    opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L594" title="All 2 branches missed.">                                                    if (opcion3 != 0) {</span>
+                                                        continue;
+                                                    }
+<span class="nc bnc" id="L597" title="All 2 branches missed.">                                                } while (opcion3 != 0);</span>
+
+<span class="nc bnc" id="L599" title="All 2 branches missed.">                                            } while (opcion3 != 0);</span>
+<span class="nc" id="L600">                                            break;</span>
+                                        case 2:
+<span class="nc" id="L602">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L603">                                            System.out.println(&quot;Ha pulsado la opcion Buscar Curso&quot;);</span>
+<span class="nc" id="L604">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+                                            do {
+<span class="nc" id="L606">                                                Curso.buscarCurso(cursos);</span>
+
+                                                do {
+<span class="nc" id="L609">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L610">                                                    System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+<span class="nc" id="L611">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+
+<span class="nc" id="L613">                                                    in = new Scanner(System.in);</span>
+<span class="nc" id="L614">                                                    opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L615" title="All 2 branches missed.">                                                    if (opcion3 != 0) {</span>
+                                                        continue;
+                                                    }
+<span class="nc bnc" id="L618" title="All 2 branches missed.">                                                } while (opcion3 != 0);</span>
+
+<span class="nc bnc" id="L620" title="All 2 branches missed.">                                            } while (opcion3 != 0);</span>
+<span class="nc" id="L621">                                            break;</span>
+                                        case 3:
+<span class="nc" id="L623">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L624">                                            System.out.println(&quot;Ha pulsado la opcion Buscar Lectura&quot;);</span>
+<span class="nc" id="L625">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+                                            do {
+<span class="nc" id="L627">                                                Lectura.buscarLectura(lecturas);</span>
+
+                                                do {
+<span class="nc" id="L630">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L631">                                                    System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+<span class="nc" id="L632">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+
+<span class="nc" id="L634">                                                    in = new Scanner(System.in);</span>
+<span class="nc" id="L635">                                                    opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L636" title="All 2 branches missed.">                                                    if (opcion3 != 0) {</span>
+                                                        continue;
+                                                    }
+<span class="nc bnc" id="L639" title="All 2 branches missed.">                                                } while (opcion3 != 0);</span>
+
+<span class="nc bnc" id="L641" title="All 2 branches missed.">                                            } while (opcion3 != 0);</span>
+<span class="nc" id="L642">                                            break;</span>
+                                        case 4:
+<span class="nc" id="L644">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L645">                                            System.out.println(&quot;Ha pulsado la opcion Buscar Visionado&quot;);</span>
+<span class="nc" id="L646">                                            System.out.println(&quot;-------------------------------------------------&quot;);</span>
+                                            do {
+<span class="nc" id="L648">                                                Visionado.buscarVisionado(visionados);</span>
+
+                                                do {
+<span class="nc" id="L651">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L652">                                                    System.out.println(&quot;Pulse 0 para salir&quot;);</span>
+<span class="nc" id="L653">                                                    System.out.println(&quot;-------------------------------------------------&quot;);</span>
+
+<span class="nc" id="L655">                                                    in = new Scanner(System.in);</span>
+<span class="nc" id="L656">                                                    opcion3 = in.nextInt();</span>
+<span class="nc bnc" id="L657" title="All 2 branches missed.">                                                    if (opcion3 != 0) {</span>
+                                                        continue;
+                                                    }
+<span class="nc bnc" id="L660" title="All 2 branches missed.">                                                } while (opcion3 != 0);</span>
+
+<span class="nc bnc" id="L662" title="All 2 branches missed.">                                            } while (opcion3 != 0);</span>
+                                            break;
+
+                                    }
+<span class="nc bnc" id="L666" title="All 2 branches missed.">                                    while (opcion3 != 0);</span>
+                                    break;
+<span class="nc bnc" id="L668" title="All 2 branches missed.">                                } while (opcion3 != 0);</span>
+<span class="nc" id="L669">                                break;</span>
+
+                            case 4:
+<span class="nc" id="L672">                                System.out.println(&quot;-------------------------------------------------&quot;);</span>
+<span class="nc" id="L673">                                System.out.println(&quot;Ha pulsado la opcion Participar en Evento&quot;);</span>
+                            // Opcion Participar en Evento
+                        }
+
+<span class="nc bnc" id="L677" title="All 2 branches missed.">                    } while (opcion2 != 0);</span>
+
+<span class="nc" id="L679">                    break;</span>
+                case 0: //se ha pulsado Salir
+<span class="fc" id="L681">                    continue;</span>
+                default: //opcion incorrecta   
+            }
+<span class="nc" id="L684">            opcion = -1;</span>
+<span class="pc bpc" id="L685" title="2 of 4 branches missed.">        } while (opcion &lt; 0 || opcion &gt; 3);</span>
+
+<span class="fc" id="L687">    }</span>
+
+    private static void mostrarMenuPrincipal() {
+<span class="fc" id="L690">        System.out.println(&quot;Pulse 1 para Gestionar los Socios&quot;);</span>
+<span class="fc" id="L691">        System.out.println(&quot;Pulse 2 para Gestionar Elementos&quot;);</span>
+<span class="fc" id="L692">        System.out.println(&quot;Pulse 3 para Gestionar Eventos&quot;);</span>
+<span class="fc" id="L693">        System.out.println(&quot;Pulse 0 para SALIR&quot;);</span>
+<span class="fc" id="L694">    }</span>
+
+    private static void mostrarMenuGestionSocios() {
+<span class="nc" id="L697">        System.out.println(&quot;Pulse 1 para Ver Socio&quot;);</span>
+<span class="nc" id="L698">        System.out.println(&quot;Pulse 2 para Nuevo Socio&quot;);</span>
+<span class="nc" id="L699">        System.out.println(&quot;Pulse 3 para Buscar Socio&quot;);</span>
+<span class="nc" id="L700">        System.out.println(&quot;Pulse 0 para Volver&quot;);</span>
+<span class="nc" id="L701">    }</span>
+
+    private static void mostrarMenuGestionElemetos() {
+<span class="nc" id="L704">        System.out.println(&quot;Pulse 1 para Ver Elemento&quot;);</span>
+<span class="nc" id="L705">        System.out.println(&quot;Pulse 2 para Nuevo Elemento&quot;);</span>
+<span class="nc" id="L706">        System.out.println(&quot;Pulse 3 para Buscar Elemento&quot;);</span>
+<span class="nc" id="L707">        System.out.println(&quot;Pulse 4 para Hacer Préstamo&quot;);</span>
+<span class="nc" id="L708">        System.out.println(&quot;Pulse 0 para Volver&quot;);</span>
+<span class="nc" id="L709">    }</span>
+
+    private static void mostrarMenuGestionEventos() {
+<span class="nc" id="L712">        System.out.println(&quot;Pulse 1 para Ver Evento&quot;);</span>
+<span class="nc" id="L713">        System.out.println(&quot;Pulse 2 para Nuevo Evento&quot;);</span>
+<span class="nc" id="L714">        System.out.println(&quot;Pulse 3 para Buscar Eventos&quot;);</span>
+<span class="nc" id="L715">        System.out.println(&quot;Pulse 4 para Participar en Evento&quot;);</span>
+<span class="nc" id="L716">        System.out.println(&quot;Pulse 0 para Volver&quot;);</span>
+<span class="nc" id="L717">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

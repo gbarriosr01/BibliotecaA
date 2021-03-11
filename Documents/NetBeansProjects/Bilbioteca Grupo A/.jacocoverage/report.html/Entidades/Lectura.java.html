@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Lectura.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Bilbioteca_Grupo_A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Entidades</a> &gt; <span class="el_source">Lectura.java</span></div><h1>Lectura.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Entidades;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
+
+/**
+ *
+ * @author DAM102
+ */
+public class Lectura extends Evento {
+
+    /*
+    Valores validos: Verdadero y falso.
+    Valores invalidos: Cualquier tipo de caracter que no sea T o F.
+     */
+    private boolean leido;
+    /*
+    Valores validos: Caracteres alfanumericos.
+    Valores invalidos: Caracteres especiales.
+    Otras restricciones: Longitud max 30 caracteres.
+     */
+    private String modelo;
+
+    public Lectura() {
+<span class="nc" id="L31">        super();</span>
+
+<span class="nc" id="L33">    }</span>
+
+<span class="nc" id="L35">    public Lectura(boolean leido, String modelo) {</span>
+<span class="nc" id="L36">        this.leido = false;</span>
+<span class="nc" id="L37">        this.modelo = modelo;</span>
+<span class="nc" id="L38">    }</span>
+
+    public Lectura(Evento e, boolean leido, String modelo) {
+<span class="fc" id="L41">        super(e);</span>
+<span class="fc" id="L42">        this.leido = false;</span>
+<span class="fc" id="L43">        this.modelo = modelo;</span>
+<span class="fc" id="L44">    }</span>
+
+<span class="nc" id="L46">    public Lectura(Lectura l1) {</span>
+<span class="nc" id="L47">        this.leido = l1.leido;</span>
+<span class="nc" id="L48">        this.modelo = l1.modelo;</span>
+<span class="nc" id="L49">    }</span>
+
+    public Lectura(boolean leido, String modelo, long id, String nombre, Date fechayhora, long idPenalizacion) {
+<span class="nc" id="L52">        super(id, nombre, fechayhora, idPenalizacion);</span>
+<span class="nc" id="L53">        this.leido = false;</span>
+<span class="nc" id="L54">        this.modelo = modelo;</span>
+<span class="nc" id="L55">    }</span>
+
+    public Lectura(boolean leido, String modelo, Evento ev1) {
+<span class="nc" id="L58">        super(ev1);</span>
+<span class="nc" id="L59">        this.leido = leido;</span>
+<span class="nc" id="L60">        this.modelo = modelo;</span>
+<span class="nc" id="L61">    }</span>
+
+    public boolean isLeido() {
+<span class="nc" id="L64">        return leido;</span>
+    }
+
+    public void setLeido(boolean leido) {
+<span class="nc" id="L68">        this.leido = leido;</span>
+<span class="nc" id="L69">    }</span>
+
+    public String getModelo() {
+<span class="nc" id="L72">        return modelo;</span>
+    }
+
+    public void setModelo(String modelo) {
+<span class="nc" id="L76">        this.modelo = modelo;</span>
+<span class="nc" id="L77">    }</span>
+
+    /*Esto esta editado*/
+    public static long nextIdLectura() {
+<span class="nc" id="L81">        long ret = 0;</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">        for (int i = 0; i &lt; Utilidades.LECTURAS.length; i++) {</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">            if (Utilidades.LECTURAS[i].id &gt; ret) {</span>
+<span class="nc" id="L84">                ret = Utilidades.LECTURAS[i].id;</span>
+            }
+        }
+<span class="nc" id="L87">        return ret + 1;</span>
+    }
+
+    /*Esto esta editado*/
+    public static Lectura nuevoLectura() {
+<span class="nc" id="L92">        Lectura le1 = new Lectura();</span>
+<span class="nc" id="L93">        Scanner in = new Scanner(System.in);</span>
+
+<span class="nc" id="L95">        long idEven = nextIdLectura();</span>
+<span class="nc" id="L96">        le1.setId(idEven);</span>
+
+<span class="nc" id="L98">        System.out.println(&quot;Introduzca si se ha leido el libro(true/false)&quot;);</span>
+<span class="nc" id="L99">        boolean leido = in.nextBoolean();</span>
+<span class="nc" id="L100">        le1.setLeido(leido);</span>
+<span class="nc" id="L101">        in.nextLine();</span>
+<span class="nc" id="L102">        System.out.println(&quot;Introduzca el modelo del libro leido&quot;);</span>
+<span class="nc" id="L103">        String modelo = in.nextLine();</span>
+<span class="nc" id="L104">        le1.setModelo(modelo);</span>
+<span class="nc" id="L105">        System.out.println(&quot;Introduzca el nombre del evento&quot;);</span>
+<span class="nc" id="L106">        String nombre = in.nextLine();</span>
+<span class="nc" id="L107">        le1.setNombre(nombre);</span>
+<span class="nc" id="L108">        System.out.println(&quot;Introduzca la fecha y la hora del evento&quot;);</span>
+<span class="nc" id="L109">        java.sql.Date fechayhora = Utilidades.Fecha.nuevaFecha().conversorFecha();</span>
+<span class="nc" id="L110">        le1.setFechayhora(fechayhora);</span>
+<span class="nc" id="L111">        return le1;</span>
+    }
+
+    public static ArrayList&lt;Lectura&gt; convertirLectura(Lectura[] array) {
+<span class="fc" id="L115">        ArrayList&lt;Lectura&gt; ret = new ArrayList&lt;Lectura&gt;();</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">        for (Lectura s : array) {</span>
+<span class="fc" id="L117">            ret.add(s);</span>
+
+        }
+<span class="fc" id="L120">        return ret;</span>
+    }
+
+    public static void verLectura(ArrayList&lt;Lectura&gt; lecturas) {
+<span class="nc" id="L124">        System.out.println(&quot;Lecturas de la biblioteca:&quot;);</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">        for (Lectura c : lecturas) {</span>
+<span class="nc" id="L126">            System.out.println(c.getId()+ &quot;.- &quot; + c.getNombre()+&quot; - &quot; + (c.getModelo() + &quot; - ¿Se ha leido? &quot; + (c.isLeido()  )));</span>
+<span class="nc" id="L127">        }</span>
+<span class="nc" id="L128">    }</span>
+
+    public static void buscarLectura(ArrayList&lt;Lectura&gt; lecturas) {
+        Lectura buscado;
+        ArrayList&lt;Lectura&gt; encontrados;
+        Scanner in;
+<span class="nc" id="L134">        int opcion = -1;</span>
+        do {
+<span class="nc" id="L136">            buscado = null;</span>
+<span class="nc" id="L137">            encontrados = new ArrayList&lt;Lectura&gt;();</span>
+<span class="nc" id="L138">            in = new Scanner(System.in, &quot;ISO-8859-1&quot;);</span>
+<span class="nc" id="L139">            System.out.println(&quot;Pulse 1 para buscar Lectura por MODELO de libro.&quot;);</span>
+<span class="nc" id="L140">            System.out.println(&quot;Pulse 0 para VOLVER.&quot;);</span>
+<span class="nc" id="L141">            opcion = in.nextInt();</span>
+<span class="nc bnc" id="L142" title="All 4 branches missed.">            if (opcion &lt; 0 || opcion &gt; 1) {</span>
+<span class="nc" id="L143">                System.out.println(&quot;Opción incorrecta.&quot;);</span>
+<span class="nc" id="L144">                continue;</span>
+            }
+<span class="nc" id="L146">            in = new Scanner(System.in, &quot;ISO-8859-1&quot;);</span>
+<span class="nc bnc" id="L147" title="All 3 branches missed.">            switch (opcion) {</span>
+                case 0:
+<span class="nc" id="L149">                    break;</span>
+                case 1:
+<span class="nc" id="L151">                    System.out.println(&quot;Introduzca el Modelo del Concurso a encontrar:&quot;);</span>
+<span class="nc" id="L152">                    String nomModelo = in.nextLine();</span>
+<span class="nc" id="L153">                    encontrados = Lectura.buscarLecturaPorModelo(nomModelo, lecturas);</span>
+<span class="nc bnc" id="L154" title="All 2 branches missed.">                    if (encontrados.size() &gt; 0) {</span>
+<span class="nc" id="L155">                        System.out.println(&quot;Hay coincidencias: &quot;);</span>
+<span class="nc bnc" id="L156" title="All 2 branches missed.">                        for (Lectura e : encontrados) {</span>
+<span class="nc" id="L157">                            System.out.println(e.getModelo());</span>
+<span class="nc" id="L158">                        }</span>
+                    } else {
+<span class="nc" id="L160">                        System.out.println(&quot;Lectura con nombre=&quot; + nomModelo + &quot; NO ENCONTRADO.&quot;);</span>
+                    }
+<span class="nc" id="L162">                    System.out.println(&quot;&quot;);</span>
+                    break;
+
+            }
+
+<span class="nc bnc" id="L167" title="All 2 branches missed.">        } while (opcion != 0);</span>
+<span class="nc" id="L168">    }</span>
+
+    public static ArrayList&lt;Lectura&gt; buscarLecturaPorModelo(String nomModelo, ArrayList&lt;Lectura&gt; lecturas) {
+<span class="nc" id="L171">        ArrayList&lt;Lectura&gt; ret = new ArrayList&lt;Lectura&gt;();</span>
+<span class="nc bnc" id="L172" title="All 2 branches missed.">        for (Lectura e : lecturas) {</span>
+<span class="nc bnc" id="L173" title="All 2 branches missed.">            if (Utilidades.removeDiacriticalMarks(e.getModelo().toLowerCase()).contains(Utilidades.removeDiacriticalMarks(nomModelo.toLowerCase()))) {</span>
+<span class="nc" id="L174">                ret.add(e);</span>
+            }
+<span class="nc bnc" id="L176" title="All 2 branches missed.">            if (e.getModelo().toLowerCase().contains(nomModelo.toLowerCase())) {</span>
+<span class="nc bnc" id="L177" title="All 2 branches missed.">                if (!ret.contains(e)) {</span>
+<span class="nc" id="L178">                    ret.add(e);</span>
+                }
+            }
+<span class="nc" id="L181">        }</span>
+<span class="nc" id="L182">        return ret;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L187">        return &quot;Lectura{&quot; + &quot;leido=&quot; + leido + &quot;, modelo=&quot; + modelo + '}';</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

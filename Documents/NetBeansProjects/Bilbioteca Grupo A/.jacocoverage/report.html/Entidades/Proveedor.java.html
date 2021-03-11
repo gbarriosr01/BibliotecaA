@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Proveedor.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Bilbioteca_Grupo_A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Entidades</a> &gt; <span class="el_source">Proveedor.java</span></div><h1>Proveedor.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Entidades;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author DAM102
+ */
+public class Proveedor {
+
+    //Valores válidos,  &gt;0
+    //Valores inválidos, &lt;=0
+    //Tiene que ser único 
+    private long id;
+    //Valores válidos,  &lt;=20 caracteres
+    //Valores inválidos, &gt;20 caracteres
+    //No se admiten números
+    private String nombre;
+    //Valores válidos,  &gt;=9 numeros
+    //Valores inválidos, &lt;9 numeros
+    //NO admite letras
+    private String telefono;
+
+<span class="nc" id="L29">    public Proveedor() {</span>
+
+<span class="nc" id="L31">    }</span>
+
+<span class="fc" id="L33">    public Proveedor(long id, String nombre, String telefono) {</span>
+<span class="fc" id="L34">        this.id = id;</span>
+<span class="fc" id="L35">        this.nombre = nombre;</span>
+<span class="fc" id="L36">        this.telefono = telefono;</span>
+<span class="fc" id="L37">    }</span>
+
+<span class="nc" id="L39">    public Proveedor(Proveedor p1) {</span>
+<span class="nc" id="L40">        this.id = p1.id;</span>
+<span class="nc" id="L41">        this.nombre = p1.nombre;</span>
+<span class="nc" id="L42">        this.telefono = p1.telefono;</span>
+
+<span class="nc" id="L44">    }</span>
+
+    public long getId() {
+<span class="nc" id="L47">        return id;</span>
+    }
+
+    public void setId(long id) {
+<span class="nc" id="L51">        this.id = id;</span>
+<span class="nc" id="L52">    }</span>
+
+    public String getNombre() {
+<span class="nc" id="L55">        return nombre;</span>
+    }
+
+    public void setNombre(String nombre) {
+<span class="nc" id="L59">        this.nombre = nombre;</span>
+<span class="nc" id="L60">    }</span>
+
+    public String getTelefono() {
+<span class="nc" id="L63">        return telefono;</span>
+    }
+
+    public void setTelefono(String telefono) {
+<span class="nc" id="L67">        this.telefono = telefono;</span>
+<span class="nc" id="L68">    }</span>
+
+    public Proveedor nuevoProveedor() {
+<span class="nc" id="L71">        Proveedor p1 = new Proveedor();</span>
+<span class="nc" id="L72">        Scanner in = new Scanner(System.in);</span>
+
+<span class="nc" id="L74">        int numProveedores = Utilidades.numProveedores + 1;</span>
+<span class="nc" id="L75">        p1.setId(numProveedores);</span>
+
+<span class="nc" id="L77">        System.out.println(&quot;Ingrese nombre del proveedor&quot;);</span>
+<span class="nc" id="L78">        String nombre = in.nextLine();</span>
+<span class="nc" id="L79">        p1.setNombre(nombre);</span>
+<span class="nc" id="L80">        System.out.println(&quot;Ingrese el telefono del proveedor&quot;);</span>
+<span class="nc" id="L81">        String telefono = in.nextLine();</span>
+<span class="nc" id="L82">        p1.setTelefono(telefono);</span>
+
+<span class="nc" id="L84">        return p1;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L89">        return &quot;Proveedor{&quot; + &quot;id=&quot; + id + &quot;, nombre=&quot; + nombre + &quot;, telefono=&quot; + telefono + '}';</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

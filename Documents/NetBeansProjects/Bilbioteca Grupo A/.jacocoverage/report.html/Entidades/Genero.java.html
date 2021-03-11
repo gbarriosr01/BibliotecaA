@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Genero.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Bilbioteca_Grupo_A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Entidades</a> &gt; <span class="el_source">Genero.java</span></div><h1>Genero.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Entidades;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author DAM102
+ */
+public class Genero {
+
+    //Valores válidos,  &gt;0
+    //Valores inválidos, &lt;=0
+    //Tiene que ser único
+    private long id;
+    //Valores válidos,  &lt;=20
+    //Valores inválidos, &gt;20
+    //No admite numeros
+    private String nombre;
+
+<span class="nc" id="L26">    public Genero() {</span>
+
+<span class="nc" id="L28">    }</span>
+
+<span class="fc" id="L30">    public Genero(long id, String nombre) {</span>
+<span class="fc" id="L31">        this.id = id;</span>
+<span class="fc" id="L32">        this.nombre = nombre;</span>
+<span class="fc" id="L33">    }</span>
+
+<span class="nc" id="L35">    public Genero(Genero g1) {</span>
+<span class="nc" id="L36">        this.id = g1.id;</span>
+<span class="nc" id="L37">        this.nombre = g1.nombre;</span>
+
+<span class="nc" id="L39">    }</span>
+
+    public long getId() {
+<span class="nc" id="L42">        return id;</span>
+    }
+
+    public void setId(long id) {
+<span class="nc" id="L46">        this.id = id;</span>
+<span class="nc" id="L47">    }</span>
+
+    public String getNombre() {
+<span class="nc" id="L50">        return nombre;</span>
+    }
+
+    public void setNombre(String nombre) {
+<span class="nc" id="L54">        this.nombre = nombre;</span>
+<span class="nc" id="L55">    }</span>
+
+    public Genero nuevoGenero() {
+<span class="nc" id="L58">        Genero g1 = new Genero();</span>
+<span class="nc" id="L59">        Scanner in = new Scanner(System.in);</span>
+
+<span class="nc" id="L61">        int numGeneros = Utilidades.numGeneros + 1;</span>
+<span class="nc" id="L62">        g1.setId(numGeneros);</span>
+
+<span class="nc" id="L64">        System.out.println(&quot;Inserte su nombre&quot;);</span>
+<span class="nc" id="L65">        String nombre = in.nextLine();</span>
+<span class="nc" id="L66">        g1.setNombre(nombre);</span>
+
+<span class="nc" id="L68">        return g1;</span>
+    }
+
+    public static ArrayList&lt;Genero&gt; convertirGeneros(Genero[] array) {
+<span class="nc" id="L72">        ArrayList&lt;Genero&gt; ret = new ArrayList&lt;Genero&gt;();</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">        for (Genero s : array) {</span>
+<span class="nc" id="L74">            ret.add(s);</span>
+        }
+
+<span class="nc" id="L77">        return ret;</span>
+    }
+
+    public static void verGenero(ArrayList&lt;Genero&gt; generos) {
+<span class="nc" id="L81">        System.out.println(&quot;Generos de la biblioteca:&quot;);</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">        for (Genero s : generos) {</span>
+<span class="nc" id="L83">            System.out.println(s.getId() + &quot; - &quot; + (s.getNombre() + &quot;.&quot;));</span>
+<span class="nc" id="L84">        }</span>
+
+<span class="nc" id="L86">    }</span>
+
+    public static Genero buscarGenerosPorId(int idGenero, ArrayList&lt;Genero&gt; generos) {
+<span class="nc" id="L89">        Genero ret = null;</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">        for (Genero s : generos) {</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">            if (s.getId() == idGenero) {</span>
+
+<span class="nc" id="L93">                ret = s;</span>
+<span class="nc" id="L94">                break;</span>
+            }
+
+<span class="nc" id="L97">        }</span>
+<span class="nc" id="L98">        return ret;</span>
+    }
+
+    public void verGeneroElemento() {
+<span class="nc" id="L102">        System.out.println(this.getNombre());</span>
+<span class="nc" id="L103">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L107">        return &quot;Genero{&quot; + &quot;id=&quot; + id + &quot;, nombre=&quot; + nombre + '}';</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

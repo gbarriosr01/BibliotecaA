@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Utilidades.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Bilbioteca_Grupo_A&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Entidades</a> &gt; <span class="el_source">Utilidades.java</span></div><h1>Utilidades.java</h1><pre class="source lang-java linenums">package Entidades;
+
+import java.sql.Date;
+import java.text.Normalizer;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
+/**
+ *
+ * @author manuo
+ */
+<span class="nc" id="L13">public class Utilidades {</span>
+
+<span class="fc" id="L15">    private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(&quot;dd/MM/yyyy&quot;);</span>
+
+<span class="fc" id="L17">    public static final Socio SOCIOS[] = {</span>
+        new Socio(1, &quot;Juan&quot;, &quot;12345678R&quot;, &quot;722232220&quot;, &quot;Avenida Bermudez&quot;),
+        new Socio(2, &quot;Paco&quot;, &quot;12345679K&quot;, &quot;987654321&quot;, &quot;Calle Francisco&quot;),
+        new Socio(3, &quot;Pepe&quot;, &quot;65498732E&quot;, &quot;369852147&quot;, &quot;Calle Croqueta&quot;)
+    };
+<span class="fc" id="L22">    public static final int numSocios = SOCIOS.length;</span>
+
+<span class="fc" id="L24">    public static final Prestamo PRESTAMOS[] = {</span>
+<span class="fc" id="L25">        new Prestamo(1, Date.valueOf(LocalDate.parse(&quot;01/10/2021&quot;, dateFormatter)), Date.valueOf(LocalDate.parse(&quot;01/11/2021&quot;, dateFormatter))),</span>
+<span class="fc" id="L26">        new Prestamo(2, Date.valueOf(LocalDate.parse(&quot;01/09/2021&quot;, dateFormatter)), Date.valueOf(LocalDate.parse(&quot;01/12/2021&quot;, dateFormatter))),</span>
+<span class="fc" id="L27">        new Prestamo(3, Date.valueOf(LocalDate.parse(&quot;01/07/2021&quot;, dateFormatter)), Date.valueOf(LocalDate.parse(&quot;01/01/2022&quot;, dateFormatter)))</span>
+    };
+<span class="fc" id="L29">    public static final int numPrestamos = PRESTAMOS.length;</span>
+
+<span class="fc" id="L31">    public static final Estado ESTADOS[] = {</span>
+        new Estado(1, &quot;Pendiente&quot;),
+        new Estado(2, &quot;Parcial&quot;),
+        new Estado(3, &quot;Completo&quot;)
+    };
+<span class="fc" id="L36">    public static final int numEstados = ESTADOS.length;</span>
+
+<span class="fc" id="L38">    public static final Penalizacion PENALIZACIONES[] = {</span>
+<span class="fc" id="L39">        new Penalizacion(1, &quot;No entregó a tiempo&quot;, Date.valueOf(LocalDate.parse(&quot;10/01/2021&quot;, dateFormatter))),</span>
+<span class="fc" id="L40">        new Penalizacion(2, &quot;No entregó a tiempo&quot;, Date.valueOf(LocalDate.parse(&quot;12/01/2021&quot;, dateFormatter))),</span>
+<span class="fc" id="L41">        new Penalizacion(3, &quot;Entregó en mal estado&quot;, Date.valueOf(LocalDate.parse(&quot;13/01/2021&quot;, dateFormatter)))</span>
+    };
+<span class="fc" id="L43">    public static final int numPenalizaciones = PENALIZACIONES.length;</span>
+
+<span class="fc" id="L45">    public static final Proveedor PROVEEDORES[] = {</span>
+        new Proveedor(1, &quot;Juan&quot;, &quot;942111111&quot;),
+        new Proveedor(2, &quot;Luis&quot;, &quot;676222222&quot;),
+        new Proveedor(3, &quot;Teresa&quot;, &quot;721333333&quot;)
+    };
+<span class="fc" id="L50">    public static final int numProveedores = PROVEEDORES.length;</span>
+
+<span class="fc" id="L52">    public static final Genero GENEROS[] = {</span>
+        new Genero(1, &quot;Aventuras&quot;),
+        new Genero(2, &quot;Novela negra&quot;),
+        new Genero(3, &quot;Educativos&quot;),
+        new Genero(4, &quot;Misterio&quot;),
+        new Genero(5, &quot;Fantasia&quot;),
+        new Genero(6, &quot;Ciencia ficción&quot;),
+        new Genero(7, &quot;Terror&quot;),
+        new Genero(8, &quot;Autoayuda&quot;)
+    };
+<span class="fc" id="L62">    public static final int numGeneros = GENEROS.length;</span>
+
+<span class="fc" id="L64">    public static final Lote LOTES[] = {</span>
+<span class="fc" id="L65">        new Lote(Date.valueOf(LocalDate.parse(&quot;12/10/2021&quot;, dateFormatter)), 1),</span>
+<span class="fc" id="L66">        new Lote(Date.valueOf(LocalDate.parse(&quot;12/10/2020&quot;, dateFormatter)), 2),</span>
+<span class="fc" id="L67">        new Lote(Date.valueOf(LocalDate.parse(&quot;12/10/2020&quot;, dateFormatter)), 3)</span>
+    };
+<span class="fc" id="L69">    public static final int numLotes = LOTES.length;</span>
+
+<span class="fc" id="L71">    public static final Elemento ELEMENTOS[] = {</span>
+        new Elemento(1, GENEROS[1]),
+        new Elemento(2, GENEROS[2]),
+        new Elemento(3, GENEROS[3]),
+        new Elemento(4, GENEROS[4]),
+        new Elemento(5, GENEROS[5]),
+        new Elemento(6, GENEROS[6])
+    };
+<span class="fc" id="L79">    public static final int numElementos = ELEMENTOS.length;</span>
+
+<span class="fc" id="L81">    public static final Estanteria ESTANTERIAS[] = {</span>
+        new Estanteria(1, 'A', &quot;fondo derecha&quot;, false),
+        new Estanteria(2, 'B', &quot;fondo izquierda&quot;, false),
+        new Estanteria(3, 'C', &quot;centro&quot;, false)
+    };
+<span class="fc" id="L86">    public static final int numEstanterias = ESTANTERIAS.length;</span>
+
+<span class="fc" id="L88">    public static final DVD DVDS[] = {</span>
+        new DVD(ELEMENTOS[0],&quot;Tyler Rake&quot;),
+        new DVD(ELEMENTOS[1],&quot;A ciegas&quot;),
+        new DVD(ELEMENTOS[2],&quot;Spenser: Confidencial&quot;)
+    };
+<span class="fc" id="L93">    public static final int numDVDs = DVDS.length;</span>
+
+<span class="fc" id="L95">    public static final Libro LIBROS[] = {</span>
+        new Libro(ELEMENTOS[3],&quot;Cien años de soledad&quot;, &quot;Ediciones del norte&quot;, &quot;Gabriel Garcia Marquez&quot;, 230),
+        new Libro(ELEMENTOS[4],&quot;El ingenioso hidalgo Don Quijote de la Mancha&quot;, &quot;Nadir ediciones&quot;, &quot;Miguel de Cervantes&quot;, 400),
+        new Libro(ELEMENTOS[5],&quot;El principito&quot;, &quot;Editorial universidad de cantabria&quot;, &quot;Antoine De Saint Exupéry&quot;, 300)
+    };
+<span class="fc" id="L100">    public static final int numLibros = LIBROS.length;</span>
+
+<span class="fc" id="L102">    public static final Evento EVENTOS[] = {</span>
+<span class="fc" id="L103">        new Evento(1, &quot;Prueba informatica&quot;, Date.valueOf(LocalDate.parse(&quot;01/01/2021&quot;, dateFormatter))),</span>
+<span class="fc" id="L104">        new Evento(2, &quot;Firma de libros&quot;, Date.valueOf(LocalDate.parse(&quot;02/02/2021&quot;, dateFormatter))),</span>
+<span class="fc" id="L105">        new Evento(3, &quot;Nuevos autores&quot;, Date.valueOf(LocalDate.parse(&quot;03/03/2021&quot;, dateFormatter))),</span>
+<span class="fc" id="L106">        new Evento(4, &quot;asfasg&quot;, Date.valueOf(LocalDate.parse(&quot;03/03/2021&quot;, dateFormatter))),</span>
+<span class="fc" id="L107">        new Evento(5, &quot;bdsds&quot;, Date.valueOf(LocalDate.parse(&quot;03/03/2021&quot;, dateFormatter))),</span>
+<span class="fc" id="L108">        new Evento(6, &quot;Nuevos&quot;, Date.valueOf(LocalDate.parse(&quot;03/03/2021&quot;, dateFormatter))),</span>
+<span class="fc" id="L109">        new Evento(7, &quot;Nuevos autos&quot;, Date.valueOf(LocalDate.parse(&quot;03/03/2021&quot;, dateFormatter))),</span>
+<span class="fc" id="L110">        new Evento(8, &quot;Nadda&quot;, Date.valueOf(LocalDate.parse(&quot;03/03/2021&quot;, dateFormatter))),</span>
+<span class="fc" id="L111">        new Evento(9, &quot;addah autores&quot;, Date.valueOf(LocalDate.parse(&quot;03/03/2021&quot;, dateFormatter))),</span>
+<span class="fc" id="L112">        new Evento(10, &quot;Nuevosadsdfasbhds&quot;, Date.valueOf(LocalDate.parse(&quot;03/03/2021&quot;, dateFormatter))),</span>
+<span class="fc" id="L113">        new Evento(11, &quot;Nuevosaddautores&quot;, Date.valueOf(LocalDate.parse(&quot;03/03/2021&quot;, dateFormatter))),</span>
+<span class="fc" id="L114">        new Evento(12, &quot;Nuevostores&quot;, Date.valueOf(LocalDate.parse(&quot;03/03/2021&quot;, dateFormatter)))</span>
+    };
+<span class="fc" id="L116">    public static final int numEventos = EVENTOS.length;</span>
+
+<span class="fc" id="L118">    public static final Concurso CONCURSOS[] = {</span>
+        new Concurso(EVENTOS[0], &quot;Informatica&quot;, &quot;Raton Logitech&quot;),
+        new Concurso(EVENTOS[1], &quot;Origami&quot;, &quot;100€&quot;),
+        new Concurso(EVENTOS[2], &quot;Matematicas&quot;, &quot;100€&quot;)
+    };
+<span class="fc" id="L123">    public static final int numConcursos = CONCURSOS.length;</span>
+
+<span class="fc" id="L125">    public static final Curso CURSOS[] = {</span>
+        new Curso(EVENTOS[3], &quot;50 minutos&quot;, &quot;Aula 1&quot;),
+        new Curso(EVENTOS[4], &quot;30 minutos&quot;, &quot;Aula 2&quot;),
+        new Curso(EVENTOS[5], &quot;40 minutos&quot;, &quot;Aula 3&quot;)
+    };
+<span class="fc" id="L130">    public static final int numCursos = CURSOS.length;</span>
+
+<span class="fc" id="L132">    public static final Lectura LECTURAS[] = {</span>
+        new Lectura(EVENTOS[6], false, &quot;Cien años de soledad&quot;),
+        new Lectura(EVENTOS[7], false, &quot;El ingenioso hidalgo Don Quijote de la Mancha&quot;),
+        new Lectura(EVENTOS[8], false, &quot;El principito&quot;),};
+<span class="fc" id="L136">    public static final int numLecturas = LECTURAS.length;</span>
+
+<span class="fc" id="L138">    public static final Visionado VISIONADOS[] = {</span>
+        new Visionado(EVENTOS[9], &quot;Aula 1&quot;),
+        new Visionado(EVENTOS[10], &quot;Aula 2&quot;),
+        new Visionado(EVENTOS[11], &quot;Aula 3&quot;)
+    };
+<span class="fc" id="L143">    public static final int numVisionados = VISIONADOS.length;</span>
+
+    public static class Fecha {
+
+        private int anio;
+        private int mes;
+        private int dia;
+
+<span class="nc" id="L151">        public Fecha() {</span>
+<span class="nc" id="L152">            Date hoy = Date.valueOf(LocalDate.now());</span>
+<span class="nc" id="L153">        }</span>
+
+<span class="nc" id="L155">        public Fecha(int y, int m, int d) {</span>
+<span class="nc" id="L156">            this.anio = y;</span>
+<span class="nc" id="L157">            this.mes = m;</span>
+<span class="nc" id="L158">            this.dia = d;</span>
+<span class="nc" id="L159">        }</span>
+
+        public Date conversorFecha() {
+<span class="nc" id="L162">            java.sql.Date ret = new Date(this.anio, this.mes, this.dia);</span>
+<span class="nc" id="L163">            return ret;</span>
+        }
+
+        public static Fecha nuevaFecha() {
+<span class="nc" id="L167">            Fecha ret = new Fecha();</span>
+<span class="nc" id="L168">            Scanner in = new Scanner(System.in);</span>
+<span class="nc" id="L169">            int d = 0;</span>
+            do {
+<span class="nc" id="L171">                System.out.println(&quot;Dame el dia del mes&quot;);</span>
+<span class="nc" id="L172">                d = in.nextInt();</span>
+<span class="nc bnc" id="L173" title="All 4 branches missed.">                if (d &lt;= 0 || d &gt; 31) {</span>
+<span class="nc" id="L174">                    System.out.println(&quot;valor incorrecto&quot;);</span>
+                }
+<span class="nc bnc" id="L176" title="All 4 branches missed.">            } while (d &lt;= 0 || d &gt; 31);</span>
+<span class="nc" id="L177">            int m = 0;</span>
+            do {
+<span class="nc" id="L179">                System.out.println(&quot;Dame el mes del año&quot;);</span>
+<span class="nc" id="L180">                m = in.nextInt();</span>
+<span class="nc bnc" id="L181" title="All 4 branches missed.">                if (m &lt;= 0 || m &gt; 12) {</span>
+<span class="nc" id="L182">                    System.out.println(&quot;Valor incorrecto&quot;);</span>
+                }
+<span class="nc bnc" id="L184" title="All 4 branches missed.">            } while (m &lt;= 0 || m &gt; 12);</span>
+<span class="nc" id="L185">            int y = 0;</span>
+            do {
+<span class="nc" id="L187">                System.out.println(&quot;Dame el año&quot;);</span>
+<span class="nc" id="L188">                y = in.nextInt();</span>
+<span class="nc bnc" id="L189" title="All 2 branches missed.">                if (y &lt;= 0) {</span>
+<span class="nc" id="L190">                    System.out.println(&quot;Valor incorrecto&quot;);</span>
+                }
+<span class="nc bnc" id="L192" title="All 2 branches missed.">            } while (y &lt;= 0);</span>
+
+<span class="nc" id="L194">            ret = new Fecha(y, m, d);</span>
+<span class="nc" id="L195">            return ret;</span>
+
+        }
+
+    }
+
+    public static String removeDiacriticalMarks(String string) {
+        //Form.NFC acepta ñ y distingue las tildes en español
+<span class="nc" id="L203">        return Normalizer.normalize(string, Normalizer.Form.NFC)</span>
+<span class="nc" id="L204">                .replaceAll(&quot;\\p{InCombiningDiacriticalMarks}+&quot;, &quot;&quot;);</span>
+    }
+
+//      Primer intento Registro   
+//      public Socio RegistrarSocio(){
+//        
+//        Socio s1 = new Socio();
+//        Scanner in = new Scanner(System.in);
+//        do{        
+//        System.out.println(&quot;Inserte su nombre&quot;);
+//        String nombre = in.nextLine();
+//        if(nombre.length()&gt;20){
+//            System.out.println(&quot;te has pasao pa&quot;);
+//            continue;
+//        }
+//        else
+//            break;
+//        } while (nombre.length()&gt;20);
+//        return s1;
+//    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
