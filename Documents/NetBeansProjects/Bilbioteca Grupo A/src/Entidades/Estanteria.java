@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import Validaciones.EstanteriaException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -80,19 +81,38 @@ public class Estanteria {
         this.elementos = elementos;
     }
     
-    public static Estanteria nuevaEstanteria() {
+    public static Estanteria nuevaEstanteria() throws EstanteriaException {
         Estanteria es = new Estanteria();
         Scanner teclado = new Scanner(System.in);
         
-        int numEstanterias = Utilidades.numEstanterias + 1;
+        int numEstanterias;
+        numEstanterias = Utilidades.numEstanterias + 1;
+        if(EstanteriaException.validarId(numEstanterias)){
         es.setId(numEstanterias);
-        
+        }else{
+        throw new EstanteriaException("El id debe ser >0");
+        }
         System.out.println("Escribe codigo: ");
-        es.setCodigo(teclado.nextLine().charAt(0));
+        char codigo=teclado.nextLine().charAt(0);
+        if(EstanteriaException.validarCodigo(codigo)){
+        es.setCodigo(codigo);
+        }else{
+        throw new EstanteriaException("El codigo debe ser una letra mayuscula");
+        }
         System.out.println("Escribe ubicacion: ");
-        es.setUbicacion(teclado.nextLine());
+        String ubicacion=teclado.nextLine();
+        if(EstanteriaException.validarUbicacion(ubicacion)){
+        es.setUbicacion(ubicacion);
+        }else{
+        throw new EstanteriaException("La ubicacion solo puede contener letras");
+        }
         System.out.println("Indica si la estanteria esta completa: ");
-        es.setCompleta(teclado.nextBoolean());
+        boolean completa=teclado.nextBoolean();
+        if(EstanteriaException.validarCompleta(completa)){
+        es.setCompleta(completa);
+        }else{
+        throw new EstanteriaException("Solo admite true o false");
+        }
         return es;
     
     }

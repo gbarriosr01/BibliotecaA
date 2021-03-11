@@ -8,6 +8,7 @@ package Entidades;
 import java.util.ArrayList;
 import java.util.Scanner;
 import Entidades.Genero;
+import Validaciones.DVDException;
 import Validaciones.ElementoException;
 import static java.lang.System.in;
 
@@ -89,7 +90,7 @@ public class DVD extends Elemento {
         return ret + 1;
     }
 
-    public static DVD nuevoDVD() {
+    public static DVD nuevoDVD() throws DVDException {
         DVD d = new DVD();
         int opcion = 0;
         int idGenero = 0;
@@ -99,7 +100,12 @@ public class DVD extends Elemento {
 
         Scanner teclado = new Scanner(System.in);
         System.out.println("Indica el titulo: ");
-        d.setTitulo(teclado.nextLine());
+        String titulo=teclado.nextLine();
+        if(DVDException.validarTitulo(titulo)){
+        d.setTitulo(titulo);
+        }else{
+        throw new DVDException("La cadena introducida para el campo \"titulo\" no es valida ");
+        }
         long idEle = nextIdDVD();
         d.setId(idEle);
         System.out.println("Indica el genero");
@@ -202,7 +208,9 @@ public class DVD extends Elemento {
      * Atributos separados por el caracter |
      * @return | titulo + visionado
      */
+    
+    @Override
     public String data() {
-        return  "|" + titulo + "|" + visionado;
+        return  id + "|" + titulo + "|" + visionado;
     }
 }

@@ -14,8 +14,8 @@ public class DVDException extends Exception{
         super(msj);
     }
     
-    public static boolean validarDVD(String DVD) {
-        return DVD.matches("^([A-Za-z]{1}[a-z]{1,30}[ ]?){1,3}$");
+    public static boolean validarTitulo(String titulo) {
+        return titulo.matches("^([A-Za-z]{1}[a-z]{1,30}[ ]?){1,3}$");
     }
     
 }

@@ -22,6 +22,10 @@ public class LibroException extends Exception{
         return editorial.matches("^([A-Za-z]{1}[a-z]{1,30}[ ]?){1,3}$");
     }
     
+    public static boolean validarAutor(String autor) {
+        return autor.matches("^([A-Za-z]{1}[a-z]{1,30}[ ]?){1,3}$");
+    }
+    
     public static boolean validarNPaginas(int NPaginas) {
         return NPaginas >0;
     }

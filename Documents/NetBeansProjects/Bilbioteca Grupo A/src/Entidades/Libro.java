@@ -6,6 +6,7 @@
 package Entidades;
 
 import Validaciones.ElementoException;
+import Validaciones.LibroException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -136,7 +137,7 @@ public class Libro extends Elemento {
         return ret + 1;
     }
 
-    public static Libro nuevoLibro() {
+    public static Libro nuevoLibro() throws LibroException {
         Libro li = new Libro();
         int opcion = 0;
         int idGenero = 0;
@@ -147,14 +148,33 @@ public class Libro extends Elemento {
 
         Scanner teclado = new Scanner(System.in);
         System.out.println("Indica su nombre: ");
-        li.setNombre(teclado.nextLine());
+        String nombre=teclado.nextLine();
+        if(LibroException.validarNombre(nombre)){
+        li.setNombre(nombre);
+        }else{
+        throw new LibroException("El nombre solo puede contener letras");
+        }
         System.out.println("Indica la editorial: ");
-        li.setEditorial(teclado.nextLine());
+        String editorial=teclado.nextLine();
+        if(LibroException.validarEditorial(editorial)){
+        li.setEditorial(editorial);
+        }else{
+        throw new LibroException("La editorial solo puede contener letras");
+        }
         System.out.println("Indica el autor: ");
-        li.setAutor(teclado.nextLine());
+        String autor=teclado.nextLine();
+        if(LibroException.validarAutor(autor)){
+        li.setAutor(autor);
+        }else{
+        throw new LibroException("El autor solo puede contener letras");
+        }
         System.out.println("Indica el numero de paginas: ");
-        li.setnPaginas(teclado.nextInt());
-
+        int npaginas=teclado.nextInt();
+        if(LibroException.validarNPaginas(npaginas)){
+        li.setnPaginas(npaginas);
+        }else{
+        throw new LibroException("El nPaginas debe ser >0");
+        }
         long idLib = nextIdLibro();
         li.setId(idLib);
 
@@ -314,6 +334,11 @@ public class Libro extends Elemento {
             System.out.println("<" + s.getNombre() + "> publicado por " + (s.getEditorial() + " y escrito por " + (s.getAutor()+ " " + (s.getGenero()) + ".")));
         }
 
+    }
+    
+    @Override
+    public String data() {
+        return  id + "|" + nombre + "|" + editorial + "|" + autor + "|" + nPaginas;
     }
 
     @Override

@@ -6,6 +6,8 @@
 package bilbioteca.grupo.a;
 
 import Entidades.*;
+import Validaciones.DVDException;
+import Validaciones.LibroException;
 import Validaciones.SocioException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -21,7 +23,7 @@ public class BilbiotecaGrupoA {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args){
 //        Socio s1 = new Socio().nuevoSocio();
 //        System.out.println(s1.nuevoSocio());
         ArrayList<Socio> socios = Socio.convertirSocios(Utilidades.SOCIOS);
@@ -226,19 +228,23 @@ public class BilbiotecaGrupoA {
                                             System.out.println("Ha pulsado la opcion Nuevo DVDs");
                                             System.out.println("-------------------------------------------------");
                                             do {
-                                                DVD nuevoDVD = DVD.nuevoDVD();
-                                                DVDS.add(nuevoDVD);
-                                                do {
-                                                    System.out.println("-------------------------------------------------");
-                                                    System.out.println("Pulse 0 para salir");
-                                                    System.out.println("-------------------------------------------------");
-
-                                                    in = new Scanner(System.in);
-                                                    opcion3 = in.nextInt();
-                                                    if (opcion3 != 0) {
-                                                        continue;
-                                                    }
-                                                } while (opcion3 != 0);
+                                        try {
+                                            DVD nuevoDVD = DVD.nuevoDVD();
+                                            DVDS.add(nuevoDVD);
+                                            do {
+                                                System.out.println("-------------------------------------------------");
+                                                System.out.println("Pulse 0 para salir");
+                                                System.out.println("-------------------------------------------------");
+                                                
+                                                in = new Scanner(System.in);
+                                                opcion3 = in.nextInt();
+                                                if (opcion3 != 0) {
+                                                    continue;
+                                                }
+                                            } while (opcion3 != 0);
+                                        } catch (DVDException ex) {
+                                            System.out.println("Se ha producido una DVDException, " + ex.getMessage());
+                                        }
 
                                             } while (opcion3 != 0);
                                             break;
@@ -247,19 +253,23 @@ public class BilbiotecaGrupoA {
                                             System.out.println("Ha pulsado la opcion Nuevo Libro");
                                             System.out.println("-------------------------------------------------");
                                             do {
-                                                Libro nuevoLibro = Libro.nuevoLibro();
-                                                libros.add(nuevoLibro);
-                                                do {
-                                                    System.out.println("-------------------------------------------------");
-                                                    System.out.println("Pulse 0 para salir");
-                                                    System.out.println("-------------------------------------------------");
-
-                                                    in = new Scanner(System.in);
-                                                    opcion3 = in.nextInt();
-                                                    if (opcion3 != 0) {
-                                                        continue;
-                                                    }
-                                                } while (opcion3 != 0);
+                                        try {
+                                            Libro nuevoLibro = Libro.nuevoLibro();
+                                            libros.add(nuevoLibro);
+                                            do {
+                                                System.out.println("-------------------------------------------------");
+                                                System.out.println("Pulse 0 para salir");
+                                                System.out.println("-------------------------------------------------");
+                                                
+                                                in = new Scanner(System.in);
+                                                opcion3 = in.nextInt();
+                                                if (opcion3 != 0) {
+                                                    continue;
+                                                }
+                                            } while (opcion3 != 0);
+                                        } catch (LibroException ex) {
+                                            System.out.println("Se ha producido una LibroException, " + ex.getMessage());
+                                        }
 
                                             } while (opcion3 != 0);
                                             break;
