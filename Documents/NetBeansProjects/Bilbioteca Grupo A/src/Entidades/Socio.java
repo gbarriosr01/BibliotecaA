@@ -450,7 +450,7 @@ public class Socio {
         }
     }
 
-    public static void exportarColeccionDeObjetosEmpleadoTexto(String path) {
+    public static void exportarColeccionDeObjetosSocioTexto(String path) {
         ArrayList<Socio> coleccion;
         coleccion = Socio.convertir(Utilidades.SOCIOS);
         File fichero = new File(path);
@@ -471,11 +471,11 @@ public class Socio {
                     escritor.close();
                 }
             }
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException s) {
             System.out.println("No se ha encontrado el fichero");
-        } catch (IOException e) {
+        } catch (IOException s) {
             System.out.println("Se ha producido un error en la inserción de los datos");
-        } catch (Exception e) {
+        } catch (Exception s) {
             System.out.println("Se ha producido un error inesperado intentelo de nuevo");
         }
     }
