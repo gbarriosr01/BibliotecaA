@@ -129,5 +129,12 @@ public class Prestamo {
     public String toString() {
         return "Prestamo{" + "id=" + id + ", fechaDeInicio=" + fechaDeInicio + ", fechaDeDevolucion=" + fechaDeDevolucion + ", estado=" + estado + ", elementos=" + elementos + ", idPenalizacion=" + idPenalizacion + '}';
     }
+     /**
+     * Devuelve primero la primary key, seguido de los demas atributos separados por el caracter |
+     * @return Primary key id | Fechallegada + ArrayList de elementos + idProveedor
+     */
+    public String data() {
+        return id + "|" + fechaDeInicio + "|" + fechaDeDevolucion + "|" + idPenalizacion;
+    }
     
 }

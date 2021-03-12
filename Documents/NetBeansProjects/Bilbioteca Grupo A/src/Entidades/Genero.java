@@ -125,7 +125,7 @@ public class Genero {
      * @return Primary key id | nombre
      */
     public String data() {
-        return "id" + id + " | " + "nombre" + nombre;
+        return id + " | " + nombre;
     }
 
 }

@@ -23,8 +23,7 @@ public class Penalizacion {
     private long id_socio;
 
     public Penalizacion() {
-        this.id=0;
-        this.motivo=null;
+        
     }
     
     public Penalizacion(Penalizacion copia){

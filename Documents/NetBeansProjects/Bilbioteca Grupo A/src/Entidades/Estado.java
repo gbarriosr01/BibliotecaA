@@ -85,6 +85,6 @@ public class Estado {
      * @return primary key id| estado
      */
     public String data() {
-        return  "|" + id + "|" + estado;
+        return  id + "|" + estado;
     }
 }

@@ -127,7 +127,7 @@ public class Estanteria {
      * @return codigo + ubicacion + completa + elementos
      */
     public String data() {
-        return  "|" + codigo + "|" + ubicacion + "|" + completa + "|" + elementos;
+        return codigo + "|" + ubicacion + "|" + completa;
     }
     
     

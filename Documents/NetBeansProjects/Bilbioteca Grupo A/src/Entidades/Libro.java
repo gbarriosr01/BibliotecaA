@@ -338,7 +338,7 @@ public class Libro extends Elemento {
     
     @Override
     public String data() {
-        return  id + "|" + nombre + "|" + editorial + "|" + autor + "|" + nPaginas;
+        return nombre + "|" + editorial + "|" + autor + "|" + nPaginas;
     }
 
     @Override

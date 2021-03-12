@@ -224,6 +224,7 @@ public class Curso extends Evento {
      * @return  duracion + aula
      */
     public String data() {
-        return  "|" + duracion + "|" + aula;
+        return id + "|" + nombre + "|" + fechayhora + "|" + idPenalizacion + "|" + duracion + "|" + aula;
     }
+    
 }

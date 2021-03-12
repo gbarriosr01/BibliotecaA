@@ -164,4 +164,11 @@ public class Evento {
     public String toString() {
         return "Evento{" + "id=" + id + ", nombre=" + nombre + ", fechayhora=" + fechayhora + ", idPenalizacion=" + idPenalizacion + ", socios=" + socios + '}';
     }
+     /**
+     * Devuelve primero la primary key, seguido de los demas atributos separados por el caracter |
+     * @return Primary key id | Fechallegada + ArrayList de elementos + idProveedor
+     */
+    public String data() {
+        return id + "|" + nombre + "|" + fechayhora + "|" + idPenalizacion;
+    }
 }

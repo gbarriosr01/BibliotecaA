@@ -163,4 +163,7 @@ public class Visionado extends Evento {
     public String toString() {
         return "Visionado{" + "aula=" + aula + '}';
     }
+    public String data() {
+        return id + "|" + nombre + "|" + fechayhora + "|" + idPenalizacion + "|" + aula;
+    }
 }

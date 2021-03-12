@@ -221,6 +221,7 @@ public class Concurso extends Evento {
      * @return | nombre + telefono
      */
     public String data() {
-        return  "|" + tipo + "|" + premio;
+        return id + "|" + nombre + "|" + fechayhora + "|" + idPenalizacion + "|" + tipo + "|" + premio;
     }
+     
 }
