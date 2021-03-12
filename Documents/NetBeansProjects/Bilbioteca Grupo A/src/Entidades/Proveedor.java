@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -26,7 +27,8 @@ import java.util.Scanner;
  *
  * @author DAM102
  */
-public class Proveedor {
+public class Proveedor implements Serializable{
+     static final long serialVersionUID = 1L;
 
     //Valores válidos,  >0
     //Valores inválidos, <=0
