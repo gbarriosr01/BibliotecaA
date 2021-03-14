@@ -15,23 +15,24 @@ import java.util.Scanner;
  *
  * @author DAM102
  */
-public class Prestamo implements Serializable{
-   
+public class Prestamo implements Serializable {
+
     private long id;/*Mayores que 0, no puede ser nulo*/
     private Date fechaDeInicio;
     /*Fecha de hoy
     LocalDate.now();
-    */
+     */
     private Date fechaDeDevolucion;
     /*Fecha en la cual finalizo el prestamo
     LocalDate.now();
-    */
-    private Estado estado;
-    private ArrayList<Elemento> elementos = new ArrayList<Elemento>(); /*Maximo 5, Obligatorio*/
-   
+     */
+    private ArrayList<Elemento> elementos = new ArrayList<Elemento>();
+    /*Maximo 5, Obligatorio*/
+    private long idEstado;
+    private long idSocio;
 
     public Prestamo() {
-        
+
     }
 
     public Prestamo(long id, Date fechaDeInicio, Date fechaDeDevolucion) {
@@ -39,25 +40,24 @@ public class Prestamo implements Serializable{
         this.fechaDeInicio = fechaDeInicio;
         this.fechaDeDevolucion = fechaDeDevolucion;
     }
-    
-    public Prestamo(Prestamo copia){
+
+    public Prestamo(Prestamo copia) {
         this.id = copia.id;
         this.fechaDeInicio = copia.fechaDeInicio;
         this.fechaDeDevolucion = copia.fechaDeDevolucion;
-        this.estado = copia.estado;
+        this.idEstado = copia.idEstado;
         this.elementos = copia.elementos;
-        
+        this.idSocio= copia.idSocio;
+
     }
 
-    public Prestamo(long id, Date fechaDeInicio, Date fechaDeDevolucion, Estado estado, long idPenalizacion) {
+    public Prestamo(long id, Date fechaDeInicio, Date fechaDeDevolucion, long idEstado, long idSocio) {
         this.id = id;
         this.fechaDeInicio = fechaDeInicio;
         this.fechaDeDevolucion = fechaDeDevolucion;
-        this.estado = estado;
-        
+        this.idEstado = idEstado;
+        this.idSocio= idSocio;
     }
-
-   
 
     public long getId() {
         return id;
@@ -79,9 +79,27 @@ public class Prestamo implements Serializable{
         this.elementos = elementos;
     }
 
-    public Estado getEstado() {
-        return estado;
+    public long getIdEstado() {
+        return idEstado;
     }
+
+    public long getIdSocio() {
+        return idSocio;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setIdEstado(long idEstado) {
+        this.idEstado = idEstado;
+    }
+
+    public void setIdSocio(long idSocio) {
+        this.idSocio = idSocio;
+    }
+
+    
 
     public void setId(int id) {
         this.id = id;
@@ -95,17 +113,18 @@ public class Prestamo implements Serializable{
         this.fechaDeDevolucion = fechaDeDevolucion;
     }
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
-    
-    public Prestamo nuevoPrestamo(){
+
+    public Prestamo nuevoPrestamo() throws PrestamoException {
         Prestamo ret = new Prestamo();
 
         Scanner in = new Scanner(System.in);
-        
-       int numPrestamos = Utilidades.numPrestamos + 1;
+
+        int numPrestamos = Utilidades.numPrestamos + 1;
+        if(PrestamoException.validarId(id)){
             ret.setId(numPrestamos);
+        } else {
+            throw new PrestamoException("Debe ser mayor de 0");
+        }
 
         System.out.println("Introduzca la fecha de inicio del prestamo");
 
@@ -116,20 +135,22 @@ public class Prestamo implements Serializable{
         java.sql.Date devolucion = Utilidades.Fecha.nuevaFecha().conversorFecha();
         ret.setFechaDeDevolucion(devolucion);
 
-
         return ret;
     }
 
     @Override
     public String toString() {
-        return "Prestamo{" + "id=" + id + ", fechaDeInicio=" + fechaDeInicio + ", fechaDeDevolucion=" + fechaDeDevolucion + ", estado=" + estado + ", elementos=" + elementos + ", idPenalizacion=" +'}';
+        return "Prestamo{" + "id=" + id + ", fechaDeInicio=" + fechaDeInicio + ", fechaDeDevolucion=" + fechaDeDevolucion + ", estado=" + idEstado + ", elementos=" + elementos + '}';
     }
-     /**
-     * Devuelve primero la primary key, seguido de los demas atributos separados por el caracter |
+
+    /**
+     * Devuelve primero la primary key, seguido de los demas atributos separados
+     * por el caracter |
+     *
      * @return Primary key id | FechadeInicio + fechaDevoluion + idPenalizacion
      */
     public String data() {
-        return id + "|" + fechaDeInicio + "|" + fechaDeDevolucion;
+        return id + "|" + fechaDeInicio + "|" + fechaDeDevolucion + "|" + idEstado + "|" + idSocio;
     }
-    
+
 }
