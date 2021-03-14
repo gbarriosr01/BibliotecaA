@@ -116,7 +116,7 @@ public class Lote {
       
     /**
      * Devuelve primero la primary key, seguido de los demas atributos separados por el caracter |
-     * @return Primary key id | Fechallegada + ArrayList de elementos + idProveedor
+     * @return Primary key id | Fechallegada + idProveedor
      */
     public String data() {
         return id + "|" + fechallegada + "|" + idProveedor;

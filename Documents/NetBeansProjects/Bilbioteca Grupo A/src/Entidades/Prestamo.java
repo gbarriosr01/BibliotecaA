@@ -48,6 +48,7 @@ public class Prestamo implements Serializable {
         this.idEstado = copia.idEstado;
         this.elementos = copia.elementos;
         this.idSocio= copia.idSocio;
+        
 
     }
 
