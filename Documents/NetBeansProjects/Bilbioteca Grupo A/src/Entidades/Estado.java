@@ -19,7 +19,7 @@ public class Estado implements Serializable {
     private String estado;/*Pendiente, Parcial o Completo*/
 
     public Estado() {
-        this.id = 0;
+        
         this.estado = "Pendiente";
     }
 

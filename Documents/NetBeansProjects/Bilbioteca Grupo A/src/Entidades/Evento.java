@@ -58,10 +58,10 @@ public class Evento implements Serializable {
     protected ArrayList<Socio> socios = new ArrayList<Socio>();/*Obligatorio*/
 
     public Evento() {
-        this.id = id = 0;
-        this.nombre = nombre = null;
+        this.id = id;
+        this.nombre = nombre;
         this.fechayhora = fechayhora;
-        this.idPenalizacion = idPenalizacion = 0;
+        this.idPenalizacion = idPenalizacion;
     }
 
     public Evento(long id, String nombre, Date fechayhora) {
@@ -75,10 +75,10 @@ public class Evento implements Serializable {
     }
 
     public Evento(long id, String nombre, Date fechayhora, long idPenalizacion) {
-        this.id = id = 0;
+        this.id = id;
         this.nombre = nombre = null;
         this.fechayhora = fechayhora;
-        this.idPenalizacion = idPenalizacion = 0;
+        this.idPenalizacion = idPenalizacion;
     }
 
     public Evento(Evento ev1) {
@@ -377,8 +377,7 @@ public class Evento implements Serializable {
      * Devuelve primero la primary key, seguido de los demas atributos separados
      * por el caracter |
      *
-     * @return Primary key id | Fechallegada + ArrayList de elementos +
-     * idProveedor
+     * @return Primary key id | nombre + fechayhora + idPenalizacion
      */
     public String data() {
         return id + "|" + nombre + "|" + fechayhora + "|" + idPenalizacion;
