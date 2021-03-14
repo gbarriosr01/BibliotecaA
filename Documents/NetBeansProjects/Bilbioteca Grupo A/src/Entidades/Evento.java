@@ -76,7 +76,7 @@ public class Evento implements Serializable {
 
     public Evento(long id, String nombre, Date fechayhora, long idPenalizacion) {
         this.id = id;
-        this.nombre = nombre = null;
+        this.nombre = nombre;
         this.fechayhora = fechayhora;
         this.idPenalizacion = idPenalizacion;
     }
