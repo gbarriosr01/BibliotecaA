@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -26,7 +27,7 @@ import java.util.Scanner;
  *
  * @author DAM102
  */
-public class Socio {
+public class Socio implements Serializable{
 
     private long id;/*Mayores que 0, no puede ser nulo*/
     private String nombre;/*Menor o igual a 20 caracteres, no se admiten numeros*/
@@ -71,36 +72,36 @@ public class Socio {
         if (SocioException.validarId(id)) {
             this.id = id;
         } else {
-            throw new SocioException("Dato invalido");
+            throw new SocioException("Tiene que ser mayor de 0");
         }
 
         if (SocioException.validarNombre(nombre)) {
             this.nombre = nombre;
         } else {
-            throw new SocioException("Dato invalido");
+            throw new SocioException("Nombre invalido");
         }
 
         if (SocioException.validarNIF(NIF)) {
             this.NIF = NIF;
         } else {
-            throw new SocioException("Dato invalido");
+            throw new SocioException("Debe contener 8 numeros y una letra");
         }
 
         if (SocioException.validarTelefono(telefono)) {
             this.telefono = telefono;
         } else {
-            throw new SocioException("Dato invalido");
+            throw new SocioException("Debe contener 9 numeros");
         }
 
         if (SocioException.validarDireccion(direccion)) {
             this.direccion = direccion;
         } else {
-            throw new SocioException("Dato invalido");
+            throw new SocioException("Direccion invalida");
         }
         if (SocioException.validarId(id_prestamo)) {
             this.id_prestamo = id_prestamo;
         } else {
-            throw new SocioException("Dato invalido");
+            throw new SocioException("Tiene que ser mayor de 0");
         }
 
     }

@@ -5,6 +5,8 @@
  */
 package Entidades;
 
+import Validaciones.PenalizacionException;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -12,26 +14,26 @@ import java.util.Scanner;
  *
  * @author DAM102
  */
-public class Penalizacion {
-     
+public class Penalizacion implements Serializable {
+
     private long id;/*Mayores que 0, no puede ser nulo*/
     private String motivo;/*Maximo 50 caracteres*/
     private Date fechaDeVigencia;
     /*Fecha de la finalizacion de la penalizacion
     LocalDate.now();
-    */
+     */
     private long id_socio;
 
     public Penalizacion() {
-        
+
     }
-    
-    public Penalizacion(Penalizacion copia){
-        this.id= copia.id;
+
+    public Penalizacion(Penalizacion copia) {
+        this.id = copia.id;
         this.motivo = copia.motivo;
         this.fechaDeVigencia = copia.fechaDeVigencia;
-        this.id_socio=copia.id_socio;
-        
+        this.id_socio = copia.id_socio;
+
     }
 
     public Penalizacion(int id, String motivo, Date fechaDeVigencia) {
@@ -40,7 +42,24 @@ public class Penalizacion {
         this.fechaDeVigencia = fechaDeVigencia;
     }
 
-    
+    Penalizacion(long id, String motivo, long id_socio) throws PenalizacionException {
+        if (PenalizacionException.validarId(id)) {
+            this.id = id;
+        } else {
+            throw new PenalizacionException("Debe ser mayor de 0");
+        }
+        if(PenalizacionException.validarMotivo(motivo)){
+            this.motivo= motivo;
+        } else {
+            throw new PenalizacionException("No se aceptan numeros");
+        }
+        if(PenalizacionException.validarId(id_socio)){
+            this.id_socio=id_socio;
+        } else {
+            throw new PenalizacionException("Debe ser mayor de 0");
+        }
+    }
+
     public long getId() {
         return id;
     }
@@ -64,7 +83,7 @@ public class Penalizacion {
     public void setFechaDeVigencia(Date fechaDeVigencia) {
         this.fechaDeVigencia = fechaDeVigencia;
     }
-    
+
     public long getId_socio() {
         return id_socio;
     }
@@ -73,12 +92,12 @@ public class Penalizacion {
         this.id_socio = id_socio;
     }
 
-    public Penalizacion nuevoPenalizacion(){
+    public Penalizacion nuevoPenalizacion() {
         Penalizacion ret = new Penalizacion();
 
         Scanner in = new Scanner(System.in);
-         int numPenalizaciones = Utilidades.numPenalizaciones + 1;
-            ret.setId(numPenalizaciones);
+        int numPenalizaciones = Utilidades.numPenalizaciones + 1;
+        ret.setId(numPenalizaciones);
 
         System.out.println("Inserte el motivo");
         String motivo = in.nextLine();
@@ -94,9 +113,9 @@ public class Penalizacion {
     public String toString() {
         return "Penalizacion{" + "id=" + id + ", motivo=" + motivo + ", fechaDeVigencia=" + fechaDeVigencia + '}';
     }
-    
+
     public String data() {
         return id + "|" + motivo + "|" + fechaDeVigencia + "|" + id_socio;
     }
-    
+
 }

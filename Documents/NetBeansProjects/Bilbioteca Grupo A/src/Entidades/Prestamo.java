@@ -5,6 +5,8 @@
  */
 package Entidades;
 
+import Validaciones.PrestamoException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -13,7 +15,7 @@ import java.util.Scanner;
  *
  * @author DAM102
  */
-public class Prestamo {
+public class Prestamo implements Serializable{
    
     private long id;/*Mayores que 0, no puede ser nulo*/
     private Date fechaDeInicio;
