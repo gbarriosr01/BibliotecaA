@@ -12,12 +12,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
-
-
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -32,13 +29,16 @@ import java.util.Scanner;
  *
  * @author DAM102
  */
-    public class Elemento implements Serializable{
+public class Elemento implements Serializable {
+
     static final long serialVersionUID = 1L;
     /*Valido: >0 Invalido: <=0 Otros: Es unico*/
-    protected long id; 
-    protected ArrayList <Prestamo> prestamos = new ArrayList <Prestamo>();/*Obligatorio*/
+    protected long id;
+    protected ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();/*Obligatorio*/
     protected Genero genero;/*Obligatorio*/
     protected long idGenero;/*Obligatorio*/
+    protected long idLote;/*Obligatorio*/
+    protected long idEstanteria;/*Obligatorio*/
     public Elemento() {
     }
 
@@ -50,14 +50,13 @@ import java.util.Scanner;
 //        }
 //        this.genero = genero;
 //    }
-    
-    public Elemento(long id, Genero genero){
-        
+    public Elemento(long id, Genero genero) {
+
         this.id = id;
-        
+
         this.genero = genero;
     }
-    
+
 //    public Elemento(Elemento el) throws ElementoException{
 //        if(ElementoException.validarId(el.id)){
 //        this.id = el.id;
@@ -66,18 +65,19 @@ import java.util.Scanner;
 //        }
 //        this.genero = el.genero;
 //    }
-    
     public Elemento(Elemento el) {
-        
+
         this.id = el.id;
-        
+
         this.genero = el.genero;
     }
-    
-    public Elemento(long id, long idGenero) {
-        
+
+    public Elemento(long id, long idGenero, long idLote, long idEstanteria) {
+
         this.id = id;
         this.idGenero = idGenero;
+        this.idLote = idLote;
+        this.idEstanteria = idEstanteria;
     }
 
     public long getId() {
@@ -86,6 +86,30 @@ import java.util.Scanner;
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getIdGenero() {
+        return idGenero;
+    }
+
+    public void setIdGenero(long idGenero) {
+        this.idGenero = idGenero;
+    }
+
+    public long getIdLote() {
+        return idLote;
+    }
+
+    public void setIdLote(long idLote) {
+        this.idLote = idLote;
+    }
+
+    public long getIdEstanteria() {
+        return idEstanteria;
+    }
+
+    public void setIdEstanteria(long idEstanteria) {
+        this.idEstanteria = idEstanteria;
     }
 
     public ArrayList<Prestamo> getPrestamos() {
@@ -103,26 +127,25 @@ import java.util.Scanner;
     public void setGenero(Genero genero) {
         this.genero = genero;
     }
-    
-    public static Elemento nuevoElemento() throws ElementoException{
+
+    public static Elemento nuevoElemento() throws ElementoException {
         Elemento el = new Elemento();
         Scanner teclado = new Scanner(System.in);
-        
+
         int numElementos;
         numElementos = Utilidades.numElementos + 1;
-        if(ElementoException.validarId(numElementos)){
-        el.setId(numElementos);
-        }else{
-        throw new ElementoException("El id debe ser >0");
+        if (ElementoException.validarId(numElementos)) {
+            el.setId(numElementos);
+        } else {
+            throw new ElementoException("El id debe ser >0");
         }
- 
+
         System.out.println("Socio registrado correctamente con el id " + numElementos);
         return el;
-    
+
     }
-    
+
     //funcion 1 entrada salida
-    
     public void exportarObjetoElementoTexto(String path) {
         File fichero = new File(path);
         FileWriter escritor = null;
@@ -148,7 +171,7 @@ import java.util.Scanner;
             System.out.println("Se ha producido un error inesperado intentelo de nuevo");
         }
     }
-    
+
     //Funcion 2 entrada y salida
     public static void exportarColeccionDeObjetosElementoTexto(String path) {
         ArrayList<Elemento> coleccion;
@@ -179,7 +202,7 @@ import java.util.Scanner;
             System.out.println("Se ha producido un error inesperado intentelo de nuevo");
         }
     }
-    
+
     //Funcion 3 entrada y salida
     public void exportarElementoArchivoBinario(String path) {
         try {
@@ -196,7 +219,7 @@ import java.util.Scanner;
             System.out.println("Se ha producido un error inesperado intentelo de nuevo");
         }
     }
-    
+
     //Funcion 4 entrada y salida
     public static void exportarColeccionElementosaArchivoBinario(String path) {
         ArrayList<Elemento> coleccion;
@@ -215,7 +238,7 @@ import java.util.Scanner;
             System.out.println("Se ha producido un error inesperado intentelo de nuevo");
         }
     }
-    
+
     //Funcion 5 entrada y salida
     public static ArrayList<Elemento> importarEmpleadoDesdeFicheroTexto(String path) {
         ArrayList<Elemento> ret = new ArrayList<Elemento>();
@@ -230,7 +253,7 @@ import java.util.Scanner;
                     String cadena = lector.readLine();
                     if (cadena.isEmpty() == false) {
                         String[] parametros = cadena.split("\\|");
-                        e = new Elemento(Long.parseLong(parametros[0]),Long.parseLong(parametros[1]) );
+                        e = new Elemento(Long.parseLong(parametros[0]), Long.parseLong(parametros[1]), Long.parseLong(parametros[2]), Long.parseLong(parametros[3]));
                         ret.add(e);
                     }
                 }
@@ -250,7 +273,7 @@ import java.util.Scanner;
         }
         return ret;
     }
-    
+
     //Funcion 6 entrada y salida
     public static ArrayList<Elemento> importarEmpleadoDesdeFicheroBinario(String path) {
         ArrayList<Elemento> ret = new ArrayList<Elemento>();
@@ -263,7 +286,7 @@ import java.util.Scanner;
                 Elemento e;
                 while ((e = (Elemento) lectorObjeto.readObject()) != null) {
                     ret.add(e);
-                    
+
                 }
             } finally {
                 if (lectorObjeto != null) {
@@ -286,7 +309,7 @@ import java.util.Scanner;
         }
         return ret;
     }
-    
+
     //Funcion 7 entrada y salida
     public static ArrayList<Elemento> buscarPorIDEnFicheroDeTexto(String path) {
         ArrayList<Elemento> ret = new ArrayList<Elemento>();
@@ -301,7 +324,7 @@ import java.util.Scanner;
                     String cadena = lector.readLine();
                     if (cadena.isEmpty() == false) {
                         String[] parametros = cadena.split("\\|");
-                        e = new Elemento(Long.parseLong(parametros[0]),Long.parseLong(parametros[1]) );
+                        e = new Elemento(Long.parseLong(parametros[0]), Long.parseLong(parametros[1]), Long.parseLong(parametros[2]), Long.parseLong(parametros[3]));
                         ret.add(e);
                     }
                 }
@@ -338,7 +361,7 @@ import java.util.Scanner;
         }
         return ret;
     }
-    
+
     public static ArrayList<Elemento> convertir(Elemento[] array) {
         ArrayList<Elemento> ret = new ArrayList<Elemento>();
         for (Elemento e : array) {
@@ -346,20 +369,20 @@ import java.util.Scanner;
         }
         return ret;
     }
-    
-    
-    
+
     @Override
     public String toString() {
         return "Elemento{" + "id=" + id + ", prestamos=" + prestamos + ", genero=" + genero + '}';
     }
-    
-     /**
+
+    /**
      * Atributos separados por el caracter |
+     *
      * @return Primary key id | idGenero
      */
-    public String data() {
-        return id + "|" + idGenero;
-    }
     
+     public String data() {
+        return id + "|" + idGenero + "|" + idLote + "|" + idEstanteria;
+    }
+
 }
