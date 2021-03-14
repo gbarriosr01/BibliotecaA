@@ -5,6 +5,8 @@
  */
 package Entidades;
 
+import Validaciones.ConcursoException;
+import Validaciones.EventoException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -84,22 +86,37 @@ public class Concurso extends Evento {
         return ret + 1;
     }
 /*Esto esta editado*/
-    public static Concurso nuevoConcurso() {
+    public static Concurso nuevoConcurso() throws ConcursoException{
         //Evento e = Evento.nuevoEvento();
         Concurso c1 = new Concurso();
         Scanner in = new Scanner(System.in);
-
         long idEven = nextIdConcurso();
-        c1.setId(idEven);
+        if (EventoException.validarId(idEven)){
+            c1.setId(idEven);
+        } else {
+            System.out.println("No se ha introducido correctamente el id");
+        }
         System.out.println("Introduzca el tipo de concurso");
         String tipo = in.nextLine();
-        c1.setTipo(tipo);
+        if (ConcursoException.validarTipo(tipo)){
+            c1.setTipo(tipo);
+        } else {
+            System.out.println("No se ha introducido correctamente el tipo de concurso");
+        }
         System.out.println("Introduzca el premio del concurso");
         String premio = in.nextLine();
-        c1.setPremio(premio);
+        if (ConcursoException.validarPremio(premio)){
+            c1.setPremio(premio);
+        } else {
+            System.out.println("No se ha introducido correctamente el premio del concurso");
+        }
         System.out.println("Introduzca el nombre del evento");
         String nombre = in.nextLine();
-        c1.setNombre(nombre);
+        if (EventoException.validarNombre(nombre)) {
+            c1.setNombre(nombre);
+        } else {
+            System.out.println("Has introducido mal el nombre del evento");
+        }
         System.out.println("Introduzca la fecha y la hora del evento");
         java.sql.Date fechayhora = Utilidades.Fecha.nuevaFecha().conversorFecha();
         c1.setFechayhora(fechayhora);

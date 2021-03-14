@@ -5,6 +5,8 @@
  */
 package Entidades;
 
+import Validaciones.CursoException;
+import Validaciones.EventoException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -88,8 +90,7 @@ public class Curso extends Evento {
     }
 
     /*Esto esta editado*/
-
-    public static Curso nuevoCurso() {
+    public static Curso nuevoCurso() throws CursoException{
         Curso cu1 = new Curso();
         Scanner in = new Scanner(System.in);
 
@@ -98,13 +99,25 @@ public class Curso extends Evento {
 
         System.out.println("Introduzca la duracion del curso");
         String duracion = in.nextLine();
-        cu1.setDuracion(duracion);
+        if (CursoException.validarDuracion(duracion)) {
+            cu1.setDuracion(duracion);
+        } else {
+            System.out.println("La duracion introducida no es correcta");
+        }
         System.out.println("Introduzca el aula en el que se realiza el curso");
         String aula = in.nextLine();
-        cu1.setAula(aula);
+        if (CursoException.validarAula(aula)) {
+            cu1.setAula(aula);
+        } else {
+            System.out.println("El aula introducida no es correcta");
+        }
         System.out.println("Introduzca el nombre del evento");
         String nombre = in.nextLine();
-        cu1.setNombre(nombre);
+        if (EventoException.validarNombre(nombre)) {
+            cu1.setNombre(nombre);
+        } else {
+            System.out.println("Has introducido mal el nombre del evento");
+        }
         System.out.println("Introduzca la fecha y la hora del evento");
         java.sql.Date fechayhora = Utilidades.Fecha.nuevaFecha().conversorFecha();
         cu1.setFechayhora(fechayhora);
@@ -218,13 +231,14 @@ public class Curso extends Evento {
     public String toString() {
         return "Curso{" + "duracion=" + duracion + ", aula=" + aula + '}';
     }
-    
-     /**
+
+    /**
      * Atributos separados por el caracter |
-     * @return  duracion + aula
+     *
+     * @return duracion + aula
      */
     public String data() {
         return id + "|" + nombre + "|" + fechayhora + "|" + idPenalizacion + "|" + duracion + "|" + aula;
     }
-    
+
 }

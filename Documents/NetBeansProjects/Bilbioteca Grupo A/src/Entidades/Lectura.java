@@ -5,6 +5,8 @@
  */
 package Entidades;
 
+import Validaciones.EventoException;
+import Validaciones.LecturaException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -88,23 +90,33 @@ public class Lectura extends Evento {
     }
 
     /*Esto esta editado*/
-    public static Lectura nuevoLectura() {
+    public static Lectura nuevoLectura() throws LecturaException{
         Lectura le1 = new Lectura();
         Scanner in = new Scanner(System.in);
-
         long idEven = nextIdLectura();
         le1.setId(idEven);
-
         System.out.println("Introduzca si se ha leido el libro(true/false)");
         boolean leido = in.nextBoolean();
-        le1.setLeido(leido);
+        if (LecturaException.validarLeido(true)) {
+            le1.setLeido(leido);
+        } else {
+            System.out.println("Ha ocurrido un error");
+        }
         in.nextLine();
         System.out.println("Introduzca el modelo del libro leido");
         String modelo = in.nextLine();
-        le1.setModelo(modelo);
+        if(LecturaException.validarModelo(modelo)){
+            le1.setModelo(modelo);
+        } else {
+            System.out.println("El modelo del libro no es correcto");
+        }
         System.out.println("Introduzca el nombre del evento");
         String nombre = in.nextLine();
-        le1.setNombre(nombre);
+        if(EventoException.validarNombre(nombre)){
+            le1.setNombre(nombre);
+        } else {
+            System.out.println("Has introducido mal el nombre del evento");
+        }
         System.out.println("Introduzca la fecha y la hora del evento");
         java.sql.Date fechayhora = Utilidades.Fecha.nuevaFecha().conversorFecha();
         le1.setFechayhora(fechayhora);
@@ -123,7 +135,7 @@ public class Lectura extends Evento {
     public static void verLectura(ArrayList<Lectura> lecturas) {
         System.out.println("Lecturas de la biblioteca:");
         for (Lectura c : lecturas) {
-            System.out.println(c.getId()+ ".- " + c.getNombre()+" - " + (c.getModelo() + " - ¿Se ha leido? " + (c.isLeido()  )));
+            System.out.println(c.getId() + ".- " + c.getNombre() + " - " + (c.getModelo() + " - ¿Se ha leido? " + (c.isLeido())));
         }
     }
 
@@ -186,10 +198,13 @@ public class Lectura extends Evento {
     public String toString() {
         return "Lectura{" + "leido=" + leido + ", modelo=" + modelo + '}';
     }
-    
-     /**
-     * Devuelve primero la primary key, seguido de los demas atributos separados por el caracter |
-     * @return Primary key id | Fechallegada + ArrayList de elementos + idProveedor
+
+    /**
+     * Devuelve primero la primary key, seguido de los demas atributos separados
+     * por el caracter |
+     *
+     * @return Primary key id | Fechallegada + ArrayList de elementos +
+     * idProveedor
      */
     public String data() {
         return id + "|" + nombre + "|" + fechayhora + "|" + idPenalizacion + "|" + leido + "|" + modelo;

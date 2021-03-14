@@ -6,7 +6,10 @@
 package bilbioteca.grupo.a;
 
 import Entidades.*;
+import Validaciones.ConcursoException;
+import Validaciones.CursoException;
 import Validaciones.DVDException;
+import Validaciones.LecturaException;
 import Validaciones.LibroException;
 import Validaciones.SocioException;
 import java.util.ArrayList;
@@ -488,8 +491,14 @@ public class BilbiotecaGrupoA {
                                             System.out.println("-------------------------------------------------");
                                             do {
                                                 //Nuevo Concurso
-                                                Concurso nuevoConcurso = Concurso.nuevoConcurso();
-                                                concursos.add(nuevoConcurso);
+                                                
+                                        try {
+                                            Concurso nuevoConcurso = Concurso.nuevoConcurso();
+                                            concursos.add(nuevoConcurso);
+                                        } catch (ConcursoException ex) {
+                                            System.out.println("Algo ha ido mal...");
+                                        }
+                                                
                                                 do {
                                                     System.out.println("-------------------------------------------------");
                                                     System.out.println("Pulse 0 para salir");
@@ -510,8 +519,14 @@ public class BilbiotecaGrupoA {
                                             System.out.println("-------------------------------------------------");
                                             do {
                                                 //Nuevo Curso
-                                                Curso nuevoCurso = Curso.nuevoCurso();
-                                                cursos.add(nuevoCurso);
+                                                
+                                        try {
+                                            Curso nuevoCurso = Curso.nuevoCurso();
+                                            cursos.add(nuevoCurso);
+                                        } catch (CursoException ex) {
+                                            System.out.println("Algo ha ido mal...");
+                                        }
+                                                
                                                 do {
                                                     System.out.println("-------------------------------------------------");
                                                     System.out.println("Pulse 0 para salir");
@@ -532,8 +547,14 @@ public class BilbiotecaGrupoA {
                                             System.out.println("-------------------------------------------------");
                                             do {
                                                 //Nueva Lectura
-                                                Lectura nuevoLectura = Lectura.nuevoLectura();
-                                                lecturas.add(nuevoLectura);
+                                                
+                                        try {
+                                            Lectura nuevoLectura = Lectura.nuevoLectura();
+                                            lecturas.add(nuevoLectura);
+                                        } catch (LecturaException ex) {
+                                            System.out.println("Algo ha ido mal...");
+                                        }
+                                                
                                                 do {
                                                     System.out.println("-------------------------------------------------");
                                                     System.out.println("Pulse 0 para salir");
@@ -554,8 +575,14 @@ public class BilbiotecaGrupoA {
                                             System.out.println("-------------------------------------------------");
                                             do {
                                                 //Nuevo visionado
-                                                Visionado nuevoVisionado = Visionado.nuevoVisionado();
-                                                visionados.add(nuevoVisionado);
+                                                
+                                        try {
+                                            Visionado nuevoVisionado = Visionado.nuevoVisionado();
+                                            visionados.add(nuevoVisionado);
+                                        } catch (LecturaException ex) {
+                                            System.out.println("Algo ha ido mal...");
+                                        }
+                                                
                                                 do {
                                                     System.out.println("-------------------------------------------------");
                                                     System.out.println("Pulse 0 para salir");

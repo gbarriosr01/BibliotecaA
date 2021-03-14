@@ -5,6 +5,9 @@
  */
 package Entidades;
 
+import Validaciones.EventoException;
+import Validaciones.LecturaException;
+import Validaciones.VisionadoException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -70,17 +73,25 @@ public class Visionado extends Evento {
     }
 
     /*Esto esta editado*/
-    public static Visionado nuevoVisionado() {
+    public static Visionado nuevoVisionado() throws LecturaException{
         Visionado v1 = new Visionado();
         Scanner in = new Scanner(System.in);
         long idEven = nextIdVisionado();
         v1.setId(idEven);
         System.out.println("Introduzca el nombre del evento");
         String nombre = in.nextLine();
-        v1.setNombre(nombre);
+        if (EventoException.validarNombre(nombre)) {
+            v1.setNombre(nombre);
+        } else {
+            System.out.println("Has introducido mal el nombre del evento");
+        }
         System.out.println("Introduzca los datos del aula en el que se va a ver el DVD");
         String aula = in.nextLine();
-        v1.setAula(aula);
+        if (VisionadoException.validarAula(aula)) {
+            v1.setAula(aula);
+        } else {
+            System.out.println("Has introducido mal el aula");
+        }
         System.out.println("Introduzca la fecha y la hora del evento");
         java.sql.Date fechayhora = Utilidades.Fecha.nuevaFecha().conversorFecha();
         v1.setFechayhora(fechayhora);
@@ -163,6 +174,7 @@ public class Visionado extends Evento {
     public String toString() {
         return "Visionado{" + "aula=" + aula + '}';
     }
+
     public String data() {
         return id + "|" + nombre + "|" + fechayhora + "|" + idPenalizacion + "|" + aula;
     }
