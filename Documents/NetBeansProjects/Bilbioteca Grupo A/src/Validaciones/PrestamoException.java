@@ -19,7 +19,7 @@ public class PrestamoException extends Exception {
     }
 
     public static boolean validarPrestamo(Prestamo prestamo) {
-        return validarId(prestamo.getId()) && validarId(prestamo.getIdPenalizacion());
+        return validarId(prestamo.getId());
     }
 
     public static boolean validarId(long id) {

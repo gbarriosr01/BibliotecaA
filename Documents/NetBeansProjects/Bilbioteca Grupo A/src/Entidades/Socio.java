@@ -37,7 +37,7 @@ public class Socio implements Serializable{
     private ArrayList<Penalizacion> penalizaciones = new ArrayList<Penalizacion>();
     private ArrayList<Evento> eventos = new ArrayList<Evento>();/*No obligatorio*/
     private Prestamo prestamo;
-    private long id_prestamo;
+    
 
     public Socio() {
 
@@ -56,7 +56,7 @@ public class Socio implements Serializable{
         this.penalizaciones = copia.penalizaciones;
         this.eventos = copia.eventos;
         this.prestamo = copia.prestamo;
-        this.id_prestamo = copia.id_prestamo;
+       
     }
 
     public Socio(long id, String nombre, String NIF, String telefono, String direccion, Prestamo prestamo) {
@@ -98,11 +98,7 @@ public class Socio implements Serializable{
         } else {
             throw new SocioException("Direccion invalida");
         }
-        if (SocioException.validarId(id_prestamo)) {
-            this.id_prestamo = id_prestamo;
-        } else {
-            throw new SocioException("Tiene que ser mayor de 0");
-        }
+       
 
     }
 
@@ -178,13 +174,7 @@ public class Socio implements Serializable{
         this.direccion = direccion;
     }
 
-    public long getId_prestamo() {
-        return id_prestamo;
-    }
-
-    public void setId_prestamo(long id_prestamo) {
-        this.id_prestamo = id_prestamo;
-    }
+   
 
     public static ArrayList<Socio> convertirSocios(Socio[] array) {
         ArrayList<Socio> ret = new ArrayList<Socio>();
@@ -641,6 +631,6 @@ public class Socio implements Serializable{
     }
 
     public String data() {
-        return id + "|" + nombre + "|" + NIF + "|" + telefono + "|" + direccion + "|" + id_prestamo;
+        return id + "|" + nombre + "|" + NIF + "|" + telefono + "|" + direccion;
     }
 }

@@ -28,11 +28,10 @@ public class Prestamo implements Serializable{
     */
     private Estado estado;
     private ArrayList<Elemento> elementos = new ArrayList<Elemento>(); /*Maximo 5, Obligatorio*/
-    private long idPenalizacion;/*Mayores o iguales que 0, no puede ser nulo*/
+   
 
     public Prestamo() {
-        this.id= 0;
-        this.idPenalizacion= 0;
+        
     }
 
     public Prestamo(long id, Date fechaDeInicio, Date fechaDeDevolucion) {
@@ -47,7 +46,7 @@ public class Prestamo implements Serializable{
         this.fechaDeDevolucion = copia.fechaDeDevolucion;
         this.estado = copia.estado;
         this.elementos = copia.elementos;
-        this.idPenalizacion = copia.idPenalizacion;
+        
     }
 
     public Prestamo(long id, Date fechaDeInicio, Date fechaDeDevolucion, Estado estado, long idPenalizacion) {
@@ -55,16 +54,10 @@ public class Prestamo implements Serializable{
         this.fechaDeInicio = fechaDeInicio;
         this.fechaDeDevolucion = fechaDeDevolucion;
         this.estado = estado;
-        this.idPenalizacion = idPenalizacion;
+        
     }
 
-    public long getIdPenalizacion() {
-        return idPenalizacion;
-    }
-
-    public void setIdPenalizacion(long idPenalizacion) {
-        this.idPenalizacion = idPenalizacion;
-    }
+   
 
     public long getId() {
         return id;
@@ -129,14 +122,14 @@ public class Prestamo implements Serializable{
 
     @Override
     public String toString() {
-        return "Prestamo{" + "id=" + id + ", fechaDeInicio=" + fechaDeInicio + ", fechaDeDevolucion=" + fechaDeDevolucion + ", estado=" + estado + ", elementos=" + elementos + ", idPenalizacion=" + idPenalizacion + '}';
+        return "Prestamo{" + "id=" + id + ", fechaDeInicio=" + fechaDeInicio + ", fechaDeDevolucion=" + fechaDeDevolucion + ", estado=" + estado + ", elementos=" + elementos + ", idPenalizacion=" +'}';
     }
      /**
      * Devuelve primero la primary key, seguido de los demas atributos separados por el caracter |
-     * @return Primary key id | Fechallegada + ArrayList de elementos + idProveedor
+     * @return Primary key id | FechadeInicio + fechaDevoluion + idPenalizacion
      */
     public String data() {
-        return id + "|" + fechaDeInicio + "|" + fechaDeDevolucion + "|" + idPenalizacion;
+        return id + "|" + fechaDeInicio + "|" + fechaDeDevolucion;
     }
     
 }
