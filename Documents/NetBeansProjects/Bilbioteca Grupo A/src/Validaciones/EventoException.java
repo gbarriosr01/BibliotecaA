@@ -35,14 +35,11 @@ public class EventoException extends Exception {
         if (nombre.length() < 1 || nombre.length() > 100) {
             ret = false;
         }
+        if (nombre.matches("[,:;¿?¡!|ª\\/#·~$%€¬)(='{}-_")){
+            ret = false;
+        }
         return ret;
     }
-
-//    public static boolean validarFecha(String s) {
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//        sdf.setLenient(false);
-//        return sdf.parse(s, new ParsePosition(0)) != null;
-//    }
     public static boolean validarIdPenalizacion(long idPenalizacion) {
         boolean ret = true;
         if (idPenalizacion < 0) {

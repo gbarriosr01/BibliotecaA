@@ -17,7 +17,10 @@ public class VisionadoException extends Exception {
 
     public static boolean validarAula(String aula) {
         boolean ret = true;
-         if (aula.isEmpty()) {
+        if (aula.isEmpty()) {
+            ret = false;
+        }
+        if (aula.matches("[,:;¿?¡!|ª\\/#·~$%€¬)(='{}-_@€")) {
             ret = false;
         }
         return ret;

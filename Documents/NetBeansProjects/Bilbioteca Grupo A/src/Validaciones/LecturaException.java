@@ -17,7 +17,7 @@ public class LecturaException extends Exception {
 
     public static boolean validarLeido(boolean leido) {
         boolean ret = true;
-        if(ret != true){
+        if (ret != true) {
             ret = false;
         }
         return ret;
@@ -25,7 +25,10 @@ public class LecturaException extends Exception {
 
     public static boolean validarModelo(String modelo) {
         boolean ret = true;
-         if (modelo.isEmpty()) {
+        if (modelo.isEmpty()) {
+            ret = false;
+        }
+        if (modelo.matches("[,:;¿?¡!|ª\\/#·~$%€¬)(='{}-_@€")) {
             ret = false;
         }
         return ret;

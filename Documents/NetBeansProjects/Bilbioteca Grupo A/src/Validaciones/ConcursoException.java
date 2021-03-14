@@ -36,6 +36,9 @@ public class ConcursoException extends Exception {
         if (tipo.length() < 1 || tipo.length() > 30) {
             ret = false;
         }
+        if (tipo.matches("[,:;¿?¡!|ª\\/#·~$%€¬)(='{}-_@€")) {
+            ret = false;
+        }
         return ret;
     }
 
@@ -45,6 +48,9 @@ public class ConcursoException extends Exception {
             ret = false;
         }
         if (premio.length() < 1 || premio.length() > 30) {
+            ret = false;
+        }
+        if (premio.matches("[,:;¿?¡!|ª\\/#·~$%€¬)(='{}-_@€")) {
             ret = false;
         }
         return ret;

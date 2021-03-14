@@ -20,7 +20,9 @@ public class CursoException extends Exception {
         if (duracion.isEmpty()) {
             ret = false;
         }
-
+        if (duracion.matches("[,:;¿?¡!|ª\\/#·~$%€¬)(='{}-_@€")) {
+            ret = false;
+        }
         return ret;
     }
 
@@ -29,7 +31,9 @@ public class CursoException extends Exception {
         if (aula.isEmpty()) {
             ret = false;
         }
-
+        if (aula.matches("[,:;¿?¡!|ª\\/#·~$%€¬)(='{}-_@€")) {
+            ret = false;
+        }
         return ret;
     }
 }
