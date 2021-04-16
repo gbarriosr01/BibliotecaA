@@ -18,7 +18,7 @@ public class Estanteria {
     private long id;
     /*Valido: Una letra mayusucla 'A' Invalido: Una letra minuscula 'a'*/
     private char codigo;
-    /*Valido: Cadena caracteres "asdsandas"  Invalido: " ", >100caracteres*/
+    /*Valido: Cadena caracteres "asdsandas"  Invalido: " ", >30caracteres*/
     private String ubicacion=null;
     /*Valido: true, false Invalido: cualquier cosa que no sea true o false*/
     private boolean completa=false;

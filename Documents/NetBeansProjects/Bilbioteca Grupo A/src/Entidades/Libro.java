@@ -16,11 +16,11 @@ import java.util.Scanner;
  */
 public class Libro extends Elemento {
 
-    /*Valido: cadena caracteres "dadsad" Invalido: " ", >50 caracteres*/
+    /*Valido: cadena caracteres "dadsad" Invalido: " ", >30 caracteres*/
     private String nombre;
-    /*Valido: cadena caracteres "dadsad" Invalido: " ", >50 caracteres*/
+    /*Valido: cadena caracteres "dadsad" Invalido: " ", >30 caracteres*/
     private String editorial;
-    /*Valido: cadena caracteres "dadsad" Invalido: " ", >50 caracteres*/
+    /*Valido: cadena caracteres "dadsad" Invalido: " ", >30 caracteres*/
     private String autor;
     /*Valido: >0 Invalido: <0*/
     private int nPaginas;

@@ -18,7 +18,7 @@ import static java.lang.System.in;
  */
 public class DVD extends Elemento {
 
-    /*Valido: cadena caracteres "dsadsa" Invalido: " ", >100caracteres*/
+    /*Valido: cadena caracteres "dsadsa" Invalido: " ", >30caracteres*/
     private String titulo;
     private Visionado visionado;/*Obligatorio*/
 
