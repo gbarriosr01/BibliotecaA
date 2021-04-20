@@ -36,7 +36,7 @@ public class Genero {
 
     }
     
-    Genero(long id, String nombre) /*throws GeneroException{*/{
+    public Genero(long id, String nombre) /*throws GeneroException{*/{
         this.id =id;
         this.nombre =nombre;
 //        if (GeneroException.validarGeneroId(id)) {

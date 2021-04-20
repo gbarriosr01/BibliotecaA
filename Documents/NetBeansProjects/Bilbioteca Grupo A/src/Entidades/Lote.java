@@ -15,39 +15,44 @@ import java.util.Scanner;
  * @author DAM102
  */
 public class Lote {
+
     //Valores válidos,  >0
     //Valores inválidos, <=0
     //Tiene que ser único
     private long id;
     //Valores válidos dd/mm/yyyy - numerico
     //Valores inválidos- No puede contener caracteres ni signos
-      private Date fechallegada;
-      private ArrayList <Elemento> elementos = new ArrayList <Elemento>();/*Obligatorio*/
+    private Date fechallegada;
+    private ArrayList<Elemento> elementos = new ArrayList<Elemento>();/*Obligatorio*/
     //Valores válidos,  >0
     //Valores inválidos, <=0
     //Tiene que ser único
-      private long idProveedor;/*Obligatorio*/
+    private long idProveedor;/*Obligatorio*/
 
     public Lote() {
-        
-       
+
     }
-    
-    public Lote(Lote a){
-       this.id=a.id;
-       this.fechallegada=a.fechallegada;
-       this.elementos=a.elementos;
-       this.idProveedor=a.idProveedor;
-        
+
+    public Lote(Lote a) {
+        this.id = a.id;
+        this.fechallegada = a.fechallegada;
+        this.elementos = a.elementos;
+        this.idProveedor = a.idProveedor;
+
     }
 
     public Lote(Date fechallegada, long idProveedor) {
-        this.id= id;
+
         this.fechallegada = fechallegada;
         this.idProveedor = idProveedor;
     }
 
-    
+    public Lote(long id, Date fechallegada, long idProveedor) {
+        this.id = id;
+        this.fechallegada = fechallegada;
+        this.idProveedor = idProveedor;
+    }
+
     Lote(long id, long idProveedor) throws LoteException {
         if (LoteException.validarLoteId(id)) {
             this.id = id;
@@ -60,8 +65,7 @@ public class Lote {
             throw new LoteException("idProveedor debe ser > 0");
         }
     }
-    
-    
+
     public long getId() {
         return id;
     }
@@ -93,34 +97,35 @@ public class Lote {
     public void setIdProveedor(long idProveedor) {
         this.idProveedor = idProveedor;
     }
-      
-     public Lote nuevoLote(){
-         Lote l1 = new Lote();
-         Scanner in =new Scanner(System.in);
-         
-           int numLotes = Utilidades.numLotes + 1;
-            l1.setId(numLotes);
-         
-         System.out.println("Introduzca la fecha de llegada");
-         /*Preguntar a Luis*/         
-         java.sql.Date fecha = Utilidades.Fecha.nuevaFecha().conversorFecha();
-         l1.setFechallegada(fecha);
-         
-         return l1;
-     } 
+
+    public Lote nuevoLote() {
+        Lote l1 = new Lote();
+        Scanner in = new Scanner(System.in);
+
+        int numLotes = Utilidades.numLotes + 1;
+        l1.setId(numLotes);
+
+        System.out.println("Introduzca la fecha de llegada");
+        /*Preguntar a Luis*/
+        java.sql.Date fecha = Utilidades.Fecha.nuevaFecha().conversorFecha();
+        l1.setFechallegada(fecha);
+
+        return l1;
+    }
 
     @Override
     public String toString() {
         return "Lote{" + "fechallegada=" + fechallegada + ", elementos=" + elementos + ", idProveedor=" + idProveedor + '}';
     }
-      
+
     /**
-     * Devuelve primero la primary key, seguido de los demas atributos separados por el caracter |
+     * Devuelve primero la primary key, seguido de los demas atributos separados
+     * por el caracter |
+     *
      * @return Primary key id | Fechallegada + idProveedor
      */
     public String data() {
         return id + "|" + fechallegada + "|" + idProveedor;
     }
-     
-   
+
 }
