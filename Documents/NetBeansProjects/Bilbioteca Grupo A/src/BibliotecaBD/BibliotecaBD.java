@@ -17,7 +17,7 @@ public class BibliotecaBD {
     static final String DB_URL = "\"jdbc:mysql://localhost:3306/Biblioteca";
     // Credenciales de la base de datos
     static final String USER = "root";
-    static final String PASS = "";
+    static final String PASS = "123456";
 
     static Connection conn = null;
     Statement stmt = null;
