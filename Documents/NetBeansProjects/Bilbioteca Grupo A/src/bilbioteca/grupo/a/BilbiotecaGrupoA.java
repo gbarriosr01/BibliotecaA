@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package bilbioteca.grupo.a;
-
+import BibliotecaBD.*;
 import Entidades.*;
 import Validaciones.ConcursoException;
 import Validaciones.CursoException;
@@ -12,6 +12,7 @@ import Validaciones.DVDException;
 import Validaciones.LecturaException;
 import Validaciones.LibroException;
 import Validaciones.SocioException;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -36,7 +37,11 @@ public class BilbiotecaGrupoA {
         ArrayList<Curso> cursos = Curso.convertirCurso(Utilidades.CURSOS);
         ArrayList<Lectura> lecturas = Lectura.convertirLectura(Utilidades.LECTURAS);
         ArrayList<Visionado> visionados = Visionado.convertirVisionado(Utilidades.VISIONADOS);
-        //MENU PRINCIPAL DE AQUI HASTA ABAJO        
+        //MENU PRINCIPAL DE AQUI HASTA ABAJO
+
+        Connection conn = BibliotecaBD.establecerConexion();
+        BibliotecaBD.cerrarConexion();
+        
         int opcion = -1;
         int opcion2 = -1;
         int opcion3 = -1;

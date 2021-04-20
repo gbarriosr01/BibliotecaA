@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  * @author DAM102
  */
 public class BibliotecaBD {
-    static final String DB_URL = "\"jdbc:mysql://localhost:3306/Biblioteca";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/Biblioteca";
     // Credenciales de la base de datos
     static final String USER = "root";
     static final String PASS = "123456";
@@ -26,7 +26,7 @@ public class BibliotecaBD {
     public static Connection establecerConexion() {
         try {
             //System.out.println("Conectando a la Base de Datos...");
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
         } catch (SQLException ex) {
