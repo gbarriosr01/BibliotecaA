@@ -24,7 +24,7 @@ public class Libro extends Elemento {
     private String autor;
     /*Valido: >0 Invalido: <0*/
     private int nPaginas;
-    private Lectura lectura;/*Obligatorio*/
+    private long idLectura;/*Obligatorio*/
 
     public Libro() {
         super();
@@ -44,30 +44,30 @@ public class Libro extends Elemento {
         this.nPaginas = nPaginas;
     }
 
-    public Libro(String nombre, String editorial, String autor, int nPaginas, Lectura lectura) {
+    public Libro(String nombre, String editorial, String autor, int nPaginas, long idLectura) {
         this.nombre = nombre;
         this.editorial = editorial;
         this.autor = autor;
         this.nPaginas = nPaginas;
-        this.lectura = lectura;
+        this.idLectura = idLectura;
     }
 
-    public Libro(String nombre, String editorial, String autor, int nPaginas, Lectura lectura, long id, Genero genero) throws ElementoException {
+    public Libro(String nombre, String editorial, String autor, int nPaginas, long idLectura, long id, Genero genero) throws ElementoException {
         super(id, genero);
         this.nombre = nombre;
         this.editorial = editorial;
         this.autor = autor;
         this.nPaginas = nPaginas;
-        this.lectura = lectura;
+        this.idLectura = idLectura;
     }
 
-    public Libro(String nombre, String editorial, String autor, int nPaginas, Lectura lectura, Elemento el) throws ElementoException {
+    public Libro(String nombre, String editorial, String autor, int nPaginas, long idLectura, Elemento el) throws ElementoException {
         super(el);
         this.nombre = nombre;
         this.editorial = editorial;
         this.autor = autor;
         this.nPaginas = nPaginas;
-        this.lectura = lectura;
+        this.idLectura = idLectura;
     }
 
     public Libro(Libro l) {
@@ -75,7 +75,7 @@ public class Libro extends Elemento {
         this.editorial = l.editorial;
         this.autor = l.autor;
         this.nPaginas = l.nPaginas;
-        this.lectura = l.lectura;
+        this.idLectura = l.idLectura;
     }
 
     public String getNombre() {
@@ -110,12 +110,12 @@ public class Libro extends Elemento {
         this.nPaginas = nPaginas;
     }
 
-    public Lectura getLectura() {
-        return lectura;
+    public long getIdLectura() {
+        return idLectura;
     }
 
-    public void setLectura(Lectura lectura) {
-        this.lectura = lectura;
+    public void setidLectura(long idLectura) {
+        this.idLectura = idLectura;
     }
 
     public static ArrayList<Libro> convertirLibros(Libro[] array) {
@@ -343,7 +343,7 @@ public class Libro extends Elemento {
 
     @Override
     public String toString() {
-        return "Libro{" + "nombre=" + nombre + ", editorial=" + editorial + ", autor=" + autor + ", nPaginas=" + nPaginas + ", lectura=" + lectura + '}';
+        return "Libro{" + "nombre=" + nombre + ", editorial=" + editorial + ", autor=" + autor + ", nPaginas=" + nPaginas + ", idLectura=" + idLectura + '}';
     }
 
 }
