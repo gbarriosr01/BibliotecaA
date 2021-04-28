@@ -52,8 +52,8 @@ public class Curso extends Evento {
 
     public Curso(String duracion, String aula, long id, String nombre, Date fechayhora, long idPenalizacion) {
         super(id, nombre, fechayhora, idPenalizacion);
-        this.duracion = duracion = null;
-        this.aula = aula = null;
+        this.duracion = duracion;
+        this.aula = aula;
     }
 
     public Curso(String duracion, String aula, Evento ev1) {
