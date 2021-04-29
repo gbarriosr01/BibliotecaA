@@ -34,35 +34,35 @@ public class Modulo {
     
     ArrayList<Socio> si = new ArrayList<>();
     
-//    Socio soc= new Socio(1, "Jose luis", "12", "1", "si");
-//    
-//    SocioDAO socDao = new SocioDAO();
-//    
-//    Socio so = SocioDAO.insertarSocio(soc);
+    Socio soc= new Socio(1, "Jose luis", "12", "1", "si");
     
-//    Prestamo pre = new Prestamo(1,Date.valueOf(LocalDate.parse("04/24/2021", dateFormatter)), Date.valueOf(LocalDate.parse("04/28/2021", dateFormatter)), 1, 1);
-//    
-//    PrestamoDAO preDAO = new PrestamoDAO();
-//    
-//        Prestamo pr = preDAO.insertarPrestamo(pre);
-//        
-//        System.out.println(pr);
+    SocioDAO socDao = new SocioDAO();
+    
+    Socio so = SocioDAO.insertarSocio(soc);
+    
+    Prestamo pre = new Prestamo(1,Date.valueOf(LocalDate.parse("04/24/2021", dateFormatter)), Date.valueOf(LocalDate.parse("04/28/2021", dateFormatter)), 1, 1);
+    
+    PrestamoDAO preDAO = new PrestamoDAO();
+    
+        Prestamo pr = preDAO.insertarPrestamo(pre);
         
-//      Estanteria est = new Estanteria(9, 'C', "Viva espania", true);
-//      
-//      EstanteriaDAO estDAO = new EstanteriaDAO();
-//      
-//      Estanteria esta = estDAO.insertarEstanteria(est);
-//
-//        System.out.println(esta);
+        System.out.println(pr);
+        
+      Estanteria est = new Estanteria(9, 'C', "Viva espania", true);
+      
+      EstanteriaDAO estDAO = new EstanteriaDAO();
+      
+      Estanteria esta = estDAO.insertarEstanteria(est);
+
+        System.out.println(esta);
         
     Evento eve = new Evento(2,"Jose Luis", Date.valueOf(LocalDate.parse("04/28/2021", dateFormatter)), 1);
     
     EventoDAO eveDAO = new EventoDAO();
     
-        Evento pr = eveDAO.insertarEvento(eve);
+        Evento ev = eveDAO.insertarEvento(eve);
         
-        System.out.println(pr);
+        System.out.println(ev);
         
     }
     
