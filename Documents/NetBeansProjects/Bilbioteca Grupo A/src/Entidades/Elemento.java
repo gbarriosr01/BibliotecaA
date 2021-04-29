@@ -79,6 +79,14 @@ public class Elemento implements Serializable {
         this.idLote = idLote;
         this.idEstanteria = idEstanteria;
     }
+    
+    public Elemento( long idGenero, long idLote, long idEstanteria) {
+
+        
+        this.idGenero = idGenero;
+        this.idLote = idLote;
+        this.idEstanteria = idEstanteria;
+    }
 
     public long getId() {
         return id;
