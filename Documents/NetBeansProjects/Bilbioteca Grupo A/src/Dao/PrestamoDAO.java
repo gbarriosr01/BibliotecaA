@@ -25,7 +25,7 @@ import java.util.logging.Logger;
  */
 public class PrestamoDAO {
 
-    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private Prestamo p;
     private static Connection conn;
 
@@ -46,7 +46,7 @@ public class PrestamoDAO {
             }
             try {
                 PreparedStatement pstmt = null;
-                pstmt = conn.prepareStatement("SELECT * FROM Socio");
+                pstmt = conn.prepareStatement("SELECT * FROM prestamo");
                 ResultSet prs = pstmt.executeQuery();
                 while (prs.next()) {
                     long id = prs.getLong("id");
@@ -149,7 +149,12 @@ public class PrestamoDAO {
                 String fechaDeDevolucion = p.getFechaDeDevolucion().toLocalDate().format(dateFormatter);
                 long idEstado = p.getIdEstado();
                 long idSocio = p.getIdSocio();
-                String sql = "INSERT INTO prestamos(id, fechaDeInicio, fechaDeDevolucion, idEstado, idSocio) VALUES(" + id + ", " + fechaDeInicio + ", " + fechaDeDevolucion + ", " + idEstado + ", " + idSocio + ")";
+                String sql = "INSERT INTO prestamo(id, fechaDeInicio, fechaDeDevolucion, idEstado, idSocio) VALUES(" 
+                + id + ", " 
+                + "\'" + fechaDeInicio + "\' " + ", " 
+                + "\'" + fechaDeDevolucion + "\' " + ", " 
+                + idEstado + ", " 
+                + idSocio + ")";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.execute();
 
@@ -158,8 +163,8 @@ public class PrestamoDAO {
                 stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
                 String sqlRec = "SELECT * FROM prestamo WHERE ";
                 sqlRec += " id=" + id;
-                sqlRec += " and fechaDeInicio=" + fechaDeInicio;
-                sqlRec += " and fechaDeDevolucion=" + fechaDeDevolucion;
+                sqlRec += " and fechaDeInicio=" + "\' "+fechaDeInicio + "\' ";
+                sqlRec += " and fechaDeDevolucion=" + "\' " + fechaDeDevolucion + "\' ";
                 sqlRec += " and idEstado=" + idEstado;
                 sqlRec += " and idSocio=" + idSocio;
                 sqlRec += " ORDER BY id DESC";

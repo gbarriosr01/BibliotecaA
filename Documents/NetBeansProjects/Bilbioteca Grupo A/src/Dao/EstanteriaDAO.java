@@ -116,7 +116,7 @@ public class EstanteriaDAO {
                     char codigo = es.getCodigo();
                     String ubicacion = es.getUbicacion();
                     Boolean completa = es.isCompleta();
-                String sql = "INSERT INTO Estanteria(codigo, ubicacion, completo) VALUES(" + codigo + ", " + ubicacion + ", " + completa + ")";
+                String sql = "INSERT INTO estanteria(codigo, ubicacion, completo) VALUES(" + codigo + ", " + ubicacion + ", " + completa + ")";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.execute();
 
