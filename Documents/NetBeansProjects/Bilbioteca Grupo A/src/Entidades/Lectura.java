@@ -8,7 +8,7 @@ package Entidades;
 import Validaciones.EventoException;
 import Validaciones.LecturaException;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.Scanner;
 
 /**

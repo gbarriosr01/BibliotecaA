@@ -9,7 +9,7 @@ import Validaciones.EventoException;
 import Validaciones.LecturaException;
 import Validaciones.VisionadoException;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.Scanner;
 
 /**
