@@ -113,24 +113,30 @@ public class EstanteriaDAO {
             }
             try {
                 PreparedStatement pstmt = null;
+                    long id = es.getId();
                     char codigo = es.getCodigo();
                     String ubicacion = es.getUbicacion();
                     Boolean completa = es.isCompleta();
-                String sql = "INSERT INTO estanteria(codigo, ubicacion, completo) VALUES(" + codigo + ", " + ubicacion + ", " + completa + ")";
+                String sql = "INSERT INTO estanteria(id, codigo, ubicacion, completo) VALUES(" 
+                + id + ", " 
+                + "\'" + codigo + "\' " + ", " 
+                + "\"" + ubicacion + "\" " + ", " 
+                + completa + ")";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.execute();
 
                 //Se recupera de la BD el registro recien insertado;
                 Statement stmt = null;
                 stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-                String sqlRec = "SELECT * FROM Estanteria WHERE ";
-                sqlRec += " codigo=" + codigo;
-                sqlRec += " and ubicacion=" + ubicacion;
+                String sqlRec = "SELECT * FROM estanteria WHERE";
+                sqlRec += " id=" + id;
+                sqlRec += " and codigo=" + "\'" + codigo + "\'";
+                sqlRec += " and ubicacion=" + "\"" + ubicacion + "\"";
                 sqlRec += " and completo=" + completa;
                 sqlRec += " ORDER BY id DESC";
                 ResultSet rs = stmt.executeQuery(sqlRec);
                 while (rs.next()) {
-                    long id = rs.getInt("id");
+                    id = rs.getInt("id");
                     codigo = rs.getString("codigo").charAt(0);
                     ubicacion = rs.getString("ubicacion");
                     completa = rs.getBoolean("completo");

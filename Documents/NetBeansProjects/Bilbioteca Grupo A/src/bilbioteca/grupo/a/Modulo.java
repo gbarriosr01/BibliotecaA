@@ -5,8 +5,7 @@
  */
 package bilbioteca.grupo.a;
 import BibliotecaBD.*;
-import Dao.PrestamoDAO;
-import Dao.SocioDAO;
+import Dao.*;
 import Entidades.*;
 import Validaciones.ConcursoException;
 import Validaciones.CursoException;
@@ -41,15 +40,21 @@ public class Modulo {
 //    
 //    Socio so = SocioDAO.insertarSocio(soc);
     
-    Prestamo pre = new Prestamo(1,Date.valueOf(LocalDate.parse("04/24/2021", dateFormatter)), Date.valueOf(LocalDate.parse("04/28/2021", dateFormatter)), 1, 1);
-    
-    PrestamoDAO preDAO = new PrestamoDAO();
-    
-        Prestamo pr = preDAO.insertarPrestamo(pre);
+//    Prestamo pre = new Prestamo(1,Date.valueOf(LocalDate.parse("04/24/2021", dateFormatter)), Date.valueOf(LocalDate.parse("04/28/2021", dateFormatter)), 1, 1);
+//    
+//    PrestamoDAO preDAO = new PrestamoDAO();
+//    
+//        Prestamo pr = preDAO.insertarPrestamo(pre);
+//        
+//        System.out.println(pr);
         
-        System.out.println(pr);
-        
+      Estanteria est = new Estanteria(9, 'C', "Viva espania", true);
+      
+      EstanteriaDAO estDAO = new EstanteriaDAO();
+      
+      Estanteria esta = estDAO.insertarEstanteria(est);
 
+        System.out.println(esta);
     }
     
             
