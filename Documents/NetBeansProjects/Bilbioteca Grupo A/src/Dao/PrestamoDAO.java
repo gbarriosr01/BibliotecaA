@@ -111,10 +111,10 @@ public class PrestamoDAO {
                 long idEstado = p.getIdEstado();
                 long idSocio = p.getIdSocio();
 
-                String sql = "UPDATE socio SET ";
+                String sql = "UPDATE prestamo SET ";
                 sql += "id=" + id;
-                sql += ", Fecha de Inicio=" + fechaDeInicio;
-                sql += ", fechaDeDevolucion=" + fechaDeDevolucion;
+                sql += ", fechaDeInicio=" + "\'" + fechaDeInicio + "\' ";
+                sql += ", fechaDeDevolucion=" + "\'" + fechaDeDevolucion + "\' ";
                 sql += ", idEstado=" + idEstado;
                 sql += ", idSocio=" + idSocio;
 
@@ -163,8 +163,8 @@ public class PrestamoDAO {
                 stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
                 String sqlRec = "SELECT * FROM prestamo WHERE ";
                 sqlRec += " id=" + id;
-                sqlRec += " and fechaDeInicio=" + "\' "+fechaDeInicio + "\' ";
-                sqlRec += " and fechaDeDevolucion=" + "\' " + fechaDeDevolucion + "\' ";
+                sqlRec += " and fechaDeInicio=" + "\'" + fechaDeInicio + "\' ";
+                sqlRec += " and fechaDeDevolucion=" + "\'" + fechaDeDevolucion + "\' ";
                 sqlRec += " and idEstado=" + idEstado;
                 sqlRec += " and idSocio=" + idSocio;
                 sqlRec += " ORDER BY id DESC";
