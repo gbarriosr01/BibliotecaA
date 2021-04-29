@@ -5,7 +5,7 @@
  */
 package bilbioteca.grupo.a;
 import BibliotecaBD.*;
-import Dao.ElementoDAO;
+import Dao.SocioDAO;
 import Entidades.*;
 import Validaciones.ConcursoException;
 import Validaciones.CursoException;
@@ -28,11 +28,15 @@ public class Modulo {
     public static void main(String[] args){
     Elemento el = new Elemento(1,1,1);
     
-    ArrayList <Elemento> listaElementos = new ArrayList<>();
+    ArrayList<Socio> si = new ArrayList<>();
+    Socio soc = new Socio(1,"Jose luis","63","84","no");
     
-    ElementoDAO elementoDAO = new ElementoDAO();
+    SocioDAO socioDAO = new SocioDAO();
     
-    listaElementos = elementoDAO.todosElemento();
+    
+        socioDAO.modificarSocio(soc);
+        
+
     }
     
             

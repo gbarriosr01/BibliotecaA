@@ -146,10 +146,10 @@ public class SocioDAO {
 
                 String sql = "UPDATE socio SET ";
                 sql += "id=" + id;
-                sql += ", nombre=" + nombre;
-                sql += ", nif=" + nif;
-                sql += ", telefono=" + telefono;
-                sql += ", direccion=" + direccion;
+                sql += ", nombre=" + "\" " + nombre +"\" ";
+                sql += ", nif=" + "\" " + nif + "\" ";
+                sql += ", telefono=" + "\" " + telefono + "\" ";
+                sql += ", direccion=" + "\" " +direccion + "\" ";
 
                 sql += " WHERE id = ?";
                 pstmt = conn.prepareStatement(sql);
@@ -170,7 +170,7 @@ public class SocioDAO {
         }
     }
 
-    public Socio insertarSocio(Socio s) {
+    public static Socio insertarSocio(Socio s) {
         try {
             if (conn == null || conn.isClosed()) {
                 conn = BibliotecaBD.establecerConexion();
@@ -182,25 +182,29 @@ public class SocioDAO {
                 String nif = s.getNIF();
                 String telefono = s.getTelefono();
                 String direccion = s.getDireccion();
-                String sql = "INSERT INTO socio(id, nombre, nif, telefono, direccion) VALUES(" + id + ", " + nombre + ", " + nif + ", " + telefono + ", " + direccion + ")";
+                String sql = "INSERT INTO socio(id, nombre, nif, telefono, direccion) VALUES(" + id + ", " 
+                + "\" " + nombre + "\" " +", " 
+                + "\" " + nif + "\" "+ ", " 
+                + "\" " + telefono + "\" "+ ", " 
+                + "\" " + direccion + "\" "+ ")";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.execute();
 
                 //Se recupera de la BD el registro recien insertado;
                 Statement stmt = null;
                 stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-                String sqlRec = "SELECT * FROM socio WHERE ";
+                String sqlRec = "SELECT * FROM socio WHERE";
                 sqlRec += " id=" + id;
-                sqlRec += " and nombre=" + nombre;
-                sqlRec += " and nif=" + nif;
-                sqlRec += " and telefono=" + telefono;
-                sqlRec += " and direccion=" + direccion;
+                sqlRec += " and nombre=" + "\" " + nombre + "\" ";
+                sqlRec += " and nif=" + "\" " + nif + "\" ";
+                sqlRec += " and telefono=" + "\" " + telefono + "\" ";
+                sqlRec += " and direccion=" + "\" " + direccion + "\" ";
                 sqlRec += " ORDER BY id DESC";
                 ResultSet rs = stmt.executeQuery(sqlRec);
                 while (rs.next()) {
                     long idSocio = rs.getLong("id");
                     String nom = rs.getString("nombre");
-                    String NIF = rs.getString("NIF");
+                    String NIF = rs.getString("nif");
                     String tlf = rs.getString("telefono");
                     String direccionSocio = rs.getString("direccion");
                     s = new Socio(idSocio, nom, NIF, tlf, direccionSocio);
