@@ -35,6 +35,10 @@ public class Genero {
         this.nombre = g1.nombre;
 
     }
+     public Genero(String nombre){
+       
+        this.nombre =nombre;
+     }
     
     public Genero(long id, String nombre) /*throws GeneroException{*/{
         this.id =id;

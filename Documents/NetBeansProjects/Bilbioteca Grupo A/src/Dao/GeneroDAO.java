@@ -102,7 +102,7 @@ public class GeneroDAO {
         return genero;
     }
      
-     public void eliminarParcela(long idGenero) {
+     public void eliminarGenero(long idGenero) {
         try {
             if (conn == null || conn.isClosed()) {
                 conn = BibliotecaBD.establecerConexion();
@@ -207,7 +207,7 @@ public class GeneroDAO {
         }
     }
 
-        public Genero insertarGenero(Genero g) {
+        public static Genero insertarGenero(Genero g) {
         try {
             if (conn == null || conn.isClosed()) {
                 conn = BibliotecaBD.establecerConexion();
@@ -217,14 +217,14 @@ public class GeneroDAO {
 
                 String nombre = g.getNombre();
 
-                String sql = "INSERT INTO generos(nombre) VALUES('" + nombre + "')";
+                String sql = "INSERT INTO genero(nombre) VALUES('" + nombre + "')";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.execute();
 
                 //Se recupera de la BD el registro recien insertado;
                 Statement stmt = null;
                 stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-                String sqlRec = "SELECT * FROM generos WHERE ";
+                String sqlRec = "SELECT * FROM genero WHERE ";
                 sqlRec += " nombre='" + nombre + "'";
                 sqlRec += " ORDER BY id DESC";
                 ResultSet rs = stmt.executeQuery(sqlRec);

@@ -5,6 +5,9 @@
  */
 package Vista;
 
+import Dao.GeneroDAO;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alexb
@@ -54,6 +57,11 @@ public class nuevoGenero extends javax.swing.JFrame {
 
         jButtonBorrarCampo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButtonBorrarCampo.setText("Borrar Campo");
+        jButtonBorrarCampo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBorrarCampoActionPerformed(evt);
+            }
+        });
 
         jButtonVover.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButtonVover.setText("Volver");
@@ -65,6 +73,11 @@ public class nuevoGenero extends javax.swing.JFrame {
 
         jButtonAceptar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButtonAceptar.setText("Aceptar");
+        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAceptarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -138,19 +151,65 @@ public class nuevoGenero extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     private void jButtonBorrarCampo(java.awt.event.ActionEvent evt) {                                                 
-        // TODO add your handling code here:
-         this.jTextFieldNombre.setText("");
-    }     
      
     private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:   
     }//GEN-LAST:event_jTextFieldNombreActionPerformed
-
+                                      
     private void jButtonVoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoverActionPerformed
          this.dispose();
         menuGenero.main(null);
     }//GEN-LAST:event_jButtonVoverActionPerformed
+
+    private void jButtonBorrarCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarCampoActionPerformed
+        // TODO add your handling code here:
+        this.jTextFieldNombre.setText("");
+    }//GEN-LAST:event_jButtonBorrarCampoActionPerformed
+
+    private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
+        // TODO add your handling code here:
+         boolean ok = true;
+        String msj = "";
+        if (this.jTextFieldNombre.getText().isEmpty()) {
+            ok = false;
+            msj += "\nEl nombre es obligatorio.";
+        }
+         if (!ok) {
+            JOptionPane.showMessageDialog(this, "Debe solucionar los siguientes problemas:\n" + msj, "ERROR", JOptionPane.ERROR_MESSAGE);
+            return;
+        }else {
+            msj = "\nNombre: " + this.jTextFieldNombre.getText();
+              Object[] opciones = {"Sí", "No"};
+            int i = JOptionPane.showOptionDialog(this, "¿Son los datos del nuevo Genero correctos?\n" + msj, "Nuevo Genero", JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+            if (i == JOptionPane.NO_OPTION) {
+                return;
+            }
+            try {
+                String nombre = this.jTextFieldNombre.getText();
+                
+                  Entidades.Genero gen = new Entidades.Genero();
+                gen.setNombre(nombre);
+                
+                 Entidades.Genero gene= new Entidades.Genero(nombre);
+    
+                
+    
+                GeneroDAO.insertarGenero(gene);
+                
+                 JOptionPane.showMessageDialog(this, "Se ha añadido correctamente el Genero.");
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "ERROR al añadir el Genero.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+            this.dispose();
+            
+            menuGenero gen = new  menuGenero();
+            gen.setVisible(true);
+            this.setVisible(false);
+
+    }                            
+    }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     /**
      * @param args the command line arguments
