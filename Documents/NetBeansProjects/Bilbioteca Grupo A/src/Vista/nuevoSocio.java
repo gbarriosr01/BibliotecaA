@@ -5,6 +5,10 @@
  */
 package Vista;
 
+import java.awt.Point;
+import javax.swing.JOptionPane;
+import Dao.*;
+import Entidades.*;
 /**
  *
  * @author Vicente Urrutia
@@ -40,6 +44,7 @@ public class nuevoSocio extends javax.swing.JFrame {
         jTextFieldNIF = new javax.swing.JTextField();
         jTextFieldNombre = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -96,6 +101,13 @@ public class nuevoSocio extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("Aceptar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -104,28 +116,36 @@ public class nuevoSocio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(jTextFieldNIF, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldTelefono)))
+                        .addGap(114, 114, 114))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(14, 14, 14)
+                                        .addComponent(jTextFieldNIF, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addComponent(jButton2)
+                                .addGap(33, 33, 33)
+                                .addComponent(jButton3)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,7 +169,8 @@ public class nuevoSocio extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -219,6 +240,80 @@ public class nuevoSocio extends javax.swing.JFrame {
         menuSocio.main(null);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+        boolean ok = true;
+        String msj = "";
+        if (this.jTextFieldNombre.getText().isEmpty()) {
+            ok = false;
+            msj += "\nEl nombre es obligatorio.";
+        }
+        if (this.jTextFieldNIF.getText().isEmpty()) {
+            ok = false;
+            msj += "\nEl NIF es obligatoria.";
+        }
+        if (this.jTextFieldTelefono.getText().isEmpty()) {
+            ok = false;
+            msj += "\nEl telefono es obligatoria.";
+        } 
+        if (this.jTextFieldDireccion.getText().isEmpty()) {
+            ok = false;
+            msj += "\nLa dirección es obligatoria.";
+        }
+
+        if (!ok) {
+            JOptionPane.showMessageDialog(this, "Debe solucionar los siguientes problemas:\n" + msj, "ERROR", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else {
+            msj = "\nNombre: " + this.jTextFieldNombre.getText();
+            msj += "\nNIF: " + this.jTextFieldNIF.getText();
+            msj += "\nTelefono: " + this.jTextFieldTelefono.getText();
+            msj += "\nDireccion: " + this.jTextFieldDireccion.getText();
+            Object[] opciones = {"Sí", "No"};
+            int i = JOptionPane.showOptionDialog(this, "¿Son los datos del nuevo Socio correctos?\n" + msj, "Nuevo Socio", JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+            if (i == JOptionPane.NO_OPTION) {
+                return;
+            }
+
+            try {
+                String nombre = this.jTextFieldNombre.getText();
+                String nif = this.jTextFieldNIF.getText();
+                String tel = this.jTextFieldTelefono.getText();
+                String dir = this.jTextFieldDireccion.getText();
+                
+                Entidades.Socio soc = new Entidades.Socio();
+                soc.setNombre(nombre);
+                soc.setNIF(nif);
+                soc.setTelefono(tel);
+                soc.setDireccion(dir);
+                
+                Entidades.Socio soci = new Entidades.Socio(nombre, nif, tel, dir);
+    
+                
+    
+                SocioDAO.insertarSocio(soci);
+                
+//                javax.persistence.EntityManager entityManager0 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("bdinvernadero?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
+
+                JOptionPane.showMessageDialog(this, "Se ha añadido correctamente el Socio.");
+
+                
+                
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "ERROR al añadir la Parcela.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+            this.dispose();
+            
+            menuSocio soc = new  menuSocio();
+            soc.setVisible(true);
+            this.setVisible(false);
+
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+    }
     /**
      * @param args the command line arguments
      */
@@ -257,6 +352,7 @@ public class nuevoSocio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

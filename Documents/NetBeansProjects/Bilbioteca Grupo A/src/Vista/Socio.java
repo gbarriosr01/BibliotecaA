@@ -66,6 +66,12 @@ public class Socio implements Serializable {
         this.nombre = nombre;
         this.nif = nif;
     }
+    public Socio(String nombre, String nif, String tel, String dir) {
+        this.nombre =nombre;
+        this.nif= nif;
+        this.telefono = tel;
+        this.direccion = dir;
+    }
 
     public Integer getId() {
         return id;

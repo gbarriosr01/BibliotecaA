@@ -182,8 +182,7 @@ public class SocioDAO {
                 String nif = s.getNIF();
                 String telefono = s.getTelefono();
                 String direccion = s.getDireccion();
-                String sql = "INSERT INTO socio(id, nombre, nif, telefono, direccion) VALUES(" + id + ", " 
-                + "\" " + nombre + "\" " +", " 
+                String sql = "INSERT INTO socio(nombre, nif, telefono, direccion) VALUES(" + "\" " + nombre + "\" " +", " 
                 + "\" " + nif + "\" "+ ", " 
                 + "\" " + telefono + "\" "+ ", " 
                 + "\" " + direccion + "\" "+ ")";

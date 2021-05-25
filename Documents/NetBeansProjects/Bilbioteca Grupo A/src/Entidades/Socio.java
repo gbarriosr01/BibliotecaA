@@ -110,6 +110,13 @@ public class Socio implements Serializable{
         this.direccion = direccion;
     }
 
+    public Socio(String nombre, String nif, String tel, String dir) {
+        this.nombre =nombre;
+        this.NIF= nif;
+        this.telefono = tel;
+        this.direccion = dir;
+    }
+
     public long getId() {
         return id;
     }

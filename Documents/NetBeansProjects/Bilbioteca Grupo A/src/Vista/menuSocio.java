@@ -32,13 +32,26 @@ public class menuSocio extends javax.swing.JFrame {
 
         entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("biblioteca?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
         socioQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT s FROM Socio s");
-        socioList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : socioQuery.getResultList();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        list1 = new java.awt.List();
+        socioQuery1 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT s FROM Socio s");
+        socioList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : socioQuery1.getResultList();
+        socioQuery2 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT s FROM Socio s");
+        socioList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : socioQuery2.getResultList();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -59,7 +72,7 @@ public class menuSocio extends javax.swing.JFrame {
 
         jTable2.setColumnSelectionAllowed(true);
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, socioList, jTable2);
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, socioList1, jTable2);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${id}"));
         columnBinding.setColumnName("Id");
         columnBinding.setColumnClass(Integer.class);
@@ -193,11 +206,17 @@ public class menuSocio extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
+    private java.awt.List list1;
     private java.util.List<Vista.Socio> socioList;
+    private java.util.List<Vista.Socio> socioList1;
     private javax.persistence.Query socioQuery;
+    private javax.persistence.Query socioQuery1;
+    private javax.persistence.Query socioQuery2;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
