@@ -138,6 +138,11 @@ public class nuevoGenero extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+     private void jButtonBorrarCampo(java.awt.event.ActionEvent evt) {                                                 
+        // TODO add your handling code here:
+         this.jTextFieldNombre.setText("");
+    }     
+     
     private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNombreActionPerformed

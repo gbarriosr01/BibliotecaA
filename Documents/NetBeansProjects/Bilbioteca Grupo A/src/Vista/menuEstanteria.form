@@ -25,6 +25,24 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Vista.Estanteria&gt;"/>
       </AuxValues>
     </Component>
+    <Component class="javax.persistence.Query" name="estanteriaQuery1">
+      <Properties>
+        <Property name="query" type="java.lang.String" value="SELECT e FROM Estanteria e"/>
+        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
+          <ComponentRef name="entityManager"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="java.util.List" name="estanteriaList1">
+      <Properties>
+        <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
+          <ComponentRef name="estanteriaQuery1"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Vista.Estanteria&gt;"/>
+      </AuxValues>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -146,7 +164,7 @@
                 </Property>
               </Properties>
               <BindingProperties>
-                <BindingProperty name="elements" source="estanteriaList" target="jTable1" targetPath="elements" updateStrategy="0" immediately="true">
+                <BindingProperty name="elements" source="estanteriaList1" target="jTable1" targetPath="elements" updateStrategy="0" immediately="true">
                   <Subbinding sourcePath="${codigo}">
                     <BindingParameter name="NAME" value="Codigo"/>
                     <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Character.class"/>
