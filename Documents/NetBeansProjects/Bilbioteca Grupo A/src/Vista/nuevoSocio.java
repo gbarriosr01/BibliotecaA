@@ -288,12 +288,8 @@ public class nuevoSocio extends javax.swing.JFrame {
                 soc.setNIF(nif);
                 soc.setTelefono(tel);
                 soc.setDireccion(dir);
-                
-                Entidades.Socio soci = new Entidades.Socio(nombre, nif, tel, dir);
-    
-                
-    
-                SocioDAO.insertarSocio(soci);
+
+                SocioDAO.insertarSocio(soc);
                 
 //                javax.persistence.EntityManager entityManager0 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("bdinvernadero?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
 
@@ -303,7 +299,7 @@ public class nuevoSocio extends javax.swing.JFrame {
                 
 
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "ERROR al añadir la Parcela.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ERROR al añadir el Socio.", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
             this.dispose();
             

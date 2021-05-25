@@ -33,6 +33,8 @@ public class menuEstanteria extends javax.swing.JFrame {
         estanteriaList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : estanteriaQuery.getResultList();
         estanteriaQuery1 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT e FROM Estanteria e");
         estanteriaList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : estanteriaQuery1.getResultList();
+        estanteriaQuery2 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT e FROM Estanteria e");
+        estanteriaList2 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : estanteriaQuery2.getResultList();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -44,7 +46,7 @@ public class menuEstanteria extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, estanteriaList1, jTable1);
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, estanteriaList2, jTable1);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${codigo}"));
         columnBinding.setColumnName("Codigo");
         columnBinding.setColumnClass(Character.class);
@@ -182,8 +184,10 @@ public class menuEstanteria extends javax.swing.JFrame {
     private javax.persistence.EntityManager entityManager;
     private java.util.List<Vista.Estanteria> estanteriaList;
     private java.util.List<Vista.Estanteria> estanteriaList1;
+    private java.util.List<Vista.Estanteria> estanteriaList2;
     private javax.persistence.Query estanteriaQuery;
     private javax.persistence.Query estanteriaQuery1;
+    private javax.persistence.Query estanteriaQuery2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

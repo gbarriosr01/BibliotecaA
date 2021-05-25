@@ -136,9 +136,9 @@ public class nuevaEstanteria extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jTextFieldUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jCheckBoxCompleto))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBoxCompleto)
+                    .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
@@ -241,7 +241,7 @@ public class nuevaEstanteria extends javax.swing.JFrame {
                 Entidades.Estanteria est = new Entidades.Estanteria();
                 est.setCodigo(cod);
                 est.setUbicacion(ubi);
-                est.setUbicacion(ubi);
+                est.setCompleta(comp);
                 
                 
                 

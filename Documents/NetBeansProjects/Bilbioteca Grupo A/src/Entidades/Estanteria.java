@@ -21,7 +21,7 @@ public class Estanteria {
     /*Valido: Cadena caracteres "asdsandas"  Invalido: " ", >30caracteres*/
     private String ubicacion=null;
     /*Valido: true, false Invalido: cualquier cosa que no sea true o false*/
-    private boolean completa=false;
+    private boolean completa;
     private ArrayList <Elemento> elementos = new ArrayList <Elemento>();
 
     public Estanteria() {

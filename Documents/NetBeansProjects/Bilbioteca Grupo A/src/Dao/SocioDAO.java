@@ -105,7 +105,7 @@ public class SocioDAO {
         return socio;
     }
 
-    public void eliminarSocio(long idSocio) {
+    public static void eliminarSocio(long idSocio) {
         try {
             if (conn == null || conn.isClosed()) {
                 conn = BibliotecaBD.establecerConexion();
@@ -115,11 +115,11 @@ public class SocioDAO {
                 pstmt = conn.prepareStatement("DELETE FROM socio WHERE id = ?");
                 pstmt.setString(1, String.valueOf(idSocio));
                 pstmt.executeUpdate();
-                System.out.println("Se ha eliminado un socio de la BD.");
+//                System.out.println("Se ha eliminado un socio de la BD.");
             } catch (SQLException ex) {
-                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+//                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
                 Logger.getLogger(SocioDAO.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("NO se ha eliminado el socio de la BD.");
+//                System.out.println("NO se ha eliminado el socio de la BD.");
             } finally {
                 if (conn != null) {
                     BibliotecaBD.cerrarConexion();
