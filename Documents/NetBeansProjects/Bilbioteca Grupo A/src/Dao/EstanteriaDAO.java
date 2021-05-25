@@ -82,8 +82,8 @@ public class EstanteriaDAO {
                 Boolean completa = e.isCompleta();
 
                 String sql = "UPDATE Estanteria SET ";
-                sql += "codigo=" + codigo;
-                sql += ", ubicacion=" + ubicacion;
+                sql += "codigo=" + "\" " + codigo + "\" ";
+                sql += ", ubicacion=" + "\" " + ubicacion + "\" ";
                 sql += ", completo=" + completa;
                 
 
