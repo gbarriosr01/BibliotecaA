@@ -102,7 +102,7 @@ public class GeneroDAO {
         return genero;
     }
      
-     public void eliminarGenero(long idGenero) {
+     public static void eliminarGenero(long idGenero) {
         try {
             if (conn == null || conn.isClosed()) {
                 conn = BibliotecaBD.establecerConexion();

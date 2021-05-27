@@ -37,6 +37,8 @@ public class menuEvento extends javax.swing.JFrame {
         eventoList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : eventoQuery1.getResultList();
         eventoQuery2 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT e FROM Evento e");
         eventoList2 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : eventoQuery2.getResultList();
+        eventoQuery3 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT e FROM Evento e");
+        eventoList3 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : eventoQuery3.getResultList();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -52,7 +54,7 @@ public class menuEvento extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, eventoList2, jTable1);
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, eventoList3, jTable1);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${id}"));
         columnBinding.setColumnName("Id");
         columnBinding.setColumnClass(Integer.class);
@@ -233,9 +235,11 @@ public class menuEvento extends javax.swing.JFrame {
     private java.util.List<Vista.Evento> eventoList;
     private java.util.List<Vista.Evento> eventoList1;
     private java.util.List<Vista.Evento> eventoList2;
+    private java.util.List<Vista.Evento> eventoList3;
     private javax.persistence.Query eventoQuery;
     private javax.persistence.Query eventoQuery1;
     private javax.persistence.Query eventoQuery2;
+    private javax.persistence.Query eventoQuery3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

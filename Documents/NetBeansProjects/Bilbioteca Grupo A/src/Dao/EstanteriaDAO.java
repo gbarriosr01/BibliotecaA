@@ -159,7 +159,7 @@ public class EstanteriaDAO {
         return e;
     }
     
-    public void eliminarEstanteria(long idEstanteria) {
+    public static void eliminarEstanteria(long idEstanteria) {
         try {
             if (conn == null || conn.isClosed()) {
                 conn = BibliotecaBD.establecerConexion();

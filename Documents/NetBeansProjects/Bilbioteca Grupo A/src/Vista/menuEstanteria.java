@@ -51,17 +51,17 @@ public class menuEstanteria extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
 
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, estanteriaList2, jTable1);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${codigo}"));
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${id}"));
+        columnBinding.setColumnName("Id");
+        columnBinding.setColumnClass(Integer.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${codigo}"));
         columnBinding.setColumnName("Codigo");
         columnBinding.setColumnClass(Character.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${completo}"));
         columnBinding.setColumnName("Completo");
         columnBinding.setColumnClass(Boolean.class);
-        columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${id}"));
-        columnBinding.setColumnName("Id");
-        columnBinding.setColumnClass(Integer.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${ubicacion}"));
         columnBinding.setColumnName("Ubicacion");
@@ -161,7 +161,7 @@ public class menuEstanteria extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (this.jTable1.getSelectedRowCount() == 0 || this.jTable1.getSelectedRowCount() > 1) {
-            JOptionPane.showMessageDialog(this, "Debe seleccionar una única Estanteria de la tabla.");
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una unica Estanteria de la tabla.");
         } else {
             Object[] opciones = {"Aceptar", "Cancelar"};
             int i = JOptionPane.showOptionDialog(this, "¿Está seguro de eliminar la Estanteria seleccionada?", "Eliminar Estanteria", JOptionPane.YES_NO_OPTION,
@@ -172,8 +172,7 @@ public class menuEstanteria extends javax.swing.JFrame {
 
             try {
                 int idEstanteriaSelected = (int) jTable1.getModel().getValueAt(jTable1.getSelectedRow(), 0);
-                EstanteriaDAO estd = new EstanteriaDAO();
-                estd.eliminarEstanteria(idEstanteriaSelected);
+                EstanteriaDAO.eliminarEstanteria(idEstanteriaSelected);
                 
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "La Estanteria seleccionada está en uso y no se puede eliminar.", "ERROR", JOptionPane.ERROR_MESSAGE);

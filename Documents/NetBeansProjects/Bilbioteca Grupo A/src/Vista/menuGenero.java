@@ -5,6 +5,9 @@
  */
 package Vista;
 
+import Dao.GeneroDAO;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alexb
@@ -177,6 +180,29 @@ public class menuGenero extends javax.swing.JFrame {
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
         // TODO add your handling code here:
+        if (this.jTable1.getSelectedRowCount() == 0 || this.jTable1.getSelectedRowCount() > 1) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un único Genero de la tabla.");
+        } else {
+            Object[] opciones = {"Aceptar", "Cancelar"};
+            int i = JOptionPane.showOptionDialog(this, "¿Está seguro de eliminar el Genero seleccionado?", "Eliminar Genero", JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+            if (i == JOptionPane.NO_OPTION) {
+                return;
+            }
+
+            try {
+                int idGeneroSelected = (int) jTable1.getModel().getValueAt(jTable1.getSelectedRow(), 0);
+                GeneroDAO.eliminarGenero(idGeneroSelected);
+                
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "El Genero seleccionada está en uso y no se puede eliminar.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+
+            menuGenero gen = new  menuGenero();
+            gen.setVisible(true);
+            this.setVisible(false);
+
+        }
     }//GEN-LAST:event_jButtonEliminarActionPerformed
 
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
