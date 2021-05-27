@@ -40,7 +40,7 @@ public class EventoDAO {
         conn = BibliotecaBD.establecerConexion();
     }
 
-    public ArrayList<Evento> todasSocios() {
+    public ArrayList<Evento> todosEventos() {
         ArrayList<Evento> todosEventos = new ArrayList<Evento>();
         try {
             if (conn == null || conn.isClosed()) {
@@ -107,7 +107,7 @@ public class EventoDAO {
         return evento;
     }
 
-    public void eliminarEvento(long idEvento) {
+    public static void eliminarEvento(long idEvento) {
         try {
             if (conn == null || conn.isClosed()) {
                 conn = BibliotecaBD.establecerConexion();
@@ -178,10 +178,8 @@ public class EventoDAO {
                 long id = e.getId();
                 String nombre = e.getNombre();
                 String fechayhora = e.getFechayhora().toLocalDate().format(dateFormatter);
-                String sql = "INSERT INTO evento(id, nombre, fechayhora, idPenalizacion) VALUES(" + id + ", "
-                        + "\" " + nombre + "\" " + ", "
-                        + "\" " + fechayhora + "\" " + ", "
-                        + "\" " + ")";
+                String sql = "INSERT INTO evento(nombre, fechayhora) VALUES(" + "\" " + nombre + "\" " + ", "
+                        + "\" " + fechayhora + "\" " + ")";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.execute();
 
@@ -198,8 +196,7 @@ public class EventoDAO {
                     long idEvento = rs.getLong("id");
                     String nom = rs.getString("nombre");
                     Date fecha = rs.getDate("fechayhora");
-                    long idPenal = rs.getLong("idPenalizacion");
-                    e = new Evento(idEvento, nom, fecha, idPenal);
+                    e = new Evento(idEvento, nom, fecha);
                 }
             } catch (SQLException ex) {
                 System.out.println("Se ha producido una SQLException:" + ex.getMessage());
