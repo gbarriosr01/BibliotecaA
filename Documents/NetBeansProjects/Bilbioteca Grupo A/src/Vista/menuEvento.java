@@ -6,6 +6,12 @@
 package Vista;
 
 import Dao.EventoDAO;
+import java.math.BigInteger;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -70,7 +76,7 @@ public class menuEvento extends javax.swing.JFrame {
         columnBinding.setColumnName("Nombre");
         columnBinding.setColumnClass(String.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${fechayhora}"));
-        columnBinding.setColumnName("Fechayhora");
+        columnBinding.setColumnName("Fecha");
         columnBinding.setColumnClass(java.util.Date.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
@@ -190,6 +196,26 @@ public class menuEvento extends javax.swing.JFrame {
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
         // TODO add your handling code here:
+        if (this.jTable1.getSelectedRowCount() == 0 || this.jTable1.getSelectedRowCount() > 1) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un único ejemplar de la tabla.");
+        } else {
+            int filaSelecc = jTable1.getSelectedRow();
+
+            DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+            Long idEvento = Long.valueOf(jTable1.getModel().getValueAt(filaSelecc, 0).toString());
+            String nombre = String.valueOf(jTable1.getModel().getValueAt(filaSelecc, 1).toString());
+            java.sql.Date fechaEvento = null;
+            try {
+                fechaEvento = (java.sql.Date)(this.jTable1.getModel().getValueAt(filaSelecc, 2));
+                if(jTable1.getModel().getValueAt(filaSelecc, 5)!=null);
+            } catch (Exception ex) {
+                Logger.getLogger(menuEvento.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            Entidades.Evento seleccionada = new Entidades.Evento(idEvento, nombre, fechaEvento);
+            modificarEvento modificarE = new modificarEvento(this, seleccionada);
+            modificarE.setVisible(true);
+    }                                             
 
     }//GEN-LAST:event_botonModificarActionPerformed
 
