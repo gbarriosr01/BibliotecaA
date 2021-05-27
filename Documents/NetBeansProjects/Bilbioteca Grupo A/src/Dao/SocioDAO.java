@@ -131,7 +131,7 @@ public class SocioDAO {
         }
     }
 
-    public void modificarSocio(Socio s) {
+    public static void modificarSocio(Socio s) {
         try {
             if (conn == null || conn.isClosed()) {
                 conn = BibliotecaBD.establecerConexion();
