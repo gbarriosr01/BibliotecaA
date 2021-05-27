@@ -176,6 +176,20 @@ public class menuGenero extends javax.swing.JFrame {
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
         // TODO add your handling code here:
+         if (this.jTable1.getSelectedRowCount() == 0 || this.jTable1.getSelectedRowCount() > 1) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una única Planta de Genero.");
+        } else {
+            int filaSelecc = jTable1.getSelectedRow();
+
+            Long id = Long.valueOf(jTable1.getModel().getValueAt(filaSelecc, 0).toString());
+            String nom = jTable1.getModel().getValueAt(filaSelecc, 1).toString();
+            Entidades.Genero seleccionado = new Entidades.Genero(id,nom);
+            
+            
+            modificarGenero modificarGen = new modificarGenero(this, seleccionado);
+            modificarGen.setVisible(true);
+            this.dispose();
+       }     
     }//GEN-LAST:event_jButtonModificarActionPerformed
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed

@@ -177,7 +177,7 @@ public class GeneroDAO {
         System.out.println("------------------------");
     }
       
-       public void modificarGenero(Genero g) {
+       public static void modificarGenero(Genero g) {
         try {
             if (conn == null || conn.isClosed()) {
                 conn = BibliotecaBD.establecerConexion();

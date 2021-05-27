@@ -21,12 +21,9 @@ public class modificarSocio extends javax.swing.JFrame {
     /**
      * Creates new form modificarSocio
      */
-    public modificarSocio() {
+    public modificarSocio(menuSocio fpadre, Socio s) {
         initComponents();
-    }
-
-    modificarSocio(menuSocio fpadre, Socio s) {
-         this.padre = fpadre;
+        this.padre = fpadre;
          this.socio = s;
          
          this.jTextField1.setText(s.getNombre());
@@ -34,9 +31,8 @@ public class modificarSocio extends javax.swing.JFrame {
          this.jTextField3.setText(s.getTelefono());
          this.jTextField4.setText(s.getDireccion());
     }
-    
-    
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -345,7 +341,7 @@ public class modificarSocio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new modificarSocio().setVisible(true);
+                new modificarSocio(padre, socio).setVisible(true);
             }
         });
     }
