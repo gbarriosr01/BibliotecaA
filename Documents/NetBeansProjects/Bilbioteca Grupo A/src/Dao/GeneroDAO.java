@@ -186,7 +186,7 @@ public class GeneroDAO {
                 PreparedStatement pstmt = null;
                 String nombre = g.getNombre();
 
-                String sql = "UPDATE generos SET ";
+                String sql = "UPDATE genero SET ";
                 sql += "nombre='" + nombre + "'";
 
                 sql += " WHERE id = ?";

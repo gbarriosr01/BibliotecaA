@@ -6,19 +6,33 @@
 package Vista;
 
 import Dao.EstanteriaDAO;
+import Entidades.Estanteria;
+import java.awt.Point;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author diegu
  */
-public class nuevaEstanteria extends javax.swing.JFrame {
+public class modificarEstanteria extends javax.swing.JFrame {
 
+    static menuEstanteria padre;
+    static Entidades.Estanteria estanteria;
     /**
-     * Creates new form nuevaEstanteria
+     * Creates new form modificarEstanteria
      */
-    public nuevaEstanteria() {
+    public modificarEstanteria() {
         initComponents();
+    }
+
+    public modificarEstanteria(menuEstanteria fPadre, Entidades.Estanteria e) {
+        initComponents();
+        this.padre = fPadre;
+        this.estanteria = e;
+        this.jTextFieldCodigo.setText(String.valueOf(e.getCodigo()));
+        this.jTextFieldUbicacion.setText(e.getUbicacion());
+        
+        
     }
 
     /**
@@ -38,10 +52,10 @@ public class nuevaEstanteria extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextFieldCodigo = new javax.swing.JTextField();
         jTextFieldUbicacion = new javax.swing.JTextField();
+        jCheckBoxCompleto = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jCheckBoxCompleto = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,27 +63,15 @@ public class nuevaEstanteria extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Nueva Estanteria");
+        jLabel1.setText("Modificar Estanteria");
 
         jLabel2.setText("Codigo");
 
-        jLabel3.setText("Ubicacion");
+        jLabel3.setText("Completo");
 
-        jLabel4.setText("Completo");
+        jLabel4.setText("Ubicacion");
 
-        jTextFieldCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCodigoActionPerformed(evt);
-            }
-        });
-
-        jTextFieldUbicacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldUbicacionActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Añadir");
+        jButton1.setText("Modificar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -94,54 +96,49 @@ public class nuevaEstanteria extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(39, 39, 39)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(27, 27, 27))))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(109, 109, 109)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jCheckBoxCompleto)
+                                    .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(27, 27, 27)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2)
-                    .addComponent(jCheckBoxCompleto))
-                .addGap(67, 67, 67))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addContainerGap())
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton3)))
+                .addGap(25, 25, 25))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
                     .addComponent(jTextFieldUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(21, 21, 21)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jCheckBoxCompleto)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -155,10 +152,8 @@ public class nuevaEstanteria extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 19, Short.MAX_VALUE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -166,7 +161,7 @@ public class nuevaEstanteria extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -185,13 +180,10 @@ public class nuevaEstanteria extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCodigoActionPerformed
-
-    private void jTextFieldUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUbicacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldUbicacionActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+        menuEstanteria.main(null);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.jTextFieldCodigo.setText("");
@@ -199,77 +191,59 @@ public class nuevaEstanteria extends javax.swing.JFrame {
         this.jCheckBoxCompleto.setSelected(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.dispose();
-        menuEstanteria.main(null);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         boolean ok = true;
         String msj = "";
         if (this.jTextFieldCodigo.getText().isEmpty()) {
             ok = false;
-            msj += "\nEl nombre es obligatorio.";
+            msj += "\nEl codigo es obligatorio.";
         }
         if (this.jTextFieldUbicacion.getText().isEmpty()) {
             ok = false;
-            msj += "\nEl NIF es obligatoria.";
-        }
+            msj += "\nEl área es obligatoria.";
+        } 
         
-
+        
         if (!ok) {
             JOptionPane.showMessageDialog(this, "Debe solucionar los siguientes problemas:\n" + msj, "ERROR", JOptionPane.ERROR_MESSAGE);
             return;
         } else {
-            msj = "\nCodigo: " + this.jTextFieldCodigo.getText();
-            msj += "\nUbicacion: " + this.jTextFieldUbicacion.getText();
-            msj += "\nCompleto: " + this.jCheckBoxCompleto.isSelected();
-                    
-            ;
+            msj = "\nNombre: " + this.jTextFieldCodigo.getText();
+            msj += "\nArea: " + this.jTextFieldUbicacion.getText();
+            msj += "\nPrivada: " + this.jCheckBoxCompleto.isSelected();
             
             Object[] opciones = {"Sí", "No"};
-            int i = JOptionPane.showOptionDialog(this, "¿Son los datos del nuevo Socio correctos?\n" + msj, "Nueva Estanteria", JOptionPane.YES_NO_OPTION,
+            int i = JOptionPane.showOptionDialog(this, "¿Son los datos modificados de la Estanteria correctos?\n" + msj, "Modificar Estanteria", JOptionPane.YES_NO_OPTION,
                     JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
             if (i == JOptionPane.NO_OPTION) {
                 return;
             }
 
             try {
-                char cod = this.jTextFieldCodigo.getText().charAt(0);
+                char nom = this.jTextFieldCodigo.getText().charAt(0);
                 String ubi = this.jTextFieldUbicacion.getText();
                 boolean comp = this.jCheckBoxCompleto.isSelected();
                 
-                
                 Entidades.Estanteria est = new Entidades.Estanteria();
-                est.setCodigo(cod);
+                est.setCodigo(nom);
                 est.setUbicacion(ubi);
                 est.setCompleta(comp);
                 
-                
-                
-    
                 EstanteriaDAO estd = new EstanteriaDAO();
-    
-                estd.insertarEstanteria(est);
+                estd.modificarEstanteria(est);
                 
-//                javax.persistence.EntityManager entityManager0 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("bdinvernadero?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
-
-                JOptionPane.showMessageDialog(this, "Se ha añadido correctamente la Estanteria.");
-
+                JOptionPane.showMessageDialog(this, "Se ha modificado correctamente la Estanteria.");
                 
-                
-
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "ERROR al añadir la Estanteria.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ERROR al modificar la Parcela.", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
+            
             this.dispose();
             
-            menuEstanteria est = new  menuEstanteria();
-            est.setVisible(true);
+            menuEstanteria estm = new  menuEstanteria();
+            estm.setVisible(true);
             this.setVisible(false);
-
-
-    }           
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -289,20 +263,20 @@ public class nuevaEstanteria extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(nuevaEstanteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(modificarEstanteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(nuevaEstanteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(modificarEstanteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(nuevaEstanteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(modificarEstanteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(nuevaEstanteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(modificarEstanteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new nuevaEstanteria().setVisible(true);
+                new modificarEstanteria().setVisible(true);
             }
         });
     }

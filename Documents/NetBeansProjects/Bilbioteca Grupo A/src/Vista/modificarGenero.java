@@ -20,9 +20,9 @@ public class modificarGenero extends javax.swing.JFrame {
      * Creates new form ModificarGenero
      */
     static menuGenero padre;
-    static Genero genero;
+    static Entidades.Genero genero;
     
-    public modificarGenero(menuGenero fpadre, Genero g) {
+    public modificarGenero(menuGenero fpadre, Entidades.Genero g) {
         initComponents();
         this.padre = fpadre;
         this.genero = g;
@@ -240,11 +240,17 @@ public class modificarGenero extends javax.swing.JFrame {
                 
                 
                 
-                this.dispose();
+                
                 
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "ERROR al modificar el Genero.", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
+            
+            this.dispose();
+            
+            menuGenero gen = new  menuGenero();
+            gen.setVisible(true);
+            this.setVisible(false);
         }
         
         
