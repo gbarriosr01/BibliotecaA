@@ -54,8 +54,7 @@ public class EventoDAO {
                     long id = prs.getLong("id");
                     String nombre = prs.getString("nombre");
                     Date fechayhora = prs.getDate("fechayhora");
-                    long idPenalizacion = prs.getLong("idPenalizacion");
-                    Evento evento = new Evento(id, nombre, fechayhora, idPenalizacion);
+                    Evento evento = new Evento(id, nombre, fechayhora);
                     todosEventos.add(evento);
                 }
             } catch (SQLException ex) {
@@ -88,8 +87,7 @@ public class EventoDAO {
                     long id = prs.getLong("id");
                     String nombre = prs.getString("nombre");
                     Date fechayhora = prs.getDate("fechayhora");
-                    long idPenalizacion = prs.getLong("idPenalizacion");
-                    evento = new Evento(id, nombre, fechayhora, idPenalizacion);
+                    evento = new Evento(id, nombre, fechayhora);
                 }
                 prs.close();
                 pstmt.close();
@@ -145,13 +143,11 @@ public class EventoDAO {
                 long id = e.getId();
                 String nombre = e.getNombre();
                 String fechayhora = e.getFechayhora().toLocalDate().format(dateFormatter);
-                long idPenalizacion = e.getIdPenalizacion();
 
                 String sql = "UPDATE evento SET ";
                 sql += "id=" + id;
                 sql += ", nombre=" + "\" " + nombre + "\" ";
                 sql += ", fechayhora=" + "\" " + fechayhora + "\" ";
-                sql += ", idPenalizacion=" + "\" " + idPenalizacion + "\" ";
 
                 sql += " WHERE id = ?";
                 pstmt = conn.prepareStatement(sql);
@@ -182,11 +178,10 @@ public class EventoDAO {
                 long id = e.getId();
                 String nombre = e.getNombre();
                 String fechayhora = e.getFechayhora().toLocalDate().format(dateFormatter);
-                long idPenalizacion = e.getIdPenalizacion();
                 String sql = "INSERT INTO evento(id, nombre, fechayhora, idPenalizacion) VALUES(" + id + ", "
                         + "\" " + nombre + "\" " + ", "
                         + "\" " + fechayhora + "\" " + ", "
-                        + "\" " + idPenalizacion + "\" " + ")";
+                        + "\" " + ")";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.execute();
 
@@ -197,7 +192,6 @@ public class EventoDAO {
                 sqlRec += " id=" + id;
                 sqlRec += " and nombre=" + "\" " + nombre + "\" ";
                 sqlRec += " and fechayhora=" + "\" " + fechayhora + "\" ";
-                sqlRec += " and idPenalizacion=" + "\" " + idPenalizacion + "\" ";
                 sqlRec += " ORDER BY id DESC";
                 ResultSet rs = stmt.executeQuery(sqlRec);
                 while (rs.next()) {
@@ -229,7 +223,6 @@ public class EventoDAO {
         System.out.println("ID: " + ev.getId());
         System.out.println("Nombre: " + ev.getNombre());
         System.out.println("Fechayhora: " + ev.getFechayhora());
-        System.out.println("idPenalizacion: " + ev.getIdPenalizacion());
 
         System.out.println("------------------------");
     }

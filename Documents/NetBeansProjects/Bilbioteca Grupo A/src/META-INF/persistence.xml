@@ -8,6 +8,7 @@
     <class>Vista.Socio</class>
     <class>Vista.Genero</class>
     <class>Vista.Estanteria</class>
+    <class>Vista.Evento</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/biblioteca?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

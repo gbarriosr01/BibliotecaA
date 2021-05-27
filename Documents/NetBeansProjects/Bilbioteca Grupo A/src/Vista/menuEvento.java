@@ -33,6 +33,10 @@ public class menuEvento extends javax.swing.JFrame {
         entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("biblioteca?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
         eventoQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT e FROM Evento e");
         eventoList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : eventoQuery.getResultList();
+        eventoQuery1 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT e FROM Evento e");
+        eventoList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : eventoQuery1.getResultList();
+        eventoQuery2 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT e FROM Evento e");
+        eventoList2 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : eventoQuery2.getResultList();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -48,7 +52,7 @@ public class menuEvento extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, eventoList, jTable1);
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, eventoList2, jTable1);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${id}"));
         columnBinding.setColumnName("Id");
         columnBinding.setColumnClass(Integer.class);
@@ -58,9 +62,6 @@ public class menuEvento extends javax.swing.JFrame {
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${fechayhora}"));
         columnBinding.setColumnName("Fechayhora");
         columnBinding.setColumnClass(java.util.Date.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idPenalizacion}"));
-        columnBinding.setColumnName("Id Penalizacion");
-        columnBinding.setColumnClass(Integer.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
         jScrollPane1.setViewportView(jTable1);
@@ -230,7 +231,11 @@ public class menuEvento extends javax.swing.JFrame {
     private javax.swing.JButton botonVolver;
     private javax.persistence.EntityManager entityManager;
     private java.util.List<Vista.Evento> eventoList;
+    private java.util.List<Vista.Evento> eventoList1;
+    private java.util.List<Vista.Evento> eventoList2;
     private javax.persistence.Query eventoQuery;
+    private javax.persistence.Query eventoQuery1;
+    private javax.persistence.Query eventoQuery2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

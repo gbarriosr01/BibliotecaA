@@ -32,8 +32,8 @@ import javax.persistence.Transient;
     @NamedQuery(name = "Evento.findAll", query = "SELECT e FROM Evento e")
     , @NamedQuery(name = "Evento.findById", query = "SELECT e FROM Evento e WHERE e.id = :id")
     , @NamedQuery(name = "Evento.findByNombre", query = "SELECT e FROM Evento e WHERE e.nombre = :nombre")
-    , @NamedQuery(name = "Evento.findByFechayhora", query = "SELECT e FROM Evento e WHERE e.fechayhora = :fechayhora")
-    , @NamedQuery(name = "Evento.findByIdPenalizacion", query = "SELECT e FROM Evento e WHERE e.idPenalizacion = :idPenalizacion")})
+    , @NamedQuery(name = "Evento.findByFechayhora", query = "SELECT e FROM Evento e WHERE e.fechayhora = :fechayhora")})
+    
 public class Evento implements Serializable {
 
     @Transient
@@ -52,8 +52,6 @@ public class Evento implements Serializable {
     @Column(name = "fechayhora")
     @Temporal(TemporalType.DATE)
     private Date fechayhora;
-    @Column(name = "idPenalizacion")
-    private Integer idPenalizacion;
 
     public Evento() {
     }
@@ -96,16 +94,6 @@ public class Evento implements Serializable {
         Date oldFechayhora = this.fechayhora;
         this.fechayhora = fechayhora;
         changeSupport.firePropertyChange("fechayhora", oldFechayhora, fechayhora);
-    }
-
-    public Integer getIdPenalizacion() {
-        return idPenalizacion;
-    }
-
-    public void setIdPenalizacion(Integer idPenalizacion) {
-        Integer oldIdPenalizacion = this.idPenalizacion;
-        this.idPenalizacion = idPenalizacion;
-        changeSupport.firePropertyChange("idPenalizacion", oldIdPenalizacion, idPenalizacion);
     }
 
     @Override

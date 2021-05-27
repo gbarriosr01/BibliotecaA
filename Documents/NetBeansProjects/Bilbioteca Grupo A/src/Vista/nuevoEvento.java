@@ -5,13 +5,19 @@
  */
 package Vista;
 
+import Entidades.Evento;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Properties;
+import javax.persistence.TypedQuery;
 import utils.DateLabelFormatter;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
+import javax.swing.*;
 
 /**
  *
@@ -191,12 +197,48 @@ public class nuevoEvento extends javax.swing.JFrame implements ActionListener {
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         // TODO add your handling code here:
+        boolean ok = true;
+        String msj = "";
+        if(this.jTextFieldNombre.getText().isEmpty()){
+            ok = false;
+            msj += "\nEl nombre es obligatorio.";
+        }
+        if(this.datePicker.getJFormattedTextField().getText().isEmpty()){
+            ok = false;
+            msj += "\nLa fecha del evento es obligatoria.";
+        }
+        if (!ok) {
+            JOptionPane.showMessageDialog(this, "Debes corregir los siguientes problemas:\n" + msj, "ERROR", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else {
+            msj = "\nNombre:" + this.jTextFieldNombre.getText() + "\nFecha del evento:" + this.datePicker.getJFormattedTextField().getText();
+            Object[] opciones = {"Si", "No"};
+            int i = JOptionPane.showOptionDialog(this, "¿Son los datos del nuevo Evento correctos?\n" + msj, "Nuevo Evento", JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+            if(i == JOptionPane.NO_OPTION) {
+                return;
+            }
+        try {
+            javax.persistence.EntityManager entityManager0 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("biblioteca?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
+            
+            Evento ev = new Evento();
+            String nombreStr = String.valueOf(this.jTextFieldNombre.getText());
+            String fechaEventoStr = this.datePicker.getJFormattedTextField().getText();
+            
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            
+            Date fechaEvento = java.sql.Date.valueOf(LocalDate.parse(fechaEventoStr, dateFormatter));          
+            
+        } catch (Exception ex){
+            
+        }
+        }
     }//GEN-LAST:event_botonAceptarActionPerformed
 
     private void botonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorrarActionPerformed
         // TODO add your handling code here:
         this.jTextFieldNombre.setText("");
-        this.jButtonFechaEvento.setText("");
+        this.datePicker.getJFormattedTextField().setText("");
     }//GEN-LAST:event_botonBorrarActionPerformed
 
     /**
